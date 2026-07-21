@@ -89,3 +89,14 @@
 .herb-plate{aspect-ratio:9/16 !important;border-radius:20px !important}
 .herb-plate img{object-fit:cover}
 @media(max-width:720px){.herb-plate{aspect-ratio:9/16 !important}}
+
+/* v34: mobile static hero polish + 2-up botanical plates */
+@media(max-width:720px){
+.herb-plates{grid-template-columns:repeat(2,1fr);gap:12px;margin-top:40px}
+.journey-static .j3-title{top:26%;font-size:clamp(42px,12.5vw,60px);letter-spacing:.12em}
+.journey-final .btn{min-height:48px;padding:0 18px;font-size:.68rem}
+.journey-final .hero-actions{gap:10px}
+.journey-trust{gap:10px 20px;font-size:.54rem;padding-top:14px}
+.journey-trust strong{font-size:1.05rem}
+.mid-ribbon .trust-track{font-size:.56rem;gap:24px;padding:9px 0}
+}

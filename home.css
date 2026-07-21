@@ -88,3 +88,20 @@
 .email-wrap{position:relative;display:flex;flex:1}
 .email-wrap .email-ico{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:#7a856f;pointer-events:none}
 .email-wrap input{padding-left:48px !important;width:100%}
+
+/* v34: mobile premium pass */
+@media(max-width:720px){
+.principles{grid-template-columns:1fr;gap:0}
+.principle{padding:20px 2px}
+.principle h3{font-size:1.4rem}
+.pillar{min-height:150px;padding:20px 12px}
+.pillar img{width:54px;height:54px;margin-bottom:12px}
+.pillar h3{font-size:.98rem}
+.section-head{margin-bottom:36px}
+.bowl-card{min-height:0}
+.bowl-card img{height:230px}
+.newsletter-section{padding:76px 0}
+}
+@media(hover:none),(pointer:coarse){
+.concern-tile{padding-right:82px}
+}

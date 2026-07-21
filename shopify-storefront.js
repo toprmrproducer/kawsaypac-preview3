@@ -428,7 +428,7 @@
           <div class="journal-live-heading">
             <p class="eyebrow">Connected Shopify journal</p>
             <h2><shopify-data query="blog.title"></shopify-data></h2>
-            <p><shopify-data query="blog.description"></shopify-data></p>
+            
           </div>
           <shopify-list-context data-journal-list type="article" query="blog.articles" first="12">
             <template>${journalCardTemplate()}</template>
