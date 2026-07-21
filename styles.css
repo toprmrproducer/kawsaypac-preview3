@@ -59,3 +59,6 @@
 /* Keep the primary Shop CTA reachable on compact screens. */
 @media(max-width:1120px){.nav-actions>.btn{display:inline-flex;min-height:44px;padding:0 15px;font-size:.64rem}}
 @media(max-width:480px){.brand small{display:none}.nav-actions>.btn{padding:0 12px;font-size:.6rem;letter-spacing:.06em}}
+
+:root{--display:"Fraunces","Cormorant Garamond",Georgia,serif}
+.j3-title,.journey-beat h1,.journey-beat h2,.journey-final h2{font-family:var(--display)}

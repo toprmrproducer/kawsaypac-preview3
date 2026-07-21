@@ -69,9 +69,23 @@
 /* v28: display title between clouds and peak */
 .j3-title{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);z-index:2;
   font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-weight:500;
-  font-size:clamp(46px,6.6vw,126px);letter-spacing:.03em;color:#fdf9ee;
+  font-size:clamp(38px,5.6vw,108px);letter-spacing:.09em;text-transform:uppercase;color:#fdf9ee;
   text-shadow:0 4px 40px rgba(30,40,30,.35), 0 0 90px rgba(255,244,214,.4);
   white-space:nowrap;pointer-events:none}
 /* the nested title replaces the old center wordmark */
 .journey-preview .journey-brand strong{display:none}
 .journey-preview .journey-brand{top:18%}
+
+/* v33: title behind the mountain; premium display serif everywhere */
+.j3-s1 .j3l[data-l="s1-shoulder"],.j3-s1 .j3l[data-l="s1-peak"]{z-index:3}
+.j3-title{z-index:2}
+/* second rotating ribbon between hero and body */
+.mid-ribbon{overflow:hidden;background:var(--forest,#123420);color:#f2efe2;border-block:1px solid rgba(255,255,255,.12)}
+.mid-ribbon .trust-track{display:flex;gap:34px;white-space:nowrap;padding:11px 0;font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;animation:midTicker 30s linear infinite;width:max-content}
+.mid-ribbon i{font-style:normal;color:#d9b64a}
+@keyframes midTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* 9:16 botanical plates under the philosophy statement */
+.herb-plates{grid-template-columns:repeat(4,1fr)}
+.herb-plate{aspect-ratio:9/16 !important;border-radius:20px !important}
+.herb-plate img{object-fit:cover}
+@media(max-width:720px){.herb-plate{aspect-ratio:9/16 !important}}
