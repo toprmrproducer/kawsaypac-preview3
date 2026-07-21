@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kawsaypac Herbal Product | Ancestral Herbs</title>
+    <meta name="description" content="Explore live product details, variants, availability, and secure Shopify checkout for a Kawsaypac herbal ritual.">
+    <link id="product-canonical" rel="canonical" href="https://theelectriceats.com/products/zapped-in">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="Kawsaypac Ancestral Herbs">
+    <meta id="product-og-title" property="og:title" content="Kawsaypac Herbal Product">
+    <meta id="product-og-description" property="og:description" content="Live product details and secure Shopify checkout from Kawsaypac.">
+    <meta id="product-og-url" property="og:url" content="https://theelectriceats.com/products/zapped-in">
+    <script id="product-json-ld" type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Kawsaypac Herbal Product","brand":{"@type":"Brand","name":"Kawsaypac"},"url":"https://theelectriceats.com/products/zapped-in"}</script>
+    <link rel="stylesheet" href="styles.css?v=26">
+    <link rel="stylesheet" href="home.css?v=26">
+    <link rel="stylesheet" href="shopify-storefront.css?v=18">
+    <link rel="stylesheet" href="product.css?v=21">
+    <script type="module" data-storefront-components src="https://cdn.shopify.com/storefront/web-components.js"></script>
+    <script defer src="app.js?v=26"></script>
+    <script defer src="shopify-storefront.js?v=18"></script>
+    <script defer src="product.js?v=19"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-site-header></div>
+
+    <shopify-store data-storefront-config store-domain="https://theelectriceats.com" country="US" language="en"></shopify-store>
+
+    <main class="product-main" id="main">
+      <section class="pdp-live-shell" aria-label="Live product details">
+        <!-- Kept inert until product.js applies the URL handle, preventing a double Shopify render. -->
+        <template id="product-context-template">
+        <shopify-context data-product-context type="product">
+          <template>
+            <article class="pdp-hero">
+              <div class="pdp-live-media">
+                <shopify-media
+                  query="product.selectedOrFirstAvailableVariant.image"
+                  width="1000"
+                  aspect-ratio="1"
+                  layout="constrained"
+                  sizes="(max-width: 900px) 94vw, 48vw"
+                  priority="true"
+                ></shopify-media>
+                <div class="pdp-origin">Live Shopify inventory · Secure checkout</div>
+              </div>
+
+              <div class="pdp-copy">
+                <div class="breadcrumbs" aria-label="Breadcrumb">
+                  <a href="index.html">Home</a><span>/</span>
+                  <a href="shop.html">Shop</a><span>/</span>
+                  <span><shopify-data query="product.productType"></shopify-data></span>
+                </div>
+                <p class="eyebrow"><shopify-data query="product.vendor"></shopify-data></p>
+                <h1 data-live-product-title><shopify-data query="product.title"></shopify-data></h1>
+                <div class="pdp-lede" data-live-product-description><shopify-data query="product.descriptionHtml"></shopify-data></div>
+                <strong class="price" data-live-product-price><shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money></strong>
+
+                <div class="pdp-variants">
+                  <shopify-variant-selector></shopify-variant-selector>
+                </div>
+
+                <div class="purchase">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    onclick="window.KawsaypacStorefront.addToCart(event)"
+                    shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                  >Add to bag</button>
+                  <button
+                    class="btn btn-outline"
+                    type="button"
+                    onclick="window.KawsaypacStorefront.buyNow(event)"
+                    shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                  >Buy now</button>
+                </div>
+
+                <div class="pdp-assurances" aria-label="Order assurances">
+                  <span>Small-batch care</span>
+                  <span>Live availability</span>
+                  <span>Shopify-secured checkout</span>
+                </div>
+                <p class="form-note">Choose an available variant before adding it to your bag. Shipping and taxes are calculated by Shopify.</p>
+              </div>
+            </article>
+
+            <div class="sticky-cart" data-sticky-cart>
+              <div>
+                <strong><shopify-data query="product.title"></shopify-data></strong>
+                <span><shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money></span>
+              </div>
+              <button
+                class="btn btn-primary"
+                type="button"
+                onclick="window.KawsaypacStorefront.addToCart(event)"
+                shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+              >Add to bag</button>
+            </div>
+          </template>
+
+          <div class="pdp-hero pdp-placeholder" shopify-loading-placeholder aria-label="Loading live product">
+            <div class="storefront-skeleton pdp-placeholder__media"></div>
+            <div class="pdp-placeholder__copy">
+              <div class="storefront-skeleton pdp-placeholder__eyebrow"></div>
+              <div class="storefront-skeleton pdp-placeholder__title"></div>
+              <div class="storefront-skeleton pdp-placeholder__line"></div>
+              <div class="storefront-skeleton pdp-placeholder__button"></div>
+            </div>
+          </div>
+        </shopify-context>
+        </template>
+        <div data-product-context-host></div>
+
+        <div class="pdp-error" data-product-error hidden>
+          <img src="assets/sprites/herb-icons/passionflower-vine.webp?v=18" alt="">
+          <div>
+            <p class="eyebrow">Connection interrupted</p>
+            <h1>This live product could not be reached.</h1>
+            <p>The handle may have changed, or Shopify may be temporarily unavailable. Your bag has not been affected.</p>
+            <div class="pdp-error__actions">
+              <a class="btn btn-primary" data-product-shopify-fallback href="https://theelectriceats.com/collections/all">Try the Shopify product</a>
+              <a class="btn btn-outline" href="shop.html">Return to the apothecary</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pdp-section pdp-story">
+        <div class="pdp-shell story-grid">
+          <div>
+            <p class="eyebrow">A Transparent Ritual</p>
+            <h2>The current product record is the source of truth.</h2>
+          </div>
+          <div class="story-points">
+            <article><strong>01</strong><h3>Live detail</h3><p>Title, description, variant, price, and availability come directly from the connected Shopify catalog.</p></article>
+            <article><strong>02</strong><h3>Intentional preparation</h3><p>Follow the directions and ingredient information on the current product page and packaging.</p></article>
+            <article><strong>03</strong><h3>Secure purchase</h3><p>Your bag and checkout are managed by Shopify rather than simulated by this site.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pdp-section pdp-origin-section">
+        <div class="pdp-shell origin-grid">
+          <img src="assets/img/new/kawsaypac-hands-botanical-partnership.webp?v=18" alt="Hands sharing harvested Ecuadorian botanicals" loading="lazy">
+          <div class="origin-copy">
+            <p class="eyebrow">Ingredients and Origin</p>
+            <h2>Read the current formula before beginning.</h2>
+            <p>Botanical batches and product formats can evolve. The live Shopify description above and the label on the product you receive are the final authorities for ingredients, directions, and cautions.</p>
+            <p>If you are pregnant, nursing, taking medication, or managing a condition, speak with a qualified clinician before using herbal products.</p>
+            <a class="btn btn-outline" href="story.html">Our Sourcing Story</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="pdp-section">
+        <div class="brew-grid">
+          <div class="brew-copy">
+            <p class="eyebrow">How to Begin</p>
+            <h2>Make the ritual clear enough to repeat.</h2>
+            <div class="brew-steps">
+              <div class="brew-step"><strong>01</strong><span>Read the exact directions on the current product and package.</span></div>
+              <div class="brew-step"><strong>02</strong><span>Choose the live variant that matches the format you intend to receive.</span></div>
+              <div class="brew-step"><strong>03</strong><span>Prepare only as directed, using clean water and a clean vessel.</span></div>
+              <div class="brew-step"><strong>04</strong><span>Pause if the ritual does not feel right for your body.</span></div>
+            </div>
+          </div>
+          <img src="assets/img/herbal-infusion.webp?v=18" alt="Amber herbal infusion prepared in a ceramic vessel" loading="lazy">
+        </div>
+      </section>
+
+      <section class="cross-sell" aria-labelledby="continue-title">
+        <div class="pdp-shell">
+          <p class="eyebrow">Continue the Ritual</p>
+          <div class="cross-heading">
+            <h2 id="continue-title">Explore the live apothecary.</h2>
+            <a class="storefront-text-link" href="shop.html">View all products <span aria-hidden="true">↗</span></a>
+          </div>
+          <a class="explore-band" href="shop.html">
+            <img src="assets/img/bg-amazon-basin.webp?v=18" alt="Amazon basin forest in Ecuador" loading="lazy">
+            <span>
+              <small>Live products · Live availability</small>
+              <strong>Find the next ritual in the connected Shopify apothecary.</strong>
+              <em>Browse all products <span aria-hidden="true">↗</span></em>
+            </span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <shopify-cart id="storefront-cart" target="_top">
+      <div class="storefront-cart-empty" slot="empty">
+        <strong>Your ritual bag is empty.</strong>
+        <p>Add an available product to begin your secure Shopify checkout.</p>
+      </div>
+      <span slot="checkout-button">Secure Shopify checkout</span>
+    </shopify-cart>
+    <p class="storefront-notice" data-storefront-notice role="status" aria-live="polite" hidden></p>
+
+    <div data-site-footer></div>
+    <div data-site-modal></div>
+  </body>
+</html>

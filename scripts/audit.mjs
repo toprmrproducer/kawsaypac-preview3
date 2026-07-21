@@ -1,0 +1,5 @@
+import fs from 'node:fs';import path from 'node:path';
+const root=process.cwd(),html=fs.readdirSync(root).filter(f=>f.endsWith('.html')),issues=[];
+for(const file of html){const text=fs.readFileSync(file,'utf8');if(text.includes('—'))issues.push(`${file}: em dash`);if(/shroom|mushroom|purple/i.test(text))issues.push(`${file}: forbidden residue`);for(const match of text.matchAll(/(?:src|href)="([^"]+)"/g)){const raw=match[1];if(/^(?:https?:|mailto:|tel:|#|data:)/.test(raw))continue;const clean=raw.split(/[?#]/)[0];if(!clean)continue;if(!fs.existsSync(path.join(root,clean)))issues.push(`${file}: missing ${raw}`);if(/\.(?:css|js|png|jpe?g|webp|svg|woff2)$/i.test(clean)&&!raw.includes('?v='))issues.push(`${file}: not cache busted ${raw}`)}}
+for(const file of ['app.js','shop.js','product.js','styles.css','home.css','shop.css','product.css','DESIGN.md']){const text=fs.readFileSync(file,'utf8');if(text.includes('—'))issues.push(`${file}: em dash`);if(/shroom|mushroom|purple|Instrument Serif|Fraunces|Cormorant/i.test(text))issues.push(`${file}: forbidden residue`)}
+console.log(JSON.stringify({pages:html.length,issues},null,2));if(issues.length)process.exitCode=1;

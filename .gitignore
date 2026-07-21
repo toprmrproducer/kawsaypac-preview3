@@ -1,0 +1,7 @@
+tmp/
+qa-*.png
+.env
+.env.*
+!.env.example
+*.pem
+*.key

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Kawsaypac image placeholder">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FAF9F6"/><stop offset="1" stop-color="#E5D9A8"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#g)"/>
+<g transform="translate(800 500)" fill="none" stroke="#C9A942" stroke-width="6" opacity=".72">
+<circle r="128"/><circle r="40"/><circle cy="-40" r="40"/><circle cy="40" r="40"/><circle cx="34.6" cy="-20" r="40"/><circle cx="34.6" cy="20" r="40"/><circle cx="-34.6" cy="-20" r="40"/><circle cx="-34.6" cy="20" r="40"/>
+</g></svg>

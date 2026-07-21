@@ -1,0 +1,667 @@
+/* Page-specific editorial ornaments for Retreats and Our Story. */
+.retreat-page .page-main,
+.story-page .page-main {
+  overflow: clip;
+}
+
+.ornament-zone {
+  position: relative;
+  isolation: isolate;
+}
+
+.page-ornament {
+  --ornament-x: 0px;
+  --ornament-y: 0px;
+  --ornament-rotate: 0deg;
+  --float-distance: 6px;
+  --float-rotate: 1.5deg;
+  --float-duration: 7.2s;
+  --float-delay: -1.4s;
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  width: var(--ornament-size, 120px);
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transform: translate3d(var(--ornament-x), var(--ornament-y), 0) rotate(var(--ornament-rotate));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.page-ornament .ornament-asset,
+.page-ornament img {
+  width: 100%;
+  height: 100%;
+}
+
+.page-ornament .ornament-asset {
+  display: block;
+  pointer-events: none;
+  animation: ornament-drift var(--float-duration) ease-in-out var(--float-delay) infinite;
+}
+
+.page-ornament img {
+  object-fit: contain;
+  pointer-events: none;
+  transition: filter .35s var(--ease), opacity .35s var(--ease);
+}
+
+.page-ornament:hover img {
+  filter: saturate(1.05) drop-shadow(0 10px 18px rgba(31, 58, 42, .14));
+}
+
+.page-ornament:focus-visible {
+  z-index: 4;
+  outline: 3px solid rgba(201, 169, 66, .72);
+  outline-offset: 5px;
+  background: rgba(250, 249, 246, .2);
+}
+
+.page-ornament.is-dragging {
+  z-index: 5;
+  cursor: grabbing;
+}
+
+.page-ornament.is-dragging .ornament-asset {
+  animation-play-state: paused;
+}
+
+.page-hero-media > .page-ornament {
+  z-index: 3;
+}
+
+.ornament-wash {
+  opacity: .38;
+  filter: saturate(.82) contrast(.94);
+}
+
+.ornament-on-image {
+  opacity: .9;
+  filter: drop-shadow(0 16px 28px rgba(8, 35, 20, .28));
+}
+
+.ornament-on-dark {
+  opacity: .3;
+  filter: saturate(.8) brightness(1.12);
+}
+
+@keyframes ornament-drift {
+  0%, 100% { transform: translate3d(0, calc(var(--float-distance) * -.45), 0) rotate(calc(var(--float-rotate) * -1)); }
+  50% { transform: translate3d(0, var(--float-distance), 0) rotate(var(--float-rotate)); }
+}
+
+/* Retreat composition. */
+.retreat-page-hero .page-hero-copy,
+.retreat-page-hero .page-hero-media img,
+.retreat-manifesto > :not(.page-ornament),
+.retreat-details > .shell,
+.retreat-interest > div {
+  position: relative;
+  z-index: 3;
+}
+
+.retreat-hero-bird {
+  --ornament-size: clamp(126px, 13vw, 190px);
+  --ornament-rotate: -8deg;
+  --float-distance: 8px;
+  --float-rotate: 2deg;
+  --float-duration: 6.4s;
+  top: 7%;
+  right: 5%;
+  aspect-ratio: 3 / 2;
+}
+
+.retreat-manifesto {
+  position: relative;
+  overflow: clip;
+}
+
+.retreat-manifesto-guayusa {
+  --ornament-size: clamp(210px, 23vw, 340px);
+  --ornament-rotate: -13deg;
+  --float-duration: 8.8s;
+  left: -1%;
+  top: 49%;
+  z-index: 2;
+  opacity: .62;
+  filter: saturate(.98) drop-shadow(0 18px 34px rgba(31, 58, 42, .12));
+}
+
+.retreat-manifesto-passionflower {
+  --ornament-size: clamp(170px, 18vw, 270px);
+  --ornament-rotate: 12deg;
+  --float-distance: 5px;
+  --float-duration: 7.6s;
+  --float-delay: -4.1s;
+  right: 1%;
+  top: 8%;
+  z-index: 2;
+  opacity: .58;
+  filter: saturate(.98) drop-shadow(0 18px 34px rgba(31, 58, 42, .12));
+}
+
+.retreat-manifesto-intro {
+  align-self: end;
+  max-width: 470px;
+  color: #596159;
+}
+
+.retreat-field-note {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(220px, .7fr) minmax(0, 1.55fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  margin-top: clamp(32px, 6vw, 76px);
+  padding: clamp(28px, 4vw, 52px);
+  border: 1px solid rgba(31, 58, 42, .16);
+  border-radius: 28px;
+  background: rgba(250, 249, 246, .78);
+  box-shadow: 0 24px 70px rgba(31, 58, 42, .08), inset 0 1px rgba(255, 255, 255, .8);
+  backdrop-filter: blur(12px);
+}
+
+.retreat-field-note-lead span {
+  color: var(--olive);
+  font-size: .64rem;
+  font-weight: 750;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.retreat-field-note-lead p {
+  max-width: 340px;
+  margin: 14px 0 0;
+  color: var(--forest);
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 2.2vw, 2.05rem);
+  line-height: 1.1;
+}
+
+.retreat-field-note-rhythm {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rhythm;
+}
+
+.retreat-field-note-rhythm li {
+  min-height: 108px;
+  padding: 6px 22px;
+  border-left: 1px solid rgba(31, 58, 42, .14);
+  counter-increment: rhythm;
+}
+
+.retreat-field-note-rhythm li::before {
+  content: "0" counter(rhythm);
+  display: block;
+  margin-bottom: 17px;
+  color: var(--gold);
+  font-size: .66rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+}
+
+.retreat-field-note-rhythm small,
+.retreat-field-note-rhythm strong {
+  display: block;
+}
+
+.retreat-field-note-rhythm small {
+  margin-bottom: 4px;
+  color: #77776d;
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.retreat-field-note-rhythm strong {
+  color: var(--forest);
+  font-size: .92rem;
+  line-height: 1.35;
+}
+
+.retreat-details-rosette {
+  --ornament-size: clamp(145px, 15vw, 215px);
+  --ornament-rotate: -18deg;
+  --float-duration: 9.2s;
+  left: 0;
+  bottom: 2%;
+  opacity: .17;
+}
+
+.retreat-details-orchid {
+  --ornament-size: clamp(106px, 10vw, 148px);
+  --ornament-rotate: 10deg;
+  --float-duration: 7.9s;
+  --float-delay: -3.8s;
+  top: 8%;
+  right: 1%;
+  opacity: .18;
+}
+
+.retreat-interest-bird {
+  --ornament-size: clamp(150px, 18vw, 240px);
+  --ornament-rotate: 3deg;
+  --float-distance: 7px;
+  --float-duration: 8.2s;
+  top: 12%;
+  right: 8%;
+  aspect-ratio: 3 / 2;
+}
+
+/* Story composition. */
+.story-page-hero .page-hero-copy,
+.story-page-hero .page-hero-media img,
+.story-opening > :not(.story-botanical-collage),
+.story-relationship-media,
+.story-relationship-copy,
+.story-principles > .shell,
+.story-closing > div {
+  position: relative;
+  z-index: 2;
+}
+
+.story-hero-bird {
+  --ornament-size: clamp(112px, 12vw, 176px);
+  --ornament-rotate: 7deg;
+  --float-distance: 8px;
+  --float-duration: 6.8s;
+  right: 5%;
+  top: 9%;
+  aspect-ratio: 3 / 2;
+}
+
+.story-opening {
+  width: min(1240px, calc(100% - 40px));
+  overflow: clip;
+}
+
+.story-opening > .eyebrow,
+.story-opening > h2,
+.story-opening > p:last-of-type {
+  margin-left: clamp(155px, 18vw, 238px);
+}
+
+.story-opening > p:last-of-type {
+  max-width: 650px;
+}
+
+.story-botanical-collage {
+  position: absolute;
+  z-index: 1;
+  top: clamp(80px, 10vw, 135px);
+  bottom: clamp(80px, 9vw, 125px);
+  left: 0;
+  width: clamp(150px, 17vw, 220px);
+}
+
+.story-collage-monstera {
+  --ornament-size: clamp(170px, 20vw, 260px);
+  --ornament-rotate: -16deg;
+  --float-distance: 7px;
+  --float-duration: 10.2s;
+  top: 0;
+  left: -23%;
+  opacity: .2;
+}
+
+.story-collage-orchid {
+  --ornament-size: clamp(88px, 9vw, 126px);
+  --ornament-rotate: 9deg;
+  --float-duration: 7.4s;
+  --float-delay: -3.2s;
+  top: 41%;
+  right: -1%;
+  opacity: .56;
+}
+
+.story-collage-seed {
+  --ornament-size: clamp(70px, 7vw, 96px);
+  --ornament-rotate: -7deg;
+  --float-distance: 4px;
+  --float-duration: 8.6s;
+  --float-delay: -5.1s;
+  left: 12%;
+  bottom: 2%;
+  opacity: .48;
+}
+
+.story-relationship {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+  width: min(1420px, calc(100% - 28px));
+  min-height: 650px;
+  margin: 0 auto clamp(90px, 10vw, 140px);
+  overflow: clip;
+  border: 1px solid rgba(31, 58, 42, .14);
+  border-radius: 32px;
+  background: #ece8dc;
+  box-shadow: 0 30px 80px rgba(31, 58, 42, .08);
+}
+
+.story-relationship-media {
+  min-height: 650px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.story-relationship-media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 32%;
+  background: linear-gradient(transparent, rgba(12, 37, 22, .58));
+  pointer-events: none;
+}
+
+.story-relationship-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-relationship-media figcaption {
+  position: absolute;
+  z-index: 1;
+  bottom: 24px;
+  left: 26px;
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.story-relationship-copy {
+  align-self: center;
+  padding: clamp(44px, 6vw, 86px);
+}
+
+.story-relationship-copy h2 {
+  margin: 0 0 22px;
+  color: var(--forest);
+  font-family: var(--display);
+  font-size: clamp(2.7rem, 4.7vw, 5.2rem);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: .96;
+}
+
+.story-relationship-copy > p:not(.eyebrow) {
+  max-width: 560px;
+  margin: 0;
+  color: #586058;
+}
+
+.story-relationship-steps {
+  display: grid;
+  gap: 0;
+  margin: 34px 0 0;
+}
+
+.story-relationship-steps > div {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 15px;
+  padding: 15px 0;
+  border-top: 1px solid rgba(31, 58, 42, .15);
+}
+
+.story-relationship-steps dt {
+  color: var(--gold);
+  font-size: .68rem;
+  font-weight: 750;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.story-relationship-steps dd {
+  margin: 0;
+  color: var(--forest);
+  font-size: .9rem;
+}
+
+.story-relationship-teacup {
+  --ornament-size: clamp(88px, 8vw, 118px);
+  --ornament-rotate: 8deg;
+  --float-duration: 8.4s;
+  right: 2%;
+  bottom: 1%;
+  opacity: .2;
+}
+
+.story-principles-cinchona {
+  --ornament-size: clamp(150px, 17vw, 230px);
+  --ornament-rotate: -12deg;
+  --float-duration: 9.4s;
+  left: 0;
+  bottom: 1%;
+}
+
+.story-closing-passionflower {
+  --ornament-size: clamp(160px, 20vw, 250px);
+  --ornament-rotate: 13deg;
+  --float-duration: 9.1s;
+  right: 0;
+  top: 23%;
+  opacity: .2;
+}
+
+@media (max-width: 1120px) {
+  .retreat-details-rosette,
+  .retreat-details-orchid,
+  .story-principles-cinchona {
+    opacity: .11;
+  }
+
+  .story-relationship {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, .9fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .retreat-field-note {
+    grid-template-columns: 1fr;
+  }
+
+  .retreat-manifesto-guayusa {
+    left: auto;
+    right: 1%;
+    top: 42%;
+  }
+
+  .retreat-manifesto-passionflower,
+  .retreat-details-orchid {
+    display: none;
+  }
+
+  .story-opening > .eyebrow,
+  .story-opening > h2,
+  .story-opening > p:last-of-type {
+    margin-left: 0;
+  }
+
+  .story-botanical-collage {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    width: 100%;
+    height: 145px;
+    margin-bottom: 24px;
+  }
+
+  .story-collage-monstera {
+    --ornament-size: 170px;
+    top: -25px;
+    left: -35px;
+  }
+
+  .story-collage-orchid {
+    --ornament-size: 104px;
+    top: 18px;
+    right: auto;
+    left: 126px;
+  }
+
+  .story-collage-seed {
+    --ornament-size: 76px;
+    top: 50px;
+    right: 12%;
+    bottom: auto;
+    left: auto;
+  }
+
+  .story-relationship {
+    grid-template-columns: 1fr;
+  }
+
+  .story-relationship-media {
+    min-height: 460px;
+  }
+
+  .story-relationship-teacup {
+    right: 3%;
+    bottom: 2%;
+  }
+}
+
+@media (max-width: 620px) {
+  .page-ornament {
+    --float-distance: 3px;
+  }
+
+  .retreat-hero-bird,
+  .story-hero-bird {
+    --ornament-size: 112px;
+    top: 7%;
+    right: 3%;
+  }
+
+  .retreat-manifesto {
+    padding-top: 92px;
+    padding-bottom: 92px;
+  }
+
+  .retreat-manifesto-guayusa {
+    --ornament-size: 138px;
+    top: 1%;
+    right: 0;
+    opacity: .5;
+  }
+
+  .retreat-field-note {
+    padding: 26px 22px;
+    border-radius: 22px;
+  }
+
+  .retreat-field-note-rhythm {
+    grid-template-columns: 1fr;
+  }
+
+  .retreat-field-note-rhythm li {
+    min-height: 0;
+    padding: 18px 0;
+    border-top: 1px solid rgba(31, 58, 42, .14);
+    border-left: 0;
+  }
+
+  .retreat-field-note-rhythm li::before {
+    margin-bottom: 9px;
+  }
+
+  .retreat-details-rosette {
+    --ornament-size: 118px;
+    left: -25px;
+    bottom: 0;
+  }
+
+  .retreat-interest-bird {
+    --ornament-size: 126px;
+    top: 8%;
+    right: 2%;
+    opacity: .66;
+  }
+
+  .story-opening {
+    padding-top: 82px;
+    padding-bottom: 100px;
+  }
+
+  .story-botanical-collage {
+    height: 112px;
+    margin-bottom: 18px;
+  }
+
+  .story-collage-monstera {
+    --ornament-size: 132px;
+    top: -20px;
+    left: -30px;
+  }
+
+  .story-collage-orchid {
+    --ornament-size: 82px;
+    left: 92px;
+  }
+
+  .story-collage-seed {
+    --ornament-size: 62px;
+    top: 36px;
+    right: 5%;
+  }
+
+  .story-relationship {
+    width: calc(100% - 20px);
+    min-height: 0;
+    border-radius: 24px;
+  }
+
+  .story-relationship-media {
+    min-height: 360px;
+  }
+
+  .story-relationship-copy {
+    padding: 38px 24px 46px;
+  }
+
+  .story-relationship-copy h2 {
+    font-size: clamp(2.55rem, 13vw, 3.45rem);
+  }
+
+  .story-relationship-steps > div {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .story-relationship-teacup,
+  .story-principles-cinchona {
+    display: none;
+  }
+
+  .story-closing-passionflower {
+    --ornament-size: 132px;
+    top: 4%;
+    right: -28px;
+    opacity: .15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-ornament,
+  .page-ornament .ornament-asset,
+  .page-ornament img {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#C9A942" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="100" cy="100" r="94"/>
+  <circle cx="100" cy="100" r="86" stroke-width="0.8" opacity="0.6"/>
+  <g stroke-width="1.1">
+    <circle cx="100" cy="52" r="9"/><circle cx="100" cy="43" r="9" opacity="0"/>
+    <circle cx="100" cy="46" r="9"/><circle cx="100" cy="58" r="9"/>
+    <circle cx="105.2" cy="49" r="9"/><circle cx="105.2" cy="55" r="9"/>
+    <circle cx="94.8" cy="49" r="9"/><circle cx="94.8" cy="55" r="9"/>
+  </g>
+  <path d="M52 128 L84 84 L98 104 L112 76 L148 128"/>
+  <path d="M104 88 L112 76 L120 88" stroke-width="1.2"/>
+  <path d="M56 138 C72 132, 88 144, 104 138 S 132 132, 144 138" stroke-width="1.2"/>
+  <path d="M62 148 C78 142, 94 154, 110 148 S 134 142, 140 148" stroke-width="1" opacity="0.8"/>
+  <path d="M44 108 C50 96, 50 88, 46 78 M46 100 C42 96,38 94,34 94 M47 90 C52 87,54 84,55 80" stroke-width="1.1"/>
+  <g stroke-width="1.1">
+    <circle cx="154" cy="96" r="4"/>
+    <path d="M154 88 C157 90,157 94,154 92 M154 88 C151 90,151 94,154 92 M162 96 C160 93,156 93,158 96 M162 96 C160 99,156 99,158 96 M154 104 C157 102,157 98,154 100 M154 104 C151 102,151 98,154 100 M146 96 C148 93,152 93,150 96 M146 96 C148 99,152 99,150 96"/>
+  </g>
+</svg>
