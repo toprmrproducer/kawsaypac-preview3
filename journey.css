@@ -110,11 +110,11 @@
 
 /* v41: Scene0->FINAL true-aspect stage (comp 1940x1725, aspect .8892) */
 .j5{position:absolute;inset:0;overflow:hidden}
-.j5-stage{position:absolute;left:0;top:0;width:100%;height:88.92vw;will-change:transform}
+.j5-stage{position:absolute;top:0;left:50%;width:max(100vw,112.47svh);margin-left:calc(max(100vw,112.47svh)/-2);aspect-ratio:1940/1725;will-change:transform}
 .j5l{position:absolute;will-change:transform;max-width:none}
 .journey-static .j5-stage{top:auto;bottom:0;transform:none!important}
 .journey-static .j5l{transform:none!important}
-@media(max-width:720px){.j5-stage{width:170vw;height:151.2vw;left:50%;margin-left:-85vw}}
+
 
 /* v46: brand hero statement + tagline */
 .journey-brand{z-index:24}
@@ -124,7 +124,7 @@
 /* v48: philosophy spotlight + mobile journey stage */
 .philosophy{position:relative}
 .philo-spotlight{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity .5s;background:radial-gradient(340px circle at var(--sx,50%) var(--sy,50%),rgba(212,175,55,.16),rgba(212,175,55,.05) 45%,transparent 70%)}
-@media(max-width:720px){.j5-stage{width:280vw;height:248.9vw;left:50%;margin-left:-140vw}}
+
 
 /* v49: hero scroll cue */
 .journey-scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:22;display:grid;justify-items:center;gap:10px;color:#fff;text-shadow:0 2px 18px rgba(3,20,11,.6);pointer-events:none}

@@ -18,7 +18,7 @@
   gsap.set([stage,...layers,brand,summitBeat,waterBeat,finalCopy],{force3D:true,willChange:'transform,opacity'});
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
-  gsap.set(progress,{scaleY:0,transformOrigin:'top'});gsap.set(blurStart,{autoAlpha:1});gsap.set(blurEnd,{autoAlpha:0});
+  gsap.set(progress,{scaleY:0,transformOrigin:'top'});gsap.set(blurStart,{autoAlpha:0});gsap.set(blurEnd,{autoAlpha:0});
 
   /* RAISA SPEC v2 (Scene 0 -> Scene FINAL, both authored in Figma):
      the artwork is one tall true-aspect canvas. On load the camera sits on the
@@ -36,7 +36,6 @@
   tl.to(progress,{scaleY:1,duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
     .to(cue,{autoAlpha:0,y:14,duration:5},3)
-    .to(blurStart,{autoAlpha:0,duration:10},4)
     .to(blurEnd,{autoAlpha:1,duration:16,ease:'power1.inOut'},72)
     /* camera pans down the canvas across the whole pin */
     .fromTo(stage,{y:0},{y:()=>-(stage.offsetHeight-innerHeight),duration:100,ease:'power1.inOut'},0);
