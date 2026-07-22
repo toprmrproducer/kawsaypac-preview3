@@ -69,6 +69,11 @@
       <figure class="reveal"><img src="assets/img/jungle-group.webp?v=18" alt="Kawsaypac partners gathered in Ecuador"><figcaption>Building with people, not around them</figcaption></figure>
     </section>
 
+    <section class="st-divider reveal" aria-label="The Andean valley at first light">
+      <img src="assets/img/gen2/story-divider.webp?v=52" alt="Misty Andean valley at dawn with layered ridgelines and a distant condor" loading="lazy">
+      <p>Between the mountains and the market, there is a relationship.</p>
+    </section>
+
     <section class="story-principles section ornament-zone">
       <button class="page-ornament story-principles-cinchona ornament-on-dark" type="button" data-page-ornament data-drag-limit="24" aria-label="Move the cinchona illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
         <span class="ornament-asset"><img src="assets/sprites/herb-icons/cinchona-bark-leaves.webp?v=18" alt="" draggable="false"></span>
@@ -88,5 +93,22 @@
   </main>
   <div data-site-footer></div>
   <div data-site-modal></div>
+  <script>
+  (function(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var hero=document.querySelector('.story-page-hero .page-hero-media img');
+    if(!hero)return;
+    var ticking=false;
+    function update(){
+      ticking=false;
+      var r=hero.parentElement.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight)return;
+      var p=Math.max(-1,Math.min(1,(r.top+r.height/2-innerHeight/2)/innerHeight));
+      hero.style.transform='translateY('+(p*-34).toFixed(1)+'px) scale(1.12)';
+    }
+    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+    update();
+  })();
+  </script>
 </body>
 </html>
