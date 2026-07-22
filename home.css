@@ -268,3 +268,13 @@
 .newsletter-card{padding:26px 20px}
 .drag-sprite{width:60px}
 }
+
+/* v49: philosophy premium segment */
+.philo-meaning{margin:18px auto 0;text-align:center;font-family:var(--display);font-size:clamp(1.05rem,1.5vw,1.3rem);color:#b08d2f;letter-spacing:.04em}
+.philo-meaning em{font-style:italic}
+.philo-credo{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);max-width:980px;margin:54px auto 0;padding-top:38px;border-top:1px solid rgba(176,141,47,.35)}
+.credo-step{text-align:left}
+.credo-step span{font-family:var(--display);font-size:.95rem;color:#b08d2f;letter-spacing:.14em}
+.credo-step strong{display:block;margin:8px 0 6px;font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,1.7vw,1.4rem);color:#173325}
+.credo-step p{font-size:.95rem;line-height:1.55;color:#4c5b50;margin:0}
+@media(max-width:720px){.philo-credo{grid-template-columns:1fr;gap:26px}}

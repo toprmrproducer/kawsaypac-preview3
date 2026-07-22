@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=34">
     <link rel="stylesheet" href="home.css?v=34">
     <link rel="stylesheet" href="shopify-storefront.css?v=18">
-    <link rel="stylesheet" href="shop.css?v=27">
+    <link rel="stylesheet" href="shop.css?v=28">
     <script type="module" data-storefront-components src="https://cdn.shopify.com/storefront/web-components.js"></script>
     <script defer src="app.js?v=34"></script>
     <script defer src="shopify-storefront.js?v=18"></script>
@@ -33,12 +33,18 @@
         <div class="shop-hero__content">
           <p class="eyebrow">The Kawsaypac Apothecary</p>
           <h1 id="shop-title">Where wild Ecuador becomes <span class="accent">ritual.</span></h1>
-          <p>Live herbs and blends sit apart from our digital books and guided health programs, so every path is easier to understand.</p>
+          <p>Small-batch Ecuadorian botanicals, blended by hand and shipped straight from our partner apothecary.</p>
           <div class="shop-hero__actions">
             <a class="btn btn-secondary" href="#live-apothecary">Browse physical herbs</a>
             <button class="storefront-cart-button" type="button" onclick="window.KawsaypacStorefront.openCart()">Open bag</button>
           </div>
-          <p class="shop-proof"><span class="star" aria-hidden="true">&#9733;</span><span><strong>4.9</strong> average rating &#183; <strong>1,000+</strong> orders shipped</span></p>
+          <p class="shop-proof shop-proof--trust">
+            <span class="shop-proof__item"><span class="star" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span><strong>4.9</strong> average rating</span></span>
+            <span class="shop-proof__sep" aria-hidden="true"></span>
+            <span class="shop-proof__item"><span><strong>1,000+</strong> orders shipped</span></span>
+            <span class="shop-proof__sep" aria-hidden="true"></span>
+            <span class="shop-proof__item"><span><strong>Wildcrafted</strong>, no fillers</span></span>
+          </p>
           <nav class="shop-hero__index" aria-label="Shop categories">
             <a href="#live-apothecary"><span>01</span>Herbs &amp; blends</a>
             <a href="#ebooks"><span>02</span>E-books</a>
@@ -65,6 +71,13 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18Zm0 8v6m0-10v.01"/></svg>
           <span>Availability and prices update from Shopify. Herbal information is educational and is not medical advice.</span>
         </div>
+
+        <aside class="shop-guarantee" aria-label="Our promise">
+          <p class="shop-guarantee__lede"><strong>Small-batch. Wildcrafted. Shipped from our partners.</strong></p>
+          <p class="shop-guarantee__meta">Secure Shopify checkout &#183; Tracked delivery &#183; <a href="shipping-returns.html">Shipping &amp; returns</a></p>
+        </aside>
+
+        <p class="grid-proof"><span class="star" aria-hidden="true">&#9733;</span> Rated <strong>4.9</strong> by the people who brew with us.</p>
 
         <div class="shop-product-grid" data-shop-grid aria-live="polite" aria-busy="true"></div>
 
@@ -152,5 +165,28 @@
 
     <div data-site-footer></div>
     <div data-site-modal></div>
+    <script>
+      (function () {
+        'use strict';
+        function relabel() {
+          document.querySelectorAll('.shop-product-grid .storefront-text-link').forEach(function (link) {
+            if (link.dataset.ctaLabeled) return;
+            var node = link.firstChild;
+            if (node && node.nodeType === 3) {
+              node.textContent = 'Shop this blend ';
+              link.dataset.ctaLabeled = 'true';
+            }
+          });
+        }
+        function boot() {
+          var grid = document.querySelector('[data-shop-grid]');
+          if (!grid) return;
+          relabel();
+          new MutationObserver(relabel).observe(grid, { childList: true, subtree: true });
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+        else boot();
+      })();
+    </script>
   </body>
 </html>

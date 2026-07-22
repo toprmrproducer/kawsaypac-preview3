@@ -11,7 +11,7 @@
   const q=s=>hero.querySelector(s);
   const stage=q('.j5-stage');
   const layers=[...hero.querySelectorAll('.j5l')];
-  const brand=q('.journey-brand');
+  const brand=q('.journey-brand');const cue=q('.journey-scrollcue');
   const summitBeat=q('.journey-beat-forest'),waterBeat=q('.journey-beat-water'),finalCopy=q('.journey-final'),progress=q('.journey-progress span');
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
 
@@ -35,6 +35,7 @@
 
   tl.to(progress,{scaleY:1,duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
+    .to(cue,{autoAlpha:0,y:14,duration:5},3)
     /* camera pans down the canvas across the whole pin */
     .fromTo(stage,{y:0},{y:()=>-(stage.offsetHeight-innerHeight),duration:100,ease:'power1.inOut'},0);
 
@@ -49,7 +50,7 @@
     .to(summitBeat,{autoAlpha:0,y:-22,duration:5},32)
     .to(waterBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},42)
     .to(waterBeat,{autoAlpha:0,y:-22,duration:5},62)
-    .to(finalCopy,{autoAlpha:1,y:0,duration:8,ease:'power2.out'},76)
+    .to(finalCopy,{autoAlpha:1,y:0,duration:8,ease:'power2.out',onStart:()=>window.__animateCounters&&window.__animateCounters([...hero.querySelectorAll('.journey-final [data-count]')])},76)
     .to(finalPieces,{autoAlpha:1,y:0,stagger:.6,duration:5,ease:'power2.out'},76)
     .to(finalCopy,{autoAlpha:1,duration:16},84);
 
