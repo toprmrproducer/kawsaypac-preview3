@@ -5,7 +5,7 @@
   const sticky=hero.querySelector('.journey-sticky');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const mobile=matchMedia('(max-width: 720px)').matches;
-  if(reduce||mobile||!window.gsap||!window.ScrollTrigger){hero.classList.add('journey-static');return}
+  if(reduce||!window.gsap||!window.ScrollTrigger){hero.classList.add('journey-static');return}
 
   gsap.registerPlugin(ScrollTrigger);
   const q=s=>hero.querySelector(s);

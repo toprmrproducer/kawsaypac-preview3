@@ -1,0 +1,247 @@
+/* ============================================================
+   pages-premium.css — craft layer for apothecary.html + journal.html
+   Additive only. Loaded ONLY by those two pages; never by index.
+   Warm cream base, forest #1F3A2A, gold #C9A942, Fraunces display.
+   ============================================================ */
+
+/* ---------- shared premium hero refinements ---------- */
+
+.premium-hero .page-hero-copy .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.premium-hero .page-hero-copy .eyebrow::before {
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+  content: '';
+}
+
+.premium-hero .page-hero-copy h1 {
+  text-wrap: balance;
+}
+
+.premium-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.premium-hero .page-hero-media img {
+  transition: transform 1.1s var(--ease);
+}
+
+.premium-hero:hover .page-hero-media img {
+  transform: scale(1.025);
+}
+
+/* ---------- apothecary: article rhythm ---------- */
+
+.apoth-page .article-lede {
+  max-width: 62ch;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--forest);
+}
+
+.apoth-page .article-lede::after {
+  display: block;
+  width: 58px;
+  height: 1px;
+  margin-top: 26px;
+  background: var(--gold);
+  content: '';
+}
+
+.apoth-page .article.article-wide {
+  padding-top: 56px;
+}
+
+/* ---------- apothecary: specimen cards ---------- */
+
+.apoth-page .apothecary-grid {
+  gap: 20px;
+  margin-top: 52px;
+}
+
+.apoth-page .specimen {
+  position: relative;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(31, 58, 42, .05);
+  transition: transform .38s var(--ease), box-shadow .38s var(--ease);
+}
+
+.apoth-page .specimen:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 26px 54px rgba(31, 58, 42, .16);
+}
+
+.apoth-page .specimen img {
+  transition: transform .9s var(--ease);
+}
+
+.apoth-page .specimen:hover img {
+  transform: scale(1.05);
+}
+
+.apoth-page .specimen div {
+  padding: 22px 22px 26px;
+}
+
+.apoth-page .specimen h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  color: var(--forest);
+  transition: color .25s;
+}
+
+.apoth-page .specimen:hover h2 {
+  color: #856e21;
+}
+
+.apoth-page .specimen-latin {
+  display: block;
+  margin: 0 0 9px;
+  color: var(--olive);
+  font-size: .72rem;
+  font-style: italic;
+  letter-spacing: .08em;
+}
+
+.apoth-page .specimen p {
+  margin: 0;
+  color: #55564f;
+  line-height: 1.55;
+}
+
+.apoth-page .article .btn-outline:hover {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: #fff;
+}
+
+/* ---------- journal: editorial card treatment ---------- */
+
+.journal-page .journal-shell__intro .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.journal-page .journal-shell__intro .eyebrow::before {
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+  content: '';
+}
+
+.journal-page .journal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 16px;
+  background: rgba(255, 255, 255, .8);
+  color: #5d6058;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.journal-page .journal-status::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  content: '';
+}
+
+.journal-page .journal-card {
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(31, 58, 42, .05);
+  transition: transform .38s var(--ease), box-shadow .38s var(--ease), border-color .3s;
+}
+
+.journal-page .journal-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(201, 169, 66, .5);
+  box-shadow: 0 26px 56px rgba(31, 58, 42, .15);
+}
+
+.journal-page .journal-card__media {
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+}
+
+.journal-page .journal-card__media shopify-media,
+.journal-page .journal-card__media shopify-media::part(image),
+.journal-page .journal-card__media shopify-media img {
+  transition: transform .9s var(--ease);
+}
+
+.journal-page .journal-card:hover .journal-card__media shopify-media img,
+.journal-page .journal-card:hover .journal-card__media shopify-media::part(image) {
+  transform: scale(1.05);
+}
+
+.journal-page .journal-card__body {
+  padding: 30px 30px 32px;
+}
+
+.journal-page .journal-card__body h2 {
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+
+.journal-page .journal-card__body h2 a,
+.journal-page .journal-card__body h2 {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 96%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size .45s var(--ease);
+}
+
+.journal-page .journal-card:hover .journal-card__body h2 {
+  background-size: 100% 1px;
+}
+
+.journal-page .journal-card .storefront-text-link {
+  color: var(--forest);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: .74rem;
+}
+
+.journal-page .journal-card .storefront-text-link:hover {
+  color: #856e21;
+}
+
+.journal-page .journal-empty {
+  border-radius: 26px;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 720px) {
+  .premium-hero__actions {
+    width: 100%;
+  }
+
+  .premium-hero__actions .btn {
+    flex: 1 1 auto;
+  }
+
+  .journal-page .journal-card__body {
+    padding: 24px 22px 26px;
+  }
+}

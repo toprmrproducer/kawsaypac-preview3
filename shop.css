@@ -611,3 +611,126 @@
     width: 92px;
   }
 }
+
+/* ============================================================
+   Premium craft layer (additive) — hero, filter pills, cards
+   ============================================================ */
+
+.shop-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shop-hero .eyebrow::before {
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+  content: '';
+}
+
+.shop-hero h1 {
+  text-wrap: balance;
+}
+
+.shop-proof {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 18px;
+  background: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(8px);
+  width: fit-content;
+}
+
+.shop-hero__index a {
+  position: relative;
+}
+
+.shop-hero__index a::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s var(--ease);
+  content: '';
+}
+
+.shop-hero__index a:hover::after {
+  transform: scaleX(1);
+}
+
+/* concern filter chips as elegant pills */
+.filter {
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-size: .68rem;
+  padding: 0 18px;
+}
+
+.filter:hover {
+  border-color: rgba(201, 169, 66, .75);
+  box-shadow: 0 6px 16px rgba(31, 58, 42, .08);
+}
+
+.filter[aria-pressed="true"] {
+  box-shadow: 0 8px 20px rgba(31, 58, 42, .22);
+}
+
+.shop-note {
+  border: 1px solid rgba(201, 169, 66, .38);
+  border-left: 3px solid var(--gold);
+  background: #f5efd8;
+}
+
+/* product card craft: soft lift + image zoom + type hierarchy */
+.shop-product-grid .storefront-card,
+.editorial-product-grid .storefront-card {
+  border-radius: 22px;
+}
+
+.shop-product-grid .storefront-card:hover,
+.editorial-product-grid .storefront-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 28px 56px rgba(31, 58, 42, .2);
+}
+
+.storefront-card__media shopify-media img,
+.storefront-card__media shopify-media::part(image) {
+  transition: transform .85s var(--ease);
+}
+
+.storefront-card:hover .storefront-card__media shopify-media img,
+.storefront-card:hover .storefront-card__media shopify-media::part(image) {
+  transform: scale(1.055);
+}
+
+.storefront-card__heading h2 {
+  letter-spacing: -.02em;
+}
+
+.shop-heading .eyebrow,
+.commerce-editorial__heading .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shop-heading .eyebrow::before,
+.commerce-editorial__heading .eyebrow::before {
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+  content: '';
+}
+
+.shop-cta .btn-primary {
+  box-shadow: 0 14px 30px rgba(31, 58, 42, .22);
+}
+
+.shop-cta__media {
+  box-shadow: 0 18px 44px rgba(31, 58, 42, .14);
+}
