@@ -9,47 +9,56 @@
 
   gsap.registerPlugin(ScrollTrigger);
   const q=s=>hero.querySelector(s);
-  const layers=d=>[...hero.querySelectorAll(`.j4l[data-d="${d}"]`)];
+  const stage=q('.j5-stage');
+  const layers=[...hero.querySelectorAll('.j5l')];
   const brand=q('.journey-brand');
   const summitBeat=q('.journey-beat-forest'),waterBeat=q('.journey-beat-water'),finalCopy=q('.journey-final'),progress=q('.journey-progress span');
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
 
-  const sky=layers('sky'), anchor=layers('anchor'), far=layers('far'), mid=layers('mid'), mid2=layers('mid2'), near=layers('near'), near2=layers('near2'), front=layers('front');
-  const all=[...sky,...anchor,...far,...mid,...mid2,...near,...near2,...front,brand,summitBeat,waterBeat,finalCopy];
-  gsap.set(all,{force3D:true,willChange:'transform,opacity'});
-
-  /* RAISA SPEC: one environment, nothing fades between scenes.
-     Load: sky + clouds + condor + Cotopaxi visible. Scroll: remaining
-     layers of the SAME landscape rise at their own speeds into place.
-     Final frame = the full Scene FINAL composition. */
+  gsap.set([stage,...layers,brand,summitBeat,waterBeat,finalCopy],{force3D:true,willChange:'transform,opacity'});
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
-  gsap.set(far,  {y:'62vh'});
-  gsap.set(mid,  {y:'80vh'});
-  gsap.set(mid2, {y:'90vh'});
-  gsap.set(near, {y:'100vh'});
-  gsap.set(near2,{y:'112vh'});
-  gsap.set(front,{y:'124vh'});
   gsap.set(progress,{scaleY:0,transformOrigin:'top'});
 
-  const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.3)}`,pin:sticky,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
+  /* RAISA SPEC v2 (Scene 0 -> Scene FINAL, both authored in Figma):
+     the artwork is one tall true-aspect canvas. On load the camera sits on the
+     top band (sky, condor, summit tips). As you scroll, the camera pans DOWN
+     the canvas while every displaced layer RISES from its Scene-0 position
+     into its Scene-FINAL position with a slight upward settle. Nothing fades. */
+  const place=()=>{
+    const sw=stage.offsetWidth, sh=stage.offsetHeight;
+    layers.forEach(el=>{
+      const dx=parseFloat(el.dataset.dx)||0, dy=parseFloat(el.dataset.dy)||0;
+      el.__dx=dx/100*sw; el.__dy=dy/100*sh;
+    });
+  };
+  place();
+
+  /* stagger by depth: mountain band first, foreground last */
+  const when={ 'cotopaxi-cutout':4,'condor-cloud':6,'cloud-1':7,'cloud-2':8,
+    'glacial-valley':16,'hill-left':20,'river':26,'ridge-a':30,'ridge-b':34,
+    'moss-foreground':44,'monstera':48,'branch':52,'orchid-brom':56,'orchids-left':58 };
+
+  const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:sticky,scrub:.7,anticipatePin:1,invalidateOnRefresh:true,onRefresh:place}});
+
   tl.to(progress,{scaleY:1,duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
-    .to(sky,   {yPercent:-2,duration:96,ease:'none'},2)
-    .to(anchor,{y:'-4vh',duration:96,ease:'none'},2)
-    .to(far,  {y:0,duration:52,ease:'power1.out'},4)
-    .to(mid,  {y:0,duration:56,ease:'power1.out'},12)
-    .to(mid2, {y:0,duration:54,ease:'power1.out'},20)
-    .to(near, {y:0,duration:56,ease:'power1.out'},28)
-    .to(near2,{y:0,duration:54,ease:'power1.out'},36)
-    .to(front,{y:0,duration:56,ease:'power1.out'},42)
-    .to(summitBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},8)
-    .to(summitBeat,{autoAlpha:0,y:-22,duration:5},30)
-    .to(waterBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},40)
+    /* camera pans down the canvas across the whole pin */
+    .fromTo(stage,{y:0},{y:()=>-(stage.offsetHeight-innerHeight),duration:100,ease:'power1.inOut'},0);
+
+  layers.forEach(el=>{
+    const n=el.dataset.n;
+    if(!(el.__dx||el.__dy))return;
+    tl.fromTo(el,{x:()=>el.__dx,y:()=>el.__dy},{x:0,y:0,duration:34,ease:'back.out(1.15)'},when[n]??20);
+  });
+
+  tl.to(summitBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},10)
+    .to(summitBeat,{autoAlpha:0,y:-22,duration:5},32)
+    .to(waterBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},42)
     .to(waterBeat,{autoAlpha:0,y:-22,duration:5},62)
-    .to(finalCopy,{autoAlpha:1,y:0,duration:8,ease:'power2.out'},78)
-    .to(finalPieces,{autoAlpha:1,y:0,stagger:.6,duration:5,ease:'power2.out'},78)
-    .to(finalCopy,{autoAlpha:1,duration:14},86);
+    .to(finalCopy,{autoAlpha:1,y:0,duration:8,ease:'power2.out'},76)
+    .to(finalPieces,{autoAlpha:1,y:0,stagger:.6,duration:5,ease:'power2.out'},76)
+    .to(finalCopy,{autoAlpha:1,duration:16},84);
 
   if(matchMedia('(hover: hover) and (pointer: fine)').matches){
     sticky.addEventListener('pointermove',event=>{

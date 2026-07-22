@@ -107,3 +107,11 @@
 .j4-band{left:0;width:100%;object-fit:cover}
 .j4-obj{width:auto}
 .journey-static .j4l{transform:none!important}
+
+/* v41: Scene0->FINAL true-aspect stage (comp 1940x1725, aspect .8892) */
+.j5{position:absolute;inset:0;overflow:hidden}
+.j5-stage{position:absolute;left:0;top:0;width:100%;height:88.92vw;will-change:transform}
+.j5l{position:absolute;will-change:transform;max-width:none}
+.journey-static .j5-stage{top:auto;bottom:0;transform:none!important}
+.journey-static .j5l{transform:none!important}
+@media(max-width:720px){.j5-stage{width:170vw;height:151.2vw;left:50%;margin-left:-85vw}}
