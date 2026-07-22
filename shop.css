@@ -922,3 +922,5 @@
 .shop-closing-inner p{color:#4c5b50;font-size:1.08rem;margin-bottom:24px}
 .shop-hero{min-height:520px;display:grid;align-items:center}
 .shop-hero-bg{opacity:.24}
+.shop-hero img.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover;opacity:.3;margin:0;border-radius:0;pointer-events:none;z-index:0}
+.shop-hero .shop-hero__content{position:relative;z-index:2}
