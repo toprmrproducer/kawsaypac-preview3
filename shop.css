@@ -741,7 +741,8 @@
    ============================================================ */
 
 /* hero trust row */
-.shop-proof--trust {
+.shop-hero__content > p.shop-proof--trust {
+  max-width: none;
   flex-wrap: wrap;
   gap: 0;
   padding: 10px 20px;
@@ -870,6 +871,12 @@
   background: rgba(31, 58, 42, .06);
 }
 
+/* filtered-out products must actually disappear:
+   shopify-context ships display:contents !important, which defeats [hidden] */
+.shop-product-grid [data-storefront-source][hidden] {
+  display: none !important;
+}
+
 /* refined tag chip on card media */
 .storefront-card__type {
   border-color: rgba(201, 169, 66, .55);
@@ -882,12 +889,16 @@
 }
 
 @media (max-width: 600px) {
-  .shop-proof--trust {
-    width: fit-content;
+  .shop-hero__content > p.shop-proof--trust {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+    border-radius: 18px;
+    padding: 14px 18px;
   }
 
   .shop-proof__sep {
-    margin: 0 10px;
+    display: none;
   }
 
   .shop-guarantee {
