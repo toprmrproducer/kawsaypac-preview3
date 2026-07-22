@@ -926,3 +926,7 @@
 .shop-hero .shop-hero__content{position:relative;z-index:2}
 .shop-hero img.shop-hero-bg{opacity:.55}
 .shop-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(93deg,rgba(250,246,236,.96) 0%,rgba(250,246,236,.82) 38%,rgba(250,246,236,.25) 72%,rgba(250,246,236,.05) 100%)}
+.shop-hero img.shop-hero-bg{opacity:.6;animation:shop-kenburns 26s ease-in-out infinite alternate;transform-origin:60% 45%}
+@keyframes shop-kenburns{0%{transform:scale(1)}100%{transform:scale(1.09)}}
+.shop-hero::before{background:linear-gradient(93deg,rgba(250,246,236,.94) 0%,rgba(250,246,236,.72) 34%,rgba(250,246,236,.16) 68%,rgba(250,246,236,0) 100%)}
+@media(prefers-reduced-motion:reduce){.shop-hero img.shop-hero-bg{animation:none}}
