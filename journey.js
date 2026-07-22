@@ -25,21 +25,13 @@
      top band (sky, condor, summit tips). As you scroll, the camera pans DOWN
      the canvas while every displaced layer RISES from its Scene-0 position
      into its Scene-FINAL position with a slight upward settle. Nothing fades. */
-  const place=()=>{
-    const sw=stage.offsetWidth, sh=stage.offsetHeight;
-    layers.forEach(el=>{
-      const dx=parseFloat(el.dataset.dx)||0, dy=parseFloat(el.dataset.dy)||0;
-      el.__dx=dx/100*sw; el.__dy=dy/100*sh;
-    });
-  };
-  place();
 
   /* stagger by depth: mountain band first, foreground last */
   const when={ 'cotopaxi-cutout':4,'condor-cloud':6,'cloud-1':7,'cloud-2':8,
     'glacial-valley':16,'hill-left':20,'river':26,'ridge-a':30,'ridge-b':34,
     'moss-foreground':44,'monstera':48,'branch':52,'orchid-brom':56,'orchids-left':58 };
 
-  const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:sticky,scrub:.7,anticipatePin:1,invalidateOnRefresh:true,onRefresh:place}});
+  const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:sticky,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
 
   tl.to(progress,{scaleY:1,duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
@@ -48,8 +40,9 @@
 
   layers.forEach(el=>{
     const n=el.dataset.n;
-    if(!(el.__dx||el.__dy))return;
-    tl.fromTo(el,{x:()=>el.__dx,y:()=>el.__dy},{x:0,y:0,duration:34,ease:'back.out(1.15)'},when[n]??20);
+    const dxp=parseFloat(el.dataset.dxp)||0, dyp=parseFloat(el.dataset.dyp)||0;
+    if(!dxp&&!dyp)return;
+    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:34,ease:'back.out(1.15)'},when[n]??20);
   });
 
   tl.to(summitBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},10)
