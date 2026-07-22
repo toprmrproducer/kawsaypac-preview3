@@ -924,3 +924,5 @@
 .shop-hero-bg{opacity:.24}
 .shop-hero img.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover;opacity:.3;margin:0;border-radius:0;pointer-events:none;z-index:0}
 .shop-hero .shop-hero__content{position:relative;z-index:2}
+.shop-hero img.shop-hero-bg{opacity:.55}
+.shop-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(93deg,rgba(250,246,236,.96) 0%,rgba(250,246,236,.82) 38%,rgba(250,246,236,.25) 72%,rgba(250,246,236,.05) 100%)}
