@@ -920,3 +920,5 @@
 .shop-closing-inner h2{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,4.4vw,3.8rem);letter-spacing:-.03em;color:#14301f;margin-bottom:12px}
 .shop-closing-inner h2 em{color:#b08d2f}
 .shop-closing-inner p{color:#4c5b50;font-size:1.08rem;margin-bottom:24px}
+.shop-hero{min-height:520px;display:grid;align-items:center}
+.shop-hero-bg{opacity:.24}
