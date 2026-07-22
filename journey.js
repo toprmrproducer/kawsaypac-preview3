@@ -24,12 +24,12 @@
      Final frame = the full Scene FINAL composition. */
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
-  gsap.set(far,  {y:'46vh'});
-  gsap.set(mid,  {y:'62vh'});
-  gsap.set(mid2, {y:'72vh'});
-  gsap.set(near, {y:'82vh'});
-  gsap.set(near2,{y:'94vh'});
-  gsap.set(front,{y:'108vh'});
+  gsap.set(far,  {y:'62vh'});
+  gsap.set(mid,  {y:'80vh'});
+  gsap.set(mid2, {y:'90vh'});
+  gsap.set(near, {y:'100vh'});
+  gsap.set(near2,{y:'112vh'});
+  gsap.set(front,{y:'124vh'});
   gsap.set(progress,{scaleY:0,transformOrigin:'top'});
 
   const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.3)}`,pin:sticky,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
