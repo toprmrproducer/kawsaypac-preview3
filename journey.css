@@ -1,5 +1,5 @@
 .journey-preview{background:#0d2518}
-.journey-scroll{position:relative;height:520vh;background:#0d2518}
+.journey-scroll{position:relative;height:100svh;background:#0d2518}
 .journey-sticky{position:relative;height:100svh;min-height:700px;overflow:hidden;isolation:isolate;background:#0d2518;color:#fff}
 .journey-landscape,.journey-jungle{position:absolute;inset:0;overflow:hidden;will-change:transform,opacity;backface-visibility:hidden;transform:translateZ(0);contain:paint}
 .journey-landscape{z-index:1;background:#123021}
@@ -73,7 +73,7 @@
   text-shadow:0 4px 40px rgba(30,40,30,.35), 0 0 90px rgba(255,244,214,.4);
   white-space:nowrap;pointer-events:none}
 /* the nested title replaces the old center wordmark */
-.journey-preview .journey-brand strong{display:none}
+
 .journey-preview .journey-brand{top:18%}
 
 /* v33: title behind the mountain; premium display serif everywhere */
@@ -115,3 +115,8 @@
 .journey-static .j5-stage{top:auto;bottom:0;transform:none!important}
 .journey-static .j5l{transform:none!important}
 @media(max-width:720px){.j5-stage{width:170vw;height:151.2vw;left:50%;margin-left:-85vw}}
+
+/* v46: brand hero statement + tagline */
+.journey-brand{z-index:24}
+.journey-brand strong{font-size:clamp(6rem,14vw,13rem);text-shadow:0 6px 44px rgba(3,20,11,.55)}
+.journey-brand em{font-family:var(--display);font-style:italic;font-size:clamp(1.05rem,1.8vw,1.5rem);letter-spacing:.1em;text-transform:none;color:#f7e9b8}
