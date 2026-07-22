@@ -11,14 +11,14 @@
   const q=s=>hero.querySelector(s);
   const stage=q('.j5-stage');
   const layers=[...hero.querySelectorAll('.j5l')];
-  const brand=q('.journey-brand');const cue=q('.journey-scrollcue');
+  const brand=q('.journey-brand');const cue=q('.journey-scrollcue');const blurStart=q('.j5-blur-start'),blurEnd=q('.j5-blur-end');
   const summitBeat=q('.journey-beat-forest'),waterBeat=q('.journey-beat-water'),finalCopy=q('.journey-final'),progress=q('.journey-progress span');
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
 
   gsap.set([stage,...layers,brand,summitBeat,waterBeat,finalCopy],{force3D:true,willChange:'transform,opacity'});
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
-  gsap.set(progress,{scaleY:0,transformOrigin:'top'});
+  gsap.set(progress,{scaleY:0,transformOrigin:'top'});gsap.set(blurStart,{autoAlpha:1});gsap.set(blurEnd,{autoAlpha:0});
 
   /* RAISA SPEC v2 (Scene 0 -> Scene FINAL, both authored in Figma):
      the artwork is one tall true-aspect canvas. On load the camera sits on the
@@ -36,6 +36,8 @@
   tl.to(progress,{scaleY:1,duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
     .to(cue,{autoAlpha:0,y:14,duration:5},3)
+    .to(blurStart,{autoAlpha:0,duration:10},4)
+    .to(blurEnd,{autoAlpha:1,duration:16,ease:'power1.inOut'},72)
     /* camera pans down the canvas across the whole pin */
     .fromTo(stage,{y:0},{y:()=>-(stage.offsetHeight-innerHeight),duration:100,ease:'power1.inOut'},0);
 
