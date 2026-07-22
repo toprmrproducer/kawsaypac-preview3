@@ -4,6 +4,57 @@
   const DEFAULT_HANDLE = 'zapped-in';
   const LOAD_TIMEOUT = 12000;
 
+  // Botanical Journal guides. Handles without an entry keep the card hidden.
+  const BLEND_GUIDES = {
+    'river-of-life': 'river-of-life-guide',
+    'scales-of-balance': 'scales-of-balance-guide',
+    'sacred-sacral': 'sacred-sacral-guide',
+    'sacred-sacral-sweetened': 'sacred-sacral-guide',
+    'zapped-in': 'zapped-in-guide',
+    'bowel-balance': 'bowel-balance-guide',
+    'eliminate-regenerate': 'eliminate-regenerate-guide',
+    'final-flush': 'final-flush-guide',
+    'guayusa-leaf': 'guayusa-leaf-guide',
+    'guayusa': 'guayusa-leaf-guide',
+    'ritual-bundle': 'ritual-bundle-guide',
+    'ebook-preparation': 'ebook-preparation-guide',
+    'bowel-banisher': 'bowel-banisher-guide',
+    'cats-claw': 'cats-claw-guide',
+    'chuchuhuasi': 'chuchuhuasi-guide',
+    'one-way-out': 'one-way-out-guide'
+  };
+
+  const GUIDE_TITLES = {
+    'river-of-life-guide': 'River of Life: The Complete Guide to Our Heart-Centered Blend',
+    'scales-of-balance-guide': 'Scales of Balance: A Complete Guide to Our Calming Blend',
+    'sacred-sacral-guide': 'Sacred Sacral: The Complete Guide to Our Womb Wellness Blend',
+    'zapped-in-guide': 'Zapped In: The Complete Guide to Our Plant Energy Blend',
+    'bowel-balance-guide': 'Bowel Balance: The Complete Guide to Daily Digestive Rhythm',
+    'eliminate-regenerate-guide': 'Eliminate + Regenerate: The Full Program, Explained',
+    'final-flush-guide': 'Final Flush: The Complete Guide to Our Liver + Kidney Blend',
+    'guayusa-leaf-guide': 'Wild Guayusa Leaf: From Napo Chakras to Your Morning Cup',
+    'ritual-bundle-guide': 'The Daily Ritual Bundle: Morning to Evening, Explained',
+    'ebook-preparation-guide': 'The Herbal Preparation Book: Why Method Is Half the Medicine',
+    'bowel-banisher-guide': 'Bowel Banisher: The Complete Guide to Our Deep Cleanse Blend',
+    'cats-claw-guide': "Cat's Claw (Una de Gato): The Complete Amazonian Guide",
+    'chuchuhuasi-guide': 'Chuchuhuasi: The Amazonian Bark for Joints and Deep Warmth',
+    'one-way-out-guide': 'One Way Out: The Complete Guide to Our Elimination Blend'
+  };
+
+  function initBlendGuide(handle) {
+    const host = document.querySelector('[data-blend-guide]');
+    if (!host) return;
+    const guide = BLEND_GUIDES[handle];
+    if (!guide) { host.hidden = true; return; }
+    const link = host.querySelector('[data-blend-guide-link]');
+    const img = host.querySelector('[data-blend-guide-img]');
+    const title = host.querySelector('[data-blend-guide-title]');
+    if (link) link.href = 'blog/' + guide + '.html';
+    if (img) img.src = 'assets/img/blog/' + guide + '.webp?v=1';
+    if (title && GUIDE_TITLES[guide]) title.textContent = GUIDE_TITLES[guide];
+    host.hidden = false;
+  }
+
   function productHandleFromUrl() {
     const requested = new URLSearchParams(window.location.search).get('product') || DEFAULT_HANDLE;
     return /^[a-z0-9][a-z0-9-]{0,120}$/.test(requested) ? requested : DEFAULT_HANDLE;
@@ -149,6 +200,7 @@
     const context = contextHost.querySelector('[data-product-context]');
     if (!context) return;
     setInitialMetadata(handle);
+    initBlendGuide(handle);
 
     let metadataSynced = false;
     const inspect = () => {

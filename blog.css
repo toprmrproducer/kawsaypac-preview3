@@ -1,0 +1,134 @@
+/* Kawsaypac Botanical Journal: article template + journal library. */
+
+/* ---------- Shared ---------- */
+.blog-article-page .site-header,
+.jlib-page .site-header { position: sticky; top: 0; }
+
+.chip--guides, .chip--rituals, .chip--sourcing {
+  display: inline-block; align-self: flex-start;
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 700; padding: 5px 12px; border-radius: 999px;
+  background: rgba(31,58,42,.08); color: var(--forest);
+  border: 1px solid rgba(31,58,42,.14);
+}
+.chip--rituals { background: rgba(201,169,66,.14); border-color: rgba(201,169,66,.35); color: #7c6520; }
+.chip--sourcing { background: rgba(44,74,55,.1); border-color: rgba(44,74,55,.2); color: var(--forest-2); }
+
+/* ---------- Article ---------- */
+.blog-main { background: var(--cream); }
+.blog-article { max-width: 900px; margin: 0 auto; padding: clamp(28px, 5vw, 64px) 20px 80px; }
+
+.blog-article__head { text-align: center; max-width: 760px; margin: 0 auto 30px; }
+.blog-article__head .eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(31,58,42,.3); }
+.blog-article__head .eyebrow a:hover { color: var(--forest); border-color: var(--forest); }
+.blog-article__head h1 {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(30px, 4.6vw, 52px); line-height: 1.12;
+  color: var(--forest); margin: 14px 0 14px; letter-spacing: -.01em;
+}
+.blog-article__head h1 .accent { font-style: italic; color: var(--gold); }
+.blog-article__meta { color: rgba(42,42,38,.62); font-size: 14px; letter-spacing: .02em; }
+
+.blog-article__hero { margin: 0 0 40px; }
+.blog-article__hero img {
+  width: 100%; height: auto; display: block; border-radius: 18px;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+
+.blog-article__body { max-width: 700px; margin: 0 auto; font-size: 17.5px; line-height: 1.75; color: var(--charcoal); }
+.blog-article__body p { margin: 0 0 1.35em; }
+.blog-article__body h2 {
+  font-family: var(--display); font-weight: 500; color: var(--forest);
+  font-size: clamp(23px, 3vw, 30px); line-height: 1.2;
+  margin: 1.9em 0 .7em; letter-spacing: -.005em;
+}
+.blog-article__body ul { margin: 0 0 1.4em; padding-left: 1.15em; }
+.blog-article__body li { margin-bottom: .6em; }
+.blog-article__body li::marker { color: var(--gold); }
+.blog-article__body a { color: var(--forest); text-decoration: none; border-bottom: 1px solid rgba(201,169,66,.6); transition: border-color .2s, color .2s; }
+.blog-article__body a:hover { color: var(--forest-2); border-bottom-color: var(--gold); }
+.blog-article__body strong { color: var(--forest); }
+
+/* CTA card */
+.blog-cta {
+  display: grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: center;
+  margin: 3em 0 2.4em; padding: 24px;
+  background: rgba(255,255,255,.72); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow);
+}
+.blog-cta__media img { width: 100%; height: 180px; object-fit: cover; border-radius: 14px; display: block; }
+.blog-cta__copy h3 { font-family: var(--display); font-weight: 500; color: var(--forest); font-size: 25px; margin: 6px 0 8px; }
+.blog-cta__copy p { margin: 0 0 16px; font-size: 15.5px; color: rgba(42,42,38,.78); }
+.blog-cta__copy .btn { border-bottom: none; }
+@media (max-width: 620px) {
+  .blog-cta { grid-template-columns: 1fr; }
+  .blog-cta__media img { height: 200px; }
+}
+
+/* Related */
+.blog-related { margin-top: 3em; padding-top: 2.2em; border-top: 1px solid var(--border); }
+.blog-related__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 14px; }
+.blog-related__card {
+  display: flex; flex-direction: column; gap: 9px;
+  background: #fff; border: 1px solid var(--border); border-radius: 16px;
+  padding: 12px; text-decoration: none; border-bottom: 1px solid var(--border);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.blog-related__card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.blog-related__card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; display: block; }
+.blog-related__card strong { font-family: var(--display); font-weight: 500; color: var(--forest); font-size: 16.5px; line-height: 1.3; }
+.blog-related__card em { font-style: normal; font-size: 12.5px; color: rgba(42,42,38,.55); }
+@media (max-width: 680px) { .blog-related__grid { grid-template-columns: 1fr; } }
+
+/* ---------- Journal library ---------- */
+.jlib-main { background: var(--cream); }
+.jlib-hero { padding: clamp(46px, 7vw, 90px) 20px 10px; }
+.jlib-hero__copy { max-width: 780px; margin: 0 auto; text-align: center; }
+.jlib-hero__copy h1 {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(38px, 6vw, 66px); color: var(--forest);
+  line-height: 1.06; margin: 14px 0 16px; letter-spacing: -.015em;
+}
+.jlib-hero__copy h1 .accent { font-style: italic; color: var(--gold); }
+.jlib-hero__copy > p { font-size: 17.5px; line-height: 1.7; color: rgba(42,42,38,.78); max-width: 640px; margin: 0 auto; }
+
+.jlib-shell { width: var(--shell); margin: 0 auto; padding: clamp(30px, 5vw, 56px) 0 90px; }
+.jlib-shell__intro { margin-bottom: 26px; }
+.jlib-shell__intro h2 { font-family: var(--display); font-weight: 500; color: var(--forest); font-size: clamp(24px, 3.2vw, 34px); margin: 8px 0 0; }
+
+.jlib-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.jlib-card {
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--border); border-radius: 20px;
+  overflow: hidden; text-decoration: none;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.jlib-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.jlib-card__media { display: block; overflow: hidden; }
+.jlib-card__media img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+.jlib-card:hover .jlib-card__media img { transform: scale(1.045); }
+.jlib-card__copy { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 22px; }
+.jlib-card__copy strong { font-family: var(--display); font-weight: 500; color: var(--forest); font-size: 21px; line-height: 1.25; letter-spacing: -.005em; }
+.jlib-card__copy small { font-size: 14.5px; line-height: 1.55; color: rgba(42,42,38,.7); }
+.jlib-card__copy em { font-style: normal; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; color: rgba(42,42,38,.5); margin-top: 2px; }
+@media (max-width: 1020px) { .jlib-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .jlib-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Product page: read-about card ---------- */
+.pdp-read-about { width: var(--shell); margin: 0 auto; padding: 8px 0 26px; }
+.pdp-read-about__card {
+  display: grid; grid-template-columns: 240px 1fr auto; gap: 26px; align-items: center;
+  background: rgba(255,255,255,.8); border: 1px solid var(--border);
+  border-radius: 20px; padding: 20px 26px; box-shadow: var(--shadow);
+  text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.pdp-read-about__card:hover { transform: translateY(-3px); }
+.pdp-read-about__card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; display: block; }
+.pdp-read-about__copy .eyebrow { margin-bottom: 6px; }
+.pdp-read-about__copy strong { font-family: var(--display); font-weight: 500; color: var(--forest); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.25; display: block; }
+.pdp-read-about__copy span { display: inline-block; margin-top: 8px; font-size: 14px; color: rgba(42,42,38,.65); }
+.pdp-read-about__arrow { font-size: 22px; color: var(--gold); }
+@media (max-width: 760px) {
+  .pdp-read-about__card { grid-template-columns: 1fr; }
+  .pdp-read-about__arrow { display: none; }
+}
