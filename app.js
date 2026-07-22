@@ -50,7 +50,7 @@
       ['.collections','assets/img/fg-leaf-fern.webp','36%','58%','clamp(200px,20vw,340px)','7deg','behind'],
       ['.video-stories','assets/sprites/herb-icons/seed-pod.webp','44%','70%','clamp(64px,6vw,96px)','22deg','behind'],
       ['.video-stories','assets/img/fg-orchid.webp','70%','16%','clamp(190px,19vw,320px)','-11deg','behind'],
-      ['.philosophy','assets/img/floaters/dried-petals-drift.webp','38%','8%','clamp(230px,23vw,390px)','5deg','behind'],
+      ['.philosophy','assets/img/floaters/dried-petals-drift.webp','30%','52%','clamp(230px,23vw,390px)','5deg','behind'],
       ['.why','assets/sprites/herb-icons/orchid-cluster.webp','24%','62%','clamp(88px,9vw,140px)','-15deg','behind'],
       ['.why','assets/sprites/hummingbirds/hummingbird-flight.webp','68%','12%','clamp(150px,15vw,250px)','9deg','behind'],
       ['.products','assets/img/fg-leaf-monstera.webp','40%','36%','clamp(240px,24vw,410px)','-6deg','behind'],
@@ -60,7 +60,7 @@
       ['.image-stories','assets/img/fg-leaf-fern.webp','40%','56%','clamp(230px,22vw,380px)','9deg','behind'],
       ['.principles-section','assets/sprites/herb-icons/herbal-teacup.webp','30%','74%','clamp(64px,6vw,98px)','-18deg','behind'],
       ['.principles-section','assets/img/fg-orchid.webp','58%','30%','clamp(210px,21vw,350px)','6deg','behind'],
-      ['.stats-bar','assets/sprites/hummingbirds/hummingbird-perched.webp','74%','8%','clamp(120px,12vw,190px)','-7deg','behind']
+      ['.stats-bar','assets/sprites/hummingbirds/hummingbird-perched.webp','86%','34%','clamp(120px,12vw,190px)','-7deg','behind']
     ];
     if($('.page-hero')){
       const pageSprites={

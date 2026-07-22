@@ -31,7 +31,7 @@
     'hill-left':7,'river':10,'ridge-a':12,'ridge-b':14,
     'moss-foreground':30,'monstera':34,'branch':38,'orchid-brom':42,'orchids-left':44 };
 
-  const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:sticky,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
+  const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:hero,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
 
   tl.to(progress,{scaleY:1,duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
