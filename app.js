@@ -44,7 +44,7 @@
       ['.newsletter-section','assets/sprites/herb-icons/guayusa-sprig.webp','90%','10%','clamp(68px,7vw,108px)','-12deg','edge'],
       ['.newsletter-section','assets/sprites/hummingbirds/hummingbird-perched.webp','3%','62%','clamp(60px,6vw,94px)','5deg','behind'],
       ['.shop-hero','assets/img/fg-leaf-monstera.webp','-5%','58%','clamp(260px,26vw,420px)','-8deg','behind'],
-      ['.shop-shell','assets/sprites/herb-icons/orchid-cluster.webp','-3%','6%','clamp(70px,7vw,110px)','-12deg','behind'],
+      ['.shop-shell','assets/sprites/herb-icons/orchid-cluster.webp','-4%','38%','clamp(70px,7vw,110px)','-12deg','behind'],
       ['.shop-shell','assets/sprites/herb-icons/cats-claw-vine.webp','94%','26%','clamp(150px,15vw,250px)','14deg','behind'],
       ['.shop-shell','assets/sprites/herb-icons/seed-pod.webp','-3%','54%','clamp(60px,6vw,95px)','20deg','behind'],
       ['.shop-shell','assets/img/floaters/passionflower-vine.webp','93%','72%','clamp(190px,19vw,320px)','-10deg','behind'],

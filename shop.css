@@ -930,3 +930,4 @@
 @keyframes shop-kenburns{0%{transform:scale(1)}100%{transform:scale(1.09)}}
 .shop-hero::before{background:linear-gradient(93deg,rgba(250,246,236,.94) 0%,rgba(250,246,236,.72) 34%,rgba(250,246,236,.16) 68%,rgba(250,246,236,0) 100%)}
 @media(prefers-reduced-motion:reduce){.shop-hero img.shop-hero-bg{animation:none}}
+.shop-hero::before{background:linear-gradient(93deg,rgba(250,246,236,.97) 0%,rgba(250,246,236,.88) 36%,rgba(250,246,236,.4) 66%,rgba(250,246,236,.06) 100%)}
