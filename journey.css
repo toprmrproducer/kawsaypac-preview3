@@ -100,3 +100,10 @@
 .journey-trust strong{font-size:1.05rem}
 .mid-ribbon .trust-track{font-size:.56rem;gap:24px;padding:9px 0}
 }
+
+/* v37: single-environment rise (Scene FINAL) */
+.j4{position:absolute;inset:0;overflow:hidden}
+.j4l{position:absolute;will-change:transform;max-width:none}
+.j4-band{left:0;width:100%;object-fit:cover}
+.j4-obj{width:auto}
+.journey-static .j4l{transform:none!important}
