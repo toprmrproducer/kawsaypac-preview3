@@ -31,6 +31,20 @@
     const placements=[
       ['.philosophy','assets/sprites/herb-icons/mountain-herb-rosette.webp','88%','76%','clamp(90px,9vw,140px)','12deg','behind'],
       ['.philosophy','assets/sprites/herb-icons/herbal-teacup.webp','-3%','82%','clamp(84px,8vw,128px)','-9deg','behind'],
+      ['.collections','assets/sprites/hummingbirds/hummingbird-perched.webp','91%','4%','clamp(72px,7vw,112px)','-6deg','edge'],
+      ['.collections','assets/sprites/herb-icons/seed-pod.webp','-2%','76%','clamp(56px,5vw,84px)','-14deg','behind'],
+      ['.video-stories','assets/sprites/herb-icons/passionflower-vine.webp','-3%','5%','clamp(88px,9vw,148px)','-18deg','behind'],
+      ['.video-stories','assets/sprites/hummingbirds/hummingbird-flight.webp','93%','86%','clamp(78px,8vw,120px)','8deg','edge'],
+      ['.products','assets/sprites/herb-icons/cats-claw-vine.webp','93%','2%','clamp(88px,9vw,138px)','16deg','behind'],
+      ['.products','assets/img/floaters/dried-petals-drift.webp','-2%','78%','clamp(88px,9vw,148px)','-8deg','behind'],
+      ['.concern-section','assets/sprites/herb-icons/orchid-cluster.webp','-2%','10%','clamp(68px,7vw,108px)','-10deg','behind'],
+      ['.concern-section','assets/sprites/herb-icons/cinchona-bark-leaves.webp','93%','64%','clamp(74px,8vw,118px)','9deg','behind'],
+      ['.retreat-band','assets/img/fg-leaf-monstera.webp','-3%','70%','clamp(110px,11vw,190px)','-10deg','edge'],
+      ['.image-stories','assets/img/floaters/passionflower-vine.webp','-3%','3%','clamp(84px,9vw,138px)','12deg','behind'],
+      ['.image-stories','assets/sprites/herb-icons/herbal-teacup.webp','92%','84%','clamp(78px,8vw,122px)','-7deg','edge'],
+      ['.principles-section','assets/sprites/herb-icons/mountain-herb-rosette.webp','93%','6%','clamp(78px,8vw,124px)','10deg','behind'],
+      ['.newsletter-section','assets/sprites/herb-icons/guayusa-sprig.webp','90%','10%','clamp(68px,7vw,108px)','-12deg','edge'],
+      ['.newsletter-section','assets/sprites/hummingbirds/hummingbird-perched.webp','3%','62%','clamp(60px,6vw,94px)','5deg','behind'],
       ['.shop-hero','assets/sprites/hummingbirds/hummingbird-flight.webp','86%','26%','clamp(92px,10vw,145px)','7deg','edge'],
       ['.pdp-hero','assets/sprites/herb-icons/herbal-teacup.webp','90%','12%','clamp(82px,9vw,125px)','-8deg','edge']
     ];
@@ -116,8 +130,16 @@
     }),{threshold:.3});
     io.observe(footer);
   }
+  function initSectionDrift(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(max-width: 720px)').matches)return;
+    const els=$$('.philo-accent img,.herb-plate img,.concern-sprites img');if(!els.length)return;
+    let tick=0;
+    const paint=()=>{tick=0;const vh=innerHeight;els.forEach((el,i)=>{const r=el.getBoundingClientRect();if(r.bottom<-60||r.top>vh+60)return;const p=(r.top+r.height/2)/vh-.5;const amp=i%2?9:12;el.style.translate=`0 ${(-p*amp*2).toFixed(1)}px`})};
+    addEventListener('scroll',()=>{if(!tick)tick=requestAnimationFrame(paint)},{passive:true});
+    paint();
+  }
   function initStatCounters(){const els=$$('[data-count]');if(!els.length)return;const fmt=(v,dec,suf)=>v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;io.unobserve(en.target);const el=en.target,target=parseFloat(el.dataset.count),dec=+(el.dataset.decimals||0),suf=el.dataset.suffix||'';if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=fmt(target,dec,suf);return}const t0=performance.now(),dur=1400;const tick=now=>{const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(target*e,dec,suf);if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)}),{threshold:.4});els.forEach(e=>io.observe(e))}
   function initConcernScroll(){const row=$('.concern-row'),btn=$('.concern-scroll');if(!row||!btn)return;btn.addEventListener('click',()=>{const max=row.scrollWidth-row.clientWidth;const next=row.scrollLeft>=max-8?0:row.scrollLeft+Math.min(row.clientWidth*.7,420);row.scrollTo({left:next,behavior:'smooth'})})}
-  function boot(){renderHeader();normalizeRibbon();renderFooter();renderModal();initJournalLinks();renderHomeData();initDraggableSprites();initNav();initHero();initFilm();initReveal();initForms();initModal();initLivingInterface();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
+  function boot(){renderHeader();normalizeRibbon();renderFooter();renderModal();initJournalLinks();renderHomeData();initDraggableSprites();initNav();initHero();initFilm();initReveal();initForms();initModal();initLivingInterface();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
