@@ -28,44 +28,7 @@
   function initHero(){const hero=$('.hero-scroll');if(!hero)return;const layers={far:$('.layer-far'),peak:$('.layer-cotopaxi'),valley:$('.layer-valley'),front:$('.layer-foreground'),foliage:$('.layer-foliage')},backdrop=$('.hero-static-range'),finalScene=$('.hero-final-scene'),brand=$('.brand-statement'),copy=$('.hero-copy');const mobile=matchMedia('(max-width: 720px)').matches,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;if(mobile||reduce||!window.gsap||!window.ScrollTrigger){Object.values(layers).forEach(e=>e&&(e.style.transform='none'));if(backdrop)backdrop.style.display='none';if(finalScene){finalScene.style.opacity='1';finalScene.style.visibility='visible';finalScene.style.clipPath='none'}if(brand)brand.style.display='none';if(copy){copy.style.opacity='1';copy.style.visibility='visible';copy.style.transform='none'}return}gsap.registerPlugin(ScrollTrigger);const starts={far:86,peak:62,valley:118,front:132,foliage:145},ends={far:0,peak:-7,valley:0,front:0,foliage:0};const timing={far:[.03,.31],peak:[.06,.40],valley:[.20,.38],front:[.30,.36],foliage:[.39,.31]};const progress=(p,start,duration)=>Math.max(0,Math.min(1,(p-start)/duration));Object.entries(layers).forEach(([k,e])=>e&&gsap.set(e,{yPercent:starts[k],autoAlpha:1,force3D:true}));if(backdrop)gsap.set(backdrop,{autoAlpha:.24,scale:1.04,force3D:true});gsap.set(finalScene,{autoAlpha:0});ScrollTrigger.create({trigger:hero,start:'top top',end:'+=205%',pin:$('.hero-sticky'),scrub:true,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{const p=self.progress;Object.entries(layers).forEach(([k,e])=>{if(!e)return;const [start,duration]=timing[k];const t=progress(p,start,duration);const eased=1-Math.pow(1-t,3);gsap.set(e,{yPercent:starts[k]+(ends[k]-starts[k])*eased,y:k==='peak'?-20*eased:0})});if(backdrop)gsap.set(backdrop,{autoAlpha:.24*(1-progress(p,.02,.28)),scale:1.04-progress(p,.02,.28)*.04});const bo=1-progress(p,.10,.13);gsap.set(brand,{autoAlpha:bo,y:(1-bo)*-10});const co=progress(p,.74,.13);gsap.set(copy,{autoAlpha:co,y:18*(1-co)});}})}
   function initFilm(){const frame=$('[data-youtube-film]');if(!frame)return;let loaded=false;const command=func=>{if(frame.contentWindow)frame.contentWindow.postMessage(JSON.stringify({event:'command',func,args:[]}), '*')};const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){if(!loaded){frame.src=frame.dataset.src;loaded=true;setTimeout(()=>command('playVideo'),900)}else command('playVideo')}else if(loaded)command('pauseVideo')}),{threshold:.45});io.observe(frame)}
   function initDraggableSprites(){
-    const placements=[
-                  ['.collections','assets/sprites/hummingbirds/hummingbird-perched.webp','91%','4%','clamp(72px,7vw,112px)','-6deg','edge'],
-      ['.collections','assets/sprites/herb-icons/seed-pod.webp','-2%','76%','clamp(56px,5vw,84px)','-14deg','behind'],
-      ['.video-stories','assets/sprites/herb-icons/passionflower-vine.webp','-3%','5%','clamp(88px,9vw,148px)','-18deg','behind'],
-      ['.video-stories','assets/sprites/hummingbirds/hummingbird-flight.webp','93%','86%','clamp(78px,8vw,120px)','8deg','edge'],
-      ['.products','assets/sprites/herb-icons/cats-claw-vine.webp','93%','2%','clamp(88px,9vw,138px)','16deg','behind'],
-      ['.products','assets/img/floaters/dried-petals-drift.webp','-2%','78%','clamp(88px,9vw,148px)','-8deg','behind'],
-      ['.concern-section','assets/sprites/herb-icons/orchid-cluster.webp','-2%','10%','clamp(68px,7vw,108px)','-10deg','behind'],
-      ['.concern-section','assets/sprites/herb-icons/cinchona-bark-leaves.webp','93%','64%','clamp(74px,8vw,118px)','9deg','behind'],
-      ['.retreat-band','assets/img/fg-leaf-monstera.webp','-3%','70%','clamp(110px,11vw,190px)','-10deg','edge'],
-      ['.image-stories','assets/img/floaters/passionflower-vine.webp','-3%','3%','clamp(84px,9vw,138px)','12deg','behind'],
-      ['.image-stories','assets/sprites/herb-icons/herbal-teacup.webp','92%','84%','clamp(78px,8vw,122px)','-7deg','edge'],
-      ['.principles-section','assets/sprites/herb-icons/mountain-herb-rosette.webp','93%','6%','clamp(78px,8vw,124px)','10deg','behind'],
-      ['.newsletter-section','assets/sprites/herb-icons/guayusa-sprig.webp','90%','10%','clamp(68px,7vw,108px)','-12deg','edge'],
-      ['.newsletter-section','assets/sprites/hummingbirds/hummingbird-perched.webp','3%','62%','clamp(60px,6vw,94px)','5deg','behind'],
-      ['.shop-hero','assets/img/fg-leaf-monstera.webp','-5%','58%','clamp(260px,26vw,420px)','-8deg','behind'],
-      ['.shop-shell','assets/sprites/herb-icons/orchid-cluster.webp','-4%','38%','clamp(70px,7vw,110px)','-12deg','behind'],
-      ['.shop-shell','assets/sprites/herb-icons/cats-claw-vine.webp','94%','26%','clamp(150px,15vw,250px)','14deg','behind'],
-      ['.shop-shell','assets/sprites/herb-icons/seed-pod.webp','-3%','54%','clamp(60px,6vw,95px)','20deg','behind'],
-      ['.shop-shell','assets/img/floaters/passionflower-vine.webp','93%','72%','clamp(190px,19vw,320px)','-10deg','behind'],
-      ['.commerce-editorial--ebooks','assets/sprites/herb-icons/guayusa-sprig.webp','-3%','18%','clamp(80px,8vw,125px)','9deg','behind'],
-      ['.shop-cta','assets/img/fg-orchid.webp','93%','8%','clamp(170px,17vw,290px)','6deg','behind'],
-      ['.shop-closing','assets/sprites/hummingbirds/hummingbird-perched.webp','4%','10%','clamp(80px,8vw,120px)','-6deg','behind'],
-      ['.shop-hero','assets/sprites/hummingbirds/hummingbird-flight.webp','86%','26%','clamp(92px,10vw,145px)','7deg','edge'],
-      ['.pdp-hero','assets/sprites/herb-icons/herbal-teacup.webp','90%','12%','clamp(82px,9vw,125px)','-8deg','edge'],
-      ['.collections','assets/img/fg-leaf-fern.webp','-4%','52%','clamp(200px,20vw,340px)','7deg','behind'],
-      ['.video-stories','assets/sprites/herb-icons/seed-pod.webp','-4%','72%','clamp(64px,6vw,96px)','22deg','behind'],
-      ['.video-stories','assets/img/fg-orchid.webp','94%','16%','clamp(190px,19vw,320px)','-11deg','behind'],
-            ['.why','assets/sprites/herb-icons/orchid-cluster.webp','-3%','58%','clamp(88px,9vw,140px)','-15deg','behind'],
-      ['.why','assets/sprites/hummingbirds/hummingbird-flight.webp','92%','14%','clamp(150px,15vw,250px)','9deg','behind'],
-      ['.products','assets/img/fg-leaf-monstera.webp','-5%','30%','clamp(240px,24vw,410px)','-6deg','behind'],
-      ['.products','assets/sprites/herb-icons/guayusa-sprig.webp','12%','14%','clamp(70px,7vw,105px)','18deg','behind'],
-      ['.concern-section','assets/img/floaters/passionflower-vine.webp','-4%','56%','clamp(200px,20vw,330px)','13deg','behind'],
-      ['.retreat-band','assets/sprites/herb-icons/mountain-herb-rosette.webp','94%','10%','clamp(90px,9vw,150px)','-9deg','behind'],
-      ['.image-stories','assets/img/fg-leaf-fern.webp','-4%','52%','clamp(230px,22vw,380px)','9deg','behind'],
-      ['.principles-section','assets/sprites/herb-icons/herbal-teacup.webp','-3%','76%','clamp(64px,6vw,98px)','-18deg','behind'],
-      ['.principles-section','assets/img/fg-orchid.webp','93%','36%','clamp(210px,21vw,350px)','6deg','behind']
-    ];
+    const placements=[];
     if($('.page-hero')){
       const pageSprites={
         '/apothecary.html':'assets/sprites/herb-icons/passionflower-vine.webp',
@@ -76,7 +39,7 @@
         '/recipes.html':'assets/sprites/herb-icons/seed-pod.webp',
         '/preparing-your-body.html':'assets/sprites/herb-icons/guayusa-sprig.webp'
       };
-      placements.push(['.page-hero',pageSprites[location.pathname]||'assets/sprites/herb-icons/cinchona-bark-leaves.webp','88%','70%','clamp(76px,8vw,118px)','12deg','behind']);
+      
     }
     placements.forEach(([selector,path,left,top,size,rotate,layer],index)=>{const host=$(selector);if(!host)return;if(getComputedStyle(host).position==='static')host.style.position='relative';const sprite=document.createElement('button');sprite.type='button';sprite.className=`drag-sprite sprite-${layer}`;sprite.setAttribute('aria-label','Move this botanical illustration');sprite.title='Drag me, or use the arrow keys';sprite.style.cssText=`left:${left};top:${top};--sprite-size:${size};--sprite-rotate:${rotate};--ambient-delay:-${(index*.73).toFixed(2)}s;--ambient-duration:${5.2+(index%4)*.8}s;--sprite-depth:${.35+(index%5)*.11}`;sprite.innerHTML=`<img src="${path}?v=17" alt="" draggable="false">`;host.append(sprite);let dx=0,dy=0,startX=0,startY=0,originX=0,originY=0,moved=false;const paint=()=>{sprite.style.setProperty('--drag-x',`${dx}px`);sprite.style.setProperty('--drag-y',`${dy}px`)};sprite.addEventListener('pointerdown',e=>{if(e.button!==0)return;startX=e.clientX;startY=e.clientY;originX=dx;originY=dy;moved=false;sprite.classList.add('is-dragging');sprite.setPointerCapture(e.pointerId);e.preventDefault()});sprite.addEventListener('pointermove',e=>{if(!sprite.hasPointerCapture(e.pointerId))return;dx=originX+e.clientX-startX;dy=originY+e.clientY-startY;moved=moved||Math.abs(e.clientX-startX)>3||Math.abs(e.clientY-startY)>3;paint()});const release=e=>{if(sprite.hasPointerCapture(e.pointerId))sprite.releasePointerCapture(e.pointerId);sprite.classList.remove('is-dragging')};sprite.addEventListener('pointerup',release);sprite.addEventListener('pointercancel',release);sprite.addEventListener('click',e=>{if(moved)e.preventDefault()});sprite.addEventListener('dblclick',()=>{dx=0;dy=0;paint()});sprite.addEventListener('keydown',e=>{const step=e.shiftKey?20:6;if(e.key==='ArrowLeft')dx-=step;else if(e.key==='ArrowRight')dx+=step;else if(e.key==='ArrowUp')dy-=step;else if(e.key==='ArrowDown')dy+=step;else return;e.preventDefault();paint()})})
   }
