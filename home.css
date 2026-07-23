@@ -334,3 +334,6 @@
 .newsletter-section .newsletter-card{background:rgba(250,246,236,.06);border:1px solid rgba(217,182,74,.3);backdrop-filter:blur(8px)}
 .newsletter-section h2,.newsletter-section .eyebrow{color:#f2ead6}
 @media(max-width:720px){.closing-flora{width:34vw}.philo-accent{display:none}}
+/* v59: restrained interim florals */
+.closing-flora-left{left:1%;bottom:-2%;width:clamp(120px,13vw,220px)}
+.closing-flora-right{right:1%;bottom:-3%;width:clamp(140px,15vw,260px);transform:scaleX(-1)}
