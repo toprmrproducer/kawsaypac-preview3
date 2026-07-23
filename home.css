@@ -337,3 +337,7 @@
 /* v59: restrained interim florals */
 .closing-flora-left{left:1%;bottom:-2%;width:clamp(120px,13vw,220px)}
 .closing-flora-right{right:1%;bottom:-3%;width:clamp(140px,15vw,260px);transform:scaleX(-1)}
+/* v60: florals must escape the bg cover rule */
+.closing-band img.closing-flora{position:absolute;inset:auto;height:auto;object-fit:contain}
+.closing-band img.closing-flora-left{left:1%;bottom:-2%;width:clamp(120px,13vw,220px)}
+.closing-band img.closing-flora-right{right:1%;left:auto;bottom:-3%;width:clamp(140px,15vw,260px);transform:scaleX(-1)}
