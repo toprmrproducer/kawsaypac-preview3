@@ -459,3 +459,19 @@ body>*:last-child{margin-bottom:0}
 /* v82: bouquets bleed off the bottom cleanly instead of being cut mid-flower */
 .philo-accent{bottom:-26%!important}
 @media(max-width:900px){.philo-accent{bottom:-16%!important}}
+
+/* v87: bouquets tilted 30deg, stems cut off by the SIDE edges, vertically centred */
+.philosophy{overflow:hidden}
+.philo-accent{top:50%!important;bottom:auto!important;transform:translateY(-50%)!important;height:auto!important;width:clamp(280px,29vw,480px)!important;align-items:center!important;overflow:visible!important}
+.philo-accent-left{left:0!important;right:auto!important}
+.philo-accent-right{right:0!important;left:auto!important}
+/* stems swing out through the left / right edge */
+.philo-accent-left .philo-bloom{margin-left:clamp(-190px,-13vw,-90px)!important;transform-origin:50% 22%}
+.philo-accent-right .philo-bloom{margin-right:clamp(-190px,-13vw,-90px)!important;transform-origin:50% 22%}
+/* 30deg base tilt baked into the sway so the animation cannot override it */
+@keyframes bloom-sway-l{0%{transform:rotate(28deg) translate3d(0,0,0) scale(1)}100%{transform:rotate(32deg) translate3d(8px,-12px,0) scale(1.03)}}
+@keyframes bloom-sway-r{0%{transform:rotate(-28deg) translate3d(0,0,0) scale(1.02)}100%{transform:rotate(-32deg) translate3d(-8px,-12px,0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.philo-accent-left .philo-bloom{transform:rotate(30deg)}.philo-accent-right .philo-bloom{transform:rotate(-30deg)}}
+@media(max-width:900px){.philo-accent{width:clamp(170px,30vw,250px)!important}
+ .philo-accent-left .philo-bloom{margin-left:clamp(-110px,-16vw,-60px)!important}
+ .philo-accent-right .philo-bloom{margin-right:clamp(-110px,-16vw,-60px)!important}}
