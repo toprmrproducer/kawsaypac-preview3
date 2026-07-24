@@ -498,3 +498,8 @@ body>*:last-child{margin-bottom:0}
 .philo-accent{justify-items:stretch!important}
 .philo-bloom{width:clamp(420px,43vw,720px)!important;max-width:none!important;height:auto!important}
 @media(max-width:900px){.philo-bloom{width:clamp(200px,34vw,300px)!important}}
+/* v91: big bouquets pushed out to the flanks, clear of the text column */
+.philo-accent-left .philo-bloom{margin-left:clamp(-520px,-35vw,-300px)!important}
+.philo-accent-right .philo-bloom{margin-right:clamp(-520px,-35vw,-300px)!important}
+@media(max-width:900px){.philo-accent-left .philo-bloom{margin-left:clamp(-150px,-22vw,-90px)!important}
+ .philo-accent-right .philo-bloom{margin-right:clamp(-150px,-22vw,-90px)!important}}
