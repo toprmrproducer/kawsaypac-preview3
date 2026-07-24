@@ -976,3 +976,6 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 @media(max-width:720px){.shop-hero{aspect-ratio:auto;min-height:0;padding-top:104px!important}.shop-hero .shop-hero__content h1{font-size:clamp(1.7rem,7vw,2.3rem)!important}}
 .shop-hero{padding-top:152px!important}
 @media(max-width:720px){.shop-hero{padding-top:120px!important}}
+/* v86: unambiguous clearance under the floating nav */
+.shop-hero{align-content:start!important}
+.shop-hero .shop-hero__content{margin-top:0!important}
