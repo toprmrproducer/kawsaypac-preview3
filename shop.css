@@ -939,3 +939,5 @@
 .shop-hero{color:#fdf9ef}
 .shop-hero .shop-hero__content h1,.shop-hero .shop-hero__content p,.shop-hero .shop-hero__content .eyebrow{color:#fdf9ef;text-shadow:0 3px 26px rgba(6,20,12,.75)}
 .shop-hero .shop-hero__content h1 .accent{color:#f1d678}
+/* v72: shop hero motion background */
+video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover;opacity:.6;z-index:0;pointer-events:none}
