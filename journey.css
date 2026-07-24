@@ -199,5 +199,12 @@
 /* v96: "Scroll to begin the descent" overflowed the right edge at 390px */
 @media(max-width:520px){
   .journey-scrollcue small{font-size:11px;letter-spacing:.14em;text-align:center}
-  .journey-scrollcue{width:min(92vw,320px);left:50%;transform:translateX(-50%)}
+  .journey-scrollcue{width:min(92vw,320px)}
 }
+
+/* v96b: GSAP tweens .journey-scrollcue's y, and writing that transform wipes the
+   CSS translateX(-50%) this element used for horizontal centring, so the cue sat
+   half its own width to the RIGHT of centre on every viewport (it just only
+   overflowed visibly on narrow ones). Centre with auto margins instead, leaving
+   the transform channel free for GSAP. */
+.journey-scrollcue{left:0;right:0;width:min(92vw,340px);margin-inline:auto}
