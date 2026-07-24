@@ -46,7 +46,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
       ['.products','assets/sprites/herb-icons/cats-claw-vine.webp','95%','66%','clamp(130px,13vw,200px)','16deg','behind'],
       ['.concern-section','assets/img/floaters/passionflower-vine.webp','-6%','48%','clamp(200px,20vw,330px)','13deg','behind'],
       ['.concern-section','assets/sprites/herb-icons/orchid-cluster.webp','95%','16%','clamp(115px,11vw,175px)','-10deg','behind'],
-      ['.retreat-band','assets/img/fg-leaf-monstera.webp','-6%','58%','clamp(200px,20vw,340px)','-10deg','edge'],
+      ['.retreat-band','assets/img/fg-leaf-monstera.webp','88%','2%','clamp(170px,17vw,280px)','14deg','edge'],
       ['.image-stories','assets/img/fg-leaf-fern.webp','-6%','44%','clamp(210px,21vw,350px)','9deg','behind'],
       ['.image-stories','assets/sprites/herb-icons/herbal-teacup.webp','95%','74%','clamp(115px,11vw,175px)','-7deg','edge'],
       ['.principles-section','assets/img/fg-orchid.webp','94%','30%','clamp(200px,20vw,330px)','6deg','behind'],

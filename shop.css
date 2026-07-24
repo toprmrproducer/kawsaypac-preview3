@@ -953,3 +953,15 @@ video.shop-hero-bg{object-position:center 38%;filter:saturate(1.06) contrast(1.0
 /* v81: shorter hero WITHOUT clipping its content */
 .shop-hero{min-height:600px!important;max-height:none!important;overflow:hidden;padding-block:clamp(70px,9vh,110px)!important;align-content:center}
 .shop-hero .shop-hero__content{position:relative;z-index:3}
+
+/* v82: hero is a 16:9 video band, text sits on a light card */
+.shop-hero{min-height:0!important;max-height:none!important;aspect-ratio:16/9;max-height:76vh;display:grid;place-items:center;padding-block:0!important;position:relative;overflow:hidden}
+video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover;object-position:center center}
+.shop-hero::after{display:none!important}
+.shop-hero::before{display:none!important}
+.shop-hero .shop-hero__content{position:relative;z-index:3;background:rgba(250,247,239,.90);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);border:1px solid rgba(255,255,255,.6);border-radius:28px;padding:clamp(26px,3.4vw,48px);max-width:min(720px,88%);box-shadow:0 30px 70px rgba(10,28,18,.28);margin:0 auto;text-align:left}
+.shop-hero .shop-hero__content h1,.shop-hero .shop-hero__content p,.shop-hero .shop-hero__content .eyebrow{color:#173325!important;text-shadow:none!important}
+.shop-hero .shop-hero__content h1 .accent{color:#a8842a!important}
+.shop-hero .shop-hero__content .eyebrow{color:#8a7a4a!important}
+.shop-accent{display:none}
+@media(max-width:720px){.shop-hero{aspect-ratio:4/5;max-height:82vh}.shop-hero .shop-hero__content{max-width:92%;padding:22px}}

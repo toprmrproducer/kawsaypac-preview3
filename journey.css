@@ -167,3 +167,9 @@
 /* v80: cloud drifting in FRONT of the wordmark */
 .j5-cloudfront{position:absolute;z-index:21;left:26%;top:34%;width:34%;height:auto;pointer-events:none;opacity:.92;will-change:transform}
 @media(max-width:720px){.j5-cloudfront{left:8%;width:62%;top:38%}}
+
+/* v82: an EXISTING cloud passes in front of the wordmark (no extra cloud added) */
+.j5l[data-n="cloud-e"]{z-index:21}
+.journey-brand{z-index:20}
+
+/* v82: philosophy-style edge sprites bleed cleanly off the frame */

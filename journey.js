@@ -11,7 +11,7 @@
   const q=s=>hero.querySelector(s);
   const stage=q('.j5-stage');
   const layers=[...hero.querySelectorAll('.j5l')];
-  const brand=q('.journey-brand');const cue=q('.journey-scrollcue');const cloudFront=q('.j5-cloudfront');
+  const brand=q('.journey-brand');const cue=q('.journey-scrollcue');
   const summitBeat=q('.journey-beat-forest'),waterBeat=q('.journey-beat-water'),finalCopy=q('.journey-final'),progress=q('.journey-progress span');
   const hasProgress=!!progress;
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
@@ -36,7 +36,6 @@
 
   tl.to({},{duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
-    .fromTo(cloudFront,{xPercent:-22,yPercent:6,autoAlpha:.95},{xPercent:26,yPercent:-4,autoAlpha:0,duration:26,ease:'none'},0)
     .to(cue,{autoAlpha:0,y:14,duration:5},3)
     /* camera pans down the canvas across the whole pin */
     .fromTo(stage,{y:0},{y:()=>-(stage.offsetHeight-innerHeight),duration:100,ease:'power1.inOut'},0);
@@ -46,7 +45,7 @@
     const dxp=parseFloat(el.dataset.dxp)||0, dyp=parseFloat(el.dataset.dyp)||0;
     if(!dxp&&!dyp)return;
     const isCondor=n==='condor';
-    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:isCondor?86:58,ease:isCondor?'none':'power2.out'},when[n]??20);
+    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:isCondor?40:58,ease:isCondor?'none':'power2.out'},when[n]??20);
   });
 
   tl.to(summitBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},10)
