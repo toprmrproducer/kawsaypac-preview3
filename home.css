@@ -517,3 +517,15 @@ body>*:last-child{margin-bottom:0}
 .philo-bloom{opacity:1}
 .philosophy>.shell::before{inset:2% 12%;background:radial-gradient(58% 50% at 50% 46%,rgba(246,242,234,.88) 0%,rgba(246,242,234,.62) 58%,rgba(246,242,234,0) 100%)}
 @media(max-width:900px){.philo-accent-left{left:-60px!important}.philo-accent-right{right:-60px!important}}
+
+/* v94: bouquets back to a tasteful accent scale, seated cleanly on both flanks */
+.philo-accent{width:clamp(210px,22vw,340px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
+.philo-bloom{width:clamp(210px,22vw,340px)!important;max-width:none!important;height:auto!important;opacity:.97}
+.philo-accent-left{left:clamp(-70px,-4vw,-30px)!important}
+.philo-accent-right{right:clamp(-70px,-4vw,-30px)!important}
+.philo-accent-left .philo-bloom{margin-left:0!important}
+.philo-accent-right .philo-bloom{margin-right:0!important}
+/* scrim no longer needed at this scale */
+.philosophy>.shell::before{display:none}
+@media(max-width:900px){.philo-accent,.philo-bloom{width:clamp(120px,20vw,180px)!important}
+ .philo-accent-left{left:-34px!important}.philo-accent-right{right:-34px!important}}
