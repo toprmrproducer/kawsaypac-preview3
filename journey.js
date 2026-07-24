@@ -48,12 +48,19 @@
     /* camera pans down the canvas across the whole pin */
     .fromTo(stage,{y:0},{y:()=>-(stage.offsetHeight-baseVH),duration:100,ease:'power1.inOut'},0);
 
+  /* v95b: the Scene-0 offsets were authored against the wide desktop crop. On a
+     narrow viewport we only see the middle ~45% of the canvas, so a full-strength
+     foreground drop opens a hole and exposes the warm s-sky plate as a hard-edged
+     block. Scale the foreground drop down on narrow screens: the layers still
+     emerge from the ground, they just never uncover the sky. */
+  const narrow=innerWidth<=860;
   layers.forEach(el=>{
     const n=el.dataset.n;
-    const dxp=parseFloat(el.dataset.dxp)||0, dyp=parseFloat(el.dataset.dyp)||0;
+    let dxp=parseFloat(el.dataset.dxp)||0, dyp=parseFloat(el.dataset.dyp)||0;
     if(!dxp&&!dyp)return;
     const isCondor=n==='condor';
     const isFg=['moss','mossbranch','monstera','orchid-brom','orchids-left','branch','branch-2'].includes(n);
+    if(narrow&&isFg)dyp*=0.45;
     tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:isCondor?40:(isFg?40:58),ease:isCondor?'none':'power2.out'},when[n]??20);
   });
 
