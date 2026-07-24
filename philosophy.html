@@ -1,1 +1,239 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Our Philosophy | Kawsaypac Ancestral Herbs</title><meta name="description" content="Plant knowledge should bring you closer to your body, your source, and the living world."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=34"><link rel="stylesheet" href="home.css?v=99"><script defer src="app.js?v=99"></script></head><body><a class="skip-link" href="#main">Skip to content</a><div data-site-header></div><main class="page-main" id="main"><section class="page-hero"><div class="page-hero-copy"><p class="eyebrow">Why Kawsaypac</p><h1>Our Philosophy</h1><p>Plant knowledge should bring you closer to your body, your source, and the living world.</p></div><div class="page-hero-media"><img src="assets/img/new/kawsaypac-hands-botanical-partnership.webp?v=18" alt="Hands holding freshly gathered botanicals" fetchpriority="high"></div></section><article class="article"><h2>Relationship before extraction</h2><p>Kawsaypac begins with direct relationships across Ecuador. We work with people who know the land, the harvest seasons, and the limits of what each ecosystem can give.</p><blockquote>Wildcrafted is a responsibility to the plant, the partner, and the person preparing the cup.</blockquote><h2>Whole plants, clear context</h2><p>We favor small batches and whole botanicals because customers deserve to see what they are using. Preparation notes, origin context, and responsible language are part of the product.</p><h2>Six standards</h2><ul><li>Ecuador sourced through direct relationships</li><li>Small-batch production</li><li>Wildcrafted whole botanicals</li><li>Research-informed education</li><li>Clear preparation guidance</li><li>Ethical stewardship</li></ul></article></main><div data-site-footer></div><div data-site-modal></div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Philosophy | Kawsaypac Ancestral Herbs</title>
+<meta name="description" content="Kawsaypac was born from a deep reverence for the people, plants, and traditions that have quietly sustained life in the Andes and Amazon for generations.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=100">
+<link rel="stylesheet" href="home.css?v=100">
+<script defer src="app.js?v=100"></script>
+<style>
+/* ============ Our Philosophy — page-scoped editorial layout ============ */
+.kx-philo{--kx-serif:'Fraunces',Georgia,serif;font-family:var(--body);color:var(--forest);background:var(--cream);overflow-x:hidden}
+.kx-philo *{box-sizing:border-box}
+.kx-philo .kx-wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(20px,5vw,44px)}
+.kx-philo .kx-col{max-width:720px;margin-inline:auto}
+
+/* progressive-enhancement reveal: fully visible by default, only a subtle rise */
+.kx-philo .kx-rise{transform:translateY(16px);transition:transform .8s var(--ease,cubic-bezier(.22,1,.36,1))}
+.kx-philo .kx-rise.kx-in{transform:none}
+@media (prefers-reduced-motion:reduce){.kx-philo .kx-rise{transform:none;transition:none}}
+
+/* HERO */
+.kx-philo .kx-hero{position:relative;padding:clamp(84px,13vw,150px) 0 clamp(40px,6vw,72px);text-align:center;background:linear-gradient(180deg,#eef1e8 0%,var(--cream) 62%)}
+.kx-philo .kx-hero-inner{max-width:900px;margin:0 auto}
+.kx-philo .kx-eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:650;margin:0 0 22px}
+.kx-philo .kx-hero h1{font-family:var(--kx-serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.2rem);line-height:.9;letter-spacing:-.04em;margin:0;color:var(--forest)}
+.kx-philo .kx-hero .kx-sub{font-family:var(--kx-serif);font-style:italic;font-weight:300;font-size:clamp(1.25rem,3.2vw,1.9rem);color:var(--forest-2,#2C4A37);margin:16px 0 0;opacity:.86}
+.kx-philo .kx-lede{font-family:var(--kx-serif);font-weight:300;font-size:clamp(1.4rem,3.4vw,2.05rem);line-height:1.34;letter-spacing:-.01em;margin:clamp(30px,4vw,46px) auto 0;max-width:660px;color:var(--forest)}
+.kx-philo .kx-hero-rule{width:52px;height:1px;background:var(--gold);margin:clamp(28px,4vw,40px) auto 0;opacity:.7}
+
+/* HERO MEDIA BAND */
+.kx-philo .kx-hero-media{margin:clamp(30px,5vw,56px) auto 0;max-width:1180px;padding-inline:clamp(20px,5vw,44px)}
+.kx-philo .kx-hero-media figure{margin:0;position:relative;border-radius:22px;overflow:hidden}
+.kx-philo .kx-hero-media img{display:block;width:100%;height:clamp(280px,44vw,520px);object-fit:cover}
+
+/* PROSE SECTIONS */
+.kx-philo section.kx-block{padding:clamp(40px,5.5vw,78px) 0}
+.kx-philo section.kx-block.kx-tight{padding-top:clamp(20px,3vw,34px)}
+.kx-philo .kx-kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:650;margin:0 0 16px}
+.kx-philo h2{font-family:var(--kx-serif);font-weight:400;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.04;letter-spacing:-.025em;margin:0 0 22px;color:var(--forest)}
+.kx-philo .kx-col p{font-size:clamp(1.02rem,1.5vw,1.16rem);line-height:1.72;margin:0 0 20px;color:#3a463d}
+.kx-philo .kx-col p:last-child{margin-bottom:0}
+.kx-philo .kx-col p em{font-style:italic;color:var(--forest)}
+.kx-philo .kx-col p strong{font-weight:600;color:var(--forest)}
+
+/* Quechua name callout */
+.kx-philo .kx-name{margin:6px auto 30px;max-width:640px;text-align:center;padding:clamp(26px,4vw,40px) 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.kx-philo .kx-name .kx-word{font-family:var(--kx-serif);font-weight:400;font-size:clamp(1.7rem,4vw,2.6rem);color:var(--forest);letter-spacing:-.02em;line-height:1.25}
+.kx-philo .kx-name .kx-word em{font-style:italic;color:var(--gold)}
+.kx-philo .kx-name .kx-word span{display:block}
+
+/* Wide image band */
+.kx-philo .kx-band{margin:clamp(30px,5vw,60px) 0;position:relative;border-radius:0}
+.kx-philo .kx-band img{display:block;width:100%;height:clamp(240px,38vw,460px);object-fit:cover}
+.kx-philo .kx-band figcaption{margin:14px auto 0;max-width:1180px;padding-inline:clamp(20px,5vw,44px);font-family:var(--kx-serif);font-style:italic;font-size:.98rem;color:#6a7066}
+
+/* Split (image + text) */
+.kx-philo .kx-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;max-width:1180px;margin:0 auto;padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,44px)}
+.kx-philo .kx-split .kx-split-media img{display:block;width:100%;height:clamp(320px,40vw,540px);object-fit:cover;border-radius:20px}
+.kx-philo .kx-split .kx-split-copy{max-width:520px}
+.kx-philo .kx-split .kx-split-copy p{font-size:clamp(1.02rem,1.5vw,1.16rem);line-height:1.72;margin:0 0 20px;color:#3a463d}
+.kx-philo .kx-split .kx-split-copy p:last-child{margin-bottom:0}
+.kx-philo .kx-split.kx-flip .kx-split-media{order:2}
+
+/* Pull quote */
+.kx-philo .kx-pull{text-align:center;max-width:820px;margin:0 auto;padding:clamp(30px,5vw,60px) clamp(20px,5vw,44px)}
+.kx-philo .kx-pull blockquote{margin:0;font-family:var(--kx-serif);font-weight:300;font-style:italic;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.32;letter-spacing:-.01em;color:var(--forest)}
+
+/* Flower of Life section */
+.kx-philo .kx-fol{position:relative;background:var(--paper);padding:clamp(56px,8vw,110px) 0;overflow:hidden;text-align:center}
+.kx-philo .kx-fol-svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(760px,120vw);height:auto;opacity:.14;pointer-events:none;color:var(--gold)}
+.kx-philo .kx-fol-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;padding-inline:clamp(20px,5vw,44px)}
+.kx-philo .kx-fol-inner h2{margin-bottom:22px}
+.kx-philo .kx-fol-inner p{font-size:clamp(1.02rem,1.5vw,1.16rem);line-height:1.72;margin:0 0 20px;color:#3a463d}
+.kx-philo .kx-fol-inner p:last-child{margin-bottom:0}
+
+/* Invitation / closing */
+.kx-philo .kx-invite{text-align:center;padding:clamp(56px,8vw,110px) 0 clamp(30px,5vw,60px);background:linear-gradient(180deg,var(--cream) 0%,#eef1e8 100%)}
+.kx-philo .kx-invite .kx-col p{color:#3a463d}
+.kx-philo .kx-welcome{font-family:var(--kx-serif);font-weight:400;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1;letter-spacing:-.03em;color:var(--forest);margin:clamp(28px,4vw,44px) 0 clamp(28px,4vw,40px)}
+.kx-philo .kx-cta{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:650;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;background:var(--forest);color:#fff;border-radius:999px;padding:17px 34px;text-decoration:none;transition:background .3s var(--ease,ease),transform .3s var(--ease,ease)}
+.kx-philo .kx-cta:hover{background:var(--forest-2,#2C4A37);transform:translateY(-2px)}
+
+@media (max-width:760px){
+  .kx-philo .kx-split{grid-template-columns:1fr;gap:26px}
+  .kx-philo .kx-split.kx-flip .kx-split-media{order:0}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div data-site-header></div>
+<main class="page-main kx-philo" id="main">
+
+  <!-- HERO -->
+  <section class="kx-hero">
+    <div class="kx-hero-inner">
+      <p class="kx-eyebrow">Our Philosophy</p>
+      <h1>KAWSAYPAC</h1>
+      <p class="kx-sub">From the Andes to the Amazon Rainforest</p>
+      <p class="kx-lede">Some things are meant to be discovered. Others are meant to be remembered.</p>
+      <div class="kx-hero-rule"></div>
+    </div>
+  </section>
+
+  <div class="kx-hero-media">
+    <figure class="kx-rise"><img src="assets/img/raisa-cotopaxi.webp?v=99" alt="The Andean highlands beneath a snow-capped volcano" fetchpriority="high"></figure>
+  </div>
+
+  <!-- OPENING -->
+  <section class="kx-block kx-tight">
+    <div class="kx-wrap kx-col kx-rise">
+      <p>Kawsaypac was born from a deep reverence for the people, plants, and traditions that have quietly sustained life in the Andes and Amazon for generations. Every herb we offer is an invitation to reconnect with nature's wisdom and experience the extraordinary relationship between the earth and the body.</p>
+    </div>
+  </section>
+
+  <!-- MORE THAN A NAME -->
+  <section class="kx-block kx-tight">
+    <div class="kx-wrap kx-col kx-rise">
+      <p class="kx-kicker">More Than a Name</p>
+      <div class="kx-name">
+        <p class="kx-word"><span><strong>Kawsay</strong> means <em>life</em></span><span><strong>Kawsaypac</strong> means <em>cheers to life</em></span></p>
+      </div>
+      <p>In Quechua, one of the oldest Indigenous languages spoken throughout the Andes, <strong>Kawsay</strong> means <em>life</em> and <strong>Kawsaypac</strong> means <em>cheers to life</em>. These are words that speak not only to being alive, but to living with vitality, purpose, gratitude, and harmony. When we first learned their meaning, it felt as though it had been waiting for us all along.</p>
+      <p>As two South Americans, one from Bolivia and one from Ecuador, this name carries a special significance. It reflects our ancestral roots, our journey back to the land that shaped our families, and our commitment to honoring the traditions that have cared for these communities long before modern wellness existed.</p>
+    </div>
+  </section>
+
+  <!-- A JOURNEY THAT CHANGED EVERYTHING (split) -->
+  <section class="kx-split kx-rise">
+    <div class="kx-split-media"><img src="assets/img/kichwa-kids.webp?v=99" alt="Kichwa community members in the Ecuadorian highlands" loading="lazy" decoding="async"></div>
+    <div class="kx-split-copy">
+      <p class="kx-kicker">A Journey That Changed Everything</p>
+      <p>Our search for medicinal plants didn't begin because we wanted to create an herbal line. It began because we wanted to better understand health. After years of navigating our own wellness journeys, we found ourselves asking a simple question: <em>How did people care for themselves before pharmacies existed?</em></p>
+      <p>That question led us deep into the Ecuadorian Andes and Amazon, where we spent time with Kichwa communities, traditional healers, and elders whose relationship with medicinal plants has been cultivated over countless generations. We arrived with curiosity, listened with humility, and left with an entirely new understanding of what it means to work with nature instead of against it.</p>
+    </div>
+  </section>
+
+  <!-- EVERY HERB HAS A STORY -->
+  <section class="kx-block">
+    <div class="kx-wrap kx-col kx-rise">
+      <p class="kx-kicker">Every Herb Has a Story</p>
+      <h2>Every herb has a story.</h2>
+      <p>The herbs in our <strong>Kawsaypac</strong> collection are not selected because they're trending or because they make impressive marketing claims. They're here because they've earned the trust of the communities who have relied on them for centuries.</p>
+      <p>Each plant carries a history of observation, respect, and lived experience. That knowledge continues to inspire every formula we create. While we embrace modern research, we also recognize the immense value of ancestral wisdom that has stood the test of time.</p>
+    </div>
+  </section>
+
+  <!-- WIDE BAND -->
+  <figure class="kx-band kx-rise">
+    <img src="assets/img/gen/philo-harvest-wide.webp?v=99" alt="Botanicals gathered and prepared by hand in the forest" loading="lazy" decoding="async">
+    <figcaption class="kx-wrap">Gathered with intention, from healthy soil to your cup.</figcaption>
+  </figure>
+
+  <!-- ROOTED IN RECIPROCITY (split, flipped) -->
+  <section class="kx-split kx-flip kx-rise">
+    <div class="kx-split-media"><img src="assets/img/brian-shaman.webp?v=99" alt="A traditional healer among the plants of the Amazon" loading="lazy" decoding="async"></div>
+    <div class="kx-split-copy">
+      <p class="kx-kicker">Rooted in Reciprocity</p>
+      <p>One of the greatest lessons Ecuador has taught us is that healing begins with relationship. Relationship with the land. Relationship with the people who protect it. Relationship with the plants themselves.</p>
+      <p>That's why we source our herbs directly from Kichwa communities and trusted local harvesters rather than through anonymous suppliers or middlemen. Every herb is sustainably wild-harvested with deep respect for Pachamama, ensuring the forests are protected, the traditions are honored, and the families preserving this knowledge are directly supported.</p>
+      <p>For us, ethical sourcing isn't simply part of our business model. It's a responsibility.</p>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="kx-pull kx-rise">
+    <blockquote>We don't believe you have to choose between ancestral knowledge and modern science. We believe the two can exist beautifully together.</blockquote>
+  </section>
+
+  <!-- ANCIENT WISDOM FOR MODERN LIVING -->
+  <section class="kx-block kx-tight">
+    <div class="kx-wrap kx-col kx-rise">
+      <p class="kx-kicker">Ancient Wisdom for Modern Living</p>
+      <p>We don't believe you have to choose between ancestral knowledge and modern science. We believe the two can exist beautifully together.</p>
+      <p>Our formulas are inspired by generations of Indigenous plant wisdom while thoughtfully crafted for the way we live today. Every blend reflects our commitment to quality, transparency, and the belief that true wellness begins by working with the body, not against it.</p>
+    </div>
+  </section>
+
+  <!-- WHY THE FLOWER OF LIFE -->
+  <section class="kx-fol">
+    <svg class="kx-fol-svg" viewBox="-130 -120 260 240" fill="none" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="1.1">
+        <circle cx="0" cy="0" r="42"/>
+        <circle cx="42" cy="0" r="42"/><circle cx="-42" cy="0" r="42"/>
+        <circle cx="21" cy="36.37" r="42"/><circle cx="-21" cy="-36.37" r="42"/>
+        <circle cx="21" cy="-36.37" r="42"/><circle cx="-21" cy="36.37" r="42"/>
+        <circle cx="84" cy="0" r="42"/><circle cx="-84" cy="0" r="42"/>
+        <circle cx="42" cy="72.74" r="42"/><circle cx="-42" cy="-72.74" r="42"/>
+        <circle cx="42" cy="-72.74" r="42"/><circle cx="-42" cy="72.74" r="42"/>
+        <circle cx="63" cy="-36.37" r="42"/><circle cx="63" cy="36.37" r="42"/>
+        <circle cx="-63" cy="36.37" r="42"/><circle cx="-63" cy="-36.37" r="42"/>
+        <circle cx="0" cy="-72.74" r="42"/><circle cx="0" cy="72.74" r="42"/>
+      </g>
+    </svg>
+    <div class="kx-fol-inner kx-rise">
+      <p class="kx-kicker">Why the Flower of Life?</p>
+      <h2>Why the Flower of Life?</h2>
+      <p>The Flower of Life has long been recognized as a symbol of connection, creation, and the intricate patterns woven throughout nature. Every circle touches another, reminding us that nothing exists in isolation. Our bodies, our emotions, our communities, and the natural world are all part of something greater.</p>
+      <p>That philosophy lives at the heart of Kawsaypac. Every herb begins in healthy soil, is gathered with intention, shared through trusted hands, and eventually becomes part of someone else's healing journey. The Flower of Life reminds us that every step in that process matters, and that wellness is never created by one thing alone, but through the relationships that sustain it.</p>
+    </div>
+  </section>
+
+  <!-- AN INVITATION / WELCOME -->
+  <section class="kx-invite">
+    <div class="kx-wrap kx-col kx-rise">
+      <p class="kx-kicker">An Invitation</p>
+      <p>Our hope is that Kawsaypac becomes more than a collection of herbs on your shelf. We hope it reconnects you with the rhythms of nature, inspires a deeper appreciation for the wisdom carried by Indigenous communities, and reminds you that the earth has always offered extraordinary gifts to those willing to care for it in return.</p>
+      <p>Thank you for allowing us to share a small piece of our homeland, our journey, and the traditions that continue to shape the way we live.</p>
+      <p class="kx-welcome">Welcome to Kawsaypac.</p>
+      <a class="kx-cta" href="shop.html">Shop the collection</a>
+    </div>
+  </section>
+
+</main>
+<div data-site-footer></div>
+<div data-site-modal></div>
+<script>
+(function(){
+  var els=document.querySelectorAll('.kx-philo .kx-rise');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('kx-in')});return;
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('kx-in');io.unobserve(e.target)}})},{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+  // image error guard -> deterministic on-brand gradient placeholder
+  document.querySelectorAll('.kx-philo img').forEach(function(img){
+    img.addEventListener('error',function(){
+      if(img.dataset.fallback)return;img.dataset.fallback=1;
+      var l=(img.getAttribute('alt')||'Kawsaypac').slice(0,40);
+      img.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FAF9F6"/><stop offset="1" stop-color="#1F3A2A"/></linearGradient></defs><rect width="1200" height="800" fill="url(#g)"/><text x="60" y="740" font-family="Georgia,serif" font-size="34" fill="#C9A942">'+l+'</text></svg>');
+    });
+  });
+})();
+</script>
+</body>
+</html>

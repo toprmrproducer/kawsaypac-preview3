@@ -1,114 +1,301 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ecuador Changed Our Lives | Kawsaypac Ancestral Herbs</title>
-  <meta name="description" content="Raisa and Brian built Kawsaypac as a bridge between Ecuadorian plant knowledge and everyday ritual.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=34">
-  <link rel="stylesheet" href="home.css?v=99">
-  <link rel="stylesheet" href="page-ornaments.css?v=1">
-  <link rel="stylesheet" href="pages-premium.css?v=52">
-  <script defer src="app.js?v=99"></script>
-  <script defer src="page-ornaments.js?v=1"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Story | Kawsaypac Ancestral Herbs</title>
+<meta name="description" content="We are Raisa and Brian. Two diagnoses changed our path, and a journey through the Ecuadorian Andes and Amazon became Kawsaypac. Welcome, friend.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=100">
+<link rel="stylesheet" href="home.css?v=100">
+<script defer src="app.js?v=100"></script>
+<style>
+/* ============ .kx-story page-scoped editorial layout ============ */
+.kx-story{--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-forest:#1F3A2A;--kx-gold:#C9A942;--kx-ink:#2b2b26;--kx-muted:#5f6157;--kx-line:rgba(31,58,42,.16);background:var(--kx-cream);color:var(--kx-ink);font-family:var(--body,Satoshi,Arial,sans-serif);overflow-x:hidden}
+.kx-story h1,.kx-story h2,.kx-story h3{font-family:var(--display,'Fraunces',Georgia,serif);font-weight:400;color:var(--kx-forest);letter-spacing:-.01em;margin:0}
+.kx-story p{margin:0;line-height:1.72;color:var(--kx-muted);font-size:clamp(15px,1.08vw,17px)}
+.kx-story .kx-em{font-style:italic;color:var(--kx-gold)}
+.kx-story .kx-eyebrow{font-family:var(--body,Satoshi,Arial,sans-serif);text-transform:uppercase;letter-spacing:.26em;font-size:11px;font-weight:600;color:var(--kx-gold);margin:0 0 14px}
+.kx-story .kx-wrap{width:min(1120px,92vw);margin-inline:auto}
+
+/* reveal: visible by default, motion is enhancement only */
+.kx-story .kx-rise{opacity:1;transform:none}
+.kx-story.kx-js .kx-rise{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.kx-story.kx-js .kx-rise.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.kx-story.kx-js .kx-rise{opacity:1!important;transform:none!important}}
+
+/* HERO */
+.kx-hero{position:relative;min-height:clamp(520px,74vh,720px);display:flex;align-items:flex-start;padding:clamp(120px,15vh,180px) 0 clamp(56px,7vw,96px)}
+.kx-hero::before{content:"";position:absolute;inset:0;background:url('assets/img/bg-cloudforest-edge.webp?v=1') center/cover no-repeat;z-index:0}
+.kx-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(250,249,246,.94) 0%,rgba(250,249,246,.72) 34%,rgba(250,249,246,.18) 60%,rgba(31,58,42,.14) 100%);z-index:1}
+.kx-hero .kx-wrap{position:relative;z-index:2}
+.kx-hero-copy{max-width:520px}
+.kx-hero h1{font-size:clamp(48px,8.4vw,104px);line-height:.98}
+.kx-hero h1 .l2{display:block}
+.kx-hero-lead{margin-top:22px;max-width:400px;color:#33352c;font-size:clamp(15px,1.15vw,17px)}
+.kx-hero-thanks{margin-top:18px;font-size:13px;letter-spacing:.02em;color:#5a5c50}
+
+/* WELCOME FRIEND band */
+.kx-welcome{padding:clamp(48px,6vw,84px) 0}
+.kx-welcome .kx-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:clamp(28px,4.5vw,72px);align-items:center}
+.kx-welcome-copy{max-width:460px}
+.kx-welcome-copy p+p{margin-top:16px}
+.kx-sprig{width:44px;height:auto;margin-bottom:18px;opacity:.85}
+.kx-welcome-media{position:relative}
+.kx-welcome-media img{width:100%;height:clamp(320px,42vw,470px);object-fit:cover;border-radius:4px;display:block}
+
+/* QUESTION + timeline */
+.kx-question{padding:clamp(44px,5.5vw,80px) 0;background:var(--kx-paper)}
+.kx-question .kx-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,80px);align-items:start}
+.kx-question h2{font-size:clamp(30px,3.6vw,46px);line-height:1.06;margin-bottom:24px}
+.kx-question h2 .kx-em{display:block}
+.kx-question-copy p+p{margin-top:16px}
+.kx-timeline{position:relative;padding-left:26px}
+.kx-timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(var(--kx-gold),rgba(201,169,66,.25))}
+.kx-tl-item{position:relative;padding-bottom:34px}
+.kx-tl-item:last-child{padding-bottom:0}
+.kx-tl-item::before{content:"";position:absolute;left:-26px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--kx-cream);border:2px solid var(--kx-gold);box-shadow:0 0 0 4px var(--kx-paper)}
+.kx-tl-year{font-family:var(--display,'Fraunces',serif);font-size:20px;color:var(--kx-forest);margin-bottom:6px}
+.kx-tl-item p{font-size:14px;line-height:1.6}
+
+/* editorial alternating rows */
+.kx-row{padding:clamp(40px,5vw,72px) 0}
+.kx-row .kx-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4.5vw,68px);align-items:center}
+.kx-row-media img{width:100%;height:clamp(300px,38vw,440px);object-fit:cover;border-radius:4px;display:block}
+.kx-row-copy{max-width:480px}
+.kx-row-copy h2{font-size:clamp(28px,3.3vw,42px);line-height:1.08;margin-bottom:20px}
+.kx-row-copy h2 .kx-em{display:block}
+.kx-row-copy p+p{margin-top:15px}
+.kx-row.kx-textfirst .kx-row-media{order:2}
+.kx-row.kx-textfirst .kx-row-copy{order:1;margin-left:auto}
+
+/* connection band */
+.kx-connection{padding:clamp(48px,6vw,88px) 0;background:var(--kx-forest);color:#e9e6dc;text-align:center}
+.kx-connection .kx-eyebrow{color:var(--kx-gold)}
+.kx-connection h2{color:#f6f3e9;font-size:clamp(30px,3.8vw,50px);line-height:1.04;margin-bottom:22px}
+.kx-connection h2 .kx-em{color:var(--kx-gold)}
+.kx-connection-lead{max-width:640px;margin:0 auto;color:#cdccc0}
+.kx-connection-lead p+p{margin-top:14px}
+.kx-icons{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;max-width:840px;margin:clamp(36px,4vw,56px) auto 0}
+.kx-icon{display:flex;flex-direction:column;align-items:center;gap:12px}
+.kx-icon svg{width:34px;height:34px;stroke:var(--kx-gold);stroke-width:1.4;fill:none}
+.kx-icon span{font-size:12px;line-height:1.4;color:#d9d7cb;letter-spacing:.02em;max-width:120px}
+.kx-connection-close{max-width:660px;margin:clamp(34px,4vw,52px) auto 0;color:#cdccc0}
+
+/* closing */
+.kx-closing{position:relative;padding:clamp(56px,7vw,104px) 0;text-align:center;background:var(--kx-cream)}
+.kx-closing h2{font-size:clamp(40px,6vw,74px);line-height:1;margin-bottom:14px}
+.kx-closing p{margin:0 auto;color:var(--kx-muted)}
+.kx-cta{display:inline-block;margin-top:30px;background:var(--kx-forest);color:#f6f3e9;font-family:var(--body,Satoshi,sans-serif);text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:600;padding:16px 34px;border-radius:2px;text-decoration:none;transition:background .3s ease,transform .3s ease}
+.kx-cta:hover{background:var(--kx-gold);color:var(--kx-forest);transform:translateY(-2px)}
+
+@media (max-width:860px){
+  .kx-welcome .kx-grid,.kx-question .kx-grid,.kx-row .kx-grid{grid-template-columns:1fr;gap:26px}
+  .kx-question .kx-grid{gap:34px}
+  .kx-row.kx-textfirst .kx-row-media{order:1}
+  .kx-row.kx-textfirst .kx-row-copy{order:2;margin-left:0}
+  .kx-welcome-media{order:-1}
+  .kx-hero-copy{max-width:100%}
+  .kx-icons{grid-template-columns:repeat(2,1fr);gap:28px 18px;max-width:420px}
+  .kx-row-copy,.kx-welcome-copy{max-width:100%}
+}
+</style>
 </head>
-<body class="story-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div data-site-header></div>
-  <main class="page-main" id="main">
-    <section class="page-hero story-page-hero ornament-zone">
-      <div class="page-hero-copy"><p class="eyebrow">Our Story</p><h1>Ecuador changed <span class="accent">our lives.</span></h1><p>Raisa and Brian built Kawsaypac as a bridge between Ecuadorian plant knowledge and everyday ritual.</p></div>
-      <div class="page-hero-media">
-        <img src="assets/img/raisa-brian-2.webp?v=18" alt="Raisa and Brian together in Ecuador" fetchpriority="high">
-        <button class="page-ornament story-hero-bird ornament-on-image" type="button" data-page-ornament data-drag-limit="32" aria-label="Move the hummingbird illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-          <span class="ornament-asset"><img src="assets/sprites/hummingbirds/hummingbird-flight.webp?v=18" alt="" draggable="false"></span>
-        </button>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div data-site-header></div>
+<main class="page-main kx-story" id="main">
+
+  <!-- HERO -->
+  <section class="kx-hero">
+    <div class="kx-wrap">
+      <div class="kx-hero-copy">
+        <p class="kx-eyebrow">Our Story</p>
+        <h1>Welcome,<span class="l2 kx-em">friend.</span></h1>
+        <p class="kx-hero-lead">We are Raisa and Brian. Our journey is one of healing, curiosity, and remembering who we have always been.</p>
+        <p class="kx-hero-thanks">Thank you for finding your way here.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="story-opening reveal ornament-zone">
-      <div class="story-botanical-collage" aria-label="Interactive Ecuadorian botanical illustrations">
-        <button class="page-ornament story-collage-monstera ornament-wash" type="button" data-page-ornament data-drag-limit="22" aria-label="Move the monstera leaf illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-          <span class="ornament-asset"><img src="assets/img/fg-leaf-monstera.webp?v=18" alt="" draggable="false"></span>
-        </button>
-        <button class="page-ornament story-collage-orchid" type="button" data-page-ornament data-drag-limit="28" aria-label="Move the orchid illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-          <span class="ornament-asset"><img src="assets/sprites/herb-icons/orchid-cluster.webp?v=18" alt="" draggable="false"></span>
-        </button>
-        <button class="page-ornament story-collage-seed" type="button" data-page-ornament data-drag-limit="25" aria-label="Move the seed pod illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-          <span class="ornament-asset"><img src="assets/sprites/herb-icons/seed-pod.webp?v=18" alt="" draggable="false"></span>
-        </button>
+  <!-- WELCOME FRIEND band -->
+  <section class="kx-welcome">
+    <div class="kx-wrap">
+      <div class="kx-grid">
+        <div class="kx-welcome-copy kx-rise">
+          <svg class="kx-sprig" viewBox="0 0 48 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 92V16" stroke="#C9A942" stroke-width="1.3"/><path d="M24 34c-9 0-16-6-16-14 8 0 16 5 16 14Z" stroke="#C9A942" stroke-width="1.2"/><path d="M24 48c9 0 16-6 16-14-8 0-16 5-16 14Z" stroke="#C9A942" stroke-width="1.2"/><path d="M24 62c-8 0-14-5-14-12 7 0 14 4 14 12Z" stroke="#C9A942" stroke-width="1.2"/><circle cx="24" cy="12" r="4.5" stroke="#C9A942" stroke-width="1.2"/></svg>
+          <p class="kx-eyebrow">Welcome, friend.</p>
+          <p>There is something beautiful about believing the body was designed to heal. Not because healing is always easy, but because somewhere beneath the noise, the trends, and the endless search for the next solution, there is a quiet knowing that our bodies were created with incredible wisdom. Maybe that's what brought you here. Maybe you're looking for answers. Maybe you're simply looking for hope. Whatever your reason, we're so grateful you've found your way to this little corner of the world.</p>
+          <p>We're Raisa and Brian, and if there's one thing we've learned, it's that healing isn't about becoming someone new. It's about remembering who you've always been.</p>
+        </div>
+        <div class="kx-welcome-media kx-rise">
+          <img src="assets/img/raisa-brian.webp?v=1" alt="Raisa and Brian, founders of Kawsaypac, in the Ecuadorian cloud forest" loading="lazy">
+        </div>
       </div>
-      <p class="eyebrow">A move became a calling</p>
-      <h2>What began as a change of place became a change in how we understood <span class="accent">relationship.</span></h2>
-      <p>Living in Ecuador brought Raisa and Brian closer to the people, plants, and landscapes behind traditions that are too often flattened into anonymous wellness products.</p>
-    </section>
+    </div>
+  </section>
 
-    <section class="story-relationship reveal ornament-zone">
-      <figure class="story-relationship-media">
-        <img src="assets/img/new/kawsaypac-herbal-field-journal.webp?v=18" alt="A field journal, tea, and Ecuadorian botanicals arranged for study" loading="lazy">
-        <figcaption>Learning begins with attention</figcaption>
-      </figure>
-      <div class="story-relationship-copy">
-        <p class="eyebrow">A living exchange</p>
-        <h2>Relationship is a practice, not a provenance line.</h2>
-        <p>Before a plant becomes part of a daily ritual, there are conversations, seasons, and people to understand. We keep that human context close from source to preparation.</p>
-        <dl class="story-relationship-steps">
-          <div><dt>Listen</dt><dd>Learning begins in place, with the people who know it.</dd></div>
-          <div><dt>Return</dt><dd>Trust grows through continuity, not a single transaction.</dd></div>
-          <div><dt>Share</dt><dd>Preparation and context travel with every plant.</dd></div>
-        </dl>
+  <!-- IT STARTED WITH A QUESTION -->
+  <section class="kx-question">
+    <div class="kx-wrap">
+      <div class="kx-grid">
+        <div class="kx-question-copy kx-rise">
+          <p class="kx-eyebrow">It Started With a Question</p>
+          <h2>Two diagnoses<span class="kx-em">changed our path.</span></h2>
+          <p>Our journey didn't begin with herbs. It began with two diagnoses that changed the direction of our lives forever.</p>
+          <p>At just seventeen years old (the year was 2007), Raisa was diagnosed with rheumatoid arthritis. In 2019, Brian was diagnosed with Barrett's esophagus and chronic gastritis. Like so many people, we were given prescriptions and told how to manage our conditions, but neither of us could shake the feeling that there had to be more. We weren't searching for a miracle. We simply wanted to understand why the body was struggling in the first place.</p>
+          <p>That one question led us down a path that completely transformed the way we viewed health, food, and the remarkable intelligence of the human body.</p>
+        </div>
+        <div class="kx-timeline kx-rise">
+          <div class="kx-tl-item">
+            <div class="kx-tl-year">2007</div>
+            <p>Raisa was diagnosed with rheumatoid arthritis at seventeen years old.</p>
+          </div>
+          <div class="kx-tl-item">
+            <div class="kx-tl-year">2019</div>
+            <p>Brian was diagnosed with Barrett's esophagus and chronic gastritis.</p>
+          </div>
+        </div>
       </div>
-      <button class="page-ornament story-relationship-teacup ornament-wash" type="button" data-page-ornament data-drag-limit="22" aria-label="Move the herbal teacup illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/herb-icons/herbal-teacup.webp?v=18" alt="" draggable="false"></span>
-      </button>
-    </section>
+    </div>
+  </section>
 
-    <section class="story-mosaic">
-      <figure class="reveal"><img src="assets/img/raisa-cotopaxi.webp?v=18" alt="Raisa standing near Cotopaxi"><figcaption>Learning through place</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/person-picking-herbs.webp?v=18" alt="Herbs being gathered in Ecuador"><figcaption>Listening before sourcing</figcaption></figure>
-      <figure class="reveal"><img src="assets/img/jungle-group.webp?v=18" alt="Kawsaypac partners gathered in Ecuador"><figcaption>Building with people, not around them</figcaption></figure>
-    </section>
+  <!-- THE KITCHEN WAS ONLY THE BEGINNING (image left) -->
+  <section class="kx-row">
+    <div class="kx-wrap">
+      <div class="kx-grid">
+        <div class="kx-row-media kx-rise">
+          <img src="assets/img/gen/story-morning-ritual.webp?v=1" alt="A morning ritual of whole botanicals, tea, and nourishing food" loading="lazy">
+        </div>
+        <div class="kx-row-copy kx-rise">
+          <p class="kx-eyebrow">The Kitchen Was Only the Beginning</p>
+          <h2>We started by changing<span class="kx-em">what was on our plates.</span></h2>
+          <p>Long before we created herbal formulas or hosted retreats, we started by changing what was on our plates.</p>
+          <p>We immersed ourselves in nutrition, learned how food influences inflammation, hormones, digestion, and the nervous system, and began sharing recipes online simply because they were helping us. To our surprise, thousands of people connected with what we were creating. What started as recipes grew into ebooks, educational resources, and eventually an incredible community of people searching for a more intentional way to care for themselves.</p>
+          <p>Looking back, those recipes were never really about food. They were about hope. They were the first invitation to believe that our daily choices could become powerful acts of healing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="st-divider reveal" aria-label="The Andean valley at first light">
-      <img src="assets/img/gen2/story-divider.webp?v=52" alt="Misty Andean valley at dawn with layered ridgelines and a distant condor" loading="lazy">
-      <p>Between the mountains and the market, there is a relationship.</p>
-    </section>
+  <!-- RETURNING TO OUR ROOTS (text left, image right) -->
+  <section class="kx-row kx-textfirst">
+    <div class="kx-wrap">
+      <div class="kx-grid">
+        <div class="kx-row-media kx-rise">
+          <img src="assets/img/bg-highlands.webp?v=1" alt="The Ecuadorian Andes highlands where plant medicine has never been forgotten" loading="lazy">
+        </div>
+        <div class="kx-row-copy kx-rise">
+          <p class="kx-eyebrow">Returning to Our Roots</p>
+          <h2>We went to learn from<span class="kx-em">those who never forgot.</span></h2>
+          <p>As our curiosity grew, so did our desire to learn from cultures where plant medicine has never been forgotten.</p>
+          <p>Beginning in 2022, we traveled throughout the Ecuadorian Andes and Amazon, spending time with Indigenous communities, traditional healers, and Kichwa elders whose relationship with medicinal plants stretches back generations. We came as students, listening far more than we spoke, learning that the forest holds a wisdom impossible to find in books alone.</p>
+          <p>Every experience reminded us of something simple yet profound: nature has always known how to nourish, support, and restore the body. The knowledge was never lost. Much of the modern world simply drifted away from it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="story-principles section ornament-zone">
-      <button class="page-ornament story-principles-cinchona ornament-on-dark" type="button" data-page-ornament data-drag-limit="24" aria-label="Move the cinchona illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/herb-icons/cinchona-bark-leaves.webp?v=18" alt="" draggable="false"></span>
-      </button>
-      <div class="shell"><div class="section-head reveal"><div><p class="eyebrow">The bridge we are building</p><h2>Source visible.<br>Plants whole.<br>Ritual <span class="accent">understood.</span></h2></div><p>Kawsaypac exists to make responsibly sourced herbal rituals easier to understand while keeping origin, context, and human relationship legible.</p></div>
-      <div class="story-ledger"><article class="reveal"><span>01</span><h3>Relationship first</h3><p>Direct partnerships and ongoing listening shape what enters the apothecary.</p></article><article class="reveal"><span>02</span><h3>Whole-plant clarity</h3><p>Small batches, clear preparation, and no anonymous filler.</p></article><article class="reveal"><span>03</span><h3>Education as care</h3><p>Context helps a daily ritual remain grounded and responsible.</p></article></div></div>
-    </section>
+  <!-- A NEW CHAPTER IN THE CLOUD FOREST (image left) -->
+  <section class="kx-row">
+    <div class="kx-wrap">
+      <div class="kx-grid">
+        <div class="kx-row-media kx-rise">
+          <img src="assets/img/bg-waterfall.webp?v=1" alt="Waterfalls tumbling through the cloud forest valleys of Ecuador" loading="lazy">
+        </div>
+        <div class="kx-row-copy kx-rise">
+          <p class="kx-eyebrow">A New Chapter in the Cloud Forest</p>
+          <h2>In 2025, we made<span class="kx-em">Ecuador our home.</span></h2>
+          <p>Today we live in the cloud forest, nestled between the Andes Mountains and the Amazon rainforest, where waterfalls tumble through the valleys, orchids bloom in every season, hummingbirds dart between flowers, and the clouds drift low enough to become part of everyday life. Living here has changed us in ways we never expected. It has taught us patience, gratitude, and reverence for the rhythms of nature.</p>
+          <p>When you spend enough time in places like this, you begin to realize that healing doesn't happen because we force it. It happens when we create the conditions that allow the body to do what it has always known how to do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="story-quote reveal"><img src="assets/img/new/kawsaypac-hands-botanical-partnership.webp?v=18" alt="Hands sharing harvested Ecuadorian botanicals"><blockquote>“Rooted in Ecuador. Guided by Nature. Created for Transformation.”</blockquote></section>
+  <!-- WHY WE CREATED KAWSAYPAC (text left, image right) -->
+  <section class="kx-row kx-textfirst">
+    <div class="kx-wrap">
+      <div class="kx-grid">
+        <div class="kx-row-media kx-rise">
+          <img src="assets/img/person-picking-herbs.webp?v=1" alt="Hands wild-harvesting botanicals with respect for the land" loading="lazy">
+        </div>
+        <div class="kx-row-copy kx-rise">
+          <p class="kx-eyebrow">Why We Created Kawsaypac</p>
+          <h2>Every herb we offer<span class="kx-em">tells a story.</span></h2>
+          <p>Every herb we offer tells a story. Because someone generously shared generations of knowledge with us.</p>
+          <p>Our Kawsaypac herbal line is the result of years spent learning directly from Kichwa communities and traditional healers who welcomed us into their homes, ceremonies, and way of life. Every formula reflects those teachings while honoring the people who have protected this wisdom for centuries.</p>
+          <p>Our herbs are sustainably wild-harvested with deep respect for Mother Earth, never irradiated, and sourced directly from the communities who steward these plants. By working without middlemen, we're able to support the families preserving this ancestral knowledge while ensuring every product reflects the integrity of its origins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="story-closing ornament-zone">
-      <button class="page-ornament story-closing-passionflower ornament-wash" type="button" data-page-ornament data-drag-limit="26" aria-label="Move the passionflower illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/herb-icons/passionflower-vine.webp?v=18" alt="" draggable="false"></span>
-      </button>
-      <div><p class="eyebrow">The Electric Eats</p><h2>Herbs are one doorway into a larger living system.</h2><p>Kawsaypac Ancestral Herbs is part of The Electric Eats LLC, connecting botanicals, digital programs, and immersive Ecuador retreats.</p><div class="hero-actions"><a class="btn btn-primary" href="shop.html">Explore the Apothecary</a><a class="btn btn-outline" href="retreats.html">Journey to Ecuador</a></div></div>
-    </section>
-  </main>
-  <div data-site-footer></div>
-  <div data-site-modal></div>
-  <script>
-  (function(){
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    var hero=document.querySelector('.story-page-hero .page-hero-media img');
-    if(!hero)return;
-    var ticking=false;
-    function update(){
-      ticking=false;
-      var r=hero.parentElement.getBoundingClientRect();
-      if(r.bottom<0||r.top>innerHeight)return;
-      var p=Math.max(-1,Math.min(1,(r.top+r.height/2-innerHeight/2)/innerHeight));
-      hero.style.transform='translateY('+(p*-34).toFixed(1)+'px) scale(1.12)';
-    }
-    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
-    update();
-  })();
-  </script>
+  <!-- MORE THAN A WELLNESS BRAND -->
+  <section class="kx-connection">
+    <div class="kx-wrap">
+      <p class="kx-eyebrow kx-rise">More Than a Wellness Brand</p>
+      <h2 class="kx-rise">It's about<span class="kx-em">connection.</span></h2>
+      <div class="kx-connection-lead kx-rise">
+        <p>The Electric Eats has never been about selling products.</p>
+        <p>It's about helping people remember that health is not built through perfection, fear, or endless protocols. It's built through connection.</p>
+      </div>
+      <div class="kx-icons kx-rise">
+        <div class="kx-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v7a3 3 0 0 0 6 0V3M7 3v18M17 3c-1.7 0-3 2.2-3 5s1.3 5 3 5 3-2.2 3-5-1.3-5-3-5Zm0 10v8"/></svg>
+          <span>The food we eat</span>
+        </div>
+        <div class="kx-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c5-2 8-6 8-11 0-2-1-4-3-4-2 0-3 1.5-5 4-2-2.5-3-4-5-4-2 0-3 2-3 4 0 5 3 9 8 11Z"/><path d="M12 21V9"/></svg>
+          <span>The herbs we consume</span>
+        </div>
+        <div class="kx-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.5A3.5 3.5 0 0 1 12 8a3.5 3.5 0 0 1 7 2.5C19 15.6 12 20 12 20Z"/></svg>
+          <span>The people we love</span>
+        </div>
+        <div class="kx-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
+          <span>The earth beneath our feet</span>
+        </div>
+        <div class="kx-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.4 1 2.5v1h6v-1c0-1.1.3-1.8 1-2.5A6 6 0 0 0 12 3Z"/><path d="M9.5 20h5M10 22h4"/></svg>
+          <span>The wisdom within our bodies</span>
+        </div>
+      </div>
+      <div class="kx-connection-close kx-rise">
+        <p>Whether you've found us through a recipe, a retreat, an herbal blend, or simply because your heart has been searching for another way, we hope this space feels like coming home.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="kx-closing">
+    <div class="kx-wrap">
+      <h2 class="kx-rise">Welcome, <span class="kx-em">friend.</span></h2>
+      <p class="kx-rise">We're so grateful you're here.</p>
+      <a class="kx-cta kx-rise" href="shop.html">Explore Our Herbs</a>
+    </div>
+  </section>
+
+</main>
+<div data-site-footer></div>
+
+<script>
+(function(){
+  var root=document.getElementById('main');
+  if(!root) return;
+  var ph='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FAF9F6"/><stop offset="1" stop-color="#1F3A2A"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="50%" y="50%" fill="#C9A942" font-family="Georgia,serif" font-size="30" text-anchor="middle" opacity="0.85">Kawsaypac</text></svg>');
+  root.querySelectorAll('img').forEach(function(img){
+    img.addEventListener('error',function(){ if(img.getAttribute('src')!==ph){img.setAttribute('src',ph);} });
+  });
+  if(!window.matchMedia||!window.IntersectionObserver){return;}
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){return;}
+  root.classList.add('kx-js');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  root.querySelectorAll('.kx-rise').forEach(function(el){io.observe(el);});
+})();
+</script>
 </body>
 </html>

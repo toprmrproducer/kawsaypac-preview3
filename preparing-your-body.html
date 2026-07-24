@@ -1,75 +1,255 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Preparing Your Body | Kawsaypac Ancestral Herbs</title>
-    <meta name="description" content="Build a calmer foundation before adding a new herbal ritual.">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=34">
-    <link rel="stylesheet" href="home.css?v=99">
-    <link rel="stylesheet" href="pages-premium.css?v=53">
-    <script defer src="app.js?v=99"></script>
-  </head>
-  <body class="learn-page prep-page">
-    <a class="skip-link" href="#main">Skip to content</a>
-    <div data-site-header></div>
-    <main class="page-main" id="main">
-      <section class="page-hero premium-hero">
-        <div class="page-hero-copy">
-          <p class="eyebrow">Learn &middot; Foundations</p>
-          <h1>Preparing your <span class="accent">body.</span></h1>
-          <p>Build a calmer foundation before adding a new herbal ritual. The plants work best when you have made room for them.</p>
-          <div class="premium-hero__actions">
-            <a class="btn btn-primary" href="shop.html">Shop the collection</a>
-            <a class="btn btn-outline" href="tea-preparation.html">Preparation guide</a>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Preparing Your Body | Kawsaypac Ancestral Herbs</title>
+  <meta name="description" content="Herbs are amplifiers. Prepare your body to receive them: what to eat, how to hydrate, how to sleep, and how to support your nervous system through your herbal protocol.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=100"><link rel="stylesheet" href="home.css?v=100">
+  <script defer src="app.js?v=100"></script>
+  <style>
+  /* ============ Preparing Your Body — page-scoped, prefixed .kx-body ============ */
+  .kx-body{--kx-serif:'Fraunces',Georgia,serif;--kx-sans:Satoshi,Arial,sans-serif;--kx-ink:#1F3A2A;--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-gold:#C9A942;--kx-soft:#5e5b52;--kx-line:rgba(31,58,42,.14);color:var(--kx-ink);background:var(--kx-cream)}
+  .kx-body .kx-wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+  .kx-body .kx-narrow{width:min(820px,calc(100% - 40px));margin-inline:auto}
+  .kx-body p{color:var(--kx-soft);font-family:var(--kx-sans);font-size:1.06rem;line-height:1.66;margin:0 0 1.05rem}
+  .kx-body h1,.kx-body h2,.kx-body h3{font-family:var(--kx-serif);color:var(--kx-ink);margin:0;letter-spacing:-.02em;line-height:1.02;font-weight:400}
+  .kx-body .kx-em{font-style:italic;color:var(--kx-gold);font-weight:400}
+  .kx-body .kx-eyebrow{font-family:var(--kx-sans);color:var(--kx-gold);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin:0 0 14px}
+
+  /* Hero */
+  .kx-body .kx-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:center;padding:clamp(40px,5.5vw,74px) 0 clamp(30px,4vw,52px)}
+  .kx-body .kx-hero h1{font-size:clamp(2.6rem,6.2vw,5rem)}
+  .kx-body .kx-hero .kx-lede{font-size:1.16rem;color:#4a4a42;margin-top:20px;max-width:34ch}
+  .kx-body .kx-hero-media{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 26px 60px rgba(31,58,42,.18)}
+  .kx-body .kx-hero-media img{width:100%;height:100%;object-fit:cover}
+
+  /* Section rhythm — tight, continuous */
+  .kx-body .kx-sec{padding:clamp(38px,5vw,72px) 0}
+  .kx-body .kx-sec-tight{padding:clamp(26px,3.4vw,46px) 0}
+
+  /* Amplifier band */
+  .kx-body .kx-amp{background:var(--kx-paper)}
+  .kx-body .kx-amp .kx-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,4vw,58px);align-items:center}
+  .kx-body .kx-amp-media{border-radius:16px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 20px 46px rgba(31,58,42,.14)}
+  .kx-body .kx-amp-media img{width:100%;height:100%;object-fit:cover}
+  .kx-body .kx-amp h2{font-size:clamp(2rem,4.2vw,3.2rem);margin-bottom:18px}
+  .kx-body .kx-pull{font-family:var(--kx-serif);font-style:italic;font-size:1.28rem;line-height:1.4;color:var(--kx-ink);border-left:2px solid var(--kx-gold);padding-left:20px;margin:22px 0 0}
+
+  /* Intro line */
+  .kx-body .kx-open{text-align:center;padding:clamp(34px,4.4vw,60px) 0 clamp(20px,2.6vw,34px)}
+  .kx-body .kx-open h2{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:16px}
+
+  /* Editorial rows */
+  .kx-body .kx-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,60px);align-items:center;padding:clamp(28px,3.6vw,48px) 0;border-top:1px solid var(--kx-line)}
+  .kx-body .kx-row:first-of-type{border-top:0}
+  .kx-body .kx-row.kx-flip .kx-row-media{order:2}
+  .kx-body .kx-row-media{border-radius:16px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 18px 42px rgba(31,58,42,.13)}
+  .kx-body .kx-row-media img{width:100%;height:100%;object-fit:cover}
+  .kx-body .kx-num{font-family:var(--kx-serif);font-size:.9rem;letter-spacing:.2em;color:var(--kx-gold);text-transform:uppercase;display:block;margin-bottom:10px}
+  .kx-body .kx-row h3{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:14px}
+  .kx-body .kx-list{list-style:none;margin:14px 0 0;padding:0}
+  .kx-body .kx-list li{position:relative;padding-left:24px;margin-bottom:11px;color:var(--kx-soft);font-family:var(--kx-sans);font-size:1.02rem;line-height:1.55}
+  .kx-body .kx-list li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--kx-gold)}
+  .kx-body .kx-avoid li::before{background:transparent;border:1.5px solid #b06a4e}
+
+  /* Reminder strip */
+  .kx-body .kx-remind{background:var(--kx-ink);color:var(--kx-cream);border-radius:18px;padding:clamp(30px,4vw,52px);text-align:center}
+  .kx-body .kx-remind h2{color:var(--kx-cream);font-size:clamp(1.8rem,3.6vw,2.8rem);margin-bottom:14px}
+  .kx-body .kx-remind p{color:rgba(250,249,246,.82);max-width:60ch;margin-inline:auto}
+  .kx-body .kx-remind .kx-em{color:var(--kx-gold)}
+
+  /* Closing */
+  .kx-body .kx-close{text-align:center;padding:clamp(40px,5vw,72px) 0 clamp(48px,6vw,88px)}
+  .kx-body .kx-close h2{font-size:clamp(2.1rem,4.4vw,3.4rem);margin-bottom:16px}
+  .kx-body .kx-close .kx-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .kx-body .kx-note{font-size:.92rem;color:#8a877e;font-family:var(--kx-sans);max-width:56ch;margin:14px auto 0}
+
+  /* Progressive-enhancement reveal — visible by default */
+  .kx-body .kx-rise{opacity:1;transform:none}
+  .kx-body.kx-anim .kx-rise{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+  .kx-body.kx-anim .kx-rise.kx-in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.kx-body.kx-anim .kx-rise{opacity:1!important;transform:none!important}}
+
+  @media (max-width:860px){
+    .kx-body .kx-hero{grid-template-columns:1fr;gap:26px;padding-top:26px}
+    .kx-body .kx-hero-media{aspect-ratio:16/11;order:-1}
+    .kx-body .kx-amp .kx-grid{grid-template-columns:1fr}
+    .kx-body .kx-row{grid-template-columns:1fr;gap:20px}
+    .kx-body .kx-row.kx-flip .kx-row-media{order:-1}
+    .kx-body .kx-row-media{order:-1}
+  }
+  </style>
+</head>
+<body class="kx-body">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-site-header></div>
+  <main class="page-main" id="main">
+
+    <!-- HERO -->
+    <section class="kx-wrap kx-hero">
+      <div class="kx-hero-copy kx-rise">
+        <p class="kx-eyebrow">Before You Brew</p>
+        <h1>How to Prepare Your <span class="kx-em">Body</span>.</h1>
+        <p class="kx-lede">The herbs are ready. But are you? How you live in your body decides how far these plants can go.</p>
+      </div>
+      <div class="kx-hero-media kx-rise">
+        <img src="assets/img/gen/story-morning-ritual.webp" alt="A quiet morning ritual with a warm herbal brew resting in soft light" fetchpriority="high">
+      </div>
+    </section>
+
+    <!-- OPENING -->
+    <section class="kx-narrow kx-open kx-rise">
+      <h2>Before you begin any herbal protocol, <span class="kx-em">start with the ground it grows in.</span></h2>
+      <p>What you put in your body, and how you live in your body, determines how far these plants can go. This is the companion guide to your herbs: what to eat, what to avoid, how to hydrate, and how to support your nervous system, so your herbs can do what they were designed to do.</p>
+    </section>
+
+    <!-- AMPLIFIER BAND -->
+    <section class="kx-amp kx-sec">
+      <div class="kx-wrap kx-grid">
+        <div class="kx-amp-media kx-rise">
+          <img src="assets/img/gen/texture-botanical-macro.webp" alt="Macro detail of fresh botanical leaves and herbs">
         </div>
-        <div class="page-hero-media"><img src="assets/img/gen/story-morning-ritual.webp?v=53" alt="A calm morning herbal tea ritual in soft light" fetchpriority="high"></div>
-      </section>
-      <figure class="learn-wide reveal">
-        <img src="assets/img/gen/closing-sunrise-cup.webp?v=53" alt="A single cup of herbal tea at sunrise" loading="lazy" decoding="async">
-        <figcaption>The ritual begins before the tea &middot; a slower start</figcaption>
-      </figure>
-      <article class="article">
-        <p class="article-lede">A useful herbal ritual does not need to begin with intensity. It begins with attention.</p>
-        <h2>Make space before adding more</h2>
-        <p>Start with regular meals, water, rest, and an honest picture of what your body already manages. A new pouch is not a rescue plan; it is an addition to a foundation that already holds. Give it one, and it will give you clearer answers.</p>
-      </article>
-      <section class="learn-band">
-        <div class="learn-band-head reveal">
-          <p class="eyebrow">The method</p>
-          <h2>Begin one change at a <span class="accent">time.</span></h2>
+        <div class="kx-amp-copy kx-rise">
+          <p class="kx-eyebrow">The Principle</p>
+          <h2>Herbs are <span class="kx-em">amplifiers</span>.</h2>
+          <p>The cleaner the foundation you give them, the deeper and faster they work. What you eat, how much you sleep, how you manage stress, and how well you hydrate all play a direct role in your results.</p>
+          <p class="kx-pull">A cup of Cat's Claw in a body running on processed food, poor sleep, and chronic stress will not reach the same depth as that same cup in a body that has been intentionally prepared to receive it.</p>
         </div>
-        <div class="learn-steps">
-          <article class="learn-step reveal"><span>01</span><h3>Read the whole label</h3><p>The full label and ingredient list, before the first cup. Know exactly what you are inviting in.</p></article>
-          <article class="learn-step reveal"><span>02</span><h3>Choose a consistent time</h3><p>Same hour, same place. A ritual anchored to your day tells you more than one that drifts.</p></article>
-          <article class="learn-step reveal"><span>03</span><h3>Keep honest notes</h3><p>How you prepared it, how you felt after. Two lines a day is enough to see a pattern.</p></article>
-          <article class="learn-step reveal"><span>04</span><h3>Never stack new things</h3><p>Avoid starting several new products at once. One variable at a time, or the signal disappears.</p></article>
-          <article class="learn-step reveal"><span>05</span><h3>Pause when unsure</h3><p>If something feels wrong, stop and seek guidance. Pausing is part of the practice, not a failure of it.</p></article>
+      </div>
+    </section>
+
+    <!-- FOUR PILLARS -->
+    <section class="kx-wrap kx-sec">
+      <div class="kx-narrow kx-open kx-rise" style="padding-top:0">
+        <p class="kx-eyebrow">Prepare the Ground</p>
+        <h2>Four ways to help your body <span class="kx-em">receive</span>.</h2>
+        <p>None of this asks for perfection. It asks for intention. Give your herbs a body that is ready, and they will meet you halfway.</p>
+      </div>
+
+      <!-- EAT -->
+      <div class="kx-row kx-rise">
+        <div class="kx-row-copy">
+          <span class="kx-num">01 &middot; Eat</span>
+          <h3>Feed the body <span class="kx-em">real food</span>.</h3>
+          <p>Lean toward whole, anti-inflammatory foods that give your system less to fight and more to work with. The simpler your plate, the more room your herbs have to do their work.</p>
+          <ul class="kx-list">
+            <li>Whole vegetables, fruit, and clean proteins as the base of most meals</li>
+            <li>Naturally anti-inflammatory foods: leafy greens, ginger, turmeric, healthy fats</li>
+            <li>Cooked, warm, easy-to-digest meals while you are on a protocol</li>
+          </ul>
+          <ul class="kx-list kx-avoid">
+            <li>Avoid processed and packaged food that keeps the body inflamed</li>
+            <li>Avoid refined sugar, it works against the herbs, especially hormonal and blood-sugar blends</li>
+            <li>Avoid alcohol, which taxes the same systems your herbs are trying to restore</li>
+          </ul>
         </div>
-      </section>
-      <section class="learn-quote reveal">
-        <blockquote>Consistency gives you clearer information than intensity.</blockquote>
-        <cite>The Kawsaypac approach</cite>
-      </section>
-      <article class="article">
-        <h2>When to ask for help</h2>
-        <div class="learn-note reveal">
-          <p class="learn-note-tag">Please read</p>
-          <p>Speak with a qualified healthcare professional if you take medication, have a diagnosed condition, are pregnant or nursing, or plan to use herbs with children. These notes are educational and do not replace individual medical guidance.</p>
+        <div class="kx-row-media">
+          <img src="assets/img/gen/philo-harvest-wide.webp" alt="Freshly harvested whole plants and produce laid out in warm daylight">
         </div>
-      </article>
-      <section class="learn-closing reveal">
-        <img src="assets/img/bg-cloudforest-edge.webp?v=53" alt="" loading="lazy" decoding="async">
-        <div class="learn-closing-copy">
-          <p class="eyebrow">When you are ready</p>
-          <h2>Ready when your <span class="accent">body</span> is.</h2>
-          <p>One pouch, one time of day, one honest note. Start there.</p>
-          <a class="btn btn-primary learn-closing-btn" href="shop.html">Shop the collection</a>
+      </div>
+
+      <!-- HYDRATE -->
+      <div class="kx-row kx-flip kx-rise">
+        <div class="kx-row-media">
+          <img src="assets/img/bg-waterfall.webp" alt="Clear water falling through the cloud forest">
         </div>
-      </section>
-    </main>
-    <div data-site-footer></div>
-    <div data-site-modal></div>
-  </body>
+        <div class="kx-row-copy">
+          <span class="kx-num">02 &middot; Hydrate</span>
+          <h3>Water is the <span class="kx-em">carrier</span>.</h3>
+          <p>Your herbs move through your body in water. A well-hydrated system carries their compounds further and clears what is being released more gently. Hydration is the quiet half of every protocol.</p>
+          <ul class="kx-list">
+            <li>Drink clean water steadily through the day, not all at once</li>
+            <li>Begin the morning with water before caffeine or food</li>
+            <li>Add more on days your protocol is working the detox and digestive systems</li>
+            <li>Remember your warm brewed herbs count toward the ritual, always taken warm</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SLEEP -->
+      <div class="kx-row kx-rise">
+        <div class="kx-row-copy">
+          <span class="kx-num">03 &middot; Sleep</span>
+          <h3>Rest is where the <span class="kx-em">work lands</span>.</h3>
+          <p>Sleep is when the body repairs and integrates. The same protocol reaches further in a rested body than in a depleted one, because rest is when your system finally has the space to respond.</p>
+          <ul class="kx-list">
+            <li>Protect a consistent sleep and wake rhythm while you are on your herbs</li>
+            <li>Wind down away from screens and bright light before bed</li>
+            <li>Keep evenings calm and unhurried so the body can settle</li>
+            <li>Let the nighttime blends, taken warm, become part of your close-of-day ritual</li>
+          </ul>
+        </div>
+        <div class="kx-row-media">
+          <img src="assets/img/gen/story-evening-cup.webp" alt="A warm cup resting in low evening light before rest">
+        </div>
+      </div>
+
+      <!-- NERVOUS SYSTEM -->
+      <div class="kx-row kx-flip kx-rise">
+        <div class="kx-row-media">
+          <img src="assets/img/gen/closing-sunrise-cup.webp" alt="Sunrise stillness with a warm cup held in both hands">
+        </div>
+        <div class="kx-row-copy">
+          <span class="kx-num">04 &middot; Support Your Nervous System</span>
+          <h3>Calm the system that <span class="kx-em">holds it all</span>.</h3>
+          <p>Chronic stress keeps the body braced, and a braced body cannot fully receive. Softening your nervous system is not a luxury on a protocol, it is part of the protocol. This is where the deepest results are protected.</p>
+          <ul class="kx-list">
+            <li>Manage daily stress instead of letting it run in the background</li>
+            <li>Use slow, intentional breathwork to bring the body out of its guard</li>
+            <li>Move your body gently and often, walking, stretching, unrushed movement</li>
+            <li>Make room for stillness, the way the communities these herbs come from always have</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- REMINDER -->
+    <section class="kx-wrap kx-sec-tight">
+      <div class="kx-remind kx-rise">
+        <p class="kx-eyebrow" style="color:var(--kx-gold)">A Gentle Note</p>
+        <h2>This is <span class="kx-em">groundwork</span>, not gatekeeping.</h2>
+        <p>You do not have to arrive perfect. Prepare the body intentionally, live a little cleaner while your herbs are working, and you give these plants their best chance to reach their full depth. Always consult a qualified clinician about pregnancy, nursing, medications, allergies, or ongoing conditions before starting any herbal protocol.</p>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="kx-narrow kx-close kx-rise">
+      <p class="kx-eyebrow">Next in the Ritual</p>
+      <h2>Body ready. <span class="kx-em">Now brew.</span></h2>
+      <p>You have prepared the ground. The next step is the cup itself, how to steep, simmer, store, and get the most from every pouch.</p>
+      <div class="kx-cta">
+        <a class="btn btn-primary" href="tea-preparation.html">Read: Preparing Your Herbs</a>
+        <a class="btn btn-outline" href="shop.html">Shop the Apothecary</a>
+      </div>
+      <p class="kx-note">This page is a working draft of the body-preparation guide, built from the current Kawsaypac principles. It is ready to be finalized word for word once the dedicated Preparing Your Body copy is provided.</p>
+    </section>
+
+  </main>
+  <div data-site-footer></div>
+  <div data-site-modal></div>
+
+  <script>
+  (function(){
+    var body=document.querySelector('.kx-body');
+    if(!body)return;
+    // Image fallback guard: swap any broken img to an on-brand gradient placeholder.
+    var ph='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="640"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FAF9F6"/><stop offset="1" stop-color="#1F3A2A"/></linearGradient></defs><rect width="800" height="640" fill="url(#g)"/><text x="50%" y="50%" fill="#C9A942" font-family="Georgia,serif" font-size="34" font-style="italic" text-anchor="middle" dominant-baseline="middle">Kawsaypac</text></svg>');
+    body.querySelectorAll('img').forEach(function(img){
+      img.addEventListener('error',function(){ if(img.src!==ph){img.src=ph;} });
+    });
+    // Progressive-enhancement reveal (content stays visible if this never runs).
+    if(!('IntersectionObserver' in window))return;
+    body.classList.add('kx-anim');
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('kx-in'); io.unobserve(e.target);} });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    body.querySelectorAll('.kx-rise').forEach(function(el){io.observe(el)});
+    // Safety net: force-show anything still hidden after 1.6s.
+    setTimeout(function(){ body.querySelectorAll('.kx-rise:not(.kx-in)').forEach(function(el){el.classList.add('kx-in')}); },1600);
+  })();
+  </script>
+</body>
 </html>

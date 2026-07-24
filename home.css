@@ -532,3 +532,28 @@ body>*:last-child{margin-bottom:0}
    They carried 26px of top margin above the Learn button, so restore that
    breathing room on the button itself rather than leaving the gap collapsed. */
 .philosophy-statement .btn-outline{margin-top:18px}
+
+/* ===== v100 Raisa revert: tighter spacing, editorial botanicals, homepage video ===== */
+/* Her #1 complaint: padding too large -> tighten so sections feel connected */
+.section{padding-block:clamp(40px,6vw,74px)}
+.philosophy{padding-block:clamp(56px,7vw,104px)!important}
+.collections,.concern-section,.products,.video-stories,.image-stories,.principles-section{padding-block:clamp(40px,6vw,74px)}
+
+/* Editorial botanicals: framing, NON-interactive, gentle sway only. Sit behind
+   content (isolated host) so typography stays the focus. */
+.eco-botanical{position:absolute;width:var(--eco-size,220px);z-index:-1;pointer-events:none;user-select:none;will-change:transform;animation:ecoSway var(--eco-dur,12s) ease-in-out var(--eco-delay,0s) infinite alternate}
+.eco-botanical img{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 22px rgba(24,52,33,.12))}
+@keyframes ecoSway{0%{transform:translate(0,0) rotate(-1deg)}100%{transform:translate(0,-7px) rotate(1deg)}}
+.eco-left-frame{top:50%!important;transform:translateY(-50%);animation-name:ecoSwayLeft}
+@keyframes ecoSwayLeft{0%{transform:translateY(-50%) translateX(0) rotate(-1deg)}100%{transform:translateY(-50%) translateX(0) rotate(1.4deg)}}
+/* Heliconia descend into Shop by Concern: start lifted, ease down when in view */
+.eco-descend{transform:translateY(-42px);opacity:0;transition:transform 1.4s cubic-bezier(.22,.61,.36,1),opacity .9s ease}
+.eco-descend.eco-in{transform:translateY(0);opacity:1}
+@media(prefers-reduced-motion:reduce){.eco-botanical{animation:none}.eco-descend{transition:none;transform:none;opacity:1}}
+@media(max-width:640px){.eco-botanical{--eco-size:clamp(96px,26vw,150px)!important;opacity:.9}}
+
+/* Homepage "Feel Your Best" video section (replaces the flat No-fillers band) */
+.home-video-section{margin:0;padding:0;background:#0d1a0c}
+.home-video-link{display:block;position:relative;width:100%;aspect-ratio:16/9;max-height:82vh;overflow:hidden;background:#0d1a0c}
+.home-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:720px){.home-video-link{aspect-ratio:9/13;max-height:none}}

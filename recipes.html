@@ -3,79 +3,339 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Recipes and Programs | Kawsaypac Ancestral Herbs</title>
-    <meta name="description" content="Simple ways to make whole-herb preparation part of an ordinary day.">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=34">
-    <link rel="stylesheet" href="home.css?v=99">
-    <link rel="stylesheet" href="pages-premium.css?v=53">
-    <script defer src="app.js?v=99"></script>
+    <title>Recipes &amp; Programs | Kawsaypac Ancestral Herbs</title>
+    <meta name="description" content="The home for every Kawsaypac recipe, ebook and guided program. Digital field guides, recipe collections and protocol kits, kept in one calm place apart from the herb shop.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=100">
+    <link rel="stylesheet" href="home.css?v=100">
+    <script defer src="app.js?v=100"></script>
+    <style>
+      /* ================= Recipes & Programs (scoped: .kx-recipes) ================= */
+      .kx-recipes{--kx-ink:var(--charcoal);--kx-soft:#5e5b52;--kx-line:rgba(31,58,42,.14);color:var(--kx-ink)}
+      .kx-recipes .kx-wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+
+      /* Hero */
+      .kx-recipes .kx-hero{width:min(1180px,calc(100% - 40px));margin:clamp(20px,3vw,36px) auto 0;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:center;padding:clamp(30px,4vw,54px) 0 clamp(10px,2vw,20px)}
+      .kx-recipes .kx-hero h1{font-family:var(--display);font-weight:500;letter-spacing:-.045em;line-height:.96;margin:.1em 0 .35em;font-size:clamp(2.6rem,5.6vw,5rem)}
+      .kx-recipes .kx-hero p{margin:0 0 clamp(20px,2.4vw,28px);color:var(--kx-soft);font-size:1.06rem;max-width:46ch}
+      .kx-recipes .kx-hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+      .kx-recipes .kx-hero-media{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:5/4}
+      .kx-recipes .kx-hero-media img{width:100%;height:100%;object-fit:cover}
+
+      /* Intro rule line */
+      .kx-recipes .kx-intro{width:min(760px,calc(100% - 40px));margin:clamp(30px,4vw,52px) auto clamp(6px,1vw,10px);text-align:center}
+      .kx-recipes .kx-intro p{margin:0;font-family:var(--display);font-weight:400;letter-spacing:-.02em;line-height:1.28;font-size:clamp(1.3rem,2.5vw,1.85rem);color:var(--forest)}
+
+      /* Generic band */
+      .kx-recipes .kx-band{padding:clamp(40px,5vw,72px) 0}
+      .kx-recipes .kx-band-head{max-width:640px;margin:0 0 clamp(24px,3vw,38px)}
+      .kx-recipes .kx-band-head.center{margin-inline:auto;text-align:center}
+      .kx-recipes .kx-band-head h2{font-family:var(--display);font-weight:500;letter-spacing:-.04em;line-height:.98;margin:.05em 0 .3em;font-size:clamp(2rem,4vw,3.3rem)}
+      .kx-recipes .kx-band-head p{margin:0;color:var(--kx-soft);font-size:1.02rem}
+
+      /* Recipe cards */
+      .kx-recipes .kx-recipe-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.2vw,26px)}
+      .kx-recipes .kx-recipe{border:1px solid var(--kx-line);border-radius:18px;padding:clamp(22px,2.6vw,32px);background:linear-gradient(180deg,#fff,var(--cream));transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+      .kx-recipes .kx-recipe:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+      .kx-recipes .kx-tag{margin:0 0 12px;color:var(--gold);font-size:.72rem;font-weight:750;letter-spacing:.16em;text-transform:uppercase}
+      .kx-recipes .kx-recipe h3{font-family:var(--display);font-weight:500;letter-spacing:-.02em;font-size:1.5rem;margin:0 0 .5em}
+      .kx-recipes .kx-recipe p{margin:0 0 1em;color:var(--kx-soft);font-size:1rem}
+      .kx-recipes .kx-recipe-meta{margin:0;padding-top:14px;border-top:1px solid var(--kx-line);color:var(--olive);font-size:.85rem;font-weight:600}
+
+      /* Ebook library */
+      .kx-recipes .kx-ebooks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,28px)}
+      .kx-recipes .kx-ebook{display:flex;flex-direction:column;border:1px solid var(--kx-line);border-radius:18px;overflow:hidden;background:#fff;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+      .kx-recipes .kx-ebook:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+      .kx-recipes .kx-cover{position:relative;aspect-ratio:4/5;overflow:hidden}
+      .kx-recipes .kx-cover img{width:100%;height:100%;object-fit:cover}
+      .kx-recipes .kx-cover .kx-format{position:absolute;top:12px;left:12px;background:rgba(31,58,42,.9);color:#f7f4ea;font-size:.66rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;border-radius:999px}
+      /* Deterministic on-brand gradient cover (no photo needed) */
+      .kx-recipes .kx-cover--gen{display:grid;place-items:center;text-align:center;padding:22px;background:radial-gradient(120% 120% at 50% 12%,#33553f 0%,#1F3A2A 48%,#152a1f 100%)}
+      .kx-recipes .kx-cover--gen .kx-cover-mark{color:rgba(201,169,66,.85);font-size:.66rem;font-weight:750;letter-spacing:.22em;text-transform:uppercase}
+      .kx-recipes .kx-cover--gen .kx-cover-title{font-family:var(--display);color:#f7f4ea;font-weight:500;letter-spacing:-.02em;line-height:1.05;font-size:clamp(1.3rem,2.6vw,1.8rem);margin:.5em 0 .35em}
+      .kx-recipes .kx-cover--gen .kx-cover-sub{color:rgba(247,244,234,.62);font-size:.8rem}
+      .kx-recipes .kx-cover--gen::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,169,66,.32);border-radius:8px;pointer-events:none}
+      .kx-recipes .kx-ebook-body{display:flex;flex-direction:column;flex:1;padding:clamp(18px,2vw,24px)}
+      .kx-recipes .kx-ebook-body h3{font-family:var(--display);font-weight:500;letter-spacing:-.02em;font-size:1.32rem;margin:0 0 .45em}
+      .kx-recipes .kx-ebook-body p{margin:0 0 1em;color:var(--kx-soft);font-size:.96rem;flex:1}
+      .kx-recipes .kx-ebook-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--kx-line)}
+      .kx-recipes .kx-price{font-family:var(--display);font-weight:500;font-size:1.15rem;color:var(--forest)}
+      .kx-recipes .kx-price small{font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--olive)}
+      .kx-recipes .kx-link{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s var(--ease)}
+      .kx-recipes .kx-link:hover{color:var(--gold)}
+
+      /* Program / protocol kits */
+      .kx-recipes .kx-kits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,28px)}
+      .kx-recipes .kx-kit{display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--kx-line);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+      .kx-recipes .kx-kit:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+      .kx-recipes .kx-kit-media{position:relative;aspect-ratio:16/11;overflow:hidden}
+      .kx-recipes .kx-kit-media img{width:100%;height:100%;object-fit:cover}
+      .kx-recipes .kx-kit-media .kx-format{position:absolute;top:12px;left:12px;background:rgba(201,169,66,.94);color:#20261a;font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px}
+      .kx-recipes .kx-kit-body{display:flex;flex-direction:column;flex:1;padding:clamp(20px,2.2vw,28px)}
+      .kx-recipes .kx-kit-body h3{font-family:var(--display);font-weight:500;letter-spacing:-.02em;font-size:1.5rem;margin:0 0 .45em}
+      .kx-recipes .kx-kit-body p{margin:0 0 1.1em;color:var(--kx-soft);font-size:.98rem;flex:1}
+      .kx-recipes .kx-kit-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--kx-line)}
+
+      /* Day program steps */
+      .kx-recipes .kx-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+      .kx-recipes .kx-step{border-left:2px solid var(--gold);padding:4px 0 4px 20px}
+      .kx-recipes .kx-step span{font-family:var(--display);font-size:1.4rem;color:var(--olive)}
+      .kx-recipes .kx-step h3{font-family:var(--display);font-weight:500;font-size:1.35rem;margin:.15em 0 .4em}
+      .kx-recipes .kx-step p{margin:0;color:var(--kx-soft);font-size:.98rem}
+      .kx-recipes .kx-disclaimer{margin:clamp(22px,2.4vw,30px) 0 0;color:var(--olive);font-size:.85rem;font-style:italic}
+
+      /* Closing */
+      .kx-recipes .kx-closing{position:relative;width:min(1180px,calc(100% - 40px));margin:clamp(40px,5vw,72px) auto clamp(24px,3vw,40px);border-radius:24px;overflow:hidden;isolation:isolate;padding:clamp(48px,7vw,96px) clamp(26px,4vw,64px);color:#f7f4ea}
+      .kx-recipes .kx-closing img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+      .kx-recipes .kx-closing::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,rgba(15,28,20,.82),rgba(15,28,20,.42))}
+      .kx-recipes .kx-closing .eyebrow{color:rgba(201,169,66,.92)}
+      .kx-recipes .kx-closing h2{font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1;font-size:clamp(2rem,4.4vw,3.6rem);margin:.05em 0 .4em;max-width:16ch}
+      .kx-recipes .kx-closing p{margin:0 0 clamp(22px,2.4vw,30px);max-width:42ch;color:rgba(247,244,234,.86);font-size:1.05rem}
+
+      /* Reveal (visible by default; JS only ADDS a class) */
+      .kx-recipes .kx-reveal{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+      .js .kx-recipes .kx-reveal:not(.kx-in){opacity:0;transform:translateY(16px)}
+      @media (prefers-reduced-motion:reduce){.js .kx-recipes .kx-reveal:not(.kx-in){opacity:1;transform:none}.kx-recipes .kx-reveal{transition:none}}
+
+      @media (max-width:900px){
+        .kx-recipes .kx-hero{grid-template-columns:1fr;gap:24px}
+        .kx-recipes .kx-hero-media{order:-1}
+        .kx-recipes .kx-ebooks{grid-template-columns:repeat(2,minmax(0,1fr))}
+        .kx-recipes .kx-kits{grid-template-columns:1fr}
+        .kx-recipes .kx-steps{grid-template-columns:1fr}
+      }
+      @media (max-width:560px){
+        .kx-recipes .kx-recipe-grid{grid-template-columns:1fr}
+        .kx-recipes .kx-ebooks{grid-template-columns:1fr}
+      }
+    </style>
   </head>
   <body class="learn-page recipes-page">
     <a class="skip-link" href="#main">Skip to content</a>
     <div data-site-header></div>
-    <main class="page-main" id="main">
-      <section class="page-hero premium-hero">
-        <div class="page-hero-copy">
-          <p class="eyebrow">Learn &middot; Rituals</p>
-          <h1>Recipes and <span class="accent">programs.</span></h1>
-          <p>Simple ways to make whole-herb preparation part of an ordinary day. No ceremony required, only a kettle and a little patience.</p>
-          <div class="premium-hero__actions">
-            <a class="btn btn-primary" href="shop.html">Shop the collection</a>
+    <main class="page-main kx-recipes" id="main">
+
+      <!-- Hero -->
+      <section class="kx-hero">
+        <div class="kx-hero-copy">
+          <p class="eyebrow">Recipes &middot; Ebooks &middot; Programs</p>
+          <h1>Recipes &amp; <span class="accent">programs.</span></h1>
+          <p>The one calm home for every Kawsaypac recipe, digital field guide and guided program. Kept apart from the herb shop, so your ebooks and protocol kits live together in one place.</p>
+          <div class="kx-hero-actions">
+            <a class="btn btn-primary" href="#ebooks">Browse the ebooks</a>
             <a class="btn btn-outline" href="tea-preparation.html">Preparation guide</a>
           </div>
         </div>
-        <div class="page-hero-media"><img src="assets/img/gen/story-evening-cup.webp?v=53" alt="An evening cup of herbal tea in low warm light" fetchpriority="high"></div>
-      </section>
-      <figure class="learn-wide reveal">
-        <img src="assets/img/gen2/tea-brew-strip.webp?v=53" alt="Whole botanicals steeping through a covered brew" loading="lazy" decoding="async">
-        <figcaption>Whole botanicals, covered steep &middot; the Kawsaypac way</figcaption>
-      </figure>
-      <article class="article">
-        <p class="article-lede">Two small recipes and one gentle daily program. Everything here follows the directions printed on your pouch.</p>
-      </article>
-      <section class="learn-band">
-        <div class="learn-band-head reveal">
-          <p class="eyebrow">The recipes</p>
-          <h2>Two ways to <span class="accent">begin.</span></h2>
-        </div>
-        <div class="recipe-grid">
-          <article class="recipe-card reveal">
-            <p class="recipe-tag">Evening &middot; warm</p>
-            <h3>Covered evening infusion</h3>
-            <p>Use the amount listed on your pouch, add hot water, and cover while steeping so nothing aromatic escapes. Strain, then drink without rushing.</p>
-            <p class="recipe-meta">Caffeine-free blends &middot; steep covered</p>
-          </article>
-          <article class="recipe-card reveal">
-            <p class="recipe-tag">Daytime &middot; chilled</p>
-            <h3>Chilled guayusa ritual</h3>
-            <p>Prepare guayusa according to its label, cool it completely, and serve over ice with fresh citrus if desired. Bright, clean, and easy to repeat.</p>
-            <p class="recipe-meta">Guayusa leaf &middot; serve over ice</p>
-          </article>
+        <div class="kx-hero-media">
+          <img src="assets/img/gen/story-evening-cup.webp?v=99" alt="An evening cup of herbal tea in low warm light" fetchpriority="high" width="720" height="576">
         </div>
       </section>
-      <section class="learn-band learn-band-program">
-        <div class="learn-band-head reveal">
-          <p class="eyebrow">The program</p>
-          <h2>A day, gently <span class="accent">structured.</span></h2>
+
+      <!-- Intro line -->
+      <div class="kx-intro kx-reveal">
+        <p>Two small recipes, a shelf of digital guides, and three guided programs. Everything here follows the directions printed on your pouch.</p>
+      </div>
+
+      <!-- Recipes -->
+      <section class="kx-band">
+        <div class="kx-wrap">
+          <div class="kx-band-head kx-reveal">
+            <p class="eyebrow">The recipes</p>
+            <h2>Two ways to <span class="accent">begin.</span></h2>
+            <p>No ceremony required, only a kettle and a little patience.</p>
+          </div>
+          <div class="kx-recipe-grid">
+            <article class="kx-recipe kx-reveal">
+              <p class="kx-tag">Evening &middot; warm</p>
+              <h3>Covered evening infusion</h3>
+              <p>Use the amount listed on your pouch, add hot water, and cover while steeping so nothing aromatic escapes. Strain, then drink without rushing.</p>
+              <p class="kx-recipe-meta">Caffeine-free blends &middot; steep covered</p>
+            </article>
+            <article class="kx-recipe kx-reveal">
+              <p class="kx-tag">Daytime &middot; chilled</p>
+              <h3>Chilled guayusa ritual</h3>
+              <p>Prepare guayusa according to its label, cool it completely, and serve over ice with fresh citrus if desired. Bright, clean, and easy to repeat.</p>
+              <p class="kx-recipe-meta">Guayusa leaf &middot; serve over ice</p>
+            </article>
+          </div>
         </div>
-        <div class="learn-steps learn-steps-3">
-          <article class="learn-step reveal"><span>01</span><p class="recipe-tag">Morning</p><h3>Awaken</h3><p>Choose a bright leaf-led preparation and pair it with breakfast.</p></article>
-          <article class="learn-step reveal"><span>02</span><p class="recipe-tag">After meals</p><h3>Settle</h3><p>Use a clearly labeled digestive ritual only as directed.</p></article>
-          <article class="learn-step reveal"><span>03</span><p class="recipe-tag">Evening</p><h3>Downshift</h3><p>Prepare a covered caffeine-free infusion and dim the pace around it.</p></article>
-        </div>
-        <p class="learn-disclaimer reveal">Programs are educational frameworks, not medical treatment.</p>
       </section>
-      <section class="learn-closing reveal">
-        <img src="assets/img/bg-amazon-basin.webp?v=53" alt="" loading="lazy" decoding="async">
-        <div class="learn-closing-copy">
-          <p class="eyebrow">Your first pouch</p>
-          <h2>The kettle is the easy <span class="accent">part.</span></h2>
-          <p>Pick one blend, one time of day, and let the ritual do the rest.</p>
-          <a class="btn btn-primary learn-closing-btn" href="shop.html">Shop the collection</a>
+
+      <!-- Ebooks & guides -->
+      <section class="kx-band" id="ebooks">
+        <div class="kx-wrap">
+          <div class="kx-band-head kx-reveal">
+            <p class="eyebrow">The library</p>
+            <h2>Ebooks &amp; <span class="accent">guides.</span></h2>
+            <p>Digital field guides and recipe collections. Instant download, printable, and yours to keep. No physical ingredients and no medical claims.</p>
+          </div>
+          <div class="kx-ebooks">
+            <article class="kx-ebook kx-reveal">
+              <div class="kx-cover">
+                <img src="assets/img/new/kawsaypac-herbal-field-journal.webp?v=99" alt="The Herbal Preparation Book, a botanical field journal" loading="lazy" decoding="async" width="480" height="600">
+                <span class="kx-format">eBook</span>
+              </div>
+              <div class="kx-ebook-body">
+                <h3>The Herbal Preparation Book</h3>
+                <p>A digital field guide to infusions, decoctions, timing, and responsible use. Clear methods with printable references.</p>
+                <div class="kx-ebook-foot">
+                  <span class="kx-price">$18.00</span>
+                  <a class="kx-link" href="product.html?product=ebook-preparation">Get the guide</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="kx-ebook kx-reveal">
+              <div class="kx-cover kx-cover--gen">
+                <div>
+                  <span class="kx-cover-mark">Kawsaypac</span>
+                  <div class="kx-cover-title">Ancestral Infusions Recipe Book</div>
+                  <span class="kx-cover-sub">Recipe eBook &middot; Digital download</span>
+                </div>
+                <span class="kx-format">Recipes</span>
+              </div>
+              <div class="kx-ebook-body">
+                <h3>Ancestral Infusions Recipe Book</h3>
+                <p>A collection of whole-herb infusions, blends, and everyday rituals drawn from the Kawsaypac apothecary. Simple to make, easy to repeat.</p>
+                <div class="kx-ebook-foot">
+                  <span class="kx-price"><small>Digital</small></span>
+                  <a class="kx-link" href="shop.html">View in shop</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="kx-ebook kx-reveal">
+              <div class="kx-cover kx-cover--gen">
+                <div>
+                  <span class="kx-cover-mark">Kawsaypac</span>
+                  <div class="kx-cover-title">Everyday Rituals Recipe Book</div>
+                  <span class="kx-cover-sub">Recipe eBook &middot; Digital download</span>
+                </div>
+                <span class="kx-format">Recipes</span>
+              </div>
+              <div class="kx-ebook-body">
+                <h3>Everyday Rituals Recipe Book</h3>
+                <p>Morning, after-meal, and evening preparations built around the blends you already love. A gentle rhythm for an ordinary day.</p>
+                <div class="kx-ebook-foot">
+                  <span class="kx-price"><small>Digital</small></span>
+                  <a class="kx-link" href="shop.html">View in shop</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
+
+      <!-- Programs & protocol kits -->
+      <section class="kx-band">
+        <div class="kx-wrap">
+          <div class="kx-band-head kx-reveal">
+            <p class="eyebrow">The programs</p>
+            <h2>Protocol <span class="accent">kits.</span></h2>
+            <p>Complete ritual kits that pair complementary blends with step-by-step guidance. Each pouch carries its own formula and preparation directions.</p>
+          </div>
+          <div class="kx-kits">
+            <article class="kx-kit kx-reveal">
+              <div class="kx-kit-media">
+                <img src="assets/img/blend-eliminate-regenerate.webp?v=99" alt="Eliminate and Regenerate full-body detox kit" loading="lazy" decoding="async" width="640" height="440">
+                <span class="kx-format">Program Kit</span>
+              </div>
+              <div class="kx-kit-body">
+                <h3>Eliminate &amp; Regenerate Kit</h3>
+                <p>A structured multi-blend program for a complete cleansing ritual. Coordinated small batches with a step-by-step guide from first pouch to Final Flush.</p>
+                <div class="kx-kit-foot">
+                  <span class="kx-price">$113.00</span>
+                  <a class="kx-link" href="product.html?product=eliminate-regenerate">View program</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="kx-kit kx-reveal">
+              <div class="kx-kit-media">
+                <img src="assets/img/blend-sacred-sacral.webp?v=99" alt="Her Fertile Waters women's wellness program kit" loading="lazy" decoding="async" width="640" height="440">
+                <span class="kx-format">Program Kit</span>
+              </div>
+              <div class="kx-kit-body">
+                <h3>Her Fertile Waters Kit</h3>
+                <p>A guided women's wellness program built around cyclical ritual, grounding, and care. Whole loose herbs with educational preparation notes throughout.</p>
+                <div class="kx-kit-foot">
+                  <span class="kx-price"><small>Guided program</small></span>
+                  <a class="kx-link" href="shop.html">Learn more</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="kx-kit kx-reveal">
+              <div class="kx-kit-media">
+                <img src="assets/img/new/kawsaypac-zapped-in-editorial-hero.webp?v=99" alt="His Fertile Fires men's vitality program kit" loading="lazy" decoding="async" width="640" height="440">
+                <span class="kx-format">Program Kit</span>
+              </div>
+              <div class="kx-kit-body">
+                <h3>His Fertile Fires Kit</h3>
+                <p>A guided men's vitality program centered on clean energy, presence, and focus. Whole botanicals with a clear daily rhythm from morning to evening.</p>
+                <div class="kx-kit-foot">
+                  <span class="kx-price"><small>Guided program</small></span>
+                  <a class="kx-link" href="shop.html">Learn more</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- A day, gently structured -->
+      <section class="kx-band">
+        <div class="kx-wrap">
+          <div class="kx-band-head kx-reveal">
+            <p class="eyebrow">The daily rhythm</p>
+            <h2>A day, gently <span class="accent">structured.</span></h2>
+            <p>One easy framework to hold your recipes and programs together.</p>
+          </div>
+          <div class="kx-steps">
+            <article class="kx-step kx-reveal"><span>01</span><p class="kx-tag">Morning</p><h3>Awaken</h3><p>Choose a bright leaf-led preparation and pair it with breakfast.</p></article>
+            <article class="kx-step kx-reveal"><span>02</span><p class="kx-tag">After meals</p><h3>Settle</h3><p>Use a clearly labeled digestive ritual only as directed.</p></article>
+            <article class="kx-step kx-reveal"><span>03</span><p class="kx-tag">Evening</p><h3>Downshift</h3><p>Prepare a covered caffeine-free infusion and dim the pace around it.</p></article>
+          </div>
+          <p class="kx-disclaimer kx-reveal">Programs are educational frameworks, not medical treatment.</p>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section class="kx-closing kx-reveal">
+        <img src="assets/img/gen/closing-sunrise-cup.webp?v=99" alt="" loading="lazy" decoding="async">
+        <p class="eyebrow">Your first ritual</p>
+        <h2>The kettle is the easy <span class="accent">part.</span></h2>
+        <p>Pick one recipe, one guide, or one program, and let the ritual do the rest.</p>
+        <div class="kx-hero-actions">
+          <a class="btn btn-primary" href="shop.html">Shop the collection</a>
+          <a class="btn btn-outline" href="#ebooks">Back to the library</a>
+        </div>
+      </section>
+
     </main>
     <div data-site-footer></div>
     <div data-site-modal></div>
+    <script>
+      (function(){
+        document.documentElement.classList.add('js');
+        var root=document.querySelector('.kx-recipes');
+        if(!root)return;
+        // Broken-image guard: swap any failed <img> to an on-brand gradient placeholder
+        var ph='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="640" height="512"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FAF9F6"/><stop offset="1" stop-color="#1F3A2A"/></linearGradient></defs><rect width="640" height="512" fill="url(#g)"/><text x="50%" y="52%" font-family="Georgia,serif" font-size="30" fill="#C9A942" text-anchor="middle">Kawsaypac</text></svg>');
+        root.querySelectorAll('img').forEach(function(img){
+          img.addEventListener('error',function(){ if(img.src!==ph){img.src=ph;} },{once:true});
+          if(img.complete&&img.naturalWidth===0){img.src=ph;}
+        });
+        // Progressive reveal: only ADD the visible class
+        var items=root.querySelectorAll('.kx-reveal');
+        if(!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('kx-in');});return;}
+        var io=new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('kx-in');io.unobserve(e.target);} });
+        },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+        items.forEach(function(el){io.observe(el);});
+        // Safety net: force everything visible shortly after load
+        window.setTimeout(function(){items.forEach(function(el){el.classList.add('kx-in');});},2500);
+      })();
+    </script>
   </body>
 </html>

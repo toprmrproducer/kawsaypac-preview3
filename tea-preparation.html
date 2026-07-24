@@ -3,125 +3,410 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Tea Preparation Guide | Kawsaypac Ancestral Herbs</title>
-  <meta name="description" content="A clear starting point for infusions, decoctions, water, timing, and storage.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=34">
-  <link rel="stylesheet" href="home.css?v=99">
-  <link rel="stylesheet" href="pages-premium.css?v=52">
-  <script defer src="app.js?v=99"></script>
+  <title>Preparing Your Herbs | Kawsaypac Ancestral Herbs</title>
+  <meta name="description" content="Your guide to preparing, storing, and getting the most from your herbs. Infusions, decoctions, dosing, sweeteners, storage, and answers to the questions people ask most.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=100">
+  <link rel="stylesheet" href="home.css?v=100">
+  <script defer src="app.js?v=100"></script>
+  <style>
+    /* ===== Preparing Your Herbs — page-scoped editorial layout ===== */
+    .kx-herbs{--kx-ink:#2A2A26;--kx-soft:#5e5b52;--kx-line:rgba(31,58,42,.14);--kx-panel:#F3F0E9;--kx-panel-2:#EFEBE1;--kx-gold:#C9A942;--kx-forest:#1F3A2A;--kx-disp:"Fraunces","Cormorant Garamond",Georgia,serif;color:var(--kx-ink)}
+    .kx-herbs .kx-wrap{width:min(1200px,calc(100% - 40px));margin-inline:auto}
+    .kx-herbs .kx-eyebrow{margin:0 0 14px;color:var(--kx-gold);font-size:.72rem;font-weight:750;letter-spacing:.2em;text-transform:uppercase}
+    .kx-herbs .kx-kicker{margin:0 0 16px;color:#8a8564;font-size:.72rem;font-weight:750;letter-spacing:.16em;text-transform:uppercase}
+    .kx-herbs h2.kx-h{font-family:var(--kx-disp);font-weight:500;letter-spacing:-.035em;line-height:1;margin:0;font-size:clamp(2rem,4.4vw,3.4rem)}
+    .kx-herbs .kx-em{font-style:italic;font-weight:400;color:var(--kx-gold)}
+    .kx-herbs p{color:var(--kx-soft);margin:0 0 1em}
+    .kx-herbs .kx-sec{padding:clamp(46px,6vw,80px) 0}
+    .kx-herbs .kx-sec--tight{padding:clamp(34px,4vw,54px) 0}
+
+    /* Hero */
+    .kx-herbs .kx-hero{display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(24px,3vw,56px);align-items:center;padding-top:clamp(20px,3vw,44px)}
+    .kx-herbs .kx-hero h1{font-family:var(--kx-disp);font-weight:400;letter-spacing:-.04em;line-height:.96;margin:0 0 22px;font-size:clamp(2.9rem,6.6vw,5.4rem);color:var(--kx-forest)}
+    .kx-herbs .kx-hero h1 .kx-em{color:var(--kx-gold)}
+    .kx-herbs .kx-lead-kick{font-size:.74rem;font-weight:750;letter-spacing:.16em;text-transform:uppercase;color:var(--kx-forest);margin:0 0 16px}
+    .kx-herbs .kx-hero-media{border-radius:20px;overflow:hidden;box-shadow:0 26px 60px rgba(31,58,42,.16);aspect-ratio:4/3}
+    .kx-herbs .kx-hero-media img{width:100%;height:100%;object-fit:cover}
+
+    /* Two-col before-you-brew */
+    .kx-herbs .kx-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,72px);align-items:start}
+    .kx-herbs .kx-btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;background:var(--kx-forest);color:#fff;font-size:.76rem;font-weight:750;letter-spacing:.11em;text-transform:uppercase;transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s}
+    .kx-herbs .kx-btn:hover{transform:translateY(-2px);background:#2C4A37}
+    .kx-herbs .kx-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+    /* Checklist panel */
+    .kx-herbs .kx-need{background:var(--kx-panel);border:1px solid var(--kx-line);border-radius:18px;padding:clamp(24px,3vw,36px)}
+    .kx-herbs .kx-need h3{font-family:var(--kx-disp);font-weight:500;font-size:1.5rem;margin:0 0 4px;color:var(--kx-forest)}
+    .kx-herbs .kx-check{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:2px}
+    .kx-herbs .kx-check li{display:flex;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--kx-line);color:var(--kx-ink);font-size:.98rem}
+    .kx-herbs .kx-check li:first-child{border-top:0}
+    .kx-herbs .kx-check .kx-ic{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--kx-line);display:grid;place-items:center}
+    .kx-herbs .kx-check .kx-ic svg{width:20px;height:20px;stroke:var(--kx-gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .kx-herbs .kx-need-media{margin-top:20px;border-radius:14px;overflow:hidden;aspect-ratio:16/9}
+    .kx-herbs .kx-need-media img{width:100%;height:100%;object-fit:cover}
+
+    /* Infusion vs decoction */
+    .kx-herbs .kx-vs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px)}
+    .kx-herbs .kx-vs article{border:1px solid var(--kx-line);border-radius:18px;padding:clamp(26px,3vw,40px);background:#fff}
+    .kx-herbs .kx-vs .kx-sketch{width:64px;height:64px;stroke:var(--kx-forest);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:20px}
+    .kx-herbs .kx-vs h3{font-family:var(--kx-disp);font-weight:500;font-size:1.7rem;margin:0 0 12px;color:var(--kx-forest);letter-spacing:.01em}
+    .kx-herbs .kx-vs p{margin:0}
+
+    /* Prep cards */
+    .kx-herbs .kx-prep-intro{max-width:760px;margin:0 auto clamp(28px,3vw,44px);text-align:center}
+    .kx-herbs .kx-prep-intro p{margin:0 0 .6em}
+    .kx-herbs .kx-cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,3vw,40px);align-items:start}
+    .kx-herbs .kx-card{background:var(--kx-panel);border:1px solid var(--kx-line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+    .kx-herbs .kx-card-body{padding:clamp(26px,3vw,40px)}
+    .kx-herbs .kx-card h3{font-family:var(--kx-disp);font-weight:500;font-size:1.9rem;margin:0 0 4px;color:var(--kx-forest);letter-spacing:.02em}
+    .kx-herbs .kx-card .kx-sub{font-style:italic;color:#8a8564;margin:0 0 20px;font-size:1rem}
+    .kx-herbs .kx-card .kx-label{font-size:.7rem;font-weight:750;letter-spacing:.15em;text-transform:uppercase;color:var(--kx-forest);margin:22px 0 8px}
+    .kx-herbs .kx-herblist{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+    .kx-herbs .kx-herblist span{background:#fff;border:1px solid var(--kx-line);border-radius:999px;padding:7px 14px;font-size:.82rem;color:var(--kx-ink)}
+    .kx-herbs .kx-dir{margin:0;color:var(--kx-soft);font-size:.96rem}
+    .kx-herbs .kx-dir strong{color:var(--kx-forest);font-weight:700}
+    .kx-herbs .kx-note{margin:16px 0 0;font-size:.9rem;color:#7c7869;font-style:italic}
+    .kx-herbs .kx-card-media{aspect-ratio:16/10;overflow:hidden}
+    .kx-herbs .kx-card-media img{width:100%;height:100%;object-fit:cover}
+
+    /* 4-col band */
+    .kx-herbs .kx-band{background:var(--kx-forest);color:#EDE7D6}
+    .kx-herbs .kx-band .kx-eyebrow{color:var(--kx-gold)}
+    .kx-herbs .kx-band h2.kx-h{color:#fff}
+    .kx-herbs .kx-band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,2.4vw,40px);margin-top:clamp(30px,3vw,48px)}
+    .kx-herbs .kx-col-hd{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+    .kx-herbs .kx-col-hd svg{width:26px;height:26px;stroke:var(--kx-gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+    .kx-herbs .kx-col-hd h3{font-family:var(--kx-disp);font-weight:500;font-size:1.28rem;margin:0;color:#fff}
+    .kx-herbs .kx-band ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+    .kx-herbs .kx-band li{font-size:.92rem;line-height:1.5;color:#D6CFBC;padding-left:16px;position:relative}
+    .kx-herbs .kx-band li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--kx-gold)}
+    .kx-herbs .kx-band li strong{color:#fff;font-weight:700}
+    .kx-herbs .kx-band p{color:#C9C2AE;font-size:.92rem}
+    .kx-herbs .kx-band .kx-sub-hd{font-family:var(--kx-disp);font-style:italic;color:#fff;font-size:1.02rem;margin:0 0 4px}
+    .kx-herbs .kx-band-note{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);font-size:.88rem;color:#C9C2AE;font-style:italic}
+
+    /* Dosing table */
+    .kx-herbs .kx-dose{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(16px,1.8vw,26px);margin-top:clamp(28px,3vw,44px);align-items:stretch}
+    .kx-herbs .kx-dose article{border:1px solid var(--kx-line);border-radius:16px;padding:clamp(20px,2vw,28px);background:#fff;display:flex;flex-direction:column}
+    .kx-herbs .kx-dose .kx-reuse{background:var(--kx-panel)}
+    .kx-herbs .kx-dose .kx-dose-t{font-size:.68rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase;color:var(--kx-gold);margin:0 0 4px}
+    .kx-herbs .kx-dose h3{font-family:var(--kx-disp);font-weight:500;font-size:1.18rem;margin:0 0 14px;color:var(--kx-forest);line-height:1.1}
+    .kx-herbs .kx-dose ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+    .kx-herbs .kx-dose li{font-size:.86rem;color:var(--kx-ink);padding-left:15px;position:relative;line-height:1.4}
+    .kx-herbs .kx-dose li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--kx-gold)}
+    .kx-herbs .kx-reuse-media{margin-top:auto;border-radius:10px;overflow:hidden;aspect-ratio:4/3;margin-bottom:14px}
+    .kx-herbs .kx-reuse-media img{width:100%;height:100%;object-fit:cover}
+    .kx-herbs .kx-reuse p{font-size:.86rem;margin:0}
+
+    /* FAQ accordion */
+    .kx-herbs .kx-faq{max-width:920px;margin-inline:auto}
+    .kx-herbs .kx-faq details{border-top:1px solid var(--kx-line)}
+    .kx-herbs .kx-faq details:last-child{border-bottom:1px solid var(--kx-line)}
+    .kx-herbs .kx-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 4px;font-family:var(--kx-disp);font-weight:500;font-size:1.18rem;color:var(--kx-forest)}
+    .kx-herbs .kx-faq summary::-webkit-details-marker{display:none}
+    .kx-herbs .kx-faq summary .kx-plus{flex:none;width:24px;height:24px;position:relative}
+    .kx-herbs .kx-faq summary .kx-plus::before,.kx-herbs .kx-faq summary .kx-plus::after{content:"";position:absolute;background:var(--kx-gold);transition:transform .28s cubic-bezier(.22,1,.36,1)}
+    .kx-herbs .kx-faq summary .kx-plus::before{left:0;top:11px;width:24px;height:2px}
+    .kx-herbs .kx-faq summary .kx-plus::after{left:11px;top:0;width:2px;height:24px}
+    .kx-herbs .kx-faq details[open] summary .kx-plus::after{transform:scaleY(0)}
+    .kx-herbs .kx-faq details p{margin:0 4px 24px;color:var(--kx-soft);font-size:.98rem;max-width:800px}
+
+    /* Reveal (visible by default) */
+    .kx-herbs .kx-r{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+    .kx-herbs.kx-js .kx-r{opacity:0;transform:translateY(20px)}
+    .kx-herbs.kx-js .kx-r.kx-in{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .kx-herbs .kx-hero,.kx-herbs .kx-two,.kx-herbs .kx-vs,.kx-herbs .kx-cards{grid-template-columns:1fr}
+      .kx-herbs .kx-band-grid{grid-template-columns:1fr 1fr}
+      .kx-herbs .kx-dose{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:560px){
+      .kx-herbs .kx-band-grid,.kx-herbs .kx-dose{grid-template-columns:1fr}
+      .kx-herbs .kx-hero h1{font-size:clamp(2.6rem,11vw,3.4rem)}
+    }
+    @media(prefers-reduced-motion:reduce){.kx-herbs.kx-js .kx-r{opacity:1!important;transform:none!important}}
+  </style>
 </head>
 <body class="teaprep-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <div data-site-header></div>
-  <main class="page-main" id="main">
-    <section class="page-hero premium-hero">
-      <div class="page-hero-copy">
-        <p class="eyebrow">Learn</p>
-        <h1>Tea Preparation <span class="accent">Guide.</span></h1>
-        <p>A clear starting point for infusions, decoctions, water, timing, and storage.</p>
-      </div>
-      <div class="page-hero-media"><img src="assets/img/herbal-infusion.webp?v=18" alt="Amber herbal tea prepared in a glass cup" fetchpriority="high"></div>
-    </section>
-    <article class="article">
-      <h2>Start with the pouch</h2>
-      <p>The current product label is always the final authority for quantity, water, timing, and frequency.</p>
+  <main class="page-main kx-herbs" id="main">
 
-      <figure class="tp-strip reveal">
-        <img src="assets/img/gen2/tea-brew-strip.webp?v=52" alt="Three stages of herbal tea preparation: infusion in a glass teapot, decoction simmering in a copper pot, and a finished cup resting" loading="lazy">
-        <figcaption>Infusion &middot; Decoction &middot; Rest &mdash; three rhythms, one ritual</figcaption>
-      </figure>
-
-      <p class="tp-hint" id="tp-hint">Tap a step to see its time guidance.</p>
-      <div class="step-grid tp-steps">
-        <article class="step-card tp-step" data-brew="infusion" data-min="7" tabindex="0" role="button" aria-expanded="false" aria-controls="tp-guide-infusion">
-          <strong>01</strong><h2>Infusion</h2>
-          <p>Best for many leaves and flowers. Add hot water, cover, steep, then strain.</p>
-          <div class="tp-guide" id="tp-guide-infusion" hidden>
-            <span class="tp-guide-time">5&ndash;7 min</span>
-            <p>Water just off the boil. Keep it covered so the aromatics stay in the cup, then strain and drink warm.</p>
-          </div>
-        </article>
-        <article class="step-card tp-step" data-brew="decoction" data-min="20" tabindex="0" role="button" aria-expanded="false" aria-controls="tp-guide-decoction">
-          <strong>02</strong><h2>Decoction</h2>
-          <p>Often used for roots and bark. Simmer gently for the listed time.</p>
-          <div class="tp-guide" id="tp-guide-decoction" hidden>
-            <span class="tp-guide-time">15&ndash;20 min</span>
-            <p>A low, patient simmer with the lid ajar. Roots and bark give up their depth slowly. Never a rolling boil.</p>
-          </div>
-        </article>
-        <article class="step-card tp-step" data-brew="rest" data-min="3" tabindex="0" role="button" aria-expanded="false" aria-controls="tp-guide-rest">
-          <strong>03</strong><h2>Rest</h2>
-          <p>Let the preparation settle, taste slowly, and notice how it fits your day.</p>
-          <div class="tp-guide" id="tp-guide-rest" hidden>
-            <span class="tp-guide-time">2&ndash;3 min</span>
-            <p>Off the heat, uncovered. Let the sediment settle and the cup come down to drinking temperature.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="tp-timer reveal" data-tp-timer hidden>
-        <div class="tp-timer-face"><span data-tp-clock>00:00</span><small data-tp-label>Brew timer</small></div>
-        <div class="tp-timer-actions">
-          <button class="btn btn-primary" type="button" data-tp-start>Start timer</button>
-          <button class="btn btn-outline" type="button" data-tp-reset>Reset</button>
+    <!-- HERO -->
+    <section class="kx-sec kx-sec--tight">
+      <div class="kx-wrap kx-hero">
+        <div class="kx-r">
+          <p class="kx-eyebrow">Preparing Your Herbs</p>
+          <h1>To reap their maximum <span class="kx-em">benefits.</span></h1>
+          <p class="kx-lead-kick">So you have got herbs. Now what?</p>
+          <p>This page is your guide. Whether you are brewing your first cup or deepening your daily ritual, everything you need to prepare, store, and get the most from your herbs is right here. Because the way you prepare your medicine matters just as much as what you choose to take.</p>
+        </div>
+        <div class="kx-hero-media kx-r">
+          <img src="assets/img/herbal-infusion.webp" alt="A warm cup of herbal infusion surrounded by loose dried herbs" fetchpriority="high" data-kx-fallback>
         </div>
       </div>
-
-      <h2>Water and vessels</h2>
-      <p>Use fresh water and a non-reactive vessel. Store loose herbs sealed, dry, cool, and away from direct light.</p>
-      <h2>Responsible use</h2>
-      <p>Ask a qualified clinician about pregnancy, nursing, medications, allergies, or ongoing conditions.</p>
-    </article>
-
-    <section class="tp-closing reveal" aria-label="Shop the apothecary">
-      <p class="eyebrow">The ritual starts here</p>
-      <h2>The right method needs the <span class="accent">right pouch.</span></h2>
-      <p>Every Kawsaypac blend ships with its own preparation directions on the label. Choose yours and put this guide to work tonight.</p>
-      <a class="btn btn-primary" href="shop.html">Shop the Apothecary</a>
     </section>
+
+    <!-- BEFORE YOU BREW -->
+    <section class="kx-sec">
+      <div class="kx-wrap kx-two">
+        <div class="kx-r">
+          <p class="kx-kicker">Before You Brew</p>
+          <h2 class="kx-h">The herbs are ready. <br>But are <span class="kx-em">you?</span></h2>
+          <p style="margin-top:22px">Before you begin any herbal protocol, it is worth understanding that what you put in your body, and how you live in your body, determines how far these plants can go. Herbs are amplifiers. The cleaner the foundation you give them, the deeper and faster they work.</p>
+          <p>That means what you eat, how much you sleep, how you manage stress, and how well you hydrate all play a direct role in your results. A cup of Cat's Claw in a body running on processed food, poor sleep, and chronic stress will not reach the same depth as that same cup in a body that has been intentionally prepared to receive it.</p>
+          <p>We have created a dedicated guide to help you prepare your body before and during your herbal protocol, covering what to eat, what to avoid, how to hydrate, and how to support your nervous system so your herbs can do what they were designed to do.</p>
+          <a class="kx-btn" href="preparing-your-body.html">Read: How to prepare your body
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <aside class="kx-need kx-r">
+          <p class="kx-eyebrow" style="color:#8a8564">What You Will Need</p>
+          <h3>Make sure you have these on hand</h3>
+          <ul class="kx-check">
+            <li><span class="kx-ic"><svg viewBox="0 0 24 24"><path d="M4 8h13a3 3 0 0 1 3 3 3 3 0 0 1-3 3H4z"/><path d="M4 8v9a1 1 0 0 0 1 1h11"/><path d="M8 5v3M12 5v3"/></svg></span>A medium saucepan with a lid or a stove-top safe glass pot</li>
+            <li><span class="kx-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4 2v-7z"/></svg></span>A fine mesh strainer</li>
+            <li><span class="kx-ic"><svg viewBox="0 0 24 24"><rect x="7" y="8" width="10" height="12" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>A glass jar with a lid for storage</li>
+            <li><span class="kx-ic"><svg viewBox="0 0 24 24"><path d="M6 4h12v4a6 6 0 0 1-12 0z"/><path d="M8 20h8"/><path d="M12 14v6"/></svg></span>A measuring cup or tablespoon</li>
+            <li><span class="kx-ic"><svg viewBox="0 0 24 24"><path d="M5 9h11v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M16 10h2a2 2 0 0 1 0 4h-2"/><path d="M8 4c-1 1 0 2 0 3M12 3c-1 1 0 2 0 3"/></svg></span>A mug you love, this is a ritual, not a chore</li>
+          </ul>
+          <div class="kx-need-media"><img src="assets/img/apoth-guayusa.webp" alt="Glass jars of dried herbs ready for brewing" loading="lazy" decoding="async" data-kx-fallback></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INFUSION VS DECOCTION -->
+    <section class="kx-sec kx-sec--tight">
+      <div class="kx-wrap">
+        <div class="kx-r" style="max-width:820px;margin-bottom:clamp(24px,3vw,40px)">
+          <p class="kx-kicker">Infusion vs. Decoction</p>
+          <p style="font-size:1.08rem;color:var(--kx-ink);margin:0">First, we want to ensure you understand that not all herbs are prepared the same way. Understanding the difference sets you up for the best results.</p>
+        </div>
+        <div class="kx-vs">
+          <article class="kx-r">
+            <svg class="kx-sketch" viewBox="0 0 48 48"><path d="M9 22h26v8a10 10 0 0 1-10 10H19A10 10 0 0 1 9 30z"/><path d="M35 24h4a4 4 0 0 1 0 8h-4"/><path d="M16 15c-2 2 0 4 0 6M24 13c-2 2 0 4 0 6M32 15c-2 2 0 4 0 6"/></svg>
+            <h3>Infusion</h3>
+            <p>An infusion is what most people call tea: pouring hot water over delicate herbs like leaves and flowers and allowing them to steep. It works well for softer plant material.</p>
+          </article>
+          <article class="kx-r">
+            <svg class="kx-sketch" viewBox="0 0 48 48"><path d="M8 20h32v10a12 12 0 0 1-12 12H20A12 12 0 0 1 8 30z"/><path d="M6 20h36"/><path d="M18 12h12M24 12v8"/><path d="M17 47l2-3M31 47l-2-3M24 47v-3"/></svg>
+            <h3>Decoction</h3>
+            <p>A decoction is what we use for all barks, roots, and tougher plant material, which require longer exposure to heat to release their full medicinal compounds. You bring the water and herbs to a boil together, then reduce to a low simmer with the lid on. This is the method the indigenous communities of the Amazon and Andes have always used. It isn't a shortcut. It's THE protocol.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO PREPARE YOUR HERBS -->
+    <section class="kx-sec">
+      <div class="kx-wrap">
+        <div class="kx-prep-intro kx-r">
+          <p class="kx-kicker" style="color:#8a8564">How To Prepare Your Herbs</p>
+          <p>Single serving instructions are for one cup. Big batch instructions yield approximately 4 servings and can be stored in a sealed glass jar in the fridge for up to 4 days.</p>
+          <p><em>Always reheat before drinking, these herbs are designed to be consumed warm.</em></p>
+        </div>
+        <div class="kx-cards">
+          <!-- INFUSIONS -->
+          <article class="kx-card kx-r">
+            <div class="kx-card-body">
+              <h3>Infusions</h3>
+              <p class="kx-sub">Leaves, flowers, and delicate blends, steeped gently</p>
+              <p class="kx-label">Our herbs include</p>
+              <div class="kx-herblist">
+                <span>Soursop</span><span>Guayusa</span><span>Matico</span><span>One Way Out Blend</span><span>Scales of Balance Blend</span><span>Sacred Sacral Blend</span><span>Final Flush Blend</span><span>Bowel Balance Blend</span>
+              </div>
+              <p class="kx-label">Directions</p>
+              <p class="kx-dir">Bring <strong>2 cups of water</strong> to a gentle boil (never roiling boil). Add <strong>1 heaping tablespoon</strong> of your herbs. Turn heat off, cover, and steep for <strong>15 to 30 minutes</strong>. Strain and drink warm.</p>
+              <p class="kx-note">These herbs and blends are best prepared by turning the heat off before steeping. This preserves their more delicate active compounds. Single serving instructions only, these are best made fresh or in smaller batches.</p>
+            </div>
+          </article>
+          <!-- DECOCTIONS -->
+          <article class="kx-card kx-r">
+            <div class="kx-card-media"><img src="assets/img/apoth-cats-claw.webp" alt="Barks and roots simmering low and slow for a decoction" loading="lazy" decoding="async" data-kx-fallback></div>
+            <div class="kx-card-body">
+              <h3>Decoctions</h3>
+              <p class="kx-sub">Barks, roots, and dense plant material, simmered low and slow</p>
+              <p class="kx-label">Our herbs include</p>
+              <div class="kx-herblist">
+                <span>Cat's Claw</span><span>Chuchuhuasi</span><span>Valerian Root</span><span>Clavo Huasca</span><span>Zapped In Blend</span><span>Bowel Banisher Blend</span><span>River of Life Blend</span><span>Restoring Order Blend</span>
+              </div>
+              <p class="kx-label">Directions (Single Serving)</p>
+              <p class="kx-dir">Bring <strong>2 cups of water</strong> to a boil. Add <strong>1 heaping tablespoon</strong> of your herb. Reduce to low, cover, and simmer for <strong>30 minutes</strong>. Strain and drink warm.</p>
+              <p class="kx-label">Directions (Big Batch)</p>
+              <p class="kx-dir">Bring <strong>5 cups of water</strong> to a boil. Add <strong>1/4 cup</strong> of your herb. Reduce to low, cover, and simmer for <strong>30 minutes</strong>. Strain and store in a glass jar in the fridge. Makes roughly 4 cups.</p>
+              <p class="kx-note">These herbs and blends require sustained heat to release their full medicinal compounds. Big batch instructions are included for these since the longer prep time makes it worth brewing ahead.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-COLUMN BAND -->
+    <section class="kx-sec kx-band">
+      <div class="kx-wrap">
+        <div class="kx-r" style="max-width:720px">
+          <p class="kx-eyebrow">The Finishing Touches</p>
+          <h2 class="kx-h">Mixing, sweetening, and <span class="kx-em">storing.</span></h2>
+        </div>
+        <div class="kx-band-grid">
+          <div class="kx-r">
+            <div class="kx-col-hd"><svg viewBox="0 0 24 24"><path d="M7 3v6M17 3v6M7 9c0 3 10 3 10 0"/><path d="M8 12l-1 8h10l-1-8"/></svg><h3>Mixing Herbs</h3></div>
+            <p>You can absolutely combine herbs and some of our blends were built around exactly that principle. A few guidelines:</p>
+            <ul>
+              <li>Start with one herb at a time so you can identify what your body responds to</li>
+              <li>Once you know how your body reacts, you can layer in additional herbs</li>
+              <li>Our kits are pre-designed combination protocols, they do the mixing for you</li>
+              <li>When in doubt, follow the protocol on the individual product page</li>
+            </ul>
+          </div>
+          <div class="kx-r">
+            <div class="kx-col-hd"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 5 6 5 9a5 5 0 0 1-10 0c0-3 2-5 5-9z"/></svg><h3>Sweetener Options</h3></div>
+            <p>Some herbs are naturally bitter or earthy. Here is how to make your cup more enjoyable without disrupting your health goals:</p>
+            <ul>
+              <li><strong>Raw honey</strong> best added after brewing, not during heat</li>
+              <li><strong>Agave</strong> light and neutral, pairs with most blends</li>
+              <li><strong>Monk fruit</strong> zero glycemic impact, ideal for those managing blood sugar</li>
+              <li><strong>Stevia leaf</strong> natural and zero calorie, already present in Bowel Balance and Sacred Sacral</li>
+            </ul>
+            <p class="kx-band-note">Avoid refined sugar, it works against the herbs, particularly for hormonal and blood sugar support blends.</p>
+          </div>
+          <div class="kx-r">
+            <div class="kx-col-hd"><svg viewBox="0 0 24 24"><path d="M8 8h8l-1 11H9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M10 3c-1 1 0 1.6 0 2.4"/></svg><h3>Other Ways to Enjoy</h3></div>
+            <p class="kx-sub-hd">Iced tea</p>
+            <p>Let your brewed cup cool completely and serve over ice. Bowel Balance, Sacred Sacral, and Guayusa are especially delicious chilled.</p>
+            <p class="kx-sub-hd">Smoothies</p>
+            <p>Add a cup of chilled Guayusa brew to your morning smoothie for a clean natural energy boost. Pairs beautifully with banana, cacao, and almond milk.</p>
+            <p class="kx-sub-hd">Steam inhalation</p>
+            <p>For Matico and One Way Out, pour a freshly brewed hot cup into a bowl, drape a towel over your head, close your eyes, and inhale deeply for 5 to 10 minutes. The antimicrobial and bronchodilating compounds travel directly into your airways.</p>
+          </div>
+          <div class="kx-r">
+            <div class="kx-col-hd"><svg viewBox="0 0 24 24"><rect x="6" y="8" width="12" height="13" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M9 12h6"/></svg><h3>Storing Your Herbs</h3></div>
+            <ul>
+              <li>Store dry herbs in a cool, dry place away from direct sunlight</li>
+              <li>Keep in their original sealed pouch or transfer to an airtight glass jar</li>
+              <li>Never store near a stove or in a humid environment</li>
+              <li>Brewed batches keep in a sealed glass jar in the fridge for up to 4 days</li>
+              <li>Always reheat before drinking, never drink cold straight from the fridge</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOSING TABLE -->
+    <section class="kx-sec">
+      <div class="kx-wrap">
+        <div class="kx-r" style="max-width:760px">
+          <p class="kx-kicker" style="color:#8a8564">Timing &amp; Duration</p>
+          <h2 class="kx-h">How long can you take your <span class="kx-em">herbs?</span></h2>
+        </div>
+        <div class="kx-dose">
+          <article class="kx-r">
+            <p class="kx-dose-t">Daily</p>
+            <h3>No cycling required</h3>
+            <ul>
+              <li>Bowel Balance</li><li>Sacred Sacral</li><li>Soursop</li><li>Guayusa</li>
+            </ul>
+          </article>
+          <article class="kx-r">
+            <p class="kx-dose-t">Up to 3 Consecutive Weeks</p>
+            <h3>Then take a 1-week break</h3>
+            <ul>
+              <li>Cat's Claw</li><li>Chuchuhuasi</li><li>Matico</li><li>Valerian Root</li><li>Clavo Huasca</li><li>River of Life</li><li>One Way Out</li><li>Scales of Balance</li><li>Zapped In</li><li>Bowel Banisher</li><li>Restoring Order</li>
+            </ul>
+          </article>
+          <article class="kx-r">
+            <p class="kx-dose-t">Maximum 7 Days</p>
+            <h3>Then take a 3-week break</h3>
+            <ul>
+              <li>Final Flush</li>
+            </ul>
+          </article>
+          <article class="kx-r">
+            <p class="kx-dose-t">30-Day Kit Protocols</p>
+            <h3>Then take a 4-week break before repeating</h3>
+            <ul>
+              <li>Eliminate &amp; Regenerate Kit</li><li>Her Fertile Waters Kit</li><li>His Fertile Fires Kit</li>
+            </ul>
+          </article>
+          <article class="kx-r kx-reuse">
+            <p class="kx-dose-t">Can I Reuse My Herbs?</p>
+            <div class="kx-reuse-media"><img src="assets/img/gen/closing-sunrise-cup.webp" alt="A second, lighter brew of reused herbs" loading="lazy" decoding="async" data-kx-fallback></div>
+            <p>Yes, once. After the first brew your herbs still hold residual compounds worth extracting. Add them to a fresh pot with half the original water amount and simmer or steep again for the same amount of time. The second brew will be lighter but still beneficial. After two uses, compost them, they have given what they have to give.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="kx-sec kx-sec--tight" style="padding-bottom:clamp(60px,7vw,110px)">
+      <div class="kx-wrap">
+        <div class="kx-r" style="text-align:center;max-width:720px;margin:0 auto clamp(24px,3vw,40px)">
+          <p class="kx-kicker" style="color:#8a8564">Frequently Asked Questions</p>
+          <h2 class="kx-h">The questions people ask <span class="kx-em">most.</span></h2>
+        </div>
+        <div class="kx-faq kx-r">
+          <details>
+            <summary>Can I drink more than one herb per day? <span class="kx-plus"></span></summary>
+            <p>Yes. Many customers drink multiple herbs as part of their daily protocol. Follow the timing guide above so each herb is taken at its optimal time and not competing with digestion or other herbs simultaneously.</p>
+          </details>
+          <details>
+            <summary>Can I take herbs while pregnant or breastfeeding? <span class="kx-plus"></span></summary>
+            <p>We do not recommend most herbs during pregnancy or breastfeeding without consulting your doctor or midwife first. Several herbs in our catalog have traditional uses as uterine stimulants or have not been studied for safety in pregnancy. Always consult your healthcare provider before beginning any herbal protocol.</p>
+          </details>
+          <details>
+            <summary>Can children drink these herbs? <span class="kx-plus"></span></summary>
+            <p>Most of our herbs are formulated for adults. Bowel Balance is one of the gentler blends and fennel has shown safety for infant colic in published studies, but we recommend consulting a pediatrician before introducing any herb to a child under 12.</p>
+          </details>
+          <details>
+            <summary>What if I miss a day? <span class="kx-plus"></span></summary>
+            <p>Simply continue your protocol the following day. Do not double up doses to compensate for a missed day. Consistency over time matters more than perfection.</p>
+          </details>
+          <details>
+            <summary>Can I take herbs alongside my medication? <span class="kx-plus"></span></summary>
+            <p>Some herbs interact with medications, particularly blood thinners, blood pressure medication, immunosuppressants, and hormonal medications. Always consult your doctor before adding any herbal protocol alongside prescription medication.</p>
+          </details>
+          <details>
+            <summary>Can I batch prepare all my herbs at once? <span class="kx-plus"></span></summary>
+            <p>Yes, for your decoctions. We recommend brewing your barks and roots at the start of each week. Each batch keeps in a sealed glass jar in the fridge for up to 4 days. Label each jar clearly so you know which herb is which and when it was brewed. Infusions are best made fresh since their more delicate compounds fade faster.</p>
+          </details>
+          <details>
+            <summary>Why do some herbs simmer and others steep? <span class="kx-plus"></span></summary>
+            <p>Barks and roots require sustained heat to break down their dense cell walls and release their full medicinal compounds, that is why they simmer. Leaves and flowers contain more delicate active compounds that are best extracted at lower temperatures, turning the heat off and steeping preserves those compounds without destroying them.</p>
+          </details>
+          <details>
+            <summary>Why do I need to reheat my brewed tea? <span class="kx-plus"></span></summary>
+            <p>These herbs were designed by nature and used by indigenous communities as warm medicine. Warmth aids absorption, supports digestion, and allows the compounds to enter your system more effectively. Never use a microwave, always use your stovetop to reheat your herbs.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
   </main>
   <div data-site-footer></div>
   <div data-site-modal></div>
+
   <script>
-  (function(){
-    var steps=document.querySelectorAll('.tp-step');
-    var timer=document.querySelector('[data-tp-timer]');
-    if(!steps.length||!timer)return;
-    var clock=timer.querySelector('[data-tp-clock]'),label=timer.querySelector('[data-tp-label]');
-    var startBtn=timer.querySelector('[data-tp-start]'),resetBtn=timer.querySelector('[data-tp-reset]');
-    var total=0,left=0,tick=null,activeName='';
-    function fmt(s){var m=Math.floor(s/60),r=s%60;return (m<10?'0':'')+m+':'+(r<10?'0':'')+r}
-    function render(){clock.textContent=fmt(left)}
-    function stop(){if(tick){clearInterval(tick);tick=null}startBtn.textContent='Start timer'}
-    function select(card){
-      steps.forEach(function(c){
-        var on=c===card;
-        c.classList.toggle('is-active',on);
-        c.setAttribute('aria-expanded',on?'true':'false');
-        var g=c.querySelector('.tp-guide');if(g)g.hidden=!on;
+    (function(){
+      var root=document.querySelector('.kx-herbs');
+      if(!root)return;
+      var ph='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FAF9F6"/><stop offset="1" stop-color="#1F3A2A"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="400" y="308" font-family="Georgia,serif" font-size="34" fill="#C9A942" text-anchor="middle" font-style="italic">Kawsaypac</text></svg>');
+      root.querySelectorAll('img[data-kx-fallback]').forEach(function(img){
+        img.addEventListener('error',function(){if(img.src!==ph){img.src=ph;}});
       });
-      activeName=card.querySelector('h2').textContent;
-      total=left=parseInt(card.getAttribute('data-min'),10)*60;
-      stop();render();
-      label.textContent=activeName+' timer';
-      timer.hidden=false;
-      var hint=document.getElementById('tp-hint');if(hint)hint.hidden=true;
-    }
-    steps.forEach(function(card){
-      card.addEventListener('click',function(){select(card)});
-      card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();select(card)}});
-    });
-    startBtn.addEventListener('click',function(){
-      if(tick){stop();return}
-      if(left<=0)left=total;
-      startBtn.textContent='Pause';
-      tick=setInterval(function(){
-        left--;render();
-        if(left<=0){stop();clock.textContent='00:00';label.textContent=activeName+' is ready';}
-      },1000);
-    });
-    resetBtn.addEventListener('click',function(){stop();left=total;render();label.textContent=activeName+' timer'});
-  })();
+      if(!('IntersectionObserver'in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){return;}
+      root.classList.add('kx-js');
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('kx-in');io.unobserve(e.target);}});
+      },{rootMargin:'0px 0px -8% 0px',threshold:0.05});
+      root.querySelectorAll('.kx-r').forEach(function(el){io.observe(el);});
+      // Failsafe: nothing may stay hidden. Reveal all after load in case IO never fires.
+      function revealAll(){root.querySelectorAll('.kx-r').forEach(function(el){el.classList.add('kx-in');});}
+      window.addEventListener('load',function(){setTimeout(revealAll,2000);});
+      setTimeout(revealAll,3500);
+    })();
   </script>
 </body>
 </html>
