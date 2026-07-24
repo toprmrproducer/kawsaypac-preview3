@@ -445,8 +445,10 @@
 .section>.shell,.philosophy>.shell{position:relative;z-index:4}
 
 /* v80: kill the white gap under the footer */
-html{background:#060d09}
-body{background:#faf6ec}
+html{background:#faf6ec}
+body,body.journey-preview{background:#faf6ec!important}
+.site-footer{position:relative}
+.site-footer::before{content:'';position:absolute;left:0;right:0;bottom:-100vh;height:100vh;background:#060d09;z-index:0}
 .site-footer{margin-bottom:0}
 body>*:last-child{margin-bottom:0}
 .philo-sub{max-width:640px;margin:14px auto 0;text-align:center;font-size:1.02rem;line-height:1.65;color:#5c6b60;position:relative;z-index:4}
