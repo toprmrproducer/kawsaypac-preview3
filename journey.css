@@ -186,3 +186,18 @@
   will-change:opacity;transform:translateZ(0);contain:paint}
 .pin-spacer{background:#0d2518}
 .journey-scroll{background:#0d2518}
+
+/* v96: branch.webp has a straight bottom crop, so on narrow viewports the
+   branch / mirrored branch-2 layers cut a hard horizontal line through the
+   jungle. Feather the BOTTOM edge only (a vertical mask is unaffected by the
+   scaleX(-1) flip on branch-2). Side edges stay untouched: feathering those
+   previously landed on the screen edges and blurred the frame. */
+.j5l[data-n="branch"],.j5l[data-n="branch-2"]{
+  -webkit-mask-image:linear-gradient(to bottom,#000 74%,rgba(0,0,0,.55) 90%,transparent 99%);
+  mask-image:linear-gradient(to bottom,#000 74%,rgba(0,0,0,.55) 90%,transparent 99%)}
+
+/* v96: "Scroll to begin the descent" overflowed the right edge at 390px */
+@media(max-width:520px){
+  .journey-scrollcue small{font-size:11px;letter-spacing:.14em;text-align:center}
+  .journey-scrollcue{width:min(92vw,320px);left:50%;transform:translateX(-50%)}
+}
