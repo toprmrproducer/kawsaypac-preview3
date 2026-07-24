@@ -395,3 +395,17 @@
 .philo-credo.visible .credo-step{transition-delay:calc((var(--i,0)) * 120ms)}
 .pillar-grid.visible .pillar{transition-delay:calc((var(--i,0)) * 100ms)}
 @media(prefers-reduced-motion:reduce){.reveal,.collection-item,.product-card,.concern-circle,.credo-step,.pillar{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* v74: Raisa - footer strictly dark, text sits directly on the scene (no card) */
+.site-footer{background:#060d09!important}
+.site-footer::after{background:linear-gradient(180deg,rgba(6,13,9,.30),rgba(6,13,9,.62))!important}
+.footer-bg{filter:brightness(.98) saturate(1.02)!important;opacity:1!important}
+.footer-card{background:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;color:#f2ede1!important;padding:clamp(24px,4vw,52px) 0!important}
+.footer-card h3{color:#d9c07a!important;letter-spacing:.2em}
+.footer-card a,.footer-card p,.footer-card small,.footer-card li a{color:#ece6d8!important}
+.footer-card a:hover{color:#f0d269!important}
+.footer-card .brand strong,.footer-card .brand small{color:#f2ede1!important}
+.footer-card .brand small{color:#c9bfa6!important}
+.site-footer,.site-footer *{text-shadow:0 2px 14px rgba(3,10,6,.75)}
+.site-footer hr,.footer-card hr{border-color:rgba(236,230,216,.22)!important}
+.footer-card .footer-col ul li a{opacity:.94}
