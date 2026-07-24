@@ -173,3 +173,16 @@
 .journey-brand{z-index:20}
 
 /* v82: philosophy-style edge sprites bleed cleanly off the frame */
+
+/* v95 SCROLL-UP GLITCH FIX ------------------------------------------------
+   Animating filter:blur(0->14px) on .j5-stage forced WebKit to re-rasterize
+   the whole 1933px stage + 15 image layers at a NEW radius every frame. On a
+   fast scroll-up that stalls the compositor and the pinned (position:fixed)
+   hero drops a frame, exposing the transparent pin-spacer -> cream void.
+   Fix: constant-radius backdrop veil, only OPACITY animates (rasterized once,
+   GPU-composited), plus a painted pin-spacer so a stall can never show cream. */
+.j5-veil{position:absolute;inset:0;z-index:19;pointer-events:none;opacity:0;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  will-change:opacity;transform:translateZ(0);contain:paint}
+.pin-spacer{background:#0d2518}
+.journey-scroll{background:#0d2518}
