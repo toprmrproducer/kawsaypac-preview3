@@ -1,134 +1,924 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Return to the Living Source | Kawsaypac Ancestral Herbs</title>
-  <meta name="description" content="Intimate journeys through Ecuador that bring landscape, nourishment, plant education, and transformation together.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=34">
-  <link rel="stylesheet" href="home.css?v=99">
-  <link rel="stylesheet" href="page-ornaments.css?v=20">
-  <link rel="stylesheet" href="pages-premium.css?v=52">
-  <script defer src="app.js?v=99"></script>
-  <script defer src="page-ornaments.js?v=1"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keys to Kawsay Retreat — Ecuador 2026 | Kawsaypac</title>
+  <meta name="description" content="Keys to Kawsay Retreat. 10 days in Ecuador across the Andes and Amazon. Two sacred landscapes, one complete reset. Book a discovery call." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --cream:        #F5F0E8;
+      --cream-dark:   #EDE7D9;
+      --forest:       #1A2318;
+      --forest-mid:   #2C3A28;
+      --forest-light: #3D5235;
+      --sand:         #C4A882;
+      --sand-light:   #D8C5A8;
+      --gold:         #C9A84C;
+      --gold-light:   #E2C97A;
+      --terracotta:   #8B4513;
+      --white:        #FFFFFF;
+      --text-dark:    #1A2318;
+      --text-mid:     #4A5244;
+      --text-muted:   #7A8474;
+
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+
+      --radius-sm:    8px;
+      --radius-md:    16px;
+      --radius-lg:    24px;
+
+      --shadow-sm:    0 2px 16px rgba(26,35,24,0.08);
+      --shadow-md:    0 8px 40px rgba(26,35,24,0.14);
+      --shadow-lg:    0 24px 80px rgba(26,35,24,0.20);
+
+      --transition:   all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================================
+       RESET + BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; -webkit-overflow-scrolling: touch; }
+    body { font-family: var(--font-sans); color: var(--text-dark); background: var(--cream); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label { font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .section-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; color: var(--text-dark); }
+    .section-title.light { color: var(--cream); }
+    .section-subtitle { font-family: var(--font-sans); font-size: clamp(1rem, 2vw, 1.125rem); font-weight: 300; line-height: 1.75; color: var(--text-mid); }
+    .section-subtitle.light { color: var(--sand-light); }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn-primary { display: inline-flex !important; align-items: center !important; gap: 10px !important; padding: 16px 36px !important; background: #ffffff !important; color: #111111 !important; font-family: var(--font-sans) !important; font-size: 0.8125rem !important; font-weight: 700 !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; border-radius: 2px !important; cursor: pointer !important; transition: var(--transition) !important; border: 2px solid #ffffff !important; text-decoration: none !important; }
+    .btn-primary:hover { background: var(--gold) !important; border-color: var(--gold) !important; color: #111111 !important; transform: translateY(-1px) !important; box-shadow: 0 8px 32px rgba(201,168,76,0.35) !important; }
+    .btn-outline { display: inline-flex !important; align-items: center !important; gap: 10px !important; padding: 15px 36px !important; background: #ffffff !important; color: #111111 !important; font-family: var(--font-sans) !important; font-size: 0.8125rem !important; font-weight: 700 !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; border-radius: 2px !important; cursor: pointer !important; transition: var(--transition) !important; border: 2px solid #ffffff !important; text-decoration: none !important; }
+    .btn-outline:hover { background: var(--gold) !important; border-color: var(--gold) !important; color: #111111 !important; }
+
+    /* ============================================================
+       NAVBAR (re-enabled, links into the Kawsaypac site)
+    ============================================================ */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 22px 40px; display: flex; align-items: center; justify-content: space-between; transition: var(--transition-slow); }
+    .navbar.scrolled { background: rgba(26,35,24,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 14px 40px; box-shadow: 0 1px 0 rgba(201,168,76,0.2); }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo-name { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; color: var(--white); letter-spacing: 0.06em; line-height: 1; }
+    .nav-logo-sub { font-family: var(--font-sans); font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.78); transition: var(--transition); text-shadow: 0 1px 6px rgba(0,0,0,0.35); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--forest); background: var(--gold); padding: 11px 22px; border-radius: 2px; cursor: pointer; transition: var(--transition); }
+    .nav-cta:hover { background: var(--gold-light); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 1px; background: var(--white); transition: var(--transition); }
+    .mobile-menu { position: fixed; inset: 0; background: var(--forest); z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 400; color: var(--cream); letter-spacing: 0.02em; transition: var(--transition); }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu-close { position: absolute; top: 24px; right: 28px; font-size: 1.6rem; color: var(--sand); cursor: pointer; background: none; border: none; font-family: var(--font-sans); transition: var(--transition); }
+    .mobile-menu-close:hover { color: var(--gold); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #0D1A0C; }
+    .hero-video-overlay { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(26,35,24,0.3) 0%, transparent 60%), linear-gradient(160deg, rgba(8,15,6,0.72) 0%, rgba(26,35,24,0.6) 40%, rgba(26,35,24,0.5) 100%); }
+    .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(61,82,53,0.5) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 20% 80%, rgba(139,69,19,0.3) 0%, transparent 50%), linear-gradient(160deg, #0D1A0C 0%, #1A2318 30%, #2C3A1A 60%, #1F2E15 100%); }
+    .hero-mist { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 120% 60% at 50% 100%, rgba(196,168,130,0.08) 0%, transparent 50%), radial-gradient(ellipse 80% 40% at 30% 70%, rgba(245,240,232,0.04) 0%, transparent 40%); animation: mistDrift 12s ease-in-out infinite alternate; }
+    @keyframes mistDrift { 0% { opacity: 0.6; transform: translateY(0px); } 100% { opacity: 1; transform: translateY(-10px); } }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: orbFloat 8s ease-in-out infinite alternate; z-index: 1; }
+    .hero-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(61,82,53,0.4), transparent 70%); top: -100px; right: -100px; animation-duration: 10s; }
+    .hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,168,76,0.12), transparent 70%); bottom: 0; left: 10%; animation-duration: 14s; animation-delay: -4s; }
+    .hero-orb-3 { width: 500px; height: 300px; background: radial-gradient(circle, rgba(139,69,19,0.12), transparent 70%); bottom: -80px; left: 50%; transform: translateX(-50%); animation-duration: 16s; animation-delay: -8s; filter: blur(60px); }
+    @keyframes orbFloat { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(20px,-30px) scale(1.05); } }
+    .hero-mist-2 { background: radial-gradient(ellipse 100% 50% at 80% 60%, rgba(61,82,53,0.07) 0%, transparent 55%), radial-gradient(ellipse 60% 30% at 10% 40%, rgba(196,168,130,0.05) 0%, transparent 45%); animation: mistDrift2 18s ease-in-out infinite alternate; }
+    .hero-mist-3 { background: radial-gradient(ellipse 140% 40% at 50% 90%, rgba(26,35,24,0.5) 0%, transparent 60%); animation: mistDrift3 9s ease-in-out infinite alternate; }
+    @keyframes mistDrift2 { 0% { opacity:0.4; transform: translateX(-12px) translateY(4px); } 100% { opacity:0.9; transform: translateX(12px) translateY(-8px); } }
+    @keyframes mistDrift3 { 0% { opacity:0.7; transform: translateY(0px) scaleX(1); } 100% { opacity:1; transform: translateY(-6px) scaleX(1.04); } }
+    .hero-canopy { position: absolute; top: 0; left: 0; right: 0; height: 220px; background: radial-gradient(ellipse 30% 100% at 5% 0%, rgba(10,18,8,0.85) 0%, transparent 60%), radial-gradient(ellipse 25% 90% at 18% 0%, rgba(15,25,10,0.7) 0%, transparent 55%), radial-gradient(ellipse 35% 80% at 40% 0%, rgba(10,18,8,0.6) 0%, transparent 50%), radial-gradient(ellipse 20% 100% at 62% 0%, rgba(15,25,10,0.75) 0%, transparent 55%), radial-gradient(ellipse 30% 90% at 80% 0%, rgba(10,18,8,0.8) 0%, transparent 60%), radial-gradient(ellipse 22% 80% at 95% 0%, rgba(15,25,10,0.65) 0%, transparent 50%), linear-gradient(to bottom, rgba(8,15,6,0.75) 0%, transparent 100%); z-index: 2; pointer-events: none; animation: canopyBreath 20s ease-in-out infinite alternate; }
+    @keyframes canopyBreath { 0% { opacity:0.85; transform: translateY(0px); } 100% { opacity:1; transform: translateY(4px); } }
+    .hero-lines { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+    .hero-lines::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent); }
+    .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 860px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; background: var(--gold); border: 2px solid rgba(0,0,0,0.3); border-radius: 40px; margin-bottom: 36px; backdrop-filter: blur(8px); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+    .hero-badge-text { font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+    .hero-eyebrow { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.5); margin-bottom: 20px; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3.5rem, 9vw, 7.5rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; color: var(--white); margin-bottom: 12px; }
+    .hero-title em { font-style: italic; color: var(--sand-light); }
+    .tagline-sep { display: inline; }
+    .hero-tagline { font-family: var(--font-sans); font-size: clamp(0.875rem, 1.8vw, 1.1rem); font-weight: 700; font-style: normal; color: #ffffff; margin-bottom: 48px; letter-spacing: 0.12em; text-transform: uppercase; text-shadow: 0 2px 16px rgba(0,0,0,0.5); }
+    .hero-meta { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 52px; flex-wrap: wrap; }
+    .hero-meta-item { display: flex; align-items: center; gap: 8px; }
+    .hero-meta-icon { width: 14px; height: 14px; opacity: 0.6; }
+    .hero-meta-text { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; color: #ffffff; text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+    .hero-meta-divider { width: 1px; height: 14px; background: rgba(196,168,130,0.3); }
+    .hero-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
+    .hero-scroll-text { font-family: var(--font-sans); font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); }
+    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent); animation: scrollLine 2s ease-in-out infinite; }
+    @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; opacity: 0; } 50% { transform: scaleY(1); transform-origin: top; opacity: 1; } 100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; } }
+
+    /* SECTION 2 — WHY PEOPLE COME */
+    .why-section { background: var(--forest); padding: 120px 0; position: relative; overflow: hidden; }
+    .why-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
+    .why-section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
+    .why-bg-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(61,82,53,0.4), transparent 60%); z-index: 0; }
+    .why-header { text-align: center; max-width: 680px; margin: 0 auto 80px; position: relative; z-index: 1; }
+    .why-quote { font-family: var(--font-serif); font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 300; font-style: italic; color: var(--sand); line-height: 1.7; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(201,168,76,0.2); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; position: relative; z-index: 1; }
+    .why-card { padding: 56px 44px; background: rgba(255,255,255,0.02); border: 1px solid rgba(201,168,76,0.08); transition: var(--transition); position: relative; overflow: hidden; }
+    .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-card:hover { background: rgba(255,255,255,0.04); }
+    .why-card-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 16px; }
+    .why-card-body { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.75; color: var(--text-muted); }
+    .why-card-health { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+    .why-card-health .why-card-title { color: var(--gold-light); }
+
+    /* SECTION 3 — WHAT CHANGES */
+    .transform-section { padding: 140px 0; background: var(--cream); position: relative; }
+    .transform-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .transform-image { position: relative; aspect-ratio: 4/5; border-radius: var(--radius-md); overflow: hidden; }
+    .transform-image::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(201,168,76,0.15); border-radius: var(--radius-md); pointer-events: none; }
+    .transform-intro { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); margin: 24px 0 48px; max-width: 480px; }
+    .transform-pillars { display: flex; flex-direction: column; gap: 0; }
+    .pillar { display: flex; align-items: flex-start; gap: 20px; padding: 24px 0; border-bottom: 1px solid rgba(26,35,24,0.08); transition: var(--transition); }
+    .pillar:first-child { border-top: 1px solid rgba(26,35,24,0.08); }
+    .pillar:hover { padding-left: 8px; }
+    .pillar-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--transition); }
+    .pillar:hover .pillar-icon { background: rgba(201,168,76,0.15); }
+    .pillar-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .pillar-name { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 500; color: var(--text-dark); margin-bottom: 4px; }
+    .pillar-desc { font-family: var(--font-sans); font-size: 0.875rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+    .andes-slider-track { position: relative; overflow: hidden; border-radius: var(--radius-md); }
+    .andes-slides { display: flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .andes-slide { min-width: 100%; aspect-ratio: 4/5; position: relative; overflow: hidden; border-radius: var(--radius-md); background: linear-gradient(160deg, #1A2318 0%, #2C3A1A 50%, #1A2318 100%); display: flex; align-items: flex-end; }
+    .andes-slide img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .andes-slide-caption { position: relative; z-index: 2; padding: 20px 24px; background: linear-gradient(to top, rgba(26,35,24,0.85), transparent); width: 100%; font-family: var(--font-serif); font-size: 1rem; font-style: italic; color: var(--sand-light); }
+    .andes-slider-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+    .andes-dots { display: flex; gap: 8px; }
+    .andes-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(201,168,76,0.25); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
+    .andes-dot.active { background: var(--gold); width: 24px; border-radius: 3px; }
+    .andes-arrows { display: flex; gap: 8px; }
+    .andes-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(26,35,24,0.15); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); color: var(--text-dark); }
+    .andes-arrow:hover { background: var(--forest); color: var(--white); border-color: var(--forest); }
+    .andes-arrow svg { width: 16px; height: 16px; }
+
+    /* SECTION 4 — EXPERIENCES */
+    .experiences-section { background: var(--forest); padding: 120px 0 80px; position: relative; overflow: hidden; }
+    .experiences-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
+    .experiences-header { text-align: center; max-width: 680px; margin: 0 auto 64px; position: relative; z-index: 1; }
+    .experiences-scroll-wrapper { padding: 0 40px 40px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; position: relative; z-index: 1; }
+    .experiences-scroll-wrapper::-webkit-scrollbar { display: none; }
+    .experiences-track { display: flex; gap: 20px; width: max-content; }
+    .exp-card-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 0; }
+    .exp-card { width: 340px; height: 560px; flex-shrink: 0; border-radius: var(--radius-md); overflow: hidden; position: relative; cursor: pointer; transition: var(--transition); background: #1a2318; }
+    .exp-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .exp-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,18,8,0.98) 0%, rgba(10,18,8,0.85) 40%, rgba(10,18,8,0.3) 70%, rgba(10,18,8,0.0) 100%); z-index: 1; pointer-events: none; }
+    .exp-card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 28px 32px; z-index: 2; }
+    .exp-card-tag { font-family: var(--font-sans); font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .exp-card-title { font-family: var(--font-serif); font-size: 1.375rem; font-weight: 400; color: var(--white); line-height: 1.25; margin-bottom: 10px; }
+    .exp-card-desc { font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 300; line-height: 1.65; color: rgba(245,240,232,0.65); max-width: 280px; }
+
+    /* SECTION 5 — TESTIMONIAL */
+    .testimonial-section { background: var(--cream-dark); padding: 140px 0; position: relative; overflow: hidden; }
+    .testimonial-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent); }
+    .testimonial-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--font-serif); font-size: clamp(8rem, 20vw, 18rem); font-weight: 300; color: rgba(201,168,76,0.04); white-space: nowrap; pointer-events: none; user-select: none; z-index: 0; }
+    .testimonial-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; text-align: center; }
+    .testimonial-stars { display: flex; justify-content: center; gap: 6px; margin-bottom: 32px; }
+    .star-icon { width: 18px; height: 18px; fill: var(--gold); stroke: none; }
+    .testimonial-pullquote { font-family: var(--font-serif); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 300; font-style: italic; line-height: 1.35; color: var(--text-dark); margin-bottom: 48px; letter-spacing: -0.01em; }
+    .testimonial-pullquote::before { content: '\201C'; }
+    .testimonial-pullquote::after  { content: '\201D'; }
+    .testimonial-video { position: relative; max-width: 640px; margin: 0 auto 40px; aspect-ratio: 16/9; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .testimonial-author { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .testimonial-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--forest-light), var(--forest)); border: 2px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; color: var(--sand); }
+    .testimonial-author-name { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 500; color: var(--text-dark); }
+    .testimonial-author-desc { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.08em; color: var(--text-muted); }
+
+    /* ACCOMMODATION SLIDERS */
+    .accom-slider { width: 100%; overflow: hidden; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+    .accom-slides-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); height: 320px; }
+    .accom-slide { min-width: 100%; height: 320px; overflow: hidden; flex-shrink: 0; position: relative; }
+    .accom-slide img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+    .accom-slider-controls { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: rgba(26,35,24,0.85); }
+    .accom-dots { display: flex; gap: 6px; flex-wrap: wrap; }
+    .accom-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: all 0.3s; }
+    .accom-dot.active { background: var(--gold); width: 18px; border-radius: 3px; }
+    .accom-section { padding: 140px 0; background: var(--white); position: relative; }
+    .accom-header { text-align: center; max-width: 640px; margin: 0 auto 80px; }
+    .accom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .accom-card { position: relative; border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; background: var(--forest); box-shadow: var(--shadow-md); }
+    .accom-card-content { padding: 28px 32px 32px; background: var(--forest); }
+    .accom-card-tag { font-family: var(--font-sans); font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .accom-card-title { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 400; color: var(--white); line-height: 1.2; margin-bottom: 10px; }
+    .accom-card-desc { font-family: var(--font-sans); font-size: 0.875rem; font-weight: 300; line-height: 1.65; color: rgba(245,240,232,0.75); }
+    .accom-amenities { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .amenity { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 28px 16px; border: 1px solid rgba(26,35,24,0.08); border-radius: var(--radius-sm); transition: var(--transition); }
+    .amenity:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.03); }
+    .amenity-icon { width: 36px; height: 36px; stroke: var(--forest-light); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .amenity-label { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; color: var(--text-mid); }
+
+    /* SECTION 7 — WHO THIS IS FOR */
+    .who-section { background: var(--forest); padding: 120px 0; position: relative; overflow: hidden; }
+    .who-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
+    .who-checklist { display: flex; flex-direction: column; gap: 0; }
+    .who-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(245,240,232,0.06); transition: var(--transition); }
+    .who-item:first-child { border-top: 1px solid rgba(245,240,232,0.06); }
+    .who-item:hover { padding-left: 8px; }
+    .who-check { width: 22px; height: 22px; border-radius: 50%; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .who-check svg { width: 10px; height: 10px; stroke: var(--gold); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .who-item-text { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.6; color: rgba(245,240,232,0.75); }
+    .who-item-text strong { font-weight: 500; color: var(--cream); }
+
+    /* SECTION 8 — FAQ */
+    .faq-section { padding: 120px 0; background: var(--cream); }
+    .faq-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(26,35,24,0.1); }
+    .faq-item:first-child { border-top: 1px solid rgba(26,35,24,0.1); }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; cursor: pointer; transition: var(--transition); background: none; border: none; width: 100%; text-align: left; }
+    .faq-question:hover .faq-q-text { color: var(--gold); }
+    .faq-q-text { font-family: var(--font-serif); font-size: 1.1875rem; font-weight: 400; color: var(--text-dark); line-height: 1.35; transition: var(--transition); }
+    .faq-icon { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(26,35,24,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--transition); }
+    .faq-question[aria-expanded="true"] .faq-icon { background: var(--gold); border-color: var(--gold); transform: rotate(45deg); }
+    .faq-icon svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; color: var(--text-dark); }
+    .faq-question[aria-expanded="true"] .faq-icon svg { color: var(--forest); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease; }
+    .faq-answer.open { max-height: 500px; }
+    .faq-answer-inner { padding: 0 0 28px; font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); max-width: 680px; }
+
+    /* SECTION 9 — FINAL CTA */
+    .final-cta { position: relative; padding: 160px 0; overflow: hidden; }
+    .final-cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 60%); pointer-events: none; z-index: 1; }
+    .final-cta-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; margin: 0 auto; }
+    .final-cta-date { display: inline-block; font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.5); background: var(--gold); border: 2px solid rgba(0,0,0,0.25); padding: 9px 20px; border-radius: 40px; margin-bottom: 36px; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .final-cta-title { font-family: var(--font-serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--white); letter-spacing: -0.02em; margin-bottom: 28px; }
+    .final-cta-title em { font-style: italic; color: var(--sand-light); }
+    .final-cta-body { color: #ffffff; font-family: var(--font-sans); font-size: 1.0625rem; font-weight: 400; line-height: 1.8; margin-bottom: 52px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+    .final-cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px; }
+    .final-cta-note { color: #ffffff; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+
+    /* FOOTER (links into the Kawsaypac site) */
+    .rt-footer { background: #0D1208; padding: 60px 0 40px; border-top: 1px solid rgba(201,168,76,0.1); }
+    .rt-footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 48px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 24px; }
+    .rt-footer-brand-name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--cream); margin-bottom: 4px; }
+    .rt-footer-brand-sub { font-family: var(--font-sans); font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .rt-footer-brand-tagline { font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 300; color: var(--text-muted); max-width: 260px; line-height: 1.7; }
+    .rt-footer-links-title { font-family: var(--font-sans); font-size: 0.625rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .rt-footer-links ul { display: flex; flex-direction: column; gap: 10px; }
+    .rt-footer-links a { font-family: var(--font-sans); font-size: 0.875rem; font-weight: 300; color: var(--text-muted); transition: var(--transition); }
+    .rt-footer-links a:hover { color: var(--sand); }
+    .rt-footer-bottom { border-top: 1px solid rgba(245,240,232,0.05); padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    .rt-footer-copy { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 300; color: rgba(122,132,116,0.6); }
+
+    /* STICKY CTA BAR */
+    .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: var(--forest); border-top: 1px solid rgba(201,168,76,0.2); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); backdrop-filter: blur(20px); }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-bar-text { font-family: var(--font-serif); font-size: 1rem; font-weight: 400; color: var(--cream); display: none; }
+    .sticky-bar-date { font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); }
+    .sticky-bar-cta { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--gold); color: var(--forest); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: var(--transition); white-space: nowrap; flex-shrink: 0; }
+    .sticky-bar-cta:hover { background: var(--gold-light); }
+
+    /* RESPONSIVE */
+    @media (min-width: 768px) { .sticky-bar-text { display: block; } }
+    @media (max-width: 1024px) { .transform-inner { grid-template-columns: 1fr; gap: 48px; } .transform-image { aspect-ratio: 16/9; max-height: 480px; } .accom-amenities { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .navbar { padding: 18px 20px; }
+      .navbar.scrolled { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .why-grid { grid-template-columns: 1fr !important; gap: 2px; }
+      .why-card { padding: 40px 28px; }
+      .accom-grid { grid-template-columns: 1fr; }
+      .accom-amenities { grid-template-columns: repeat(2, 1fr); }
+      .experiences-scroll-wrapper { padding: 0 24px 40px; }
+      .rt-footer-inner { flex-direction: column; gap: 40px; }
+      .tagline-sep { display: block; height: 0; overflow: hidden; font-size: 0; }
+      .hero-tagline { display: flex; flex-direction: column; gap: 4px; text-align: center; }
+      .btn-primary, .btn-outline { min-height: 48px; padding: 14px 28px !important; }
+      .andes-arrow { width: 44px; height: 44px; }
+      .andes-dot { width: 8px; height: 8px; }
+      .andes-dot.active { width: 28px; }
+      .sticky-bar { padding: 12px 16px; }
+      .sticky-bar-cta { padding: 10px 20px; font-size: 0.6875rem; }
+      #jungleCanvas { opacity: 0.3 !important; }
+      .why-section, .transform-section { padding: 80px 0; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .hero-meta { flex-direction: column; gap: 12px; }
+      .hero-meta-divider { display: none; }
+      .final-cta-actions { flex-direction: column; align-items: center; }
+      .accom-amenities { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .hero-title { font-size: clamp(2.8rem, 12vw, 4rem); }
+      .hero-tagline { font-size: 1rem; }
+      .hero-badge { margin-bottom: 24px; }
+      .container { padding: 0 16px; }
+    }
+  </style>
 </head>
-<body class="retreat-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div data-site-header></div>
-  <main class="page-main" id="main">
-    <section class="page-hero retreat-page-hero ornament-zone">
-      <div class="page-hero-copy">
-        <p class="eyebrow">Ecuador Wellness Retreats</p>
-        <h1>Return to the <span class="accent">Living Source.</span></h1>
-        <p>Intimate journeys through Ecuador where landscape, nourishment, plant education, and transformation become one lived rhythm.</p>
-        <a class="btn btn-primary" href="contact.html">Ask About the Next Journey</a>
-      </div>
-      <div class="page-hero-media">
-        <img src="assets/img/real-waterfall.webp?v=20" alt="Waterfall in an Ecuadorian forest" fetchpriority="high">
-        <button class="page-ornament retreat-hero-bird ornament-on-image" type="button" data-page-ornament data-drag-limit="34" aria-label="Move the hummingbird illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-          <span class="ornament-asset"><img src="assets/sprites/hummingbirds/hummingbird-flight.webp?v=20" alt="" draggable="false"></span>
-        </button>
-      </div>
-    </section>
+<body>
 
-    <section class="rt-cinehero reveal" aria-label="The retreat setting">
-      <img src="assets/img/gen2/retreat-lodge-hero.webp?v=52" alt="Eco-lodge terrace at the edge of the Ecuadorian cloud forest with a waterfall in the distance" loading="lazy">
-      <div class="rt-cinehero-copy">
-        <p class="eyebrow">The setting</p>
-        <h2>Where the forest <span class="accent">holds you.</span></h2>
-        <p>A lodge at the cloud-forest edge. Waterfalls within walking distance. Nothing to perform, nowhere to rush.</p>
-      </div>
-    </section>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" aria-label="Primary">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-logo-name">KAWSAYPAC</span>
+    <span class="nav-logo-sub">Keys to Kawsay Retreat</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop by Concern</a>
+    <a href="philosophy.html">Philosophy</a>
+    <a href="tea-preparation.html">Learn</a>
+    <a href="apothecary.html">Apothecary</a>
+    <a href="story.html">Our Story</a>
+  </div>
+  <a href="shop.html" class="nav-cta">Shop Herbs</a>
+  <button class="nav-hamburger" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
 
-    <section class="retreat-manifesto reveal ornament-zone">
-      <button class="page-ornament retreat-manifesto-guayusa ornament-wash" type="button" data-page-ornament data-drag-limit="28" aria-label="Move the guayusa illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/herb-icons/guayusa-sprig.webp?v=20" alt="" draggable="false"></span>
-      </button>
-      <button class="page-ornament retreat-manifesto-passionflower ornament-wash" type="button" data-page-ornament data-drag-limit="24" aria-label="Move the passionflower illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/herb-icons/passionflower-vine.webp?v=20" alt="" draggable="false"></span>
-      </button>
-      <p class="eyebrow">Beyond the itinerary</p>
-      <h2>A journey designed to be <span class="accent">felt</span>, not collected.</h2>
-      <p class="retreat-manifesto-intro">Move from the Andes into cloud forest and Amazonian waterways with local guidance, a small group, plant education, nourishing food, and enough quiet to actually arrive.</p>
-      <aside class="retreat-field-note" aria-label="The rhythm carried through the retreat">
-        <div class="retreat-field-note-lead">
-          <span>The thread through every day</span>
-          <p>Not a schedule to conquer. A gentle architecture for noticing more.</p>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop by Concern</a>
+  <a href="philosophy.html">Philosophy</a>
+  <a href="tea-preparation.html">Learn</a>
+  <a href="apothecary.html">Apothecary</a>
+  <a href="story.html">Our Story</a>
+  <a href="shop.html">Shop Herbs</a>
+</div>
+
+<div id="kawsay-landing">
+
+<!-- SECTION 1 — HERO -->
+<section class="hero" id="home" aria-label="Hero section">
+  <div class="hero-video-wrap" aria-hidden="true">
+    <img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778259333/Amazon_River_2_tqrlka.png" alt="Amazon River" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+  </div>
+  <div class="hero-video-overlay" aria-hidden="true"></div>
+  <div class="hero-mist" aria-hidden="true"></div>
+  <div class="hero-mist hero-mist-2" aria-hidden="true"></div>
+  <div class="hero-mist hero-mist-3" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+  <div class="hero-canopy" aria-hidden="true"></div>
+  <div class="hero-lines" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal" aria-label="Retreat location and dates">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      <span class="hero-badge-text">Ecuador · Aug 25 – Sep 3, 2026</span>
+    </div>
+    <p class="hero-eyebrow reveal reveal-delay-1">Keys to Kawsay Retreat</p>
+    <h1 class="hero-title reveal reveal-delay-2">Unlock the<br /><em>Healer Within You</em></h1>
+    <p class="hero-tagline reveal reveal-delay-3">10 Days in Ecuador<span class="tagline-sep"> · </span>Two Sacred Landscapes<span class="tagline-sep"> · </span>One Complete Reset</p>
+    <div class="hero-meta reveal reveal-delay-4">
+      <span class="hero-meta-item">
+        <svg class="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--sand);"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span class="hero-meta-text">Andes &amp; Amazon, Ecuador</span>
+      </span>
+      <div class="hero-meta-divider" aria-hidden="true"></div>
+      <span class="hero-meta-item">
+        <svg class="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--sand);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="hero-meta-text">10-Day Group Retreat</span>
+      </span>
+      <div class="hero-meta-divider" aria-hidden="true"></div>
+      <span class="hero-meta-item">
+        <svg class="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--sand);"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="hero-meta-text">Limited Spots Available</span>
+      </span>
+    </div>
+    <div class="hero-actions reveal reveal-delay-5">
+      <a href="https://app.cowlendar.com/cal/6993ac9cc2b626f355338204/47238180012268" class="btn-primary">Book a Discovery Call<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#why" class="btn-outline">Discover the Experience</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SECTION 2 — WHY PEOPLE COME -->
+<section class="why-section" id="why" aria-label="Why people come to this retreat">
+  <div class="why-bg-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="why-header">
+      <p class="section-label reveal">The Call</p>
+      <h2 class="section-title light reveal reveal-delay-1">You Didn't Come Here<br />By Accident</h2>
+      <p class="why-quote reveal reveal-delay-2">This is not for everyone — and that's intentional. The people who arrive to our shared space are ready for a real shift and deep healing.</p>
+    </div>
+    <div class="why-grid" role="list">
+      <div class="why-card reveal" role="listitem"><h3 class="why-card-title">You're energetically depleted — body, mind &amp; spirit</h3><p class="why-card-body">You've rested, you've tried the routines, and still something feels hollow. This isn't burnout — it's your nervous system signaling that something fundamental needs to change. That signal is the beginning of everything.</p></div>
+      <div class="why-card why-card-health reveal reveal-delay-1" role="listitem"><h3 class="why-card-title">Your body's been asking for more than another cleanse</h3><p class="why-card-body">You've tried the capsules. The teas. The juicing. The cleanses, the diets, the detox programs. And still your body isn't where you want it to be. That's not failure — that's a sign the root hasn't been touched yet. If deep, lasting healing is what you're seeking, this retreat was built for exactly this.</p></div>
+      <div class="why-card reveal reveal-delay-2" role="listitem"><h3 class="why-card-title">You identify with a reality that affects your health</h3><p class="why-card-body">Old grief, inherited patterns, the slow buildup of unexpressed emotion. You've managed it beautifully. Now it's asking to be released — not suppressed, not processed again alone, but truly set down.</p></div>
+      <div class="why-card reveal reveal-delay-2" role="listitem"><h3 class="why-card-title">You're ready — really ready — for a real reset</h3><p class="why-card-body">Not a vacation. Not a weekend workshop. You want something that reorganizes you at a cellular level. That hands you back your clarity, your joy, your sense of who you actually are beneath all the noise.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — WHAT CHANGES -->
+<section class="transform-section" id="transform" aria-label="What transforms during the retreat">
+  <div class="container">
+    <div class="transform-inner">
+      <div class="transform-image reveal" style="overflow:visible; background:none;">
+        <div class="andes-slider-track" style="border-radius:16px; overflow:hidden;">
+          <div class="andes-slides" id="andesSlides">
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258795/Section_3_Website_-_1_x7wxxa.png" alt="Sacred Andes 1" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258794/Section_3_Website_-_2_aaasdx.png" alt="Sacred Andes 2" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258794/Section_3_Website_-_4_tuyry8.png" alt="Sacred Andes 3" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258795/Section_3_Website_-_5_pbffbw.png" alt="Sacred Andes 4" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258796/Section_3_Website_-_3_fo2qgy.png" alt="Sacred Andes 5" loading="lazy" /><div class="andes-slide-caption"></div></div>
+          </div>
         </div>
-        <ol class="retreat-field-note-rhythm">
-          <li><small>Morning</small><strong>Arrive in the landscape</strong></li>
-          <li><small>Afternoon</small><strong>Learn through plant and place</strong></li>
-          <li><small>Evening</small><strong>Integrate around the table</strong></li>
-        </ol>
-      </aside>
-    </section>
-
-    <section class="retreat-cinema reveal">
-      <div class="retreat-cinema-copy">
-        <p class="eyebrow">Watch the journey</p>
-        <h2>Step away.<br>Reconnect.<br>Return renewed.</h2>
-        <p>The film begins quietly when this chapter enters view.</p>
-      </div>
-      <div class="retreat-cinema-screen">
-        <iframe data-youtube-film data-src="https://www.youtube.com/embed/MHHxiENWMho?enablejsapi=1&amp;autoplay=1&amp;mute=1&amp;playsinline=1&amp;loop=1&amp;playlist=MHHxiENWMho&amp;rel=0" title="Kawsaypac Ecuador retreat film" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </section>
-
-    <section class="retreat-chapters">
-      <article class="retreat-chapter reveal"><img src="assets/img/real-cotopaxi.webp?v=20" alt="Cotopaxi rising over the Ecuadorian highlands"><span>01 · Andes</span><h2>Begin above the clouds.</h2></article>
-      <article class="retreat-chapter reveal"><img src="assets/img/real-waterfall.webp?v=20" alt="Waterfall descending through Ecuadorian cloud forest"><span>02 · Cloud Forest</span><h2>Follow water into green.</h2></article>
-      <article class="retreat-chapter reveal"><img src="assets/img/real-amazon-river.webp?v=20" alt="River through the Ecuadorian Amazon"><span>03 · Amazon</span><h2>Listen at the living source.</h2></article>
-    </section>
-
-    <section class="retreat-details section ornament-zone">
-      <button class="page-ornament retreat-details-rosette ornament-wash" type="button" data-page-ornament data-drag-limit="26" aria-label="Move the mountain herb illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/herb-icons/mountain-herb-rosette.webp?v=20" alt="" draggable="false"></span>
-      </button>
-      <button class="page-ornament retreat-details-orchid ornament-wash" type="button" data-page-ornament data-drag-limit="22" aria-label="Move the orchid illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/herb-icons/orchid-cluster.webp?v=20" alt="" draggable="false"></span>
-      </button>
-      <div class="shell">
-        <div class="section-head reveal"><div><p class="eyebrow">The daily rhythm</p><h2>Held with care, left open to <span class="accent">wonder.</span></h2></div><p>Each cohort is shaped around place, local relationships, and enough spaciousness for the experience to remain human.</p></div>
-        <div class="step-grid">
-          <article class="step-card reveal"><strong>01</strong><h2>Landscape</h2><p>Cotopaxi, waterfalls, cloud forest, and Amazonian waterways become the setting.</p></article>
-          <article class="step-card reveal"><strong>02</strong><h2>Practice</h2><p>Herbal preparation, nourishing food, and guided reflection create a daily rhythm.</p></article>
-          <article class="step-card reveal"><strong>03</strong><h2>Community</h2><p>Small groups and local partnerships keep the experience connected.</p></article>
+        <div class="andes-slider-controls" style="margin-top:12px;">
+          <div class="andes-dots" id="andesDots">
+            <button class="andes-dot active" onclick="andesGoTo(0)" aria-label="Slide 1"></button>
+            <button class="andes-dot" onclick="andesGoTo(1)" aria-label="Slide 2"></button>
+            <button class="andes-dot" onclick="andesGoTo(2)" aria-label="Slide 3"></button>
+            <button class="andes-dot" onclick="andesGoTo(3)" aria-label="Slide 4"></button>
+            <button class="andes-dot" onclick="andesGoTo(4)" aria-label="Slide 5"></button>
+          </div>
+          <div class="andes-arrows">
+            <button class="andes-arrow" onclick="andesPrev()" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="andes-arrow" onclick="andesNext()" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section class="rt-day section" aria-label="A day at the retreat">
-      <div class="shell">
-        <div class="section-head reveal"><div><p class="eyebrow">A day at the retreat</p><h2>One day, lived <span class="accent">slowly.</span></h2></div><p>The hours are held for you. All you carry is attention.</p></div>
-        <ol class="rt-day-grid">
-          <li class="rt-day-card reveal"><figure><img src="assets/img/gen2/retreat-dawn-tea.webp?v=52" alt="Steaming cup of guayusa at first light over the Andes" loading="lazy"></figure><span class="rt-day-time">05:30</span><h3>Dawn tea ceremony</h3><p>Guayusa shared before sunrise, the way it has been for generations.</p></li>
-          <li class="rt-day-card reveal"><figure><img src="assets/img/gen2/retreat-forest-walk.webp?v=52" alt="Footpath winding through dense Ecuadorian cloud forest" loading="lazy"></figure><span class="rt-day-time">09:00</span><h3>Forest walk</h3><p>Into the cloud forest with local guides who know every plant by name.</p></li>
-          <li class="rt-day-card reveal"><figure><img src="assets/img/gen2/retreat-workshop.webp?v=52" alt="Herbal preparation table with botanicals, mortar and infusions" loading="lazy"></figure><span class="rt-day-time">15:00</span><h3>Preparation workshop</h3><p>Hands in the work: bark, leaf, and flower become the evening's medicine.</p></li>
-          <li class="rt-day-card reveal"><figure><img src="assets/img/gen2/retreat-evening-fire.webp?v=52" alt="Fire circle glowing at dusk under the jungle canopy" loading="lazy"></figure><span class="rt-day-time">19:30</span><h3>Evening fire</h3><p>Stories, silence, and the day settling in around the flames.</p></li>
-        </ol>
+      <div class="transform-content">
+        <p class="section-label reveal">The Reset</p>
+        <h2 class="section-title reveal reveal-delay-1">10 Days.<br />One Life-Changing Reset.</h2>
+        <p class="transform-intro reveal reveal-delay-2">This is not a retreat you attend — it's a process you move through. Each day is designed to peel back another layer, unlock another truth, and rebuild you from the inside out. You leave different in the best possible way.</p>
+        <div class="transform-pillars" role="list">
+          <div class="pillar reveal reveal-delay-1" role="listitem"><div class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg></div><div class="pillar-content"><p class="pillar-name">Nervous System Regulation</p><p class="pillar-desc">Somatic practices, breathwork, and nature immersion to bring your body back to safety — and keep it there.</p></div></div>
+          <div class="pillar reveal reveal-delay-2" role="listitem"><div class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="pillar-content"><p class="pillar-name">Emotional Release &amp; Energetic Alignment</p><p class="pillar-desc">Guided ceremonies and therapeutic modalities that help release stagnant energy affecting your health.</p></div></div>
+          <div class="pillar reveal reveal-delay-3" role="listitem"><div class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div><div class="pillar-content"><p class="pillar-name">Ancestral Healing &amp; Indigenous Wisdom</p><p class="pillar-desc">Learn sacred teachings from Amazonian shaman holding lineages of healing knowledge that's rarely shared.</p></div></div>
+          <div class="pillar reveal reveal-delay-4" role="listitem"><div class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="pillar-content"><p class="pillar-name">Detox Modalities</p><p class="pillar-desc">Guided Fasting, heavy metal cleansing, parasite elimination, movement, breathwork and plant-based nutrition workshops.</p></div></div>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="rt-quote reveal" aria-label="What guests say">
-      <blockquote>&ldquo;I arrived exhausted and left with a rhythm I still keep. The mornings by the fire, the tea before light. Ecuador gave me back my attention.&rdquo;</blockquote>
-      <cite>Retreat guest &middot; Cotopaxi cohort</cite>
-    </section>
+<!-- SECTION 4 — SIGNATURE EXPERIENCES -->
+<section class="experiences-section" id="experiences" aria-label="Signature retreat experiences">
+  <div class="experiences-header container">
+    <p class="section-label reveal">The Journey</p>
+    <h2 class="section-title light reveal reveal-delay-1" style="margin-top:12px;">What Awaits You in Ecuador</h2>
+    <p class="section-subtitle light reveal reveal-delay-2" style="margin-top:20px; max-width:540px; margin-left:auto; margin-right:auto;">Every experience is curated to rewire your mind, recalibrate your emotions, and unlock the healer within you.</p>
+    <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-top:28px; padding-bottom:8px;">
+      <div style="width:32px; height:3px; border-radius:2px; background:var(--gold);"></div>
+      <div style="width:10px; height:10px; border-radius:50%; background:rgba(201,168,76,0.35);"></div>
+      <div style="width:10px; height:10px; border-radius:50%; background:rgba(201,168,76,0.35);"></div>
+      <div style="width:10px; height:10px; border-radius:50%; background:rgba(201,168,76,0.35);"></div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.7)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+  </div>
+  <div id="experiences-scroll" class="experiences-scroll-wrapper" role="region" aria-label="Scrollable list of retreat experiences">
+    <div class="experiences-track">
+      <article class="exp-card reveal"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778261847/Sebastian2_nmvekj.png" alt="Indigenous healers Amazon" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Amazon Basin</p><h3 class="exp-card-title">Rainforest Immersion with Indigenous Healers</h3><p class="exp-card-desc">Step into living medicine. Work with healers whose ancestral knowledge spans generations — within one of the most biodiverse ecosystems on earth.</p></div></article>
+      <article class="exp-card reveal reveal-delay-1"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262284/Temazcal_cdoa7e.png" alt="Temazcal ancestral medicine" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Ancestral Medicine</p><h3 class="exp-card-title">Bufo, Temazcal &amp; Rapeh</h3><p class="exp-card-desc">Sacred medicines held in ceremony. From ego dissolution, to cellular purification, and full-body energetic release. Each ceremony is held with precision, reverence, and deep facilitation.</p></div></article>
+      <article class="exp-card reveal reveal-delay-2"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778261902/Cotopaxi_r5eseo.png" alt="Cotopaxi sacred highlands" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Andes Mountains</p><h3 class="exp-card-title">Sacred Highland Stay</h3><p class="exp-card-desc">High-altitude clarity meets sacred Andean tradition. Wake above the clouds, surrounded by the silence and majesty that changes how you see everything.</p></div></article>
+      <article class="exp-card reveal reveal-delay-2"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262046/Jungle_Waterfall_x5qhjr.png" alt="Jungle waterfall" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Water Healing</p><h3 class="exp-card-title">Waterfall &amp; Hot Springs</h3><p class="exp-card-desc">Nourish your body, reduce inflammation, and reset your nervous system with diverse forms of healing water immersions.</p></div></article>
+      <article class="exp-card reveal reveal-delay-3"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262112/Ceremony1_bpefkj.png" alt="Breathwork and movement" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Foundational Health Principles</p><h3 class="exp-card-title">Breathwork, Movement &amp; Meditation</h3><p class="exp-card-desc">Embrace and master practices your body requires daily to heal and thrive. Learn how to properly breathe, move, &amp; use your mind and emotions to transform your health.</p></div></article>
+      <article class="exp-card reveal reveal-delay-4"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262150/Bioelectric_Mag_b2eioh.png" alt="Biomagnetism energetic alignment" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Nervous System &amp; Energetic Alignment</p><h3 class="exp-card-title">Alphabiotics, Biomagnetism &amp; Lymphatic</h3><p class="exp-card-desc">Specialized therapies work at the intersection of somatic science and energetic intelligence — addressing root patterns your mind alone can't reach.</p></div></article>
+      <article class="exp-card reveal reveal-delay-5"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778345311/Sound_Healing_wfwzcr.png" alt="Sound healing" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Frequency Healing</p><h3 class="exp-card-title">Sound Bath Experience</h3><p class="exp-card-desc">Dissolve energetic blockages with frequency that penetrates deep within your tissues, guiding your nervous system into profound rest and cellular repair.</p></div></article>
+    </div>
+  </div>
+</section>
 
-    <section class="retreat-interest reveal ornament-zone">
-      <button class="page-ornament retreat-interest-bird ornament-on-image" type="button" data-page-ornament data-drag-limit="36" aria-label="Move the perched hummingbird illustration. Use arrow keys for small adjustments; press Home to reset." title="Drag gently, or use the arrow keys">
-        <span class="ornament-asset"><img src="assets/sprites/hummingbirds/hummingbird-perched.webp?v=20" alt="" draggable="false"></span>
-      </button>
-      <div><p class="eyebrow">Join the interest list</p><h2>When the next path opens, be the first to know.</h2><p>Dates, capacity, inclusions, and pricing are confirmed directly with each cohort.</p><a class="btn btn-secondary" href="contact.html">Ask About Retreats</a></div>
-    </section>
+<!-- SECTION 5 — TESTIMONIAL -->
+<section class="testimonial-section" aria-label="Guest testimonials">
+  <div class="testimonial-bg-text" aria-hidden="true">Transformed</div>
+  <div class="container">
+    <div class="testimonial-inner">
+      <p class="reveal" style="font-family:var(--font-serif);font-size:2.5rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px;">TESTIMONIALS</p>
+      <p class="section-label reveal" style="margin-bottom:28px;">Lives Changed</p>
+      <div class="testimonial-stars reveal reveal-delay-1" aria-label="5 out of 5 stars">
+        <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote class="testimonial-pullquote reveal reveal-delay-2">I released decades of weight I didn't even know I was carrying. What I felt was overwhelming love — pure, absolute love.</blockquote>
+      <div class="testimonial-video reveal reveal-delay-3" style="background:#000;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/MHHxiENWMho?controls=1&modestbranding=1&rel=0&playsinline=1" title="Liz's Keys to Kawsay Retreat Experience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe>
+      </div>
+      <div class="testimonial-author reveal reveal-delay-4">
+        <div class="testimonial-avatar" aria-hidden="true">L</div>
+        <div class="testimonial-author-info"><p class="testimonial-author-name">Liz</p><p class="testimonial-author-desc">Keys to Kawsay Retreat Participant — Bufo Experience</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="rt-closing reveal" aria-label="Reserve your interest">
-      <p class="eyebrow">Small cohorts. They fill quietly.</p>
-      <h2>The forest is not going anywhere.<br><span class="accent">Your window is.</span></h2>
-      <p>Tell us you are interested and we will hold you a place in the conversation before dates are announced publicly.</p>
-      <a class="btn btn-primary rt-closing-btn" href="contact.html">Reserve Interest</a>
-    </section>
-  </main>
-  <div data-site-footer></div>
-  <div data-site-modal></div>
+<!-- SECTION 6 — ACCOMMODATIONS -->
+<section class="accom-section" id="accommodations" aria-label="Accommodation and stay details">
+  <div class="container">
+    <div class="accom-header">
+      <p class="section-label reveal">The Stay</p>
+      <h2 class="section-title reveal reveal-delay-1" style="margin-top:12px;">Stay in Sacred Luxury</h2>
+      <p class="section-subtitle reveal reveal-delay-2" style="margin-top:20px;">Your surroundings are part of the medicine. Every detail — from where you sleep to how you move between landscapes — is curated for depth, comfort, and beauty.</p>
+    </div>
+    <div class="accom-grid">
+      <div class="accom-card reveal">
+        <div class="accom-slider" data-slider="quitoSlider">
+          <div class="accom-slides-track" id="quitoSlider">
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258827/Wantara_kq3h4c.png" alt="Photo 1" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258830/Wantara_2_dd890r.png" alt="Photo 2" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258829/Wantara_6_kcidq7.png" alt="Photo 3" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258826/Wantara_10_m9faih.png" alt="Photo 4" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Wantara_5_krvjdp.png" alt="Photo 5" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258826/Wantara_3_s3yc8x.png" alt="Photo 6" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Wantara_4_v52wtn.png" alt="Photo 7" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258819/LAGARTO_ROOM_iwvk8h.png" alt="Photo 8" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258820/LAGARTO_ROOM_2_brxqns.png" alt="Photo 9" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258820/LAGARTO_ROOM_5_s345d5.png" alt="Photo 10" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258816/LAGARTO_ROOM_9_k3wciv.png" alt="Photo 11" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258822/LAGARTO_ROOM_6_xqq7ov.png" alt="Photo 12" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258813/LAGARTO_ROOM_8_bautns.png" alt="Photo 13" loading="lazy" /></div>
+          </div>
+          <div class="accom-slider-controls">
+            <div class="accom-dots">
+              <button class="accom-dot active" onclick="accomGoTo('quitoSlider',0)" aria-label="Slide 1"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',1)" aria-label="Slide 2"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',2)" aria-label="Slide 3"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',3)" aria-label="Slide 4"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',4)" aria-label="Slide 5"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',5)" aria-label="Slide 6"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',6)" aria-label="Slide 7"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',7)" aria-label="Slide 8"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',8)" aria-label="Slide 9"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',9)" aria-label="Slide 10"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',10)" aria-label="Slide 11"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',11)" aria-label="Slide 12"></button>
+              <button class="accom-dot" onclick="accomGoTo('quitoSlider',12)" aria-label="Slide 13"></button>
+            </div>
+            <div class="andes-arrows">
+              <button class="andes-arrow" onclick="accomPrev('quitoSlider')" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <button class="andes-arrow" onclick="accomNext('quitoSlider')" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="accom-card-content" style="border-radius: 0 0 var(--radius-md) var(--radius-md);">
+          <p class="accom-card-tag">Highlands Retreat</p>
+          <h3 class="accom-card-title">Sacred Andes Garden Oasis</h3>
+          <p class="accom-card-desc">Wake up nestled inside a garden oasis in one of the highest cities in the world. Quito's historic center sits at 9,350 feet in the Andes — where the air is crisp, the light is golden, and the city's colonial beauty surrounds you. Your base here is lush, grounded, and unlike anything you've experienced.</p>
+        </div>
+      </div>
+      <div class="accom-card reveal reveal-delay-1">
+        <div class="accom-slider" data-slider="banosSlider">
+          <div class="accom-slides-track" id="banosSlider">
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258823/Banos_-_Aldea_i8g3ou.png" alt="Photo 1" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Banos_-_Aldea_1_q87ww4.png" alt="Photo 2" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258818/Banos_-_Aldea_2_qnetzt.png" alt="Photo 3" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258818/Banos_-_Aldea_3_qizmvm.png" alt="Photo 4" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258815/Banos_-_Aldea_6_xodcad.png" alt="Photo 5" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258817/Banos_-_Aldea_4_gcawsk.png" alt="Photo 6" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258815/Banos_-_Aldea_5_y7ztn6.png" alt="Photo 7" loading="lazy" /></div>
+          </div>
+          <div class="accom-slider-controls">
+            <div class="accom-dots">
+              <button class="accom-dot active" onclick="accomGoTo('banosSlider',0)" aria-label="Slide 1"></button>
+              <button class="accom-dot" onclick="accomGoTo('banosSlider',1)" aria-label="Slide 2"></button>
+              <button class="accom-dot" onclick="accomGoTo('banosSlider',2)" aria-label="Slide 3"></button>
+              <button class="accom-dot" onclick="accomGoTo('banosSlider',3)" aria-label="Slide 4"></button>
+              <button class="accom-dot" onclick="accomGoTo('banosSlider',4)" aria-label="Slide 5"></button>
+              <button class="accom-dot" onclick="accomGoTo('banosSlider',5)" aria-label="Slide 6"></button>
+              <button class="accom-dot" onclick="accomGoTo('banosSlider',6)" aria-label="Slide 7"></button>
+            </div>
+            <div class="andes-arrows">
+              <button class="andes-arrow" onclick="accomPrev('banosSlider')" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <button class="andes-arrow" onclick="accomNext('banosSlider')" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="accom-card-content" style="border-radius: 0 0 var(--radius-md) var(--radius-md);">
+          <p class="accom-card-tag">Baños de Agua Santa</p>
+          <h3 class="accom-card-title">Pandora — River Valley Sanctuary</h3>
+          <p class="accom-card-desc">This is Pandora. Perched above a rushing stream in a valley draped in mist and surrounded by mountains on every side, Baños de Agua Santa is one of Ecuador's most breathtaking landscapes. Waterfalls cascade through the hills. The air is warm, alive, electric. You'll fall asleep to the sound of the river and wake to a world that looks like it was imagined, not discovered.</p>
+        </div>
+      </div>
+    </div>
+    <div class="accom-amenities" role="list">
+      <div class="amenity reveal" role="listitem"><svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="amenity-label">Private &amp; Shared Suites</span></div>
+      <div class="amenity reveal reveal-delay-1" role="listitem"><svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="amenity-label">All In-Country Transport</span></div>
+      <div class="amenity reveal reveal-delay-2" role="listitem"><svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg><span class="amenity-label">All Meals Included</span></div>
+      <div class="amenity reveal reveal-delay-3" role="listitem"><svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span class="amenity-label">All Ceremonies &amp; Activities</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 — WHO THIS IS FOR -->
+<section class="who-section" id="who" aria-label="Who this retreat is for">
+  <div class="container">
+    <div class="transform-inner">
+      <div class="transform-image reveal" style="overflow:visible; background:none;">
+        <div class="andes-slider-track" style="border-radius:16px; overflow:hidden;">
+          <div class="andes-slides" id="whoSlides">
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258790/Section_3_Website_-_5_twrutf.png" alt="Photo 1" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_2_knz1hu.png" alt="Photo 2" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_3_dfszej.png" alt="Photo 3" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_4_a29kr8.png" alt="Photo 4" loading="lazy" /><div class="andes-slide-caption"></div></div>
+          </div>
+        </div>
+        <div class="andes-slider-controls" style="margin-top:12px;">
+          <div class="andes-dots" id="whoDots">
+            <button class="andes-dot active" onclick="whoGoTo(0)" aria-label="Slide 1"></button>
+            <button class="andes-dot" onclick="whoGoTo(1)" aria-label="Slide 2"></button>
+            <button class="andes-dot" onclick="whoGoTo(2)" aria-label="Slide 3"></button>
+            <button class="andes-dot" onclick="whoGoTo(3)" aria-label="Slide 4"></button>
+          </div>
+          <div class="andes-arrows">
+            <button class="andes-arrow" onclick="whoPrev()" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="andes-arrow" onclick="whoNext()" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="transform-content">
+        <p class="section-label reveal">Who This Is For</p>
+        <h2 class="section-title light reveal reveal-delay-1" style="margin-top:12px;">This Retreat Was<br />Made for You If&hellip;</h2>
+        <ul class="who-checklist reveal reveal-delay-2" role="list">
+          <li class="who-item"><div class="who-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p class="who-item-text">You feel <strong>disconnected from yourself</strong> — stressed, anxious, and overstimulated — and want to end that cycle.</p></li>
+          <li class="who-item"><div class="who-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p class="who-item-text">You're drawn to <strong>plant medicine and ancestral ceremony</strong> and want a safe, meaningful, and transformative experience</p></li>
+          <li class="who-item"><div class="who-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p class="who-item-text">You've done the <strong>dietary changes, fasting, meditating</strong> — and you haven't seen long lasting health results.</p></li>
+          <li class="who-item"><div class="who-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p class="who-item-text">You want a <strong>profound detox</strong> that goes beyond what fasting, dieting, and lifestyle changes have to offer</p></li>
+          <li class="who-item"><div class="who-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p class="who-item-text">You have <strong>deep reverence for nature, community and sacred experiences</strong></p></li>
+          <li class="who-item"><div class="who-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p class="who-item-text">You're ready to <strong>change your perspective on health</strong>, let go of your old identity, and fully unlock the healer within you.</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8 — FAQ -->
+<section class="faq-section" id="faq" aria-label="Frequently asked questions">
+  <div class="container">
+    <div class="faq-header">
+      <p class="section-label reveal">Questions</p>
+      <h2 class="section-title reveal reveal-delay-1" style="margin-top:12px;">Everything You Need to Know</h2>
+      <p class="section-subtitle reveal reveal-delay-2" style="margin-top:20px;">Have a question not answered here? Your discovery call is the place to ask everything.</p>
+    </div>
+    <div class="faq-list" role="list">
+      <div class="faq-item reveal" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a1"><span class="faq-q-text">What is a discovery call, and what happens on it?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a1"><div class="faq-answer-inner">A discovery call is a private 30-minute conversation with our team. We'll learn about where you are, what you're carrying, and what you're hoping to experience — and share exactly how the retreat works. There's no pressure. It's about finding out if this is the right fit, together.</div></div></div>
+      <div class="faq-item reveal reveal-delay-1" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a2"><span class="faq-q-text">Do I need prior experience with plant medicine or ceremony?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a2"><div class="faq-answer-inner">No prior experience is required. Many participants come with open hearts and no ceremony background — and have the most profound experiences of their lives. Our facilitators are experienced at holding space for people at all levels. You'll be fully supported, prepared, and informed at every step.</div></div></div>
+      <div class="faq-item reveal reveal-delay-2" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a3"><span class="faq-q-text">What does a typical day on the retreat look like?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a3"><div class="faq-answer-inner">Each day is a carefully curated journey. Mornings typically begin with breathwork, movement, or meditation. Days include healing modalities, workshops, ceremonial experiences, nature immersion, and communal plant-based meals. Evenings are intentional — often ceremony, integration circles, or quiet reflection. No two days are the same.</div></div></div>
+      <div class="faq-item reveal reveal-delay-3" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a4"><span class="faq-q-text">What is included in the retreat price?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a4"><div class="faq-answer-inner">The investment covers all accommodations (both Andes and Amazon stays), all plant-based meals, all ceremonial and healing experiences, in-country transportation between locations, and full facilitation and support throughout the 10 days. International flights are not included. Full pricing details are shared on your discovery call.</div></div></div>
+      <div class="faq-item reveal reveal-delay-4" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a5"><span class="faq-q-text">What should I eat or avoid before the retreat?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a5"><div class="faq-answer-inner">We provide a pre-retreat preparation guide that outlines nutritional, lifestyle, and mindset recommendations in the weeks leading up to arrival. Guided by The Electric Eats philosophy, preparation is gentle and supportive — designed to help your body and nervous system arrive as open and receptive as possible.</div></div></div>
+      <div class="faq-item reveal reveal-delay-5" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a6"><span class="faq-q-text">How safe is Ecuador, and what is the environment like?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a6"><div class="faq-answer-inner">We work exclusively in vetted, safe, and sacred locations. The retreat sites in both the Andes and the Amazon are private, secure, and have been chosen for their beauty, safety, and spiritual significance. Our team handles all logistics, and you will be accompanied at every point of your journey.</div></div></div>
+      <div class="faq-item reveal" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a7"><span class="faq-q-text">How many people are on the retreat?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a7"><div class="faq-answer-inner">This is a small-group experience — deliberately. We strictly limit group size to ensure every participant receives personal attention, genuine integration support, and a truly intimate experience. Once the cohort is full, doors close. If you feel called, don't wait.</div></div></div>
+      <div class="faq-item reveal reveal-delay-1" role="listitem"><button class="faq-question" aria-expanded="false" aria-controls="faq-a8"><span class="faq-q-text">What happens after the retreat — is there integration support?</span><div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-answer" id="faq-a8"><div class="faq-answer-inner">Transformation doesn't end when you land home — it continues. Post-retreat integration is a core part of our philosophy. You'll leave with a personalized integration framework, access to our community, and follow-up support to help you anchor the shifts you've made into your everyday life.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 — FINAL CTA -->
+<section class="final-cta" id="book" aria-label="Book your discovery call">
+  <img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778345949/Retreat_Jungle_swp1km.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;" />
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(8,15,6,0.55) 0%,rgba(26,35,24,0.45) 50%,rgba(8,15,6,0.55) 100%);"></div>
+  <div class="final-cta-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="final-cta-inner">
+      <span class="final-cta-date reveal">August 25 – September 3, 2026 · Ecuador</span>
+      <h2 class="final-cta-title reveal reveal-delay-1">Your Reset<br /><em>Awaits</em></h2>
+      <p class="final-cta-body reveal reveal-delay-2">You've felt the pull. Something in you recognized this before your mind caught up. That recognition is enough. Take the first step — a conversation, nothing more. We'll handle the rest together.</p>
+      <div class="final-cta-actions reveal reveal-delay-3">
+        <a href="https://app.cowlendar.com/cal/6993ac9cc2b626f355338204/47238180012268" class="btn-primary" style="padding: 20px 48px !important; font-size: 0.875rem !important;" aria-label="Book a discovery call for the Keys to Kawsay Retreat">Book Your Discovery Call<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <button onclick="showEmailPopup()" class="btn-outline" aria-label="Contact us by email">Still Have Questions?</button>
+      </div>
+      <p class="final-cta-note reveal reveal-delay-4">Limited spots available · No commitment required on the discovery call</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- FOOTER (into the Kawsaypac site) -->
+<footer class="rt-footer">
+  <div class="rt-footer-inner">
+    <div class="rt-footer-brand">
+      <div class="rt-footer-brand-name">KAWSAYPAC</div>
+      <div class="rt-footer-brand-sub">Ancestral Herbs · The Electric Eats</div>
+      <p class="rt-footer-brand-tagline">Wildcrafted herbal rituals rooted in Ecuador and shared through direct community relationships.</p>
+    </div>
+    <div class="rt-footer-links">
+      <div class="rt-footer-links-title">Explore</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop by Concern</a></li>
+        <li><a href="apothecary.html">Apothecary</a></li>
+        <li><a href="recipes.html">Recipes &amp; Programs</a></li>
+        <li><a href="retreats.html">Ecuador Retreats</a></li>
+      </ul>
+    </div>
+    <div class="rt-footer-links">
+      <div class="rt-footer-links-title">Learn</div>
+      <ul>
+        <li><a href="philosophy.html">Our Philosophy</a></li>
+        <li><a href="tea-preparation.html">Tea Preparation</a></li>
+        <li><a href="preparing-your-body.html">Preparing Your Body</a></li>
+        <li><a href="story.html">Our Story</a></li>
+      </ul>
+    </div>
+    <div class="rt-footer-links">
+      <div class="rt-footer-links-title">The Retreat</div>
+      <ul>
+        <li><a href="https://app.cowlendar.com/cal/6993ac9cc2b626f355338204/47238180012268">Book a Discovery Call</a></li>
+        <li><a href="mailto:info@theelectriceats.com">info@theelectriceats.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="rt-footer-bottom">
+    <p class="rt-footer-copy">© 2026 The Electric Eats · Keys to Kawsay Retreat, Ecuador</p>
+    <p class="rt-footer-copy">These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent disease.</p>
+  </div>
+</footer>
+
+<!-- STICKY CTA BAR -->
+<div class="sticky-bar" id="stickyBar" role="complementary" aria-label="Book retreat sticky bar">
+  <div>
+    <p class="sticky-bar-text">Keys to Kawsay Retreat &mdash; Ecuador 2026</p>
+    <p class="sticky-bar-date">Aug 25 – Sep 3 · Limited Spots</p>
+  </div>
+  <a href="https://app.cowlendar.com/cal/6993ac9cc2b626f355338204/47238180012268" class="sticky-bar-cta" aria-label="Book your discovery call">Book a Discovery Call<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+
+<!-- JUNGLE CANVAS -->
+<canvas id="jungleCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.55;" aria-hidden="true"></canvas>
+
+<!-- Email popup -->
+<div id="emailPopup" style="display:none; position:fixed; inset:0; z-index:99999; align-items:center; justify-content:center;">
+  <div onclick="closeEmailPopup()" style="position:absolute; inset:0; background:rgba(8,15,6,0.8); backdrop-filter:blur(6px);"></div>
+  <div style="position:relative; z-index:1; background:var(--forest); border-radius:20px; padding:48px 40px; max-width:440px; width:90%; text-align:center; box-shadow:0 40px 100px rgba(0,0,0,0.5);">
+    <button onclick="closeEmailPopup()" style="position:absolute; top:16px; right:20px; background:none; border:none; color:rgba(245,240,232,0.5); font-size:1.5rem; cursor:pointer; line-height:1;">&times;</button>
+    <div style="width:56px; height:56px; border-radius:50%; background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.3); display:flex; align-items:center; justify-content:center; margin:0 auto 24px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+    <h3 style="font-family:var(--font-serif); font-size:1.75rem; color:var(--white); margin-bottom:12px;">Have a Question?</h3>
+    <p style="font-family:var(--font-sans); font-size:0.9375rem; color:rgba(245,240,232,0.7); line-height:1.7; margin-bottom:28px;">We'd love to hear from you. Reach out and we'll get back to you within 24 hours.</p>
+    <a href="mailto:info@theelectriceats.com" style="display:inline-block; padding:14px 32px; background:var(--gold); color:#111; font-family:var(--font-sans); font-size:0.8125rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; text-decoration:none;">info@theelectriceats.com</a>
+  </div>
+</div>
+
+<script>
+  // JUNGLE PARTICLE SYSTEM
+  (function() {
+    const canvas = document.getElementById('jungleCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], fireflies = [], spores = [];
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    function MistParticle() {
+      this.reset = function() { this.x = Math.random() * W; this.y = H * 0.4 + Math.random() * H * 0.7; this.r = 80 + Math.random() * 180; this.alpha = 0.01 + Math.random() * 0.045; this.vx = (Math.random() - 0.5) * 0.18; this.vy = -0.05 - Math.random() * 0.08; this.life = 0; this.maxLife = 300 + Math.random() * 400; this.hue = 140 + Math.random() * 30; };
+      this.reset();
+    }
+    for (let i = 0; i < 22; i++) { const p = new MistParticle(); p.life = Math.random() * p.maxLife; particles.push(p); }
+    function Firefly() {
+      this.reset = function() { this.x = Math.random() * W; this.y = Math.random() * H; this.r = 1.2 + Math.random() * 2; this.alpha = 0; this.targetAlpha = 0.4 + Math.random() * 0.6; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.pulseSpeed = 0.012 + Math.random() * 0.02; this.pulseOffset = Math.random() * Math.PI * 2; this.life = 0; this.maxLife = 200 + Math.random() * 300; this.color = Math.random() < 0.7 ? 'rgba(180,220,80,' : 'rgba(201,168,76,'; };
+      this.reset(); this.life = Math.random() * this.maxLife;
+    }
+    for (let i = 0; i < 28; i++) fireflies.push(new Firefly());
+    function Spore() {
+      this.reset = function() { this.x = Math.random() * W; this.y = H + 10; this.r = 0.8 + Math.random() * 1.8; this.alpha = 0.2 + Math.random() * 0.5; this.vx = (Math.random() - 0.5) * 0.5; this.vy = -(0.3 + Math.random() * 0.7); this.wobble = Math.random() * Math.PI * 2; this.wobbleSpeed = 0.01 + Math.random() * 0.02; };
+      this.reset(); this.y = Math.random() * H;
+    }
+    for (let i = 0; i < 40; i++) spores.push(new Spore());
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        p.life++; p.x += p.vx; p.y += p.vy; if (p.life > p.maxLife) p.reset();
+        const progress = p.life / p.maxLife;
+        const fade = progress < 0.15 ? progress / 0.15 : progress > 0.8 ? (1 - progress) / 0.2 : 1;
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+        grad.addColorStop(0, 'hsla(' + p.hue + ',30%,40%,' + (p.alpha * fade) + ')'); grad.addColorStop(1, 'hsla(' + p.hue + ',30%,40%,0)');
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
+      });
+      fireflies.forEach(f => {
+        f.life++; f.x += f.vx + Math.sin(f.life * 0.03) * 0.3; f.y += f.vy + Math.cos(f.life * 0.025) * 0.3;
+        if (f.life > f.maxLife || f.x < -20 || f.x > W + 20 || f.y < -20 || f.y > H + 20) { f.reset(); return; }
+        const progress = f.life / f.maxLife;
+        const envFade = progress < 0.1 ? progress / 0.1 : progress > 0.85 ? (1 - progress) / 0.15 : 1;
+        const pulse = 0.5 + 0.5 * Math.sin(f.life * f.pulseSpeed + f.pulseOffset);
+        const a = f.targetAlpha * envFade * pulse;
+        const glow = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r * 5);
+        glow.addColorStop(0, f.color + (a * 0.4) + ')'); glow.addColorStop(1, f.color + '0)');
+        ctx.beginPath(); ctx.arc(f.x, f.y, f.r * 5, 0, Math.PI * 2); ctx.fillStyle = glow; ctx.fill();
+        ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2); ctx.fillStyle = f.color + a + ')'; ctx.fill();
+      });
+      spores.forEach(s => {
+        s.wobble += s.wobbleSpeed; s.x += s.vx + Math.sin(s.wobble) * 0.3; s.y += s.vy; if (s.y < -10) s.reset();
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(220,210,180,' + s.alpha + ')'; ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // Navbar scrolled state + sticky bar
+  const navbar = document.getElementById('navbar');
+  const stickyBar = document.getElementById('stickyBar');
+  let heroBottom = 0;
+  function getHeroBottom() { const hero = document.querySelector('.hero'); if (hero) heroBottom = hero.getBoundingClientRect().bottom + window.scrollY; }
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', scrollY > 40);
+    if (stickyBar) { if (scrollY > heroBottom * 0.8) stickyBar.classList.add('visible'); else stickyBar.classList.remove('visible'); }
+  }, { passive: true });
+  window.addEventListener('load', getHeroBottom);
+  window.addEventListener('resize', getHeroBottom);
+
+  // Reveal animations
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+  function closeMobileMenu() { if (mobileMenu) mobileMenu.classList.remove('open'); if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => { mobileMenu.classList.add('open'); menuToggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; });
+    if (menuClose) menuClose.addEventListener('click', closeMobileMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  }
+
+  // FAQ Accordion
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      faqQuestions.forEach(b => { b.setAttribute('aria-expanded', 'false'); const answerId = b.getAttribute('aria-controls'); if (answerId) { const answer = document.getElementById(answerId); if (answer) answer.classList.remove('open'); } });
+      if (!expanded) { btn.setAttribute('aria-expanded', 'true'); const answerId = btn.getAttribute('aria-controls'); if (answerId) { const answer = document.getElementById(answerId); if (answer) answer.classList.add('open'); } }
+    });
+  });
+
+  // Force-show hero reveals
+  window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible')); }, 100); });
+
+  // Andes slider
+  var andesCurrent = 0, andesTotal = 5;
+  function andesGoTo(n) { andesCurrent = n; document.getElementById('andesSlides').style.transform = 'translateX(-' + (n * 100) + '%)'; document.querySelectorAll('#andesDots .andes-dot').forEach(function(d, i) { d.classList.toggle('active', i === n); }); }
+  function andesNext() { andesGoTo((andesCurrent + 1) % andesTotal); }
+  function andesPrev() { andesGoTo((andesCurrent - 1 + andesTotal) % andesTotal); }
+  setInterval(andesNext, 5000);
+  (function() { var el = document.getElementById('andesSlides'); if (!el) return; var startX = 0; el.parentElement.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true }); el.parentElement.addEventListener('touchend', function(e) { var diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) { if (diff > 0) andesNext(); else andesPrev(); } }, { passive: true }); })();
+
+  // Accommodation sliders
+  var accomState = {};
+  function accomGetSlides(track) { return track.querySelectorAll('.accom-slide'); }
+  function accomGoTo(sliderId, n) { var track = document.getElementById(sliderId); if (!track) return; var total = accomGetSlides(track).length; if (total === 0) return; n = (n + total) % total; accomState[sliderId] = n; track.style.transform = 'translateX(-' + (n * 100) + '%)'; var container = track.closest('[data-slider]'); if (container) container.querySelectorAll('.accom-dot').forEach(function(d, i) { d.classList.toggle('active', i === n); }); }
+  function accomNext(sliderId) { var track = document.getElementById(sliderId); if (!track) return; var total = accomGetSlides(track).length; accomGoTo(sliderId, ((accomState[sliderId] || 0) + 1) % total); }
+  function accomPrev(sliderId) { var track = document.getElementById(sliderId); if (!track) return; var total = accomGetSlides(track).length; accomGoTo(sliderId, ((accomState[sliderId] || 0) - 1 + total) % total); }
+  document.querySelectorAll('.accom-slider').forEach(function(slider) { var startX = 0, sliderId = slider.dataset.slider; slider.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true }); slider.addEventListener('touchend', function(e) { var diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) { if (diff > 0) accomNext(sliderId); else accomPrev(sliderId); } }, { passive: true }); });
+
+  // Who slider
+  var whoCurrent = 0, whoTotal = 4;
+  function whoGoTo(n) { whoCurrent = n; var el = document.getElementById('whoSlides'); if (el) el.style.transform = 'translateX(-' + (n * 100) + '%)'; document.querySelectorAll('#whoDots .andes-dot').forEach(function(d, i) { d.classList.toggle('active', i === n); }); }
+  function whoNext() { whoGoTo((whoCurrent + 1) % whoTotal); }
+  function whoPrev() { whoGoTo((whoCurrent - 1 + whoTotal) % whoTotal); }
+  setInterval(whoNext, 5000);
+  (function() { var el = document.getElementById('whoSlides'); if (!el) return; var startX = 0; el.parentElement.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true }); el.parentElement.addEventListener('touchend', function(e) { var diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) { if (diff > 0) whoNext(); else whoPrev(); } }, { passive: true }); })();
+
+  // Email popup
+  function showEmailPopup() { document.getElementById('emailPopup').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function closeEmailPopup() { document.getElementById('emailPopup').style.display = 'none'; document.body.style.overflow = ''; }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeEmailPopup(); });
+</script>
+
 </body>
 </html>
