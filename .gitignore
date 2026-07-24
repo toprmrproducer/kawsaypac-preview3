@@ -5,3 +5,5 @@ qa-*.png
 !.env.example
 *.pem
 *.key
+_raisa-revert/
+retreats-OLD-backup.html
