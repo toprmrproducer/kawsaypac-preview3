@@ -950,3 +950,6 @@ video.shop-hero-bg{opacity:1!important;z-index:0!important}
 video.shop-hero-bg{object-position:center 38%;filter:saturate(1.06) contrast(1.03)}
 .shop-hero::after{height:78%!important;background:linear-gradient(0deg,rgba(6,20,12,.92) 0%,rgba(6,20,12,.72) 34%,rgba(6,20,12,.34) 64%,rgba(6,20,12,0) 100%)!important}
 .shop-hero .shop-hero__content{position:relative;z-index:3}
+/* v81: shorter hero WITHOUT clipping its content */
+.shop-hero{min-height:600px!important;max-height:none!important;overflow:hidden;padding-block:clamp(70px,9vh,110px)!important;align-content:center}
+.shop-hero .shop-hero__content{position:relative;z-index:3}
