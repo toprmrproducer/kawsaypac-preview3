@@ -208,3 +208,9 @@
    overflowed visibly on narrow ones). Centre with auto margins instead, leaving
    the transform channel free for GSAP. */
 .journey-scrollcue{left:0;right:0;width:min(92vw,340px);margin-inline:auto}
+
+/* v98: now that the summit is composed at scroll 0, the Kawsaypac wordmark was
+   landing white-on-white across the glacier. Lift the brand block into the sky
+   band above the peak. Pairs with cotopaxi data-dyp 14, which eases the cone
+   down ~60px to open that band without costing the full-cone framing. */
+.journey-preview .journey-brand{top:1%}
