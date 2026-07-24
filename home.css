@@ -326,8 +326,6 @@
 .closing-flora{position:absolute;bottom:-4%;z-index:1;pointer-events:none;filter:drop-shadow(0 12px 30px rgba(0,0,0,.4))}
 .closing-flora-left{left:-2%;width:clamp(180px,20vw,360px)}
 .closing-flora-right{right:-2%;width:clamp(200px,22vw,400px)}
-.philo-icons{display:flex;justify-content:center;gap:clamp(20px,3vw,44px);margin:26px auto 0}
-.philo-icons img{width:clamp(40px,4.5vw,64px);height:auto;opacity:.85}
 .philo-accent{top:50%;transform:translateY(-50%)}
 .principles-section{background:linear-gradient(180deg,#faf6ec 0%,#eef0e4 55%,#dfe5d3 100%)}
 .newsletter-section{background:linear-gradient(180deg,#16351f,#0d2518);color:#f2ead6}
@@ -529,3 +527,8 @@ body>*:last-child{margin-bottom:0}
 .philosophy>.shell::before{display:none}
 @media(max-width:900px){.philo-accent,.philo-bloom{width:clamp(120px,20vw,180px)!important}
  .philo-accent-left{left:-34px!important}.philo-accent-right{right:-34px!important}}
+
+/* v97: Raisa asked for the four herb icons in the philosophy statement to go.
+   They carried 26px of top margin above the Learn button, so restore that
+   breathing room on the button itself rather than leaving the gap collapsed. */
+.philosophy-statement .btn-outline{margin-top:18px}
