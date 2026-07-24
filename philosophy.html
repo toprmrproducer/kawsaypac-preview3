@@ -6,9 +6,9 @@
 <title>Our Philosophy | Kawsaypac Ancestral Herbs</title>
 <meta name="description" content="Kawsaypac was born from a deep reverence for the people, plants, and traditions that have quietly sustained life in the Andes and Amazon for generations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=101">
-<link rel="stylesheet" href="home.css?v=101">
-<script defer src="app.js?v=101"></script>
+<link rel="stylesheet" href="styles.css?v=102">
+<link rel="stylesheet" href="home.css?v=102">
+<script defer src="app.js?v=102"></script>
 <style>
 /* ============ Our Philosophy - page-scoped editorial layout ============ */
 .kx-philo{--kx-serif:'Fraunces',Georgia,serif;--kx-ivory:#FAF9F6;--kx-forest:#1F3A2A;--kx-forest2:#2C4A37;--kx-gold:#C9A942;--kx-ink:#3a463d;--kx-line:rgba(31,58,42,.14);--kx-card:0 20px 50px rgba(26,40,25,.08);--kx-card-hover:0 34px 74px rgba(26,40,25,.14);font-family:var(--body);color:var(--kx-forest);background:var(--kx-ivory);overflow-x:hidden}
@@ -126,12 +126,54 @@
   .kx-philo .kx-name-grid{grid-template-columns:1fr}
   .kx-philo .kx-name-cell+.kx-name-cell{border-left:0;border-top:1px solid var(--kx-line)}
 }
+
+/* ============ Left section navigator (TOC) ============ */
+.kx-philo #more-than-a-name,.kx-philo #a-journey,.kx-philo #every-herb,.kx-philo #rooted-in-reciprocity,.kx-philo #ancient-wisdom,.kx-philo #why-flower-of-life,.kx-philo #an-invitation{scroll-margin-top:96px}
+.kx-philo .kx-toc{margin:0}
+.kx-philo .kx-toc ul{list-style:none;margin:0;padding:0}
+.kx-philo .kx-toc-title{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:#9aa08f;font-weight:650;margin:0 0 14px}
+.kx-philo .kx-toc a{display:block;position:relative;font-family:var(--kx-serif);font-weight:400;font-size:.98rem;line-height:1.3;color:#5b6a5f;text-decoration:none;padding:9px 0 9px 18px;border-left:1px solid var(--kx-line);transition:color .3s var(--ease,ease),border-color .3s var(--ease,ease)}
+.kx-philo .kx-toc a::before{content:"";position:absolute;left:-1px;top:50%;transform:translateY(-50%) scaleY(0);transform-origin:center;width:2px;height:20px;background:var(--kx-gold);transition:transform .32s var(--ease,ease)}
+.kx-philo .kx-toc a:hover{color:var(--kx-forest)}
+.kx-philo .kx-toc a.is-active{color:var(--kx-gold);border-left-color:transparent}
+.kx-philo .kx-toc a.is-active::before{transform:translateY(-50%) scaleY(1)}
+
+/* desktop: reserve a left column and fix the rail into it */
+@media (min-width:1100px){
+  .kx-philo{padding-left:248px}
+  .kx-philo .kx-toc{position:fixed;top:50%;left:max(24px,calc(50vw - 690px));transform:translateY(-50%);width:200px;max-height:82vh;overflow:auto;z-index:20}
+}
+
+/* tablet + mobile: collapse to a horizontal pill strip, never overflow */
+@media (max-width:1099px){
+  .kx-philo .kx-toc{padding:14px clamp(20px,5vw,44px) 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--kx-line)}
+  .kx-philo .kx-toc-title{display:none}
+  .kx-philo .kx-toc ul{display:flex;gap:8px;width:max-content}
+  .kx-philo .kx-toc a{white-space:nowrap;border:1px solid var(--kx-line);border-radius:999px;padding:8px 16px;font-size:.84rem}
+  .kx-philo .kx-toc a::before{display:none}
+  .kx-philo .kx-toc a:hover{color:var(--kx-forest);border-color:rgba(201,169,66,.5)}
+  .kx-philo .kx-toc a.is-active{color:#fff;background:var(--kx-forest);border-color:var(--kx-forest)}
+}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div data-site-header></div>
 <main class="page-main kx-philo" id="main">
+
+  <!-- LEFT SECTION NAVIGATOR -->
+  <nav class="kx-toc" aria-label="Section navigation">
+    <p class="kx-toc-title">On this page</p>
+    <ul>
+      <li><a href="#more-than-a-name" data-toc>More Than a Name</a></li>
+      <li><a href="#a-journey" data-toc>A Journey That Changed Everything</a></li>
+      <li><a href="#every-herb" data-toc>Every Herb Has a Story</a></li>
+      <li><a href="#rooted-in-reciprocity" data-toc>Rooted in Reciprocity</a></li>
+      <li><a href="#ancient-wisdom" data-toc>Ancient Wisdom for Modern Living</a></li>
+      <li><a href="#why-flower-of-life" data-toc>Why the Flower of Life</a></li>
+      <li><a href="#an-invitation" data-toc>An Invitation</a></li>
+    </ul>
+  </nav>
 
   <!-- HERO -->
   <section class="kx-hero">
@@ -156,7 +198,7 @@
   </section>
 
   <!-- MORE THAN A NAME -->
-  <section class="kx-block kx-tight">
+  <section class="kx-block kx-tight" id="more-than-a-name">
     <div class="kx-wrap kx-col kx-rise">
       <p class="kx-kicker">More Than a Name</p>
       <div class="kx-name">
@@ -180,7 +222,7 @@
   </section>
 
   <!-- A JOURNEY THAT CHANGED EVERYTHING (split) -->
-  <section class="kx-split kx-rise">
+  <section class="kx-split kx-rise" id="a-journey">
     <div class="kx-split-media"><img src="assets/img/kichwa-kids.webp?v=99" alt="Kichwa community members in the Ecuadorian highlands" loading="lazy" decoding="async"></div>
     <div class="kx-split-copy">
       <p class="kx-kicker">A Journey That Changed Everything</p>
@@ -191,7 +233,7 @@
   </section>
 
   <!-- EVERY HERB HAS A STORY -->
-  <section class="kx-block">
+  <section class="kx-block" id="every-herb">
     <div class="kx-wrap kx-col kx-rise">
       <p class="kx-kicker">Every Herb Has a Story</p>
       <h2>Every herb has a <em>story</em>.</h2>
@@ -211,7 +253,7 @@
   </div>
 
   <!-- ROOTED IN RECIPROCITY (split, flipped) -->
-  <section class="kx-split kx-flip kx-rise">
+  <section class="kx-split kx-flip kx-rise" id="rooted-in-reciprocity">
     <div class="kx-split-media"><img src="assets/img/brian-shaman.webp?v=99" alt="A traditional healer among the plants of the Amazon" loading="lazy" decoding="async"></div>
     <div class="kx-split-copy">
       <p class="kx-kicker">Rooted in Reciprocity</p>
@@ -230,7 +272,7 @@
   </section>
 
   <!-- ANCIENT WISDOM FOR MODERN LIVING -->
-  <section class="kx-block kx-tight">
+  <section class="kx-block kx-tight" id="ancient-wisdom">
     <div class="kx-wrap kx-col kx-rise">
       <p class="kx-kicker">Ancient Wisdom for Modern Living</p>
       <p>We don't believe you have to choose between ancestral knowledge and modern science. We believe the two can exist beautifully together.</p>
@@ -239,7 +281,7 @@
   </section>
 
   <!-- WHY THE FLOWER OF LIFE -->
-  <section class="kx-fol">
+  <section class="kx-fol" id="why-flower-of-life">
     <div class="kx-fol-glow" aria-hidden="true"></div>
     <svg class="kx-fol-svg" viewBox="-130 -120 260 240" fill="none" aria-hidden="true">
       <g stroke="currentColor" stroke-width="1.1">
@@ -273,7 +315,7 @@
   </section>
 
   <!-- AN INVITATION / WELCOME -->
-  <section class="kx-invite">
+  <section class="kx-invite" id="an-invitation">
     <div class="kx-wrap kx-col kx-rise">
       <p class="kx-kicker kx-center">An Invitation</p>
       <p>Our hope is that Kawsaypac becomes more than a collection of herbs on your shelf. We hope it reconnects you with the rhythms of nature, inspires a deeper appreciation for the wisdom carried by Indigenous communities, and reminds you that the earth has always offered extraordinary gifts to those willing to care for it in return.</p>
@@ -305,6 +347,30 @@
       img.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FAF9F6"/><stop offset="1" stop-color="#1F3A2A"/></linearGradient></defs><rect width="1200" height="800" fill="url(#g)"/><text x="60" y="740" font-family="Georgia,serif" font-size="34" fill="#C9A942">'+l+'</text></svg>');
     });
   });
+})();
+</script>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.kx-toc a[data-toc]'));
+  if(!links.length)return;
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(id);
+      if(!t)return;
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history.replaceState)history.replaceState(null,'','#'+id);
+    });
+  });
+  var sections=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  function setActive(id){links.forEach(function(a){a.classList.toggle('is-active',a.getAttribute('href').slice(1)===id);});}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    sections.forEach(function(s){io.observe(s);});
+  }
 })();
 </script>
 </body>

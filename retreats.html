@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=101" />
-  <script defer src="app.js?v=101"></script>
+  <link rel="stylesheet" href="styles.css?v=102" />
+  <script defer src="app.js?v=102"></script>
 
   <style>
     /* ============================================================
@@ -129,21 +129,74 @@
     #rt-scope .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent); animation: scrollLine 2s ease-in-out infinite; }
     @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; opacity: 0; } 50% { transform: scaleY(1); transform-origin: top; opacity: 1; } 100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; } }
 
-    /* SECTION 2 — WHY PEOPLE COME */
-    #rt-scope .why-section { background: var(--forest); padding: 100px 0 108px; position: relative; overflow: hidden; }
-    #rt-scope .why-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
-    #rt-scope .why-section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
-    #rt-scope .why-bg-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(61,82,53,0.4), transparent 60%); z-index: 0; }
-    #rt-scope .why-header { text-align: center; max-width: 680px; margin: 0 auto 56px; position: relative; z-index: 1; }
-    #rt-scope .why-quote { font-family: var(--font-serif); font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 300; font-style: italic; color: var(--sand); line-height: 1.7; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(201,168,76,0.2); }
-    #rt-scope .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; z-index: 1; counter-reset: whycard; }
-    #rt-scope .why-card { display: flex; flex-direction: column; height: 100%; padding: 44px 34px; background: rgba(255,255,255,0.035); border: 1px solid rgba(201,168,76,0.16); border-radius: 16px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 22px 54px rgba(0,0,0,0.30); transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), border-color 0.45s ease, box-shadow 0.45s ease, background 0.45s ease; position: relative; overflow: hidden; counter-increment: whycard; }
-    #rt-scope .why-card::before { content: counter(whycard, decimal-leading-zero); display: block; font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; font-style: italic; color: var(--gold); letter-spacing: 0.02em; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(201,168,76,0.22); }
-    #rt-scope .why-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.055); border-color: rgba(201,168,76,0.44); box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 34px 74px rgba(0,0,0,0.40); }
-    #rt-scope .why-card-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--cream); line-height: 1.28; margin-bottom: 16px; }
-    #rt-scope .why-card-body { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.75; color: rgba(245,240,232,0.64); }
-    #rt-scope .why-card-health { border-color: rgba(201,168,76,0.34); background: rgba(201,168,76,0.07); }
-    #rt-scope .why-card-health::before { color: var(--gold-light); border-bottom-color: rgba(201,168,76,0.34); }
+    /* SECTION 2 - WHY PEOPLE COME (premium retreat redesign) */
+    #rt-scope .why-section { background: radial-gradient(ellipse 130% 92% at 50% 120%, rgba(201,168,76,0.06) 0%, transparent 58%), radial-gradient(ellipse 90% 60% at 50% -10%, rgba(61,82,53,0.35) 0%, transparent 60%), var(--forest); padding: 118px 0 124px; position: relative; overflow: hidden; }
+    #rt-scope .why-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.35), transparent); z-index: 2; }
+    #rt-scope .why-section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); z-index: 2; }
+    #rt-scope .why-bg-glow { position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%); width: 940px; height: 780px; background: radial-gradient(ellipse at center, rgba(61,82,53,0.42) 0%, transparent 62%); z-index: 0; }
+    /* faint constellation / botanical dust behind the row */
+    #rt-scope .why-texture { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.55;
+      background-image:
+        radial-gradient(circle at 11% 26%, rgba(226,201,122,0.16) 0, rgba(226,201,122,0.16) 1.1px, transparent 1.8px),
+        radial-gradient(circle at 24% 68%, rgba(201,168,76,0.11) 0, rgba(201,168,76,0.11) 1px, transparent 1.6px),
+        radial-gradient(circle at 47% 40%, rgba(226,201,122,0.09) 0, rgba(226,201,122,0.09) 1px, transparent 1.6px),
+        radial-gradient(circle at 63% 74%, rgba(201,168,76,0.10) 0, rgba(201,168,76,0.10) 1px, transparent 1.6px),
+        radial-gradient(circle at 79% 22%, rgba(226,201,122,0.14) 0, rgba(226,201,122,0.14) 1.1px, transparent 1.8px),
+        radial-gradient(circle at 90% 58%, rgba(201,168,76,0.09) 0, rgba(201,168,76,0.09) 1px, transparent 1.6px);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 0%, transparent 75%);
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 0%, transparent 75%);
+    }
+    #rt-scope .why-header { text-align: center; max-width: 700px; margin: 0 auto 60px; position: relative; z-index: 1; }
+    #rt-scope .why-ornament { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 20px 0 4px; }
+    #rt-scope .why-ornament span { display: block; width: 52px; height: 1px; }
+    #rt-scope .why-ornament span:first-child { background: linear-gradient(90deg, transparent, rgba(201,168,76,0.55)); }
+    #rt-scope .why-ornament span:last-child { background: linear-gradient(90deg, rgba(201,168,76,0.55), transparent); }
+    #rt-scope .why-ornament i { width: 5px; height: 5px; transform: rotate(45deg); background: var(--gold); box-shadow: 0 0 10px rgba(201,168,76,0.6); }
+    #rt-scope .why-quote { font-family: var(--font-serif); font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 300; font-style: italic; color: var(--sand); line-height: 1.72; margin-top: 22px; padding-top: 24px; border-top: 1px solid rgba(201,168,76,0.2); }
+    #rt-scope .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; z-index: 1; }
+    #rt-scope .why-card {
+      display: flex; flex-direction: column; height: 100%;
+      padding: 46px 34px 42px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.062) 0%, rgba(255,255,255,0.022) 44%, rgba(255,255,255,0.014) 100%), rgba(20,28,18,0.34);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -30px 60px rgba(0,0,0,0.14), 0 26px 62px rgba(0,0,0,0.34);
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s ease, background 0.5s ease;
+      position: relative; overflow: hidden; isolation: isolate;
+    }
+    /* hairline gold-gradient border */
+    #rt-scope .why-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: 18px; padding: 1px;
+      background: linear-gradient(155deg, rgba(226,201,122,0.55) 0%, rgba(201,168,76,0.16) 32%, rgba(201,168,76,0.05) 62%, rgba(226,201,122,0.30) 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none; opacity: 0.9; transition: opacity 0.5s ease, background 0.5s ease; z-index: 0;
+    }
+    /* refined display number */
+    #rt-scope .why-card-num {
+      font-family: 'Fraunces', var(--font-serif); font-optical-sizing: auto;
+      font-size: 3rem; font-weight: 300; font-style: italic; line-height: 1; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, rgba(201,168,76,0.45) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--gold);
+      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 24px; position: relative; z-index: 1;
+    }
+    #rt-scope .why-card-num::after { content: ''; display: block; width: 34px; height: 1px; background: linear-gradient(90deg, rgba(201,168,76,0.75), transparent); }
+    /* subtle gold corner flourish */
+    #rt-scope .why-card-corner { position: absolute; top: 15px; right: 15px; width: 24px; height: 24px; border-top: 1px solid rgba(201,168,76,0.5); border-right: 1px solid rgba(201,168,76,0.5); pointer-events: none; opacity: 0.5; transition: opacity 0.5s ease; z-index: 1; }
+    #rt-scope .why-card-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--cream); line-height: 1.3; margin-bottom: 15px; letter-spacing: 0.004em; position: relative; z-index: 1; }
+    #rt-scope .why-card-title em { font-style: italic; font-weight: 500; color: var(--gold-light); }
+    #rt-scope .why-card-body { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.78; color: rgba(245,240,232,0.66); position: relative; z-index: 1; }
+    #rt-scope .why-card:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.088) 0%, rgba(255,255,255,0.032) 44%, rgba(255,255,255,0.02) 100%), rgba(24,32,20,0.42);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -30px 60px rgba(0,0,0,0.16), 0 40px 92px rgba(0,0,0,0.46), 0 0 48px rgba(201,168,76,0.15);
+    }
+    #rt-scope .why-card:hover::after { opacity: 1; background: linear-gradient(155deg, rgba(226,201,122,0.9) 0%, rgba(201,168,76,0.35) 34%, rgba(201,168,76,0.12) 64%, rgba(226,201,122,0.55) 100%); }
+    #rt-scope .why-card:hover .why-card-corner { opacity: 1; }
+    /* highlighted health card */
+    #rt-scope .why-card-health { background: linear-gradient(180deg, rgba(201,168,76,0.13) 0%, rgba(201,168,76,0.05) 46%, rgba(255,255,255,0.014) 100%), rgba(28,30,18,0.4); }
+    #rt-scope .why-card-health::after { background: linear-gradient(155deg, rgba(226,201,122,0.75) 0%, rgba(201,168,76,0.28) 34%, rgba(201,168,76,0.1) 64%, rgba(226,201,122,0.45) 100%); opacity: 1; }
+    #rt-scope .why-card-health .why-card-corner { opacity: 0.85; }
     #rt-scope .why-card-health .why-card-title { color: var(--gold-light); }
 
     /* SECTION 3 — WHAT CHANGES */
@@ -377,17 +430,19 @@
 <!-- SECTION 2 — WHY PEOPLE COME -->
 <section class="why-section" id="why" aria-label="Why people come to this retreat">
   <div class="why-bg-glow" aria-hidden="true"></div>
+  <div class="why-texture" aria-hidden="true"></div>
   <div class="container">
     <div class="why-header">
       <p class="section-label reveal">The Call</p>
+      <div class="why-ornament reveal reveal-delay-1" aria-hidden="true"><span></span><i></i><span></span></div>
       <h2 class="section-title light reveal reveal-delay-1">You Didn't Come Here<br />By Accident</h2>
       <p class="why-quote reveal reveal-delay-2">This is not for everyone — and that's intentional. The people who arrive to our shared space are ready for a real shift and deep healing.</p>
     </div>
     <div class="why-grid" role="list">
-      <div class="why-card reveal" role="listitem"><h3 class="why-card-title">You're energetically depleted — body, mind &amp; spirit</h3><p class="why-card-body">You've rested, you've tried the routines, and still something feels hollow. This isn't burnout — it's your nervous system signaling that something fundamental needs to change. That signal is the beginning of everything.</p></div>
-      <div class="why-card why-card-health reveal reveal-delay-1" role="listitem"><h3 class="why-card-title">Your body's been asking for more than another cleanse</h3><p class="why-card-body">You've tried the capsules. The teas. The juicing. The cleanses, the diets, the detox programs. And still your body isn't where you want it to be. That's not failure — that's a sign the root hasn't been touched yet. If deep, lasting healing is what you're seeking, this retreat was built for exactly this.</p></div>
-      <div class="why-card reveal reveal-delay-2" role="listitem"><h3 class="why-card-title">You identify with a reality that affects your health</h3><p class="why-card-body">Old grief, inherited patterns, the slow buildup of unexpressed emotion. You've managed it beautifully. Now it's asking to be released — not suppressed, not processed again alone, but truly set down.</p></div>
-      <div class="why-card reveal reveal-delay-2" role="listitem"><h3 class="why-card-title">You're ready — really ready — for a real reset</h3><p class="why-card-body">Not a vacation. Not a weekend workshop. You want something that reorganizes you at a cellular level. That hands you back your clarity, your joy, your sense of who you actually are beneath all the noise.</p></div>
+      <div class="why-card reveal" role="listitem"><span class="why-card-corner" aria-hidden="true"></span><div class="why-card-num" aria-hidden="true">01</div><h3 class="why-card-title">You're energetically <em>depleted</em> — body, mind &amp; spirit</h3><p class="why-card-body">You've rested, you've tried the routines, and still something feels hollow. This isn't burnout — it's your nervous system signaling that something fundamental needs to change. That signal is the beginning of everything.</p></div>
+      <div class="why-card why-card-health reveal reveal-delay-1" role="listitem"><span class="why-card-corner" aria-hidden="true"></span><div class="why-card-num" aria-hidden="true">02</div><h3 class="why-card-title">Your body's been asking for <em>more</em> than another cleanse</h3><p class="why-card-body">You've tried the capsules. The teas. The juicing. The cleanses, the diets, the detox programs. And still your body isn't where you want it to be. That's not failure — that's a sign the root hasn't been touched yet. If deep, lasting healing is what you're seeking, this retreat was built for exactly this.</p></div>
+      <div class="why-card reveal reveal-delay-2" role="listitem"><span class="why-card-corner" aria-hidden="true"></span><div class="why-card-num" aria-hidden="true">03</div><h3 class="why-card-title">You identify with a reality that affects your <em>health</em></h3><p class="why-card-body">Old grief, inherited patterns, the slow buildup of unexpressed emotion. You've managed it beautifully. Now it's asking to be released — not suppressed, not processed again alone, but truly set down.</p></div>
+      <div class="why-card reveal reveal-delay-2" role="listitem"><span class="why-card-corner" aria-hidden="true"></span><div class="why-card-num" aria-hidden="true">04</div><h3 class="why-card-title">You're ready — really ready — for a <em>real reset</em></h3><p class="why-card-body">Not a vacation. Not a weekend workshop. You want something that reorganizes you at a cellular level. That hands you back your clarity, your joy, your sense of who you actually are beneath all the noise.</p></div>
     </div>
   </div>
 </section>

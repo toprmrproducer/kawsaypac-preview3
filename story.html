@@ -6,9 +6,9 @@
 <title>Our Story | Kawsaypac Ancestral Herbs</title>
 <meta name="description" content="We are Raisa and Brian. Two diagnoses changed our path, and a journey through the Ecuadorian Andes and Amazon became Kawsaypac. Welcome, friend.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=101">
-<link rel="stylesheet" href="home.css?v=101">
-<script defer src="app.js?v=101"></script>
+<link rel="stylesheet" href="styles.css?v=102">
+<link rel="stylesheet" href="home.css?v=102">
+<script defer src="app.js?v=102"></script>
 <style>
 /* ============ .kx-story page-scoped editorial layout ============ */
 .kx-story{--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-paper2:#EFEBE1;--kx-forest:#1F3A2A;--kx-forest2:#16281D;--kx-gold:#C9A942;--kx-gold-soft:rgba(201,169,66,.30);--kx-ink:#2b2b26;--kx-muted:#5f6157;--kx-line:rgba(31,58,42,.14);background:var(--kx-cream);color:var(--kx-ink);font-family:var(--body,Satoshi,Arial,sans-serif);overflow-x:hidden}
@@ -102,12 +102,13 @@
 /* CONNECTION BAND ======================================== */
 .kx-connection{position:relative;padding:clamp(60px,7vw,104px) 0;background:linear-gradient(165deg,var(--kx-forest),var(--kx-forest2));color:#e9e6dc;text-align:center;overflow:hidden}
 .kx-connection::before{content:"";position:absolute;inset:0;background:url('assets/img/bg-footer-jungle.webp?v=1') center/cover no-repeat;opacity:.12;z-index:0}
+.kx-connection::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,17,12,.48) 0%,rgba(9,17,12,.60) 100%);z-index:0}
 .kx-connection .kx-wrap{position:relative;z-index:1}
 .kx-connection .kx-eyebrow{color:var(--kx-gold);justify-content:center}
 .kx-connection .kx-eyebrow::before{background:var(--kx-gold);opacity:.8}
-.kx-connection h2{color:#f6f3e9;font-size:clamp(32px,4vw,54px);line-height:1.03;margin-bottom:24px}
+.kx-connection h2{color:#f8f5ec;font-size:clamp(32px,4vw,54px);line-height:1.03;margin-bottom:24px;text-shadow:0 2px 18px rgba(0,0,0,.5)}
 .kx-connection h2 .kx-em{color:var(--kx-gold)}
-.kx-connection-lead{max-width:660px;margin:0 auto;color:#d3d2c6}
+.kx-connection-lead{max-width:660px;margin:0 auto;color:rgba(245,240,232,.94);text-shadow:0 1px 12px rgba(0,0,0,.55)}
 .kx-connection-lead p+p{margin-top:15px}
 .kx-connection-lead .kx-hl{color:#fff;background-image:linear-gradient(transparent 60%,rgba(201,169,66,.42) 60%)}
 .kx-icons{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;max-width:940px;margin:clamp(44px,5vw,64px) auto 0}
@@ -115,12 +116,11 @@
 .kx-icon:hover{transform:translateY(-6px);background:rgba(255,255,255,.09);border-color:rgba(201,169,66,.6)}
 .kx-icon-badge{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(201,169,66,.14);border:1px solid rgba(201,169,66,.4)}
 .kx-icon svg{width:28px;height:28px;stroke:var(--kx-gold);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.kx-icon span{font-size:12.5px;line-height:1.45;color:#e2e0d4;letter-spacing:.02em;max-width:130px;font-weight:500}
-.kx-connection-close{max-width:680px;margin:clamp(42px,5vw,60px) auto 0;color:#d3d2c6}
+.kx-icon span{font-size:12.5px;line-height:1.45;color:rgba(245,240,232,.95);letter-spacing:.02em;max-width:130px;font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.kx-connection-close{max-width:680px;margin:clamp(42px,5vw,60px) auto 0;color:rgba(245,240,232,.94);text-shadow:0 1px 12px rgba(0,0,0,.55)}
 
 /* CLOSING ================================================ */
 .kx-closing{position:relative;padding:clamp(64px,8vw,120px) 0;text-align:center;background:var(--kx-cream)}
-.kx-closing::before{content:"";position:absolute;left:50%;top:clamp(30px,4vw,50px);transform:translateX(-50%);width:64px;height:2px;background:var(--kx-gold);opacity:.8;border-radius:2px}
 .kx-closing h2{font-size:clamp(44px,6.4vw,82px);line-height:1;margin-bottom:16px}
 .kx-closing-sub{max-width:440px;margin:0 auto;color:var(--kx-muted);font-family:var(--display,'Fraunces',serif);font-style:italic;font-size:clamp(17px,1.5vw,21px)}
 .kx-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;background:var(--kx-forest);color:#f6f3e9;font-family:var(--body,Satoshi,sans-serif);text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:600;padding:17px 38px;border-radius:3px;text-decoration:none;transition:background .35s ease,transform .35s ease,box-shadow .35s ease;box-shadow:0 18px 40px rgba(31,58,42,.22)}
