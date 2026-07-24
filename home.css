@@ -475,3 +475,22 @@ body>*:last-child{margin-bottom:0}
 @media(max-width:900px){.philo-accent{width:clamp(170px,30vw,250px)!important}
  .philo-accent-left .philo-bloom{margin-left:clamp(-110px,-16vw,-60px)!important}
  .philo-accent-right .philo-bloom{margin-right:clamp(-110px,-16vw,-60px)!important}}
+
+/* v89: bouquets back UPRIGHT, side by side, 1.5x bigger so they cover both flanks */
+.philo-accent{width:clamp(420px,43vw,720px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important;align-items:center!important}
+.philo-accent-left .philo-bloom{margin-left:clamp(-210px,-14vw,-100px)!important;transform-origin:50% 50%}
+.philo-accent-right .philo-bloom{margin-right:clamp(-210px,-14vw,-100px)!important;transform-origin:50% 50%}
+/* upright: gentle sway only, no 30deg tilt */
+@keyframes bloom-sway-l{0%{transform:rotate(-2deg) translate3d(0,0,0) scale(1)}100%{transform:rotate(2deg) translate3d(8px,-14px,0) scale(1.03)}}
+@keyframes bloom-sway-r{0%{transform:rotate(2deg) translate3d(0,0,0) scale(1.02)}100%{transform:rotate(-2deg) translate3d(-8px,-14px,0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.philo-accent-left .philo-bloom,.philo-accent-right .philo-bloom{transform:none}}
+@media(max-width:900px){.philo-accent{width:clamp(200px,34vw,300px)!important}
+ .philo-accent-left .philo-bloom{margin-left:clamp(-120px,-17vw,-70px)!important}
+ .philo-accent-right .philo-bloom{margin-right:clamp(-120px,-17vw,-70px)!important}}
+
+/* v89: bowl AND the cup behind it lift together on hover */
+.collection-item .bowl-stack.duo .bowl-front,.collection-item .bowl-stack.duo .cup-behind{transition:transform .5s cubic-bezier(.22,.9,.28,1)}
+.collection-item:hover .bowl-stack.duo .bowl-front,.collection-item:focus-visible .bowl-stack.duo .bowl-front{transform:translateY(-10px) scale(1.05)}
+.collection-item:hover .bowl-stack.duo .cup-behind,.collection-item:focus-visible .bowl-stack.duo .cup-behind{transform:translateY(-18px) scale(1.04)}
+.collection-item:hover .collection-label{color:#173325}
+.collection-item:hover .collection-arrow{background:var(--forest);color:#fff;border-color:var(--forest)}
