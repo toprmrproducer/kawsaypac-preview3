@@ -30,7 +30,7 @@
      into its Scene-FINAL position with a slight upward settle. Nothing fades. */
 
   /* stagger by depth: mountain band first, foreground last */
-  const when={ 'cloud-b':0,'cotopaxi':2,'cloud-d':4,'cloud-e':6,'condor':0,'valley':10,'branch':14,'branch-2':16,'moss':30,'mossbranch':34,'monstera':38,'orchid-brom':42,'orchids-left':46 };
+  const when={ 'cloud-b':0,'cotopaxi':2,'cloud-d':4,'cloud-e':6,'condor':0,'valley':6,'branch':8,'branch-2':10,'moss':10,'mossbranch':12,'monstera':14,'orchid-brom':16,'orchids-left':18 };
 
   const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:hero,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
 
@@ -45,7 +45,8 @@
     const dxp=parseFloat(el.dataset.dxp)||0, dyp=parseFloat(el.dataset.dyp)||0;
     if(!dxp&&!dyp)return;
     const isCondor=n==='condor';
-    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:isCondor?40:58,ease:isCondor?'none':'power2.out'},when[n]??20);
+    const isFg=['moss','mossbranch','monstera','orchid-brom','orchids-left','branch','branch-2'].includes(n);
+    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:isCondor?40:(isFg?40:58),ease:isCondor?'none':'power2.out'},when[n]??20);
   });
 
   tl.to(summitBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},10)
