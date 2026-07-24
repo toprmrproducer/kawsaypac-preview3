@@ -345,3 +345,20 @@
 /* v61: solo generated bowls (cup baked in) */
 .bowl-stack.solo .cup{display:none}
 .bowl-stack.solo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
+/* v62: sprite stacks per Raisa */
+.bowl-stack.duo{position:relative;display:block}
+.bowl-stack.duo .cup-behind{position:absolute;right:-6%;top:-16%;width:56%;height:auto;z-index:0;filter:drop-shadow(0 10px 16px rgba(23,51,37,.16))}
+.bowl-stack.duo .bowl-front{position:relative;z-index:1;width:100%;height:auto;filter:drop-shadow(0 14px 20px rgba(23,51,37,.2))}
+.concern-circle .concern-bowl{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+.concern-circle .concern-bowl img{border-radius:0!important;object-fit:contain!important;filter:drop-shadow(0 12px 18px rgba(23,51,37,.18))}
+.footer-foliage .ff-left{left:-30px;bottom:-10px;width:clamp(200px,20vw,340px)}
+.footer-foliage .ff-right{right:-26px;bottom:-8px;width:clamp(180px,18vw,320px);left:auto}
+.footer-foliage .ff-orchid{left:4%;top:12%;width:clamp(90px,8vw,150px);opacity:.85}
+.footer-foliage .ff-fireflies{width:clamp(60px,6vw,100px);opacity:.8;animation:ff-drift 7s ease-in-out infinite alternate}
+.footer-foliage .ff-f1{right:12%;top:16%}
+.footer-foliage .ff-f2{left:22%;bottom:18%;animation-delay:-3.4s}
+.footer-foliage .ff-mist{left:10%;right:10%;bottom:0;width:80%;opacity:.5}
+.footer-foliage img{position:absolute}
+@keyframes ff-drift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(10px,-14px,0)}}
+@media(max-width:720px){.footer-foliage .ff-orchid,.footer-foliage .ff-f2{display:none}}
