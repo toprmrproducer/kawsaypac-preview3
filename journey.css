@@ -142,7 +142,7 @@
 .journey-static .j5-blur{display:none}
 
 /* v66: Figma "Scene FINAL" (desktop) + "Scene FINAL Compressed" (mobile) */
-.j5-stage{position:absolute;top:0;left:50%;width:max(100vw,97.52svh);margin-left:calc(max(100vw,97.52svh)/-2);aspect-ratio:1933/1885;will-change:transform}
+.j5-stage{position:absolute;top:0;left:50%;width:max(100vw,102.55svh);margin-left:calc(max(100vw,102.55svh)/-2);aspect-ratio:1933/1885;will-change:transform}
 .j5l[data-n="s-sky"]{left:0.57%;top:40.74%;width:98.71%;height:56.98%}
 .j5l[data-n="v-sky"]{left:0.62%;top:0.0%;width:99.28%;height:67.85%}
 .j5l[data-n="cloud-d"]{left:54.99%;top:23.29%;width:18.05%;height:9.28%}
@@ -159,7 +159,7 @@
 .j5l[data-n="orchid-brom"]{left:63.94%;top:50.82%;width:33.64%;height:45.95%}
 .j5l[data-n="orchids-left"]{left:59.86%;top:75.54%;width:17.59%;height:24.03%}
 @media(max-width:720px){
-  .j5-stage{width:max(100vw,96.12svh);margin-left:calc(max(100vw,96.12svh)/-2);aspect-ratio:1961/1885}
+  .j5-stage{width:max(100vw,104.03svh);margin-left:calc(max(100vw,104.03svh)/-2);aspect-ratio:1961/1885}
   .j5l[data-n="s-sky"]{left:0.56%;top:40.74%;width:97.3%;height:56.98%}
   .j5l[data-n="v-sky"]{left:0.61%;top:0.0%;width:97.86%;height:67.85%}
   .j5l[data-n="cloud-d"]{left:45.23%;top:12.73%;width:17.8%;height:9.28%}
