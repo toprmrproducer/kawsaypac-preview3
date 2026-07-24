@@ -27,9 +27,7 @@
      into its Scene-FINAL position with a slight upward settle. Nothing fades. */
 
   /* stagger by depth: mountain band first, foreground last */
-  const when={ 'cotopaxi-cutout':4,'glacial-valley':4,'condor-cloud':6,'cloud-1':6,'cloud-2':8,
-    'hill-left':7,'river':10,'ridge-a':12,'ridge-b':14,
-    'moss-foreground':30,'monstera':34,'branch':38,'orchid-brom':42,'orchids-left':44 };
+  const when={ 'cotopaxi':2,'condor':3,'cloud-d':4,'cloud-e':5,'cloud-b':6,'valley':10,'moss':24,'mossbranch':28,'branch':32,'branch-2':34,'monstera':40,'orchid-brom':46,'orchids-left':50 };
 
   const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:hero,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
 

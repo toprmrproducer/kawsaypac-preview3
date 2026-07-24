@@ -140,3 +140,39 @@
 .j5-blur-start{backdrop-filter:blur(6px) brightness(1.02);-webkit-backdrop-filter:blur(6px) brightness(1.02)}
 .j5-blur-end{backdrop-filter:blur(13px) saturate(1.08);-webkit-backdrop-filter:blur(13px) saturate(1.08);background:linear-gradient(97deg,rgba(7,22,14,.5) 0%,rgba(7,22,14,.22) 45%,rgba(7,22,14,0) 78%)}
 .journey-static .j5-blur{display:none}
+
+/* v66: Figma "Scene FINAL" (desktop) + "Scene FINAL Compressed" (mobile) */
+.j5-stage{position:absolute;top:0;left:50%;width:max(100vw,97.52svh);margin-left:calc(max(100vw,97.52svh)/-2);aspect-ratio:1933/1885;will-change:transform}
+.j5l[data-n="s-sky"]{left:0.57%;top:40.74%;width:98.71%;height:56.98%}
+.j5l[data-n="v-sky"]{left:0.62%;top:0.0%;width:99.28%;height:67.85%}
+.j5l[data-n="cloud-d"]{left:54.99%;top:23.29%;width:18.05%;height:9.28%}
+.j5l[data-n="condor"]{left:7.76%;top:5.09%;width:25.3%;height:19.47%}
+.j5l[data-n="cloud-e"]{left:21.57%;top:17.03%;width:24.0%;height:12.57%}
+.j5l[data-n="cloud-b"]{left:64.98%;top:5.94%;width:34.92%;height:15.28%}
+.j5l[data-n="cotopaxi"]{left:3.26%;top:5.09%;width:92.86%;height:53.58%}
+.j5l[data-n="valley"]{left:0.62%;top:32.57%;width:98.76%;height:42.97%}
+.j5l[data-n="branch"]{left:0.41%;top:30.29%;width:49.61%;height:33.9%}
+.j5l[data-n="branch-2"]{left:49.72%;top:35.54%;width:49.61%;height:33.9%}
+.j5l[data-n="moss"]{left:0.0%;top:42.76%;width:100.0%;height:57.24%}
+.j5l[data-n="mossbranch"]{left:0.57%;top:44.46%;width:93.17%;height:53.79%}
+.j5l[data-n="monstera"]{left:0.0%;top:42.28%;width:55.87%;height:57.29%}
+.j5l[data-n="orchid-brom"]{left:63.94%;top:50.82%;width:33.64%;height:45.95%}
+.j5l[data-n="orchids-left"]{left:59.86%;top:75.54%;width:17.59%;height:24.03%}
+@media(max-width:720px){
+  .j5-stage{width:max(100vw,96.12svh);margin-left:calc(max(100vw,96.12svh)/-2);aspect-ratio:1961/1885}
+  .j5l[data-n="s-sky"]{left:0.56%;top:40.74%;width:97.3%;height:56.98%}
+  .j5l[data-n="v-sky"]{left:0.61%;top:0.0%;width:97.86%;height:67.85%}
+  .j5l[data-n="cloud-d"]{left:45.23%;top:12.73%;width:17.8%;height:9.28%}
+  .j5l[data-n="condor"]{left:7.65%;top:5.09%;width:24.94%;height:19.47%}
+  .j5l[data-n="cloud-e"]{left:13.31%;top:22.97%;width:23.66%;height:12.57%}
+  .j5l[data-n="cloud-b"]{left:65.58%;top:23.61%;width:34.42%;height:15.28%}
+  .j5l[data-n="cotopaxi"]{left:3.52%;top:35.54%;width:91.53%;height:53.58%}
+  .j5l[data-n="valley"]{left:0.87%;top:39.58%;width:97.35%;height:42.97%}
+  .j5l[data-n="branch"]{left:0.66%;top:52.31%;width:48.9%;height:33.9%}
+  .j5l[data-n="branch-2"]{left:49.01%;top:35.54%;width:48.9%;height:33.9%}
+  .j5l[data-n="moss"]{left:0.0%;top:42.76%;width:98.57%;height:57.24%}
+  .j5l[data-n="mossbranch"]{left:0.56%;top:44.46%;width:91.84%;height:53.79%}
+  .j5l[data-n="monstera"]{left:0.0%;top:40.95%;width:55.07%;height:57.29%}
+  .j5l[data-n="orchid-brom"]{left:63.03%;top:50.82%;width:33.16%;height:45.95%}
+  .j5l[data-n="orchids-left"]{left:59.0%;top:75.54%;width:17.34%;height:24.03%}
+}
