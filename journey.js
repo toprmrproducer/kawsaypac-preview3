@@ -13,13 +13,14 @@
   const layers=[...hero.querySelectorAll('.j5l')];
   const brand=q('.journey-brand');const cue=q('.journey-scrollcue');
   const summitBeat=q('.journey-beat-forest'),waterBeat=q('.journey-beat-water'),finalCopy=q('.journey-final'),progress=q('.journey-progress span');
+  const hasProgress=!!progress;
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
 
   gsap.set([stage,...layers,brand,summitBeat,waterBeat,finalCopy],{force3D:true,willChange:'transform,opacity'});
   layers.filter(el=>el.dataset.flip==='1').forEach(el=>gsap.set(el,{scaleX:-1}));
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
-  gsap.set(progress,{scaleY:0,transformOrigin:'top'});
+  if(hasProgress)gsap.set(progress,{scaleY:0,transformOrigin:'top'});
 
   /* RAISA SPEC v2 (Scene 0 -> Scene FINAL, both authored in Figma):
      the artwork is one tall true-aspect canvas. On load the camera sits on the
@@ -32,7 +33,7 @@
 
   const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:hero,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
 
-  tl.to(progress,{scaleY:1,duration:100},0)
+  tl.to({},{duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
     .to(cue,{autoAlpha:0,y:14,duration:5},3)
     /* camera pans down the canvas across the whole pin */
@@ -51,7 +52,8 @@
     .to(waterBeat,{autoAlpha:0,y:-22,duration:5},62)
     .to(finalCopy,{autoAlpha:1,y:0,duration:8,ease:'power2.out',onStart:()=>window.__animateCounters&&window.__animateCounters([...hero.querySelectorAll('.journey-final [data-count]')])},76)
     .to(finalPieces,{autoAlpha:1,y:0,stagger:.6,duration:5,ease:'power2.out'},76)
-    .to(finalCopy,{autoAlpha:1,duration:16},84);
+    .to(finalCopy,{autoAlpha:1,duration:16},84)
+    .to(stage,{filter:'blur(11px) brightness(.84) saturate(1.05)',duration:18,ease:'power1.inOut'},76);
 
   if(matchMedia('(hover: hover) and (pointer: fine)').matches){
     sticky.addEventListener('pointermove',event=>{

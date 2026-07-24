@@ -155,3 +155,8 @@
 .j5l[data-n="monstera"]{left:0.0%;top:42.28%;width:55.87%;height:57.29%}
 .j5l[data-n="orchid-brom"]{left:63.94%;top:50.82%;width:33.64%;height:45.95%}
 .j5l[data-n="orchids-left"]{left:59.86%;top:75.54%;width:17.59%;height:24.03%}
+
+/* v72: end of scroll - scene blurs back, copy comes forward */
+.j5-stage{transition:none}
+.journey-final{text-shadow:0 4px 30px rgba(4,18,10,.55)}
+.journey-final h2{text-shadow:0 6px 40px rgba(4,18,10,.6)}

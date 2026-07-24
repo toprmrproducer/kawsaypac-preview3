@@ -362,3 +362,36 @@
 .footer-foliage img{position:absolute}
 @keyframes ff-drift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(10px,-14px,0)}}
 @media(max-width:720px){.footer-foliage .ff-orchid,.footer-foliage .ff-f2{display:none}}
+
+/* v72: Raisa - two huge moving flower sprites framing Philosophy */
+.philosophy{position:relative;overflow:hidden}
+.philo-accent{width:auto!important;opacity:1!important;top:0;bottom:0;display:grid;place-items:center;z-index:1}
+.philo-accent-left{left:0}
+.philo-accent-right{right:0}
+.philo-bloom{width:clamp(240px,30vw,560px);height:auto;display:block;filter:drop-shadow(0 26px 46px rgba(31,58,42,.18));transform-origin:50% 90%;will-change:transform}
+.philo-accent-left .philo-bloom{animation:bloom-sway-l 11s ease-in-out infinite alternate;margin-left:clamp(-150px,-9vw,-40px)}
+.philo-accent-right .philo-bloom{animation:bloom-sway-r 13s ease-in-out infinite alternate;margin-right:clamp(-150px,-9vw,-40px)}
+@keyframes bloom-sway-l{0%{transform:rotate(-2.4deg) translate3d(0,0,0) scale(1)}100%{transform:rotate(2.2deg) translate3d(10px,-18px,0) scale(1.035)}}
+@keyframes bloom-sway-r{0%{transform:rotate(2.2deg) translate3d(0,0,0) scale(1.02)}100%{transform:rotate(-2.6deg) translate3d(-12px,-14px,0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.philo-bloom{animation:none}}
+@media(max-width:900px){.philo-bloom{width:clamp(150px,24vw,260px);opacity:.85}}
+
+/* v72: collections - no shadow under the bowl/cup sprites */
+.bowl-stack.duo .cup-behind,.bowl-stack.duo .bowl-front{filter:none!important}
+
+/* v72: footer - drop the dark foliage/flowers, keep it light */
+.footer-foliage .ff-left,.footer-foliage .ff-right,.footer-foliage .ff-orchid{display:none}
+.footer-hummingbird{image-rendering:-webkit-optimize-contrast;filter:drop-shadow(0 6px 10px rgba(10,30,18,.25))}
+
+/* v72: more motion - things pop up */
+.reveal{opacity:0;transform:translate3d(0,34px,0) scale(.985);transition:opacity .85s cubic-bezier(.22,.9,.28,1),transform .85s cubic-bezier(.22,.9,.28,1)}
+.reveal.visible{opacity:1;transform:none}
+.collection-item,.product-card,.concern-circle,.credo-step,.pillar,.image-story,.video-card{transition:transform .55s cubic-bezier(.22,.9,.28,1),box-shadow .45s ease}
+.collections .collection-item,.products .product-card,.concern-row .concern-circle,.philo-credo .credo-step,.pillar-grid .pillar{opacity:0;transform:translate3d(0,30px,0)}
+.collections.visible .collection-item,.products.visible .product-card,.concern-row.visible .concern-circle,.philo-credo.visible .credo-step,.pillar-grid.visible .pillar{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,.9,.28,1),transform .7s cubic-bezier(.22,.9,.28,1)}
+.collections.visible .collection-item:nth-child(n){transition-delay:calc((var(--i,0)) * 90ms)}
+.products.visible .product-card{transition-delay:calc((var(--i,0)) * 80ms)}
+.concern-row.visible .concern-circle{transition-delay:calc((var(--i,0)) * 60ms)}
+.philo-credo.visible .credo-step{transition-delay:calc((var(--i,0)) * 120ms)}
+.pillar-grid.visible .pillar{transition-delay:calc((var(--i,0)) * 100ms)}
+@media(prefers-reduced-motion:reduce){.reveal,.collection-item,.product-card,.concern-circle,.credo-step,.pillar{opacity:1!important;transform:none!important;transition:none!important}}
