@@ -16,6 +16,7 @@
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
 
   gsap.set([stage,...layers,brand,summitBeat,waterBeat,finalCopy],{force3D:true,willChange:'transform,opacity'});
+  layers.filter(el=>el.dataset.flip==='1').forEach(el=>gsap.set(el,{scaleX:-1}));
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
   gsap.set(progress,{scaleY:0,transformOrigin:'top'});
@@ -27,7 +28,7 @@
      into its Scene-FINAL position with a slight upward settle. Nothing fades. */
 
   /* stagger by depth: mountain band first, foreground last */
-  const when={ 'cotopaxi':2,'condor':3,'cloud-d':4,'cloud-e':5,'cloud-b':6,'valley':10,'moss':24,'mossbranch':28,'branch':32,'branch-2':34,'monstera':40,'orchid-brom':46,'orchids-left':50 };
+  const when={ 'cloud-b':0,'cotopaxi':2,'cloud-d':4,'cloud-e':6,'valley':10,'branch':14,'branch-2':16,'monstera':20,'moss':22,'mossbranch':24,'condor':4,'orchid-brom':26,'orchids-left':28 };
 
   const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:hero,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
 
@@ -41,7 +42,7 @@
     const n=el.dataset.n;
     const dxp=parseFloat(el.dataset.dxp)||0, dyp=parseFloat(el.dataset.dyp)||0;
     if(!dxp&&!dyp)return;
-    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:34,ease:'back.out(1.15)'},when[n]??20);
+    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:58,ease:'power2.out'},when[n]??20);
   });
 
   tl.to(summitBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},10)
