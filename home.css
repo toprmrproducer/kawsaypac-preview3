@@ -511,3 +511,9 @@ body>*:last-child{margin-bottom:0}
 .philosophy>.shell{position:relative;z-index:4}
 .philosophy>.shell::before{content:"";position:absolute;inset:-4% -6%;z-index:-1;pointer-events:none;background:radial-gradient(70% 62% at 50% 46%,rgba(246,242,234,.94) 0%,rgba(246,242,234,.80) 52%,rgba(246,242,234,0) 100%)}
 @media(max-width:900px){.philo-accent-left{left:-70px!important}.philo-accent-right{right:-70px!important}}
+/* v93: blooms prominent on both flanks, scrim tightened to the copy only */
+.philo-accent-left{left:clamp(-190px,-10vw,-110px)!important}
+.philo-accent-right{right:clamp(-190px,-10vw,-110px)!important}
+.philo-bloom{opacity:1}
+.philosophy>.shell::before{inset:2% 12%;background:radial-gradient(58% 50% at 50% 46%,rgba(246,242,234,.88) 0%,rgba(246,242,234,.62) 58%,rgba(246,242,234,0) 100%)}
+@media(max-width:900px){.philo-accent-left{left:-60px!important}.philo-accent-right{right:-60px!important}}
