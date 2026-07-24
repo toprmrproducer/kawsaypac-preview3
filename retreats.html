@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=100" />
-  <script defer src="app.js?v=100"></script>
+  <link rel="stylesheet" href="styles.css?v=101" />
+  <script defer src="app.js?v=101"></script>
 
   <style>
     /* ============================================================
@@ -130,20 +130,20 @@
     @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; opacity: 0; } 50% { transform: scaleY(1); transform-origin: top; opacity: 1; } 100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; } }
 
     /* SECTION 2 — WHY PEOPLE COME */
-    #rt-scope .why-section { background: var(--forest); padding: 120px 0; position: relative; overflow: hidden; }
+    #rt-scope .why-section { background: var(--forest); padding: 100px 0 108px; position: relative; overflow: hidden; }
     #rt-scope .why-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
     #rt-scope .why-section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
     #rt-scope .why-bg-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(61,82,53,0.4), transparent 60%); z-index: 0; }
-    #rt-scope .why-header { text-align: center; max-width: 680px; margin: 0 auto 80px; position: relative; z-index: 1; }
+    #rt-scope .why-header { text-align: center; max-width: 680px; margin: 0 auto 56px; position: relative; z-index: 1; }
     #rt-scope .why-quote { font-family: var(--font-serif); font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 300; font-style: italic; color: var(--sand); line-height: 1.7; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(201,168,76,0.2); }
-    #rt-scope .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; position: relative; z-index: 1; }
-    #rt-scope .why-card { padding: 56px 44px; background: rgba(255,255,255,0.02); border: 1px solid rgba(201,168,76,0.08); transition: var(--transition); position: relative; overflow: hidden; }
-    #rt-scope .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
-    #rt-scope .why-card:hover::before { transform: scaleX(1); }
-    #rt-scope .why-card:hover { background: rgba(255,255,255,0.04); }
-    #rt-scope .why-card-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 16px; }
-    #rt-scope .why-card-body { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.75; color: var(--text-muted); }
-    #rt-scope .why-card-health { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+    #rt-scope .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; z-index: 1; counter-reset: whycard; }
+    #rt-scope .why-card { display: flex; flex-direction: column; height: 100%; padding: 44px 34px; background: rgba(255,255,255,0.035); border: 1px solid rgba(201,168,76,0.16); border-radius: 16px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 22px 54px rgba(0,0,0,0.30); transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), border-color 0.45s ease, box-shadow 0.45s ease, background 0.45s ease; position: relative; overflow: hidden; counter-increment: whycard; }
+    #rt-scope .why-card::before { content: counter(whycard, decimal-leading-zero); display: block; font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; font-style: italic; color: var(--gold); letter-spacing: 0.02em; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(201,168,76,0.22); }
+    #rt-scope .why-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.055); border-color: rgba(201,168,76,0.44); box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 34px 74px rgba(0,0,0,0.40); }
+    #rt-scope .why-card-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--cream); line-height: 1.28; margin-bottom: 16px; }
+    #rt-scope .why-card-body { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.75; color: rgba(245,240,232,0.64); }
+    #rt-scope .why-card-health { border-color: rgba(201,168,76,0.34); background: rgba(201,168,76,0.07); }
+    #rt-scope .why-card-health::before { color: var(--gold-light); border-bottom-color: rgba(201,168,76,0.34); }
     #rt-scope .why-card-health .why-card-title { color: var(--gold-light); }
 
     /* SECTION 3 — WHAT CHANGES */
@@ -260,7 +260,7 @@
     #rt-scope .faq-answer-inner { padding: 0 0 28px; font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); max-width: 680px; }
 
     /* SECTION 9 — FINAL CTA */
-    #rt-scope .final-cta { position: relative; padding: 160px 0; overflow: hidden; }
+    #rt-scope .final-cta { position: relative; padding: 118px 0 96px; overflow: hidden; }
     #rt-scope .final-cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 60%); pointer-events: none; z-index: 1; }
     #rt-scope .final-cta-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; margin: 0 auto; }
     #rt-scope .final-cta-date { display: inline-block; font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.5); background: var(--gold); border: 2px solid rgba(0,0,0,0.25); padding: 9px 20px; border-radius: 40px; margin-bottom: 36px; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
@@ -269,6 +269,10 @@
     #rt-scope .final-cta-body { color: #ffffff; font-family: var(--font-sans); font-size: 1.0625rem; font-weight: 400; line-height: 1.8; margin-bottom: 52px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
     #rt-scope .final-cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px; }
     #rt-scope .final-cta-note { color: #ffffff; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+
+    /* FOOTER READABILITY — keep the fixed jungle canvas from bleeding over the shared footer */
+    #rt-scope #jungleCanvas { opacity: 0.42 !important; }
+    body [data-site-footer] { position: relative; z-index: 5; isolation: isolate; }
 
 
     /* STICKY CTA BAR */
@@ -281,10 +285,10 @@
 
     /* RESPONSIVE */
     @media (min-width: 768px) { #rt-scope .sticky-bar-text { display: block; } }
-    @media (max-width: 1024px) { #rt-scope .transform-inner { grid-template-columns: 1fr; gap: 48px; } #rt-scope .transform-image { aspect-ratio: 16/9; max-height: 480px; } #rt-scope .accom-amenities { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 1024px) { #rt-scope .transform-inner { grid-template-columns: 1fr; gap: 48px; } #rt-scope .transform-image { aspect-ratio: 16/9; max-height: 480px; } #rt-scope .accom-amenities { grid-template-columns: repeat(2, 1fr); } #rt-scope .why-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
-      #rt-scope .why-grid { grid-template-columns: 1fr !important; gap: 2px; }
-      #rt-scope .why-card { padding: 40px 28px; }
+      #rt-scope .why-grid { grid-template-columns: 1fr !important; gap: 18px; }
+      #rt-scope .why-card { padding: 38px 28px; }
       #rt-scope .accom-grid { grid-template-columns: 1fr; }
       #rt-scope .accom-amenities { grid-template-columns: repeat(2, 1fr); }
       #rt-scope .experiences-scroll-wrapper { padding: 0 24px 40px; }

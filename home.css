@@ -552,8 +552,18 @@ body>*:last-child{margin-bottom:0}
 @media(prefers-reduced-motion:reduce){.eco-botanical{animation:none}.eco-descend{transition:none;transform:none;opacity:1}}
 @media(max-width:640px){.eco-botanical{--eco-size:clamp(96px,26vw,150px)!important;opacity:.9}}
 
-/* Homepage "Feel Your Best" video section (replaces the flat No-fillers band) */
-.home-video-section{margin:0;padding:0;background:#0d1a0c}
-.home-video-link{display:block;position:relative;width:100%;aspect-ratio:16/9;max-height:82vh;overflow:hidden;background:#0d1a0c}
-.home-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-@media(max-width:720px){.home-video-link{aspect-ratio:9/13;max-height:none}}
+
+
+
+/* v101 Homepage video: WINDOWED premium section (heading + button around it, no text over the video) */
+.home-video-section{background:var(--paper,#faf6ec);padding-block:clamp(48px,7vw,96px)}
+.hv-shell{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(20px,3vw,34px)}
+.hv-head{max-width:720px;display:flex;flex-direction:column;gap:14px}
+.hv-head .eyebrow{color:var(--gold,#C9A942)}
+.hv-head h2{font-family:var(--display,'Fraunces',serif);font-weight:400;font-size:clamp(2.6rem,5.2vw,4.4rem);line-height:1.02;letter-spacing:-.02em;color:var(--forest,#1F3A2A);margin:0}
+.hv-head h2 .accent{font-style:italic;color:var(--gold,#C9A942)}
+.hv-sub{font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.7;color:#5d6b58;max-width:640px;margin:0 auto}
+.hv-window{position:relative;width:min(1080px,100%);aspect-ratio:16/9;border-radius:26px;overflow:hidden;background:#0d1a0c;box-shadow:0 40px 90px rgba(20,40,22,.28),0 2px 0 rgba(255,255,255,.5) inset;border:1px solid rgba(201,169,66,.28)}
+.hv-window .home-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hv-cta{margin-top:6px;padding:16px 40px;font-size:.82rem;letter-spacing:.1em}
+@media(max-width:640px){.hv-window{border-radius:18px}.hv-head h2{font-size:clamp(2.2rem,9vw,3rem)}}

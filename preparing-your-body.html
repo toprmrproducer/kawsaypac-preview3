@@ -6,69 +6,103 @@
   <title>Preparing Your Body | Kawsaypac Ancestral Herbs</title>
   <meta name="description" content="Herbs are amplifiers. Prepare your body to receive them: what to eat, how to hydrate, how to sleep, and how to support your nervous system through your herbal protocol.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=100"><link rel="stylesheet" href="home.css?v=100">
-  <script defer src="app.js?v=100"></script>
+  <link rel="stylesheet" href="styles.css?v=101"><link rel="stylesheet" href="home.css?v=101">
+  <script defer src="app.js?v=101"></script>
   <style>
-  /* ============ Preparing Your Body — page-scoped, prefixed .kx-body ============ */
-  .kx-body{--kx-serif:'Fraunces',Georgia,serif;--kx-sans:Satoshi,Arial,sans-serif;--kx-ink:#1F3A2A;--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-gold:#C9A942;--kx-soft:#5e5b52;--kx-line:rgba(31,58,42,.14);color:var(--kx-ink);background:var(--kx-cream)}
+  /* ============ Preparing Your Body, page-scoped, prefixed .kx-body ============ */
+  .kx-body{--kx-serif:'Fraunces',Georgia,serif;--kx-sans:Satoshi,Arial,sans-serif;--kx-ink:#1F3A2A;--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-gold:#C9A942;--kx-gold-deep:#a9863a;--kx-soft:#5e5b52;--kx-line:rgba(31,58,42,.12);--kx-shadow:0 20px 50px rgba(26,40,25,.08);--kx-shadow-lift:0 30px 70px rgba(26,40,25,.14);color:var(--kx-ink);background:var(--kx-cream)}
   .kx-body .kx-wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
   .kx-body .kx-narrow{width:min(820px,calc(100% - 40px));margin-inline:auto}
   .kx-body p{color:var(--kx-soft);font-family:var(--kx-sans);font-size:1.06rem;line-height:1.66;margin:0 0 1.05rem}
-  .kx-body h1,.kx-body h2,.kx-body h3{font-family:var(--kx-serif);color:var(--kx-ink);margin:0;letter-spacing:-.02em;line-height:1.02;font-weight:400}
+  .kx-body h1,.kx-body h2,.kx-body h3{font-family:var(--kx-serif);color:var(--kx-ink);margin:0;letter-spacing:-.02em;line-height:1.04;font-weight:400}
   .kx-body .kx-em{font-style:italic;color:var(--kx-gold);font-weight:400}
-  .kx-body .kx-eyebrow{font-family:var(--kx-sans);color:var(--kx-gold);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin:0 0 14px}
+  .kx-body .kx-eyebrow{font-family:var(--kx-sans);color:var(--kx-gold-deep);font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin:0 0 14px;display:flex;align-items:center;gap:12px}
+  .kx-body .kx-eyebrow::before{content:"";width:26px;height:1px;background:var(--kx-gold);display:inline-block;flex:0 0 auto}
+  .kx-body .kx-open .kx-eyebrow,.kx-body .kx-close .kx-eyebrow{justify-content:center}
+  /* Highlighted key phrases */
+  .kx-body .kx-hl{background:linear-gradient(transparent 62%, rgba(201,169,66,.26) 0);font-weight:600;color:var(--kx-ink);padding:0 .04em}
+  .kx-body .kx-key{color:var(--kx-gold-deep);font-weight:600}
 
-  /* Hero */
-  .kx-body .kx-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:center;padding:clamp(40px,5.5vw,74px) 0 clamp(30px,4vw,52px)}
+  /* ---- Hero ---- */
+  .kx-body .kx-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,66px);align-items:center;padding:clamp(42px,5.5vw,80px) 0 clamp(30px,4vw,54px)}
   .kx-body .kx-hero h1{font-size:clamp(2.6rem,6.2vw,5rem)}
-  .kx-body .kx-hero .kx-lede{font-size:1.16rem;color:#4a4a42;margin-top:20px;max-width:34ch}
-  .kx-body .kx-hero-media{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 26px 60px rgba(31,58,42,.18)}
-  .kx-body .kx-hero-media img{width:100%;height:100%;object-fit:cover}
+  .kx-body .kx-hero .kx-lede{font-size:1.18rem;color:#4a4a42;margin-top:22px;max-width:36ch;line-height:1.6}
+  .kx-body .kx-hero-rule{width:64px;height:2px;background:linear-gradient(90deg,var(--kx-gold),transparent);margin-top:26px}
+  .kx-body .kx-hero-media{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--kx-shadow-lift);border:1px solid rgba(255,255,255,.5)}
+  .kx-body .kx-hero-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+  .kx-body .kx-hero-media:hover img{transform:scale(1.04)}
+  .kx-body .kx-hero-cap{position:absolute;left:18px;bottom:18px;right:18px;display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--kx-sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+  .kx-body .kx-hero-cap::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--kx-gold);box-shadow:0 0 0 4px rgba(201,169,66,.3)}
 
-  /* Section rhythm — tight, continuous */
-  .kx-body .kx-sec{padding:clamp(38px,5vw,72px) 0}
-  .kx-body .kx-sec-tight{padding:clamp(26px,3.4vw,46px) 0}
+  /* Section rhythm */
+  .kx-body .kx-sec{padding:clamp(40px,5vw,74px) 0}
+  .kx-body .kx-sec-tight{padding:clamp(26px,3.4vw,48px) 0}
 
-  /* Amplifier band */
-  .kx-body .kx-amp{background:var(--kx-paper)}
-  .kx-body .kx-amp .kx-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,4vw,58px);align-items:center}
-  .kx-body .kx-amp-media{border-radius:16px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 20px 46px rgba(31,58,42,.14)}
-  .kx-body .kx-amp-media img{width:100%;height:100%;object-fit:cover}
-  .kx-body .kx-amp h2{font-size:clamp(2rem,4.2vw,3.2rem);margin-bottom:18px}
-  .kx-body .kx-pull{font-family:var(--kx-serif);font-style:italic;font-size:1.28rem;line-height:1.4;color:var(--kx-ink);border-left:2px solid var(--kx-gold);padding-left:20px;margin:22px 0 0}
+  /* ---- Opening ---- */
+  .kx-body .kx-open{text-align:center;padding:clamp(38px,4.6vw,64px) 0 clamp(20px,2.6vw,34px)}
+  .kx-body .kx-open h2{font-size:clamp(1.95rem,4vw,3rem);margin-bottom:20px}
+  .kx-body .kx-open .kx-dropcap::first-letter{font-family:var(--kx-serif);font-size:3.1em;line-height:.78;float:left;margin:.06em .12em 0 0;color:var(--kx-gold);font-weight:400}
+  .kx-body .kx-open .kx-lead{text-align:left;max-width:60ch;margin-inline:auto;font-size:1.12rem}
 
-  /* Intro line */
-  .kx-body .kx-open{text-align:center;padding:clamp(34px,4.4vw,60px) 0 clamp(20px,2.6vw,34px)}
-  .kx-body .kx-open h2{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:16px}
+  /* ---- Amplifier band ---- */
+  .kx-body .kx-amp{background:var(--kx-paper);position:relative}
+  .kx-body .kx-amp .kx-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,60px);align-items:stretch}
+  .kx-body .kx-amp-media{border-radius:20px;overflow:hidden;box-shadow:var(--kx-shadow);border:1px solid rgba(255,255,255,.5);min-height:100%}
+  .kx-body .kx-amp-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .kx-body .kx-amp-copy{background:#fff;border:1px solid var(--kx-line);border-radius:20px;box-shadow:var(--kx-shadow);padding:clamp(28px,3.4vw,46px);display:flex;flex-direction:column;justify-content:center}
+  .kx-body .kx-amp h2{font-size:clamp(2.1rem,4.4vw,3.3rem);margin-bottom:18px}
+  .kx-body .kx-pull{position:relative;font-family:var(--kx-serif);font-style:italic;font-size:clamp(1.24rem,2vw,1.5rem);line-height:1.42;color:var(--kx-ink);margin:26px 0 0;padding:22px 0 0 34px;border-top:1px solid var(--kx-line)}
+  .kx-body .kx-pull::before{content:"\201C";position:absolute;left:-4px;top:8px;font-family:var(--kx-serif);font-size:3.2rem;line-height:1;color:var(--kx-gold);opacity:.55}
 
-  /* Editorial rows */
-  .kx-body .kx-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,60px);align-items:center;padding:clamp(28px,3.6vw,48px) 0;border-top:1px solid var(--kx-line)}
-  .kx-body .kx-row:first-of-type{border-top:0}
+  /* ---- Pillars intro ---- */
+  .kx-body .kx-pillars-intro{text-align:center;max-width:60ch;margin:0 auto clamp(30px,3.6vw,52px)}
+  .kx-body .kx-pillars-intro h2{font-size:clamp(1.95rem,4vw,3rem);margin-bottom:16px}
+  .kx-body .kx-pillars-intro .kx-eyebrow{justify-content:center}
+
+  /* ---- Pillar rows (image | premium card) ---- */
+  .kx-body .kx-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,52px);align-items:stretch;margin-bottom:clamp(24px,3vw,40px)}
   .kx-body .kx-row.kx-flip .kx-row-media{order:2}
-  .kx-body .kx-row-media{border-radius:16px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 18px 42px rgba(31,58,42,.13)}
-  .kx-body .kx-row-media img{width:100%;height:100%;object-fit:cover}
-  .kx-body .kx-num{font-family:var(--kx-serif);font-size:.9rem;letter-spacing:.2em;color:var(--kx-gold);text-transform:uppercase;display:block;margin-bottom:10px}
-  .kx-body .kx-row h3{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:14px}
-  .kx-body .kx-list{list-style:none;margin:14px 0 0;padding:0}
-  .kx-body .kx-list li{position:relative;padding-left:24px;margin-bottom:11px;color:var(--kx-soft);font-family:var(--kx-sans);font-size:1.02rem;line-height:1.55}
-  .kx-body .kx-list li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--kx-gold)}
-  .kx-body .kx-avoid li::before{background:transparent;border:1.5px solid #b06a4e}
+  .kx-body .kx-row-media{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--kx-shadow);border:1px solid rgba(255,255,255,.5);min-height:340px;transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s cubic-bezier(.22,1,.36,1)}
+  .kx-body .kx-row-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(.22,1,.36,1)}
+  .kx-body .kx-row-media:hover{transform:translateY(-4px);box-shadow:var(--kx-shadow-lift)}
+  .kx-body .kx-row-media:hover img{transform:scale(1.05)}
+  .kx-body .kx-card{background:#fff;border:1px solid var(--kx-line);border-radius:20px;box-shadow:var(--kx-shadow);padding:clamp(28px,3vw,42px);display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s cubic-bezier(.22,1,.36,1)}
+  .kx-body .kx-card:hover{transform:translateY(-4px);box-shadow:var(--kx-shadow-lift)}
+  .kx-body .kx-card-head{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+  .kx-body .kx-numeral{font-family:var(--kx-serif);font-size:clamp(2.6rem,4vw,3.4rem);line-height:.9;color:var(--kx-gold);font-weight:300;flex:0 0 auto}
+  .kx-body .kx-ico{width:50px;height:50px;flex:0 0 auto;border-radius:50%;background:rgba(201,169,66,.12);border:1px solid rgba(201,169,66,.35);display:grid;place-items:center;color:var(--kx-gold-deep)}
+  .kx-body .kx-ico svg{width:24px;height:24px}
+  .kx-body .kx-card-label{font-family:var(--kx-sans);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--kx-gold-deep)}
+  .kx-body .kx-card h3{font-size:clamp(1.6rem,3vw,2.3rem);margin:0 0 12px}
+  .kx-body .kx-card>p{margin-bottom:.2rem}
+  .kx-body .kx-list{list-style:none;margin:16px 0 0;padding:16px 0 0;border-top:1px dashed var(--kx-line)}
+  .kx-body .kx-list li{position:relative;padding-left:26px;margin-bottom:12px;color:var(--kx-soft);font-family:var(--kx-sans);font-size:1.02rem;line-height:1.55}
+  .kx-body .kx-list li:last-child{margin-bottom:0}
+  .kx-body .kx-list li::before{content:"";position:absolute;left:3px;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--kx-gold);box-shadow:0 0 0 4px rgba(201,169,66,.16)}
+  .kx-body .kx-avoid{border-top:1px dashed rgba(176,106,78,.35)}
+  .kx-body .kx-avoid li::before{background:transparent;border:1.5px solid #b06a4e;box-shadow:none;width:8px;height:8px;top:.55em}
+  .kx-body .kx-list-cap{font-family:var(--kx-sans);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin:0 0 4px;color:var(--kx-soft)}
+  .kx-body .kx-avoid .kx-list-cap{color:#b06a4e}
 
-  /* Reminder strip */
-  .kx-body .kx-remind{background:var(--kx-ink);color:var(--kx-cream);border-radius:18px;padding:clamp(30px,4vw,52px);text-align:center}
-  .kx-body .kx-remind h2{color:var(--kx-cream);font-size:clamp(1.8rem,3.6vw,2.8rem);margin-bottom:14px}
-  .kx-body .kx-remind p{color:rgba(250,249,246,.82);max-width:60ch;margin-inline:auto}
+  /* ---- Reminder strip ---- */
+  .kx-body .kx-remind{position:relative;background:var(--kx-ink);color:var(--kx-cream);border-radius:22px;padding:clamp(34px,4.4vw,60px);text-align:center;overflow:hidden;box-shadow:var(--kx-shadow-lift)}
+  .kx-body .kx-remind::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 0%,rgba(201,169,66,.16),transparent 60%);pointer-events:none}
+  .kx-body .kx-remind-mark{position:relative;font-family:var(--kx-serif);font-size:3.4rem;line-height:1;color:var(--kx-gold);margin-bottom:6px}
+  .kx-body .kx-remind h2{color:var(--kx-cream);font-size:clamp(1.85rem,3.6vw,2.8rem);margin-bottom:16px;position:relative}
+  .kx-body .kx-remind p{color:rgba(250,249,246,.84);max-width:62ch;margin-inline:auto;position:relative}
   .kx-body .kx-remind .kx-em{color:var(--kx-gold)}
+  .kx-body .kx-remind .kx-hl{color:#fff;background:linear-gradient(transparent 62%,rgba(201,169,66,.4) 0)}
 
-  /* Closing */
-  .kx-body .kx-close{text-align:center;padding:clamp(40px,5vw,72px) 0 clamp(48px,6vw,88px)}
+  /* ---- Closing ---- */
+  .kx-body .kx-close{text-align:center;padding:clamp(42px,5vw,76px) 0 clamp(50px,6vw,92px)}
   .kx-body .kx-close h2{font-size:clamp(2.1rem,4.4vw,3.4rem);margin-bottom:16px}
-  .kx-body .kx-close .kx-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .kx-body .kx-note{font-size:.92rem;color:#8a877e;font-family:var(--kx-sans);max-width:56ch;margin:14px auto 0}
+  .kx-body .kx-close>p{max-width:52ch;margin-inline:auto}
+  .kx-body .kx-close .kx-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .kx-body .kx-note{font-size:.88rem;color:#8a877e;font-family:var(--kx-sans);max-width:58ch;margin:26px auto 0;padding-top:22px;border-top:1px solid var(--kx-line);font-style:italic}
 
-  /* Progressive-enhancement reveal — visible by default */
+  /* Progressive-enhancement reveal, visible by default */
   .kx-body .kx-rise{opacity:1;transform:none}
-  .kx-body.kx-anim .kx-rise{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+  .kx-body.kx-anim .kx-rise{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
   .kx-body.kx-anim .kx-rise.kx-in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.kx-body.kx-anim .kx-rise{opacity:1!important;transform:none!important}}
 
@@ -76,9 +110,9 @@
     .kx-body .kx-hero{grid-template-columns:1fr;gap:26px;padding-top:26px}
     .kx-body .kx-hero-media{aspect-ratio:16/11;order:-1}
     .kx-body .kx-amp .kx-grid{grid-template-columns:1fr}
-    .kx-body .kx-row{grid-template-columns:1fr;gap:20px}
+    .kx-body .kx-row{grid-template-columns:1fr;gap:18px}
     .kx-body .kx-row.kx-flip .kx-row-media{order:-1}
-    .kx-body .kx-row-media{order:-1}
+    .kx-body .kx-row-media{order:-1;min-height:260px}
   }
   </style>
 </head>
@@ -92,17 +126,20 @@
       <div class="kx-hero-copy kx-rise">
         <p class="kx-eyebrow">Before You Brew</p>
         <h1>How to Prepare Your <span class="kx-em">Body</span>.</h1>
-        <p class="kx-lede">The herbs are ready. But are you? How you live in your body decides how far these plants can go.</p>
+        <p class="kx-lede">The herbs are ready. But are you? <span class="kx-hl">How you live in your body decides how far these plants can go.</span></p>
+        <div class="kx-hero-rule"></div>
       </div>
       <div class="kx-hero-media kx-rise">
         <img src="assets/img/gen/story-morning-ritual.webp" alt="A quiet morning ritual with a warm herbal brew resting in soft light" fetchpriority="high">
+        <span class="kx-hero-cap">The Companion Ritual</span>
       </div>
     </section>
 
     <!-- OPENING -->
     <section class="kx-narrow kx-open kx-rise">
+      <p class="kx-eyebrow">The Foundation</p>
       <h2>Before you begin any herbal protocol, <span class="kx-em">start with the ground it grows in.</span></h2>
-      <p>What you put in your body, and how you live in your body, determines how far these plants can go. This is the companion guide to your herbs: what to eat, what to avoid, how to hydrate, and how to support your nervous system, so your herbs can do what they were designed to do.</p>
+      <p class="kx-lead kx-dropcap">What you put in your body, and how you live in your body, determines <span class="kx-hl">how far these plants can go</span>. This is the companion guide to your herbs: what to eat, what to avoid, how to hydrate, and how to support your nervous system, so your herbs can do what they were designed to do.</p>
     </section>
 
     <!-- AMPLIFIER BAND -->
@@ -114,7 +151,7 @@
         <div class="kx-amp-copy kx-rise">
           <p class="kx-eyebrow">The Principle</p>
           <h2>Herbs are <span class="kx-em">amplifiers</span>.</h2>
-          <p>The cleaner the foundation you give them, the deeper and faster they work. What you eat, how much you sleep, how you manage stress, and how well you hydrate all play a direct role in your results.</p>
+          <p>The cleaner the foundation you give them, <span class="kx-key">the deeper and faster they work</span>. What you eat, how much you sleep, how you manage stress, and how well you hydrate all play a direct role in your results.</p>
           <p class="kx-pull">A cup of Cat's Claw in a body running on processed food, poor sleep, and chronic stress will not reach the same depth as that same cup in a body that has been intentionally prepared to receive it.</p>
         </div>
       </div>
@@ -122,24 +159,32 @@
 
     <!-- FOUR PILLARS -->
     <section class="kx-wrap kx-sec">
-      <div class="kx-narrow kx-open kx-rise" style="padding-top:0">
+      <div class="kx-pillars-intro kx-rise">
         <p class="kx-eyebrow">Prepare the Ground</p>
         <h2>Four ways to help your body <span class="kx-em">receive</span>.</h2>
-        <p>None of this asks for perfection. It asks for intention. Give your herbs a body that is ready, and they will meet you halfway.</p>
+        <p>None of this asks for perfection. It asks for <span class="kx-key">intention</span>. Give your herbs a body that is ready, and they will meet you halfway.</p>
       </div>
 
       <!-- EAT -->
       <div class="kx-row kx-rise">
-        <div class="kx-row-copy">
-          <span class="kx-num">01 &middot; Eat</span>
+        <div class="kx-card">
+          <div class="kx-card-head">
+            <span class="kx-numeral">01</span>
+            <span class="kx-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-4.4 3.4-8.4 9-9 .3 6.4-1.6 12.4-2 16Z"/><path d="M11 20c0-4 2.2-8 6-11"/></svg>
+            </span>
+            <span class="kx-card-label">Eat</span>
+          </div>
           <h3>Feed the body <span class="kx-em">real food</span>.</h3>
-          <p>Lean toward whole, anti-inflammatory foods that give your system less to fight and more to work with. The simpler your plate, the more room your herbs have to do their work.</p>
+          <p>Lean toward whole, anti-inflammatory foods that give your system less to fight and more to work with. <span class="kx-hl">The simpler your plate, the more room your herbs have to do their work.</span></p>
           <ul class="kx-list">
+            <li class="kx-list-cap" style="padding-left:0">Lean toward</li>
             <li>Whole vegetables, fruit, and clean proteins as the base of most meals</li>
             <li>Naturally anti-inflammatory foods: leafy greens, ginger, turmeric, healthy fats</li>
             <li>Cooked, warm, easy-to-digest meals while you are on a protocol</li>
           </ul>
           <ul class="kx-list kx-avoid">
+            <li class="kx-list-cap" style="padding-left:0">Ease off</li>
             <li>Avoid processed and packaged food that keeps the body inflamed</li>
             <li>Avoid refined sugar, it works against the herbs, especially hormonal and blood-sugar blends</li>
             <li>Avoid alcohol, which taxes the same systems your herbs are trying to restore</li>
@@ -155,10 +200,16 @@
         <div class="kx-row-media">
           <img src="assets/img/bg-waterfall.webp" alt="Clear water falling through the cloud forest">
         </div>
-        <div class="kx-row-copy">
-          <span class="kx-num">02 &middot; Hydrate</span>
+        <div class="kx-card">
+          <div class="kx-card-head">
+            <span class="kx-numeral">02</span>
+            <span class="kx-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11Z"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.5 2"/></svg>
+            </span>
+            <span class="kx-card-label">Hydrate</span>
+          </div>
           <h3>Water is the <span class="kx-em">carrier</span>.</h3>
-          <p>Your herbs move through your body in water. A well-hydrated system carries their compounds further and clears what is being released more gently. Hydration is the quiet half of every protocol.</p>
+          <p>Your herbs move through your body in water. <span class="kx-hl">A well-hydrated system carries their compounds further</span> and clears what is being released more gently. Hydration is the quiet half of every protocol.</p>
           <ul class="kx-list">
             <li>Drink clean water steadily through the day, not all at once</li>
             <li>Begin the morning with water before caffeine or food</li>
@@ -170,10 +221,16 @@
 
       <!-- SLEEP -->
       <div class="kx-row kx-rise">
-        <div class="kx-row-copy">
-          <span class="kx-num">03 &middot; Sleep</span>
+        <div class="kx-card">
+          <div class="kx-card-head">
+            <span class="kx-numeral">03</span>
+            <span class="kx-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.2 8.2 0 1 1 9.8 3.5a6.6 6.6 0 0 0 10.7 10.7Z"/></svg>
+            </span>
+            <span class="kx-card-label">Sleep</span>
+          </div>
           <h3>Rest is where the <span class="kx-em">work lands</span>.</h3>
-          <p>Sleep is when the body repairs and integrates. The same protocol reaches further in a rested body than in a depleted one, because rest is when your system finally has the space to respond.</p>
+          <p>Sleep is when the body repairs and integrates. <span class="kx-hl">The same protocol reaches further in a rested body than in a depleted one</span>, because rest is when your system finally has the space to respond.</p>
           <ul class="kx-list">
             <li>Protect a consistent sleep and wake rhythm while you are on your herbs</li>
             <li>Wind down away from screens and bright light before bed</li>
@@ -191,10 +248,16 @@
         <div class="kx-row-media">
           <img src="assets/img/gen/closing-sunrise-cup.webp" alt="Sunrise stillness with a warm cup held in both hands">
         </div>
-        <div class="kx-row-copy">
-          <span class="kx-num">04 &middot; Support Your Nervous System</span>
+        <div class="kx-card">
+          <div class="kx-card-head">
+            <span class="kx-numeral">04</span>
+            <span class="kx-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.2-6 3.4 12 2.4-6H22"/></svg>
+            </span>
+            <span class="kx-card-label">Support Your Nervous System</span>
+          </div>
           <h3>Calm the system that <span class="kx-em">holds it all</span>.</h3>
-          <p>Chronic stress keeps the body braced, and a braced body cannot fully receive. Softening your nervous system is not a luxury on a protocol, it is part of the protocol. This is where the deepest results are protected.</p>
+          <p>Chronic stress keeps the body braced, and a braced body cannot fully receive. <span class="kx-hl">Softening your nervous system is not a luxury on a protocol, it is part of the protocol.</span> This is where the deepest results are protected.</p>
           <ul class="kx-list">
             <li>Manage daily stress instead of letting it run in the background</li>
             <li>Use slow, intentional breathwork to bring the body out of its guard</li>
@@ -208,9 +271,10 @@
     <!-- REMINDER -->
     <section class="kx-wrap kx-sec-tight">
       <div class="kx-remind kx-rise">
-        <p class="kx-eyebrow" style="color:var(--kx-gold)">A Gentle Note</p>
+        <div class="kx-remind-mark" aria-hidden="true">&sect;</div>
+        <p class="kx-eyebrow" style="color:var(--kx-gold);justify-content:center">A Gentle Note</p>
         <h2>This is <span class="kx-em">groundwork</span>, not gatekeeping.</h2>
-        <p>You do not have to arrive perfect. Prepare the body intentionally, live a little cleaner while your herbs are working, and you give these plants their best chance to reach their full depth. Always consult a qualified clinician about pregnancy, nursing, medications, allergies, or ongoing conditions before starting any herbal protocol.</p>
+        <p>You do not have to arrive perfect. <span class="kx-hl">Prepare the body intentionally, live a little cleaner while your herbs are working,</span> and you give these plants their best chance to reach their full depth. Always consult a qualified clinician about pregnancy, nursing, medications, allergies, or ongoing conditions before starting any herbal protocol.</p>
       </div>
     </section>
 

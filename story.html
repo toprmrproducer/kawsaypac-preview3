@@ -6,98 +6,142 @@
 <title>Our Story | Kawsaypac Ancestral Herbs</title>
 <meta name="description" content="We are Raisa and Brian. Two diagnoses changed our path, and a journey through the Ecuadorian Andes and Amazon became Kawsaypac. Welcome, friend.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=100">
-<link rel="stylesheet" href="home.css?v=100">
-<script defer src="app.js?v=100"></script>
+<link rel="stylesheet" href="styles.css?v=101">
+<link rel="stylesheet" href="home.css?v=101">
+<script defer src="app.js?v=101"></script>
 <style>
 /* ============ .kx-story page-scoped editorial layout ============ */
-.kx-story{--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-forest:#1F3A2A;--kx-gold:#C9A942;--kx-ink:#2b2b26;--kx-muted:#5f6157;--kx-line:rgba(31,58,42,.16);background:var(--kx-cream);color:var(--kx-ink);font-family:var(--body,Satoshi,Arial,sans-serif);overflow-x:hidden}
-.kx-story h1,.kx-story h2,.kx-story h3{font-family:var(--display,'Fraunces',Georgia,serif);font-weight:400;color:var(--kx-forest);letter-spacing:-.01em;margin:0}
-.kx-story p{margin:0;line-height:1.72;color:var(--kx-muted);font-size:clamp(15px,1.08vw,17px)}
+.kx-story{--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-paper2:#EFEBE1;--kx-forest:#1F3A2A;--kx-forest2:#16281D;--kx-gold:#C9A942;--kx-gold-soft:rgba(201,169,66,.30);--kx-ink:#2b2b26;--kx-muted:#5f6157;--kx-line:rgba(31,58,42,.14);background:var(--kx-cream);color:var(--kx-ink);font-family:var(--body,Satoshi,Arial,sans-serif);overflow-x:hidden}
+.kx-story h1,.kx-story h2,.kx-story h3{font-family:var(--display,'Fraunces',Georgia,serif);font-weight:400;color:var(--kx-forest);letter-spacing:-.012em;margin:0}
+.kx-story p{margin:0;line-height:1.78;color:var(--kx-muted);font-size:clamp(15px,1.08vw,17.5px)}
 .kx-story .kx-em{font-style:italic;color:var(--kx-gold)}
-.kx-story .kx-eyebrow{font-family:var(--body,Satoshi,Arial,sans-serif);text-transform:uppercase;letter-spacing:.26em;font-size:11px;font-weight:600;color:var(--kx-gold);margin:0 0 14px}
+.kx-story .kx-eyebrow{font-family:var(--body,Satoshi,Arial,sans-serif);text-transform:uppercase;letter-spacing:.28em;font-size:11px;font-weight:600;color:var(--kx-gold);margin:0 0 16px;display:inline-flex;align-items:center;gap:12px}
+.kx-story .kx-eyebrow::before{content:"";width:26px;height:1px;background:var(--kx-gold);opacity:.7;display:inline-block}
 .kx-story .kx-wrap{width:min(1120px,92vw);margin-inline:auto}
+
+/* gold key-phrase highlight, the eye anchors */
+.kx-story .kx-hl{color:var(--kx-forest);font-weight:500;background-image:linear-gradient(transparent 60%,var(--kx-gold-soft) 60%);background-repeat:no-repeat;padding:0 1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
 /* reveal: visible by default, motion is enhancement only */
 .kx-story .kx-rise{opacity:1;transform:none}
-.kx-story.kx-js .kx-rise{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.kx-story.kx-js .kx-rise{opacity:0;transform:translateY(20px);transition:opacity .85s ease,transform .85s cubic-bezier(.22,1,.36,1)}
 .kx-story.kx-js .kx-rise.is-in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.kx-story.kx-js .kx-rise{opacity:1!important;transform:none!important}}
 
-/* HERO */
-.kx-hero{position:relative;min-height:clamp(520px,74vh,720px);display:flex;align-items:flex-start;padding:clamp(120px,15vh,180px) 0 clamp(56px,7vw,96px)}
+/* premium image frame: rounded, soft shadow, thin gold inset */
+.kx-frame{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(26,40,25,.16),0 2px 8px rgba(26,40,25,.06)}
+.kx-frame::after{content:"";position:absolute;inset:9px;border:1px solid rgba(201,169,66,.55);border-radius:13px;pointer-events:none;z-index:2}
+.kx-frame img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.22,1,.36,1)}
+.kx-frame:hover img{transform:scale(1.045)}
+
+/* HERO ==================================================== */
+.kx-hero{position:relative;min-height:clamp(560px,82vh,780px);display:flex;align-items:center;padding:clamp(130px,16vh,190px) 0 clamp(64px,8vw,110px)}
 .kx-hero::before{content:"";position:absolute;inset:0;background:url('assets/img/bg-cloudforest-edge.webp?v=1') center/cover no-repeat;z-index:0}
-.kx-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(250,249,246,.94) 0%,rgba(250,249,246,.72) 34%,rgba(250,249,246,.18) 60%,rgba(31,58,42,.14) 100%);z-index:1}
-.kx-hero .kx-wrap{position:relative;z-index:2}
-.kx-hero-copy{max-width:520px}
-.kx-hero h1{font-size:clamp(48px,8.4vw,104px);line-height:.98}
+.kx-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(102deg,rgba(250,249,246,.96) 0%,rgba(250,249,246,.82) 30%,rgba(250,249,246,.34) 56%,rgba(22,40,29,.30) 100%);z-index:1}
+.kx-hero .kx-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;width:min(1160px,92vw)}
+.kx-hero-copy{max-width:560px}
+.kx-hero h1{font-size:clamp(52px,9vw,116px);line-height:.96}
 .kx-hero h1 .l2{display:block}
-.kx-hero-lead{margin-top:22px;max-width:400px;color:#33352c;font-size:clamp(15px,1.15vw,17px)}
-.kx-hero-thanks{margin-top:18px;font-size:13px;letter-spacing:.02em;color:#5a5c50}
+.kx-hero-rule{width:74px;height:2px;background:var(--kx-gold);margin:26px 0 22px;border-radius:2px}
+.kx-hero-lead{max-width:420px;color:#2f3128;font-size:clamp(16px,1.2vw,18.5px);line-height:1.7}
+.kx-hero-thanks{margin-top:20px;font-family:var(--display,'Fraunces',serif);font-style:italic;font-size:clamp(16px,1.25vw,19px);color:var(--kx-forest)}
+.kx-hero-portrait{width:clamp(230px,22vw,300px);aspect-ratio:4/5;border-radius:22px;transform:rotate(2.2deg)}
+.kx-hero-portrait::after{inset:11px;border-radius:14px}
 
-/* WELCOME FRIEND band */
-.kx-welcome{padding:clamp(48px,6vw,84px) 0}
-.kx-welcome .kx-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:clamp(28px,4.5vw,72px);align-items:center}
-.kx-welcome-copy{max-width:460px}
-.kx-welcome-copy p+p{margin-top:16px}
-.kx-sprig{width:44px;height:auto;margin-bottom:18px;opacity:.85}
+/* WELCOME FRIEND ========================================== */
+.kx-welcome{padding:clamp(60px,7vw,100px) 0}
+.kx-welcome .kx-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(32px,5vw,80px);align-items:center}
+.kx-welcome-copy{max-width:500px}
+.kx-welcome-copy p+p{margin-top:18px}
+.kx-sprig{width:46px;height:auto;margin-bottom:20px;opacity:.9}
+.kx-dropcap::first-letter{float:left;font-family:var(--display,'Fraunces',serif);font-weight:400;font-size:clamp(58px,6.6vw,84px);line-height:.72;padding:10px 14px 2px 0;color:var(--kx-forest)}
 .kx-welcome-media{position:relative}
-.kx-welcome-media img{width:100%;height:clamp(320px,42vw,470px);object-fit:cover;border-radius:4px;display:block}
+.kx-welcome-media .kx-frame{height:clamp(360px,46vw,520px)}
+.kx-welcome-badge{position:absolute;left:-18px;bottom:26px;background:var(--kx-cream);border:1px solid var(--kx-line);box-shadow:0 18px 40px rgba(26,40,25,.14);border-radius:14px;padding:14px 20px;z-index:3}
+.kx-welcome-badge .n{font-family:var(--display,'Fraunces',serif);font-style:italic;font-size:19px;color:var(--kx-forest);line-height:1.1}
+.kx-welcome-badge .r{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--kx-gold);margin-top:4px;font-weight:600}
 
-/* QUESTION + timeline */
-.kx-question{padding:clamp(44px,5.5vw,80px) 0;background:var(--kx-paper)}
-.kx-question .kx-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,80px);align-items:start}
-.kx-question h2{font-size:clamp(30px,3.6vw,46px);line-height:1.06;margin-bottom:24px}
+/* PULL-QUOTE ============================================== */
+.kx-pquote{position:relative;margin:clamp(30px,4vw,48px) 0;padding:clamp(26px,3vw,36px) clamp(26px,3.5vw,44px);background:var(--kx-paper);border-radius:18px;border:1px solid var(--kx-line);box-shadow:0 20px 50px rgba(26,40,25,.08)}
+.kx-pquote::before{content:"\201C";position:absolute;top:clamp(-8px,-.5vw,-2px);left:18px;font-family:var(--display,'Fraunces',serif);font-size:clamp(70px,8vw,104px);line-height:1;color:var(--kx-gold);opacity:.35}
+.kx-pquote p{font-family:var(--display,'Fraunces',serif);font-style:italic;font-weight:400;font-size:clamp(21px,2.5vw,31px);line-height:1.32;color:var(--kx-forest)}
+.kx-pquote cite{display:block;margin-top:16px;font-style:normal;font-family:var(--body,Satoshi,sans-serif);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--kx-gold);font-weight:600}
+.kx-pquote-wide{margin-inline:auto;max-width:860px}
+
+/* QUESTION + TIMELINE ==================================== */
+.kx-question{padding:clamp(56px,6.5vw,96px) 0;background:var(--kx-paper)}
+.kx-question .kx-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,5vw,84px);align-items:center}
+.kx-question h2{font-size:clamp(31px,3.7vw,48px);line-height:1.05;margin-bottom:26px}
 .kx-question h2 .kx-em{display:block}
-.kx-question-copy p+p{margin-top:16px}
-.kx-timeline{position:relative;padding-left:26px}
-.kx-timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(var(--kx-gold),rgba(201,169,66,.25))}
-.kx-tl-item{position:relative;padding-bottom:34px}
-.kx-tl-item:last-child{padding-bottom:0}
-.kx-tl-item::before{content:"";position:absolute;left:-26px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--kx-cream);border:2px solid var(--kx-gold);box-shadow:0 0 0 4px var(--kx-paper)}
-.kx-tl-year{font-family:var(--display,'Fraunces',serif);font-size:20px;color:var(--kx-forest);margin-bottom:6px}
-.kx-tl-item p{font-size:14px;line-height:1.6}
+.kx-question-copy p+p{margin-top:17px}
+.kx-tl{position:relative}
+.kx-tl-head{font-family:var(--body,Satoshi,sans-serif);text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:600;color:var(--kx-gold);margin:0 0 22px 0}
+.kx-tl-rail{position:relative;padding-left:34px}
+.kx-tl-rail::before{content:"";position:absolute;left:6px;top:14px;bottom:14px;width:2px;background:linear-gradient(180deg,var(--kx-gold),rgba(201,169,66,.2));border-radius:2px}
+.kx-tl-item{position:relative;margin-bottom:22px}
+.kx-tl-item:last-child{margin-bottom:0}
+.kx-tl-item::before{content:"";position:absolute;left:-34px;top:22px;width:14px;height:14px;border-radius:50%;background:var(--kx-cream);border:2px solid var(--kx-gold);box-shadow:0 0 0 5px var(--kx-paper),0 4px 10px rgba(201,169,66,.35);z-index:2}
+.kx-tl-card{background:var(--kx-cream);border:1px solid var(--kx-line);border-radius:16px;padding:24px 26px;box-shadow:0 20px 50px rgba(26,40,25,.08);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s ease}
+.kx-tl-card:hover{transform:translateY(-4px);box-shadow:0 28px 60px rgba(26,40,25,.13)}
+.kx-tl-year{font-family:var(--display,'Fraunces',serif);font-size:30px;color:var(--kx-forest);line-height:1;margin-bottom:10px}
+.kx-tl-card p{font-size:14.5px;line-height:1.62}
 
-/* editorial alternating rows */
-.kx-row{padding:clamp(40px,5vw,72px) 0}
-.kx-row .kx-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4.5vw,68px);align-items:center}
-.kx-row-media img{width:100%;height:clamp(300px,38vw,440px);object-fit:cover;border-radius:4px;display:block}
-.kx-row-copy{max-width:480px}
-.kx-row-copy h2{font-size:clamp(28px,3.3vw,42px);line-height:1.08;margin-bottom:20px}
+/* EDITORIAL ALTERNATING ROWS ============================= */
+.kx-row{padding:clamp(52px,6vw,88px) 0}
+.kx-row+.kx-row{padding-top:0}
+.kx-row .kx-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,76px);align-items:center}
+.kx-row-media .kx-frame{height:clamp(340px,42vw,500px)}
+.kx-row-copy{max-width:500px}
+.kx-row-copy h2{font-size:clamp(29px,3.4vw,44px);line-height:1.07;margin-bottom:22px}
 .kx-row-copy h2 .kx-em{display:block}
-.kx-row-copy p+p{margin-top:15px}
+.kx-row-copy p+p{margin-top:16px}
 .kx-row.kx-textfirst .kx-row-media{order:2}
 .kx-row.kx-textfirst .kx-row-copy{order:1;margin-left:auto}
+.kx-num{font-family:var(--display,'Fraunces',serif);font-style:italic;font-size:15px;color:var(--kx-gold);margin-bottom:10px;letter-spacing:.02em}
 
-/* connection band */
-.kx-connection{padding:clamp(48px,6vw,88px) 0;background:var(--kx-forest);color:#e9e6dc;text-align:center}
-.kx-connection .kx-eyebrow{color:var(--kx-gold)}
-.kx-connection h2{color:#f6f3e9;font-size:clamp(30px,3.8vw,50px);line-height:1.04;margin-bottom:22px}
+/* CONNECTION BAND ======================================== */
+.kx-connection{position:relative;padding:clamp(60px,7vw,104px) 0;background:linear-gradient(165deg,var(--kx-forest),var(--kx-forest2));color:#e9e6dc;text-align:center;overflow:hidden}
+.kx-connection::before{content:"";position:absolute;inset:0;background:url('assets/img/bg-footer-jungle.webp?v=1') center/cover no-repeat;opacity:.12;z-index:0}
+.kx-connection .kx-wrap{position:relative;z-index:1}
+.kx-connection .kx-eyebrow{color:var(--kx-gold);justify-content:center}
+.kx-connection .kx-eyebrow::before{background:var(--kx-gold);opacity:.8}
+.kx-connection h2{color:#f6f3e9;font-size:clamp(32px,4vw,54px);line-height:1.03;margin-bottom:24px}
 .kx-connection h2 .kx-em{color:var(--kx-gold)}
-.kx-connection-lead{max-width:640px;margin:0 auto;color:#cdccc0}
-.kx-connection-lead p+p{margin-top:14px}
-.kx-icons{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;max-width:840px;margin:clamp(36px,4vw,56px) auto 0}
-.kx-icon{display:flex;flex-direction:column;align-items:center;gap:12px}
-.kx-icon svg{width:34px;height:34px;stroke:var(--kx-gold);stroke-width:1.4;fill:none}
-.kx-icon span{font-size:12px;line-height:1.4;color:#d9d7cb;letter-spacing:.02em;max-width:120px}
-.kx-connection-close{max-width:660px;margin:clamp(34px,4vw,52px) auto 0;color:#cdccc0}
+.kx-connection-lead{max-width:660px;margin:0 auto;color:#d3d2c6}
+.kx-connection-lead p+p{margin-top:15px}
+.kx-connection-lead .kx-hl{color:#fff;background-image:linear-gradient(transparent 60%,rgba(201,169,66,.42) 60%)}
+.kx-icons{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;max-width:940px;margin:clamp(44px,5vw,64px) auto 0}
+.kx-icon{display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,66,.28);border-radius:16px;transition:transform .4s cubic-bezier(.22,1,.36,1),background .4s ease,border-color .4s ease}
+.kx-icon:hover{transform:translateY(-6px);background:rgba(255,255,255,.09);border-color:rgba(201,169,66,.6)}
+.kx-icon-badge{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(201,169,66,.14);border:1px solid rgba(201,169,66,.4)}
+.kx-icon svg{width:28px;height:28px;stroke:var(--kx-gold);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.kx-icon span{font-size:12.5px;line-height:1.45;color:#e2e0d4;letter-spacing:.02em;max-width:130px;font-weight:500}
+.kx-connection-close{max-width:680px;margin:clamp(42px,5vw,60px) auto 0;color:#d3d2c6}
 
-/* closing */
-.kx-closing{position:relative;padding:clamp(56px,7vw,104px) 0;text-align:center;background:var(--kx-cream)}
-.kx-closing h2{font-size:clamp(40px,6vw,74px);line-height:1;margin-bottom:14px}
-.kx-closing p{margin:0 auto;color:var(--kx-muted)}
-.kx-cta{display:inline-block;margin-top:30px;background:var(--kx-forest);color:#f6f3e9;font-family:var(--body,Satoshi,sans-serif);text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:600;padding:16px 34px;border-radius:2px;text-decoration:none;transition:background .3s ease,transform .3s ease}
-.kx-cta:hover{background:var(--kx-gold);color:var(--kx-forest);transform:translateY(-2px)}
+/* CLOSING ================================================ */
+.kx-closing{position:relative;padding:clamp(64px,8vw,120px) 0;text-align:center;background:var(--kx-cream)}
+.kx-closing::before{content:"";position:absolute;left:50%;top:clamp(30px,4vw,50px);transform:translateX(-50%);width:64px;height:2px;background:var(--kx-gold);opacity:.8;border-radius:2px}
+.kx-closing h2{font-size:clamp(44px,6.4vw,82px);line-height:1;margin-bottom:16px}
+.kx-closing-sub{max-width:440px;margin:0 auto;color:var(--kx-muted);font-family:var(--display,'Fraunces',serif);font-style:italic;font-size:clamp(17px,1.5vw,21px)}
+.kx-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;background:var(--kx-forest);color:#f6f3e9;font-family:var(--body,Satoshi,sans-serif);text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:600;padding:17px 38px;border-radius:3px;text-decoration:none;transition:background .35s ease,transform .35s ease,box-shadow .35s ease;box-shadow:0 18px 40px rgba(31,58,42,.22)}
+.kx-cta:hover{background:var(--kx-gold);color:var(--kx-forest);transform:translateY(-3px);box-shadow:0 24px 50px rgba(201,169,66,.32)}
+.kx-cta svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}
 
 @media (max-width:860px){
-  .kx-welcome .kx-grid,.kx-question .kx-grid,.kx-row .kx-grid{grid-template-columns:1fr;gap:26px}
-  .kx-question .kx-grid{gap:34px}
+  .kx-hero .kx-wrap{grid-template-columns:1fr}
+  .kx-hero-portrait{display:none}
+  .kx-hero-copy{max-width:100%}
+  .kx-welcome .kx-grid,.kx-question .kx-grid,.kx-row .kx-grid{grid-template-columns:1fr;gap:32px}
+  .kx-question .kx-grid{gap:40px}
   .kx-row.kx-textfirst .kx-row-media{order:1}
   .kx-row.kx-textfirst .kx-row-copy{order:2;margin-left:0}
   .kx-welcome-media{order:-1}
-  .kx-hero-copy{max-width:100%}
-  .kx-icons{grid-template-columns:repeat(2,1fr);gap:28px 18px;max-width:420px}
+  .kx-welcome-badge{left:14px}
+  .kx-icons{grid-template-columns:repeat(2,1fr);gap:16px;max-width:440px}
   .kx-row-copy,.kx-welcome-copy{max-width:100%}
+}
+@media (max-width:520px){
+  .kx-icons{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -112,8 +156,12 @@
       <div class="kx-hero-copy">
         <p class="kx-eyebrow">Our Story</p>
         <h1>Welcome,<span class="l2 kx-em">friend.</span></h1>
+        <div class="kx-hero-rule"></div>
         <p class="kx-hero-lead">We are Raisa and Brian. Our journey is one of healing, curiosity, and remembering who we have always been.</p>
         <p class="kx-hero-thanks">Thank you for finding your way here.</p>
+      </div>
+      <div class="kx-hero-portrait kx-frame kx-rise" aria-hidden="true">
+        <img src="assets/img/raisa-cotopaxi.webp?v=1" alt="Raisa in the Ecuadorian highlands beneath Cotopaxi" loading="lazy">
       </div>
     </div>
   </section>
@@ -125,13 +173,23 @@
         <div class="kx-welcome-copy kx-rise">
           <svg class="kx-sprig" viewBox="0 0 48 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 92V16" stroke="#C9A942" stroke-width="1.3"/><path d="M24 34c-9 0-16-6-16-14 8 0 16 5 16 14Z" stroke="#C9A942" stroke-width="1.2"/><path d="M24 48c9 0 16-6 16-14-8 0-16 5-16 14Z" stroke="#C9A942" stroke-width="1.2"/><path d="M24 62c-8 0-14-5-14-12 7 0 14 4 14 12Z" stroke="#C9A942" stroke-width="1.2"/><circle cx="24" cy="12" r="4.5" stroke="#C9A942" stroke-width="1.2"/></svg>
           <p class="kx-eyebrow">Welcome, friend.</p>
-          <p>There is something beautiful about believing the body was designed to heal. Not because healing is always easy, but because somewhere beneath the noise, the trends, and the endless search for the next solution, there is a quiet knowing that our bodies were created with incredible wisdom. Maybe that's what brought you here. Maybe you're looking for answers. Maybe you're simply looking for hope. Whatever your reason, we're so grateful you've found your way to this little corner of the world.</p>
+          <p class="kx-dropcap">There is something beautiful about believing the body was designed to heal. Not because healing is always easy, but because somewhere beneath the noise, the trends, and the endless search for the next solution, there is a quiet knowing that <span class="kx-hl">our bodies were created with incredible wisdom</span>. Maybe that's what brought you here. Maybe you're looking for answers. Maybe you're simply <span class="kx-hl">looking for hope</span>. Whatever your reason, we're so grateful you've found your way to this little corner of the world.</p>
           <p>We're Raisa and Brian, and if there's one thing we've learned, it's that healing isn't about becoming someone new. It's about remembering who you've always been.</p>
         </div>
         <div class="kx-welcome-media kx-rise">
-          <img src="assets/img/raisa-brian.webp?v=1" alt="Raisa and Brian, founders of Kawsaypac, in the Ecuadorian cloud forest" loading="lazy">
+          <div class="kx-frame">
+            <img src="assets/img/raisa-brian.webp?v=1" alt="Raisa and Brian, founders of Kawsaypac, in the Ecuadorian cloud forest" loading="lazy">
+          </div>
+          <div class="kx-welcome-badge">
+            <div class="n">Raisa &amp; Brian</div>
+            <div class="r">Founders, Kawsaypac</div>
+          </div>
         </div>
       </div>
+      <blockquote class="kx-pquote kx-pquote-wide kx-rise">
+        <p>Healing isn't about becoming someone new. It's about remembering who you've always been.</p>
+        <cite>Raisa &amp; Brian</cite>
+      </blockquote>
     </div>
   </section>
 
@@ -143,17 +201,24 @@
           <p class="kx-eyebrow">It Started With a Question</p>
           <h2>Two diagnoses<span class="kx-em">changed our path.</span></h2>
           <p>Our journey didn't begin with herbs. It began with two diagnoses that changed the direction of our lives forever.</p>
-          <p>At just seventeen years old (the year was 2007), Raisa was diagnosed with rheumatoid arthritis. In 2019, Brian was diagnosed with Barrett's esophagus and chronic gastritis. Like so many people, we were given prescriptions and told how to manage our conditions, but neither of us could shake the feeling that there had to be more. We weren't searching for a miracle. We simply wanted to understand why the body was struggling in the first place.</p>
-          <p>That one question led us down a path that completely transformed the way we viewed health, food, and the remarkable intelligence of the human body.</p>
+          <p>At just seventeen years old (the year was 2007), Raisa was diagnosed with rheumatoid arthritis. In 2019, Brian was diagnosed with Barrett's esophagus and chronic gastritis. Like so many people, we were given prescriptions and told how to manage our conditions, but neither of us could shake the feeling that <span class="kx-hl">there had to be more</span>. We weren't searching for a miracle. We simply wanted to understand why the body was struggling in the first place.</p>
+          <p>That one question led us down a path that <span class="kx-hl">completely transformed the way we viewed health, food, and the remarkable intelligence of the human body</span>.</p>
         </div>
-        <div class="kx-timeline kx-rise">
-          <div class="kx-tl-item">
-            <div class="kx-tl-year">2007</div>
-            <p>Raisa was diagnosed with rheumatoid arthritis at seventeen years old.</p>
-          </div>
-          <div class="kx-tl-item">
-            <div class="kx-tl-year">2019</div>
-            <p>Brian was diagnosed with Barrett's esophagus and chronic gastritis.</p>
+        <div class="kx-tl kx-rise">
+          <p class="kx-tl-head">The turning points</p>
+          <div class="kx-tl-rail">
+            <div class="kx-tl-item">
+              <div class="kx-tl-card">
+                <div class="kx-tl-year">2007</div>
+                <p>Raisa was diagnosed with rheumatoid arthritis at seventeen years old.</p>
+              </div>
+            </div>
+            <div class="kx-tl-item">
+              <div class="kx-tl-card">
+                <div class="kx-tl-year">2019</div>
+                <p>Brian was diagnosed with Barrett's esophagus and chronic gastritis.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -165,16 +230,23 @@
     <div class="kx-wrap">
       <div class="kx-grid">
         <div class="kx-row-media kx-rise">
-          <img src="assets/img/gen/story-morning-ritual.webp?v=1" alt="A morning ritual of whole botanicals, tea, and nourishing food" loading="lazy">
+          <div class="kx-frame">
+            <img src="assets/img/gen/story-morning-ritual.webp?v=1" alt="A morning ritual of whole botanicals, tea, and nourishing food" loading="lazy">
+          </div>
         </div>
         <div class="kx-row-copy kx-rise">
+          <p class="kx-num">Chapter One</p>
           <p class="kx-eyebrow">The Kitchen Was Only the Beginning</p>
           <h2>We started by changing<span class="kx-em">what was on our plates.</span></h2>
           <p>Long before we created herbal formulas or hosted retreats, we started by changing what was on our plates.</p>
           <p>We immersed ourselves in nutrition, learned how food influences inflammation, hormones, digestion, and the nervous system, and began sharing recipes online simply because they were helping us. To our surprise, thousands of people connected with what we were creating. What started as recipes grew into ebooks, educational resources, and eventually an incredible community of people searching for a more intentional way to care for themselves.</p>
-          <p>Looking back, those recipes were never really about food. They were about hope. They were the first invitation to believe that our daily choices could become powerful acts of healing.</p>
+          <p>Looking back, those recipes were never really about food. They were about hope. They were the first invitation to believe that our daily choices could become <span class="kx-hl">powerful acts of healing</span>.</p>
         </div>
       </div>
+      <blockquote class="kx-pquote kx-pquote-wide kx-rise">
+        <p>Those recipes were never really about food. They were about hope.</p>
+        <cite>The Kawsaypac beginning</cite>
+      </blockquote>
     </div>
   </section>
 
@@ -183,14 +255,17 @@
     <div class="kx-wrap">
       <div class="kx-grid">
         <div class="kx-row-media kx-rise">
-          <img src="assets/img/bg-highlands.webp?v=1" alt="The Ecuadorian Andes highlands where plant medicine has never been forgotten" loading="lazy">
+          <div class="kx-frame">
+            <img src="assets/img/bg-highlands.webp?v=1" alt="The Ecuadorian Andes highlands where plant medicine has never been forgotten" loading="lazy">
+          </div>
         </div>
         <div class="kx-row-copy kx-rise">
+          <p class="kx-num">Chapter Two</p>
           <p class="kx-eyebrow">Returning to Our Roots</p>
           <h2>We went to learn from<span class="kx-em">those who never forgot.</span></h2>
           <p>As our curiosity grew, so did our desire to learn from cultures where plant medicine has never been forgotten.</p>
-          <p>Beginning in 2022, we traveled throughout the Ecuadorian Andes and Amazon, spending time with Indigenous communities, traditional healers, and Kichwa elders whose relationship with medicinal plants stretches back generations. We came as students, listening far more than we spoke, learning that the forest holds a wisdom impossible to find in books alone.</p>
-          <p>Every experience reminded us of something simple yet profound: nature has always known how to nourish, support, and restore the body. The knowledge was never lost. Much of the modern world simply drifted away from it.</p>
+          <p>Beginning in 2022, we traveled throughout the Ecuadorian Andes and Amazon, spending time with Indigenous communities, traditional healers, and Kichwa elders whose relationship with medicinal plants stretches back generations. We came as students, listening far more than we spoke, learning that <span class="kx-hl">the forest holds a wisdom impossible to find in books alone</span>.</p>
+          <p>Every experience reminded us of something simple yet profound: nature has always known how to nourish, support, and restore the body. <span class="kx-hl">The knowledge was never lost.</span> Much of the modern world simply drifted away from it.</p>
         </div>
       </div>
     </div>
@@ -201,13 +276,16 @@
     <div class="kx-wrap">
       <div class="kx-grid">
         <div class="kx-row-media kx-rise">
-          <img src="assets/img/bg-waterfall.webp?v=1" alt="Waterfalls tumbling through the cloud forest valleys of Ecuador" loading="lazy">
+          <div class="kx-frame">
+            <img src="assets/img/bg-waterfall.webp?v=1" alt="Waterfalls tumbling through the cloud forest valleys of Ecuador" loading="lazy">
+          </div>
         </div>
         <div class="kx-row-copy kx-rise">
+          <p class="kx-num">Chapter Three</p>
           <p class="kx-eyebrow">A New Chapter in the Cloud Forest</p>
           <h2>In 2025, we made<span class="kx-em">Ecuador our home.</span></h2>
           <p>Today we live in the cloud forest, nestled between the Andes Mountains and the Amazon rainforest, where waterfalls tumble through the valleys, orchids bloom in every season, hummingbirds dart between flowers, and the clouds drift low enough to become part of everyday life. Living here has changed us in ways we never expected. It has taught us patience, gratitude, and reverence for the rhythms of nature.</p>
-          <p>When you spend enough time in places like this, you begin to realize that healing doesn't happen because we force it. It happens when we create the conditions that allow the body to do what it has always known how to do.</p>
+          <p>When you spend enough time in places like this, you begin to realize that <span class="kx-hl">healing doesn't happen because we force it</span>. It happens when we create the conditions that allow the body to do what it has always known how to do.</p>
         </div>
       </div>
     </div>
@@ -218,14 +296,17 @@
     <div class="kx-wrap">
       <div class="kx-grid">
         <div class="kx-row-media kx-rise">
-          <img src="assets/img/person-picking-herbs.webp?v=1" alt="Hands wild-harvesting botanicals with respect for the land" loading="lazy">
+          <div class="kx-frame">
+            <img src="assets/img/person-picking-herbs.webp?v=1" alt="Hands wild-harvesting botanicals with respect for the land" loading="lazy">
+          </div>
         </div>
         <div class="kx-row-copy kx-rise">
+          <p class="kx-num">Chapter Four</p>
           <p class="kx-eyebrow">Why We Created Kawsaypac</p>
           <h2>Every herb we offer<span class="kx-em">tells a story.</span></h2>
-          <p>Every herb we offer tells a story. Because someone generously shared generations of knowledge with us.</p>
+          <p><span class="kx-hl">Every herb we offer tells a story.</span> Because someone generously shared generations of knowledge with us.</p>
           <p>Our Kawsaypac herbal line is the result of years spent learning directly from Kichwa communities and traditional healers who welcomed us into their homes, ceremonies, and way of life. Every formula reflects those teachings while honoring the people who have protected this wisdom for centuries.</p>
-          <p>Our herbs are sustainably wild-harvested with deep respect for Mother Earth, never irradiated, and sourced directly from the communities who steward these plants. By working without middlemen, we're able to support the families preserving this ancestral knowledge while ensuring every product reflects the integrity of its origins.</p>
+          <p>Our herbs are <span class="kx-hl">sustainably wild-harvested with deep respect for Mother Earth</span>, never irradiated, and sourced directly from the communities who steward these plants. By working without middlemen, we're able to support the families preserving this ancestral knowledge while ensuring every product reflects the integrity of its origins.</p>
         </div>
       </div>
     </div>
@@ -238,32 +319,32 @@
       <h2 class="kx-rise">It's about<span class="kx-em">connection.</span></h2>
       <div class="kx-connection-lead kx-rise">
         <p>The Electric Eats has never been about selling products.</p>
-        <p>It's about helping people remember that health is not built through perfection, fear, or endless protocols. It's built through connection.</p>
+        <p>It's about helping people remember that health is not built through perfection, fear, or endless protocols. <span class="kx-hl">It's built through connection.</span></p>
       </div>
       <div class="kx-icons kx-rise">
         <div class="kx-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v7a3 3 0 0 0 6 0V3M7 3v18M17 3c-1.7 0-3 2.2-3 5s1.3 5 3 5 3-2.2 3-5-1.3-5-3-5Zm0 10v8"/></svg>
+          <div class="kx-icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v7a3 3 0 0 0 6 0V3M7 3v18M17 3c-1.7 0-3 2.2-3 5s1.3 5 3 5 3-2.2 3-5-1.3-5-3-5Zm0 10v8"/></svg></div>
           <span>The food we eat</span>
         </div>
         <div class="kx-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c5-2 8-6 8-11 0-2-1-4-3-4-2 0-3 1.5-5 4-2-2.5-3-4-5-4-2 0-3 2-3 4 0 5 3 9 8 11Z"/><path d="M12 21V9"/></svg>
+          <div class="kx-icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c5-2 8-6 8-11 0-2-1-4-3-4-2 0-3 1.5-5 4-2-2.5-3-4-5-4-2 0-3 2-3 4 0 5 3 9 8 11Z"/><path d="M12 21V9"/></svg></div>
           <span>The herbs we consume</span>
         </div>
         <div class="kx-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.5A3.5 3.5 0 0 1 12 8a3.5 3.5 0 0 1 7 2.5C19 15.6 12 20 12 20Z"/></svg>
+          <div class="kx-icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.5A3.5 3.5 0 0 1 12 8a3.5 3.5 0 0 1 7 2.5C19 15.6 12 20 12 20Z"/></svg></div>
           <span>The people we love</span>
         </div>
         <div class="kx-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
+          <div class="kx-icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg></div>
           <span>The earth beneath our feet</span>
         </div>
         <div class="kx-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.4 1 2.5v1h6v-1c0-1.1.3-1.8 1-2.5A6 6 0 0 0 12 3Z"/><path d="M9.5 20h5M10 22h4"/></svg>
+          <div class="kx-icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.4 1 2.5v1h6v-1c0-1.1.3-1.8 1-2.5A6 6 0 0 0 12 3Z"/><path d="M9.5 20h5M10 22h4"/></svg></div>
           <span>The wisdom within our bodies</span>
         </div>
       </div>
       <div class="kx-connection-close kx-rise">
-        <p>Whether you've found us through a recipe, a retreat, an herbal blend, or simply because your heart has been searching for another way, we hope this space feels like coming home.</p>
+        <p>Whether you've found us through a recipe, a retreat, an herbal blend, or simply because your heart has been searching for another way, we hope this space <span class="kx-hl">feels like coming home</span>.</p>
       </div>
     </div>
   </section>
@@ -272,8 +353,10 @@
   <section class="kx-closing">
     <div class="kx-wrap">
       <h2 class="kx-rise">Welcome, <span class="kx-em">friend.</span></h2>
-      <p class="kx-rise">We're so grateful you're here.</p>
-      <a class="kx-cta kx-rise" href="shop.html">Explore Our Herbs</a>
+      <p class="kx-closing-sub kx-rise">We're so grateful you're here.</p>
+      <a class="kx-cta kx-rise" href="shop.html">Explore Our Herbs
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </section>
 
