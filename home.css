@@ -494,3 +494,7 @@ body>*:last-child{margin-bottom:0}
 .collection-item:hover .bowl-stack.duo .cup-behind,.collection-item:focus-visible .bowl-stack.duo .cup-behind{transform:translateY(-18px) scale(1.04)}
 .collection-item:hover .collection-label{color:#173325}
 .collection-item:hover .collection-arrow{background:var(--forest);color:#fff;border-color:var(--forest)}
+/* v90: size the bloom itself (grid place-items was shrink-wrapping it) */
+.philo-accent{justify-items:stretch!important}
+.philo-bloom{width:clamp(420px,43vw,720px)!important;max-width:none!important;height:auto!important}
+@media(max-width:900px){.philo-bloom{width:clamp(200px,34vw,300px)!important}}
