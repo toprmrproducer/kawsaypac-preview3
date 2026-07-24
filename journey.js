@@ -21,6 +21,7 @@
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
   if(hasProgress)gsap.set(progress,{scaleY:0,transformOrigin:'top'});
+  gsap.set(stage,{filter:'blur(0px) saturate(1)'});
 
   /* RAISA SPEC v2 (Scene 0 -> Scene FINAL, both authored in Figma):
      the artwork is one tall true-aspect canvas. On load the camera sits on the
@@ -53,7 +54,7 @@
     .to(finalCopy,{autoAlpha:1,y:0,duration:8,ease:'power2.out',onStart:()=>window.__animateCounters&&window.__animateCounters([...hero.querySelectorAll('.journey-final [data-count]')])},76)
     .to(finalPieces,{autoAlpha:1,y:0,stagger:.6,duration:5,ease:'power2.out'},76)
     .to(finalCopy,{autoAlpha:1,duration:16},84)
-    .to(stage,{filter:'blur(11px) brightness(.84) saturate(1.05)',duration:18,ease:'power1.inOut'},76);
+    .fromTo(stage,{filter:'blur(0px) saturate(1)'},{filter:'blur(14px) saturate(1)',duration:10,ease:'power2.in'},90);
 
   if(matchMedia('(hover: hover) and (pointer: fine)').matches){
     sticky.addEventListener('pointermove',event=>{
