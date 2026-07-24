@@ -945,3 +945,8 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 video.shop-hero-bg{opacity:1!important;z-index:0!important}
 .shop-hero{background:#0e1c13!important}
 .shop-hero::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(6,20,12,.88) 0%,rgba(6,20,12,.60) 40%,rgba(6,20,12,0) 100%)}
+/* v80: shorter hero (less video upscale = less grain) + readable scrim */
+.shop-hero{min-height:clamp(420px,52vh,560px)!important;max-height:640px;overflow:hidden}
+video.shop-hero-bg{object-position:center 38%;filter:saturate(1.06) contrast(1.03)}
+.shop-hero::after{height:78%!important;background:linear-gradient(0deg,rgba(6,20,12,.92) 0%,rgba(6,20,12,.72) 34%,rgba(6,20,12,.34) 64%,rgba(6,20,12,0) 100%)!important}
+.shop-hero .shop-hero__content{position:relative;z-index:3}

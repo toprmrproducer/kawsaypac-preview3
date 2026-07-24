@@ -429,3 +429,23 @@
 .footer-leaves .fl-l{left:clamp(-64px,-4vw,-30px);transform:rotate(-6deg)}
 .footer-leaves .fl-r{right:clamp(-64px,-4vw,-30px);transform:scaleX(-1) rotate(-6deg)}
 @media(max-width:720px){.footer-leaves .fl{width:clamp(110px,34vw,170px);bottom:-54px}}
+
+/* v80: philosophy bouquets 2x, bleeding off the side and cut by the bottom */
+.philosophy{overflow:hidden}
+.philo-accent{width:clamp(300px,30vw,520px)!important;align-items:end!important;top:auto!important;bottom:-14%!important;height:auto!important}
+.philo-bloom{width:100%!important}
+.philo-accent-left{left:0!important}
+.philo-accent-left .philo-bloom{margin-left:clamp(-140px,-9vw,-60px)!important}
+.philo-accent-right{right:0!important}
+.philo-accent-right .philo-bloom{margin-right:clamp(-140px,-9vw,-60px)!important}
+@media(max-width:900px){.philo-accent{width:clamp(150px,26vw,240px)!important;bottom:-8%!important;opacity:.8}}
+
+/* v80: sprites never sit over text */
+.drag-sprite{opacity:.92}
+.section>.shell,.philosophy>.shell{position:relative;z-index:4}
+
+/* v80: kill the white gap under the footer */
+html,body{background:#060d09}
+.site-footer{margin-bottom:0}
+body>*:last-child{margin-bottom:0}
+.philo-sub{max-width:640px;margin:14px auto 0;text-align:center;font-size:1.02rem;line-height:1.65;color:#5c6b60;position:relative;z-index:4}

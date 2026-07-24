@@ -11,7 +11,7 @@
   const q=s=>hero.querySelector(s);
   const stage=q('.j5-stage');
   const layers=[...hero.querySelectorAll('.j5l')];
-  const brand=q('.journey-brand');const cue=q('.journey-scrollcue');
+  const brand=q('.journey-brand');const cue=q('.journey-scrollcue');const cloudFront=q('.j5-cloudfront');
   const summitBeat=q('.journey-beat-forest'),waterBeat=q('.journey-beat-water'),finalCopy=q('.journey-final'),progress=q('.journey-progress span');
   const hasProgress=!!progress;
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
@@ -30,12 +30,13 @@
      into its Scene-FINAL position with a slight upward settle. Nothing fades. */
 
   /* stagger by depth: mountain band first, foreground last */
-  const when={ 'cloud-b':0,'cotopaxi':2,'cloud-d':4,'cloud-e':6,'valley':10,'branch':14,'branch-2':16,'monstera':20,'moss':22,'mossbranch':24,'condor':4,'orchid-brom':26,'orchids-left':28 };
+  const when={ 'cloud-b':0,'cotopaxi':2,'cloud-d':4,'cloud-e':6,'condor':0,'valley':10,'branch':14,'branch-2':16,'moss':30,'mossbranch':34,'monstera':38,'orchid-brom':42,'orchids-left':46 };
 
   const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(innerHeight*2.6)}`,pin:hero,scrub:.7,anticipatePin:1,invalidateOnRefresh:true}});
 
   tl.to({},{duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
+    .fromTo(cloudFront,{xPercent:-22,yPercent:6,autoAlpha:.95},{xPercent:26,yPercent:-4,autoAlpha:0,duration:26,ease:'none'},0)
     .to(cue,{autoAlpha:0,y:14,duration:5},3)
     /* camera pans down the canvas across the whole pin */
     .fromTo(stage,{y:0},{y:()=>-(stage.offsetHeight-innerHeight),duration:100,ease:'power1.inOut'},0);
@@ -44,7 +45,8 @@
     const n=el.dataset.n;
     const dxp=parseFloat(el.dataset.dxp)||0, dyp=parseFloat(el.dataset.dyp)||0;
     if(!dxp&&!dyp)return;
-    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:58,ease:'power2.out'},when[n]??20);
+    const isCondor=n==='condor';
+    tl.fromTo(el,{xPercent:dxp,yPercent:dyp},{xPercent:0,yPercent:0,duration:isCondor?86:58,ease:isCondor?'none':'power2.out'},when[n]??20);
   });
 
   tl.to(summitBeat,{autoAlpha:1,y:0,duration:5,ease:'power2.out'},10)

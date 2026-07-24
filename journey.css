@@ -163,3 +163,7 @@
 .j5l[data-n="orchids-left"]{left:auto!important;right:14.5%!important;top:auto!important;bottom:0!important}
 .j5l[data-n="monstera"]{left:0!important;top:auto!important;bottom:0!important}
 .j5l[data-n="moss"]{left:0!important;top:auto!important;bottom:0!important;width:100%!important}
+
+/* v80: cloud drifting in FRONT of the wordmark */
+.j5-cloudfront{position:absolute;z-index:21;left:26%;top:34%;width:34%;height:auto;pointer-events:none;opacity:.92;will-change:transform}
+@media(max-width:720px){.j5-cloudfront{left:8%;width:62%;top:38%}}
