@@ -21,7 +21,7 @@ Kawsaypac is a luminous, landscape-led Ecuadorian herbal brand. The visual syste
 
 ## 3. Layout
 
-The homepage begins with a full-viewport pinned scene. Cotopaxi stays high and right. Product copy occupies the lower-left valley pocket and does not overlap the volcano. The body uses generous cream space, seamless transitions, image bands, and editorial grids. Secondary pages use a compact image-led hero and a readable 760px article measure.
+The homepage begins with a full-viewport pinned scene. Cotopaxi stays high and right. Product copy occupies the lower-left valley pocket and does not overlap the volcano. The body uses generous cream space, seamless transitions, image bands, and editorial grids. The homepage brand film is a second full-viewport moment: edge-to-edge motion, no inset card or cream gutter, with the approved message aligned over a restrained directional scrim. Secondary pages use a compact image-led hero and a readable 760px article measure.
 
 ## 4. Primitives and states
 
