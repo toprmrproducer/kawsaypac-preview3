@@ -12,12 +12,12 @@
     <meta property="og:description" content="Explore the live Kawsaypac apothecary and check out securely through Shopify.">
     <meta property="og:url" content="https://theelectriceats.com/collections/all">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=108">
-    <link rel="stylesheet" href="home.css?v=110">
+    <link rel="stylesheet" href="home.css?v=111">
     <link rel="stylesheet" href="shopify-storefront.css?v=18">
-    <link rel="stylesheet" href="shop.css?v=88">
+    <link rel="stylesheet" href="shop.css?v=89">
     <script type="module" data-storefront-components src="https://cdn.shopify.com/storefront/web-components.js"></script>
-    <script defer src="app.js?v=109"></script>
-    <script defer src="shopify-storefront.js?v=20"></script>
+    <script defer src="app.js?v=111"></script>
+    <script defer src="shopify-storefront.js?v=21"></script>
     <script defer src="shop.js?v=18"></script>
   <style>/* QA fix: prevent KAWSAYPAC wordmark overlapping the search icon on narrow phones (shared header grid gives the brand ~121px at <=480px) */
 @media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
@@ -33,46 +33,22 @@
       <section class="shop-hero" aria-labelledby="shop-title"><video class="shop-hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/img/bg-waterfall.webp?v=78"><source src="assets/img/gen6/shop-hero.mp4?v=78" type="video/mp4"></video>
         <img class="shop-accent shop-accent--left" src="assets/sprites/herb-icons/cats-claw-vine.webp?v=32" alt="">
         <img class="shop-accent shop-accent--right" src="assets/sprites/herb-icons/passionflower-vine.webp?v=32" alt="">
-        <div class="shop-hero__content">
-          <p class="eyebrow">The Kawsaypac Apothecary</p>
+        <div class="shop-hero__content shop-hero__content--statement">
           <h1 id="shop-title">Where wild Ecuador becomes <span class="accent">ritual.</span></h1>
-          <p>Small-batch Ecuadorian botanicals, blended by hand and shipped straight from our partner apothecary.</p>
-          <div class="shop-hero__actions">
-            <a class="btn btn-secondary" href="#live-apothecary">Browse physical herbs</a>
-            <button class="storefront-cart-button" type="button" onclick="window.KawsaypacStorefront.openCart()">Open bag</button>
-          </div>
-          <p class="shop-proof shop-proof--trust">
-            <span class="shop-proof__item"><span class="star" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span><strong>4.9</strong> average rating</span></span>
-            <span class="shop-proof__sep" aria-hidden="true"></span>
-            <span class="shop-proof__item"><span><strong>1,000+</strong> orders shipped</span></span>
-            <span class="shop-proof__sep" aria-hidden="true"></span>
-            <span class="shop-proof__item"><span><strong>Wildcrafted</strong>, no fillers</span></span>
-          </p>
-          <nav class="shop-hero__index" aria-label="Shop categories">
-            <a href="#live-apothecary"><span>01</span>Herbs &amp; blends</a>
-            <a href="#ebooks"><span>02</span>E-books</a>
-            <a href="#health-programs"><span>03</span>Health programs</a>
-          </nav>
         </div>
       </section>
 
       <section class="shop-shell" id="live-apothecary" aria-labelledby="apothecary-title">
-        <div class="shop-heading">
+        <div class="shop-heading shop-heading--tight">
           <div>
-            <p class="eyebrow">Physical Apothecary · Live from Shopify</p>
-            <h2 id="apothecary-title"><span data-pop="herbs">Herbs</span>, <span data-pop="blends">blends</span>, and <span data-pop="bundles">bundles</span> for the daily ritual.</h2>
+            <p class="eyebrow">The Apothecary</p>
+            <h2 id="apothecary-title">Shop all herbs.</h2>
           </div>
-          <p>This shelf contains physical botanicals only. Choose by concern or browse the full herb catalog; digital books and health programs have dedicated sections below.</p>
         </div>
 
         <div class="shop-controls">
           <div class="filter-list" data-shop-filters aria-label="Filter products by concern"></div>
           <p class="shop-status" data-shop-status aria-live="polite">Connecting to the live apothecary…</p>
-        </div>
-
-        <div class="shop-note">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18Zm0 8v6m0-10v.01"/></svg>
-          <span>Availability and prices update from Shopify. Herbal information is educational and is not medical advice.</span>
         </div>
 
         <aside class="shop-guarantee" aria-label="Our promise">

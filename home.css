@@ -681,3 +681,17 @@ body>*:last-child{margin-bottom:0}
 .eco-left-frame{animation:none;transform:translateY(-50%)}
 .eco-left-frame img{animation-name:ecoImgSway}
 @media(prefers-reduced-motion:reduce){.eco-botanical img{animation:none}}
+
+/* v111: retreat statement must read on bright foliage: darker scrim band behind
+   the copy, luminous gold, and a real text shadow. */
+.retreat-band::after{background:linear-gradient(0deg,rgba(13,33,21,.78),rgba(13,33,21,.42) 52%,rgba(13,33,21,.5))}
+.retreat-copy h2{text-shadow:0 3px 34px rgba(4,18,10,.85),0 1px 6px rgba(4,18,10,.6)}
+.retreat-copy h2 .gold-italic{color:#f2da8a}
+.retreat-copy>p{text-shadow:0 2px 18px rgba(4,18,10,.7)}
+/* v111: heliconia are scroll-linked now (JS drives transform); kill the one-shot transition */
+.eco-descend{transition:opacity .6s ease;opacity:0;transform:translateY(-70px)}
+.eco-descend.eco-live{opacity:1}
+
+/* v112: Raisa - collections orchid is a STATIC frame, larger, no sway */
+.eco-left-frame img{animation:none!important}
+.eco-left-frame{--eco-size:clamp(300px,27vw,520px)!important}

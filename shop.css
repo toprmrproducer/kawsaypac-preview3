@@ -1020,3 +1020,28 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 .shop-product-grid .storefront-card__heading strong{font-size:.85rem;color:#173525;font-weight:650;white-space:nowrap}
 .shop-product-grid .storefront-card__description{display:none}
 .shop-product-grid .storefront-text-link{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;align-self:flex-start}
+
+/* ============ v89: Rhode statement hero + readable card CTAs + Best Seller ============ */
+/* hero: full-bleed film with ONE centered statement, no glass card */
+.shop-hero{min-height:56vh;max-height:640px;display:grid;place-items:center}
+.shop-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,26,16,.55),rgba(10,26,16,.28) 45%,rgba(10,26,16,.34));z-index:1;pointer-events:none}
+.shop-hero__content--statement{position:relative;z-index:2;background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:24px;max-width:1100px;text-align:center}
+.shop-hero__content--statement h1{margin:0;font-family:var(--display,'Fraunces',serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.4rem);letter-spacing:-.03em;line-height:1.02;color:#fff;text-shadow:0 3px 30px rgba(4,18,10,.8)}
+.shop-hero__content--statement h1 .accent{font-style:italic;color:#f2da8a}
+.shop-accent{display:none}
+/* shelf heading: short and centered, no side blurb */
+.shop-heading--tight{display:block;text-align:center;margin-bottom:18px}
+.shop-heading--tight h2{margin:0}
+/* card CTA links: dark on cream, actually readable */
+.shop-product-grid .storefront-text-link,
+.editorial-product-grid .storefront-text-link{color:#143b28;border:1px solid rgba(20,59,40,.45);background:transparent}
+.shop-product-grid .storefront-text-link:hover,
+.editorial-product-grid .storefront-text-link:hover{background:#143b28;color:#fff;border-color:#143b28}
+/* Best Seller sticker */
+.storefront-card__badge{position:absolute;right:12px;top:12px;z-index:3;background:#143b28;color:#f7f3e8;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;box-shadow:0 6px 14px rgba(20,59,40,.25);pointer-events:none}
+
+/* v89b: statement hero must beat the v87 compact overrides */
+.shop-hero{min-height:56vh!important;max-height:640px!important;height:auto!important;padding:0!important;display:grid!important;place-items:center!important;align-content:center!important}
+.shop-hero .shop-hero__content--statement{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;max-width:1100px!important;padding:24px!important}
+.shop-hero .shop-hero__content--statement h1{font-size:clamp(2.6rem,5.4vw,5.4rem)!important;color:#fff!important;line-height:1.02!important;margin:0!important}
+@media(max-width:720px){.shop-hero{min-height:44vh!important}.shop-hero .shop-hero__content--statement h1{font-size:clamp(1.9rem,8.4vw,2.8rem)!important}}

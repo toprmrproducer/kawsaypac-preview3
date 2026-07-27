@@ -216,3 +216,8 @@
    band above the peak. Pairs with cotopaxi data-dyp 14, which eases the cone
    down ~60px to open that band without costing the full-cone framing. */
 .journey-preview .journey-brand{top:1%}
+
+/* v112: the sky plate had baked rounded transparent corners and sat 0.6% inset,
+   leaking the dark stage as a left strip + curved hero corners. Overscan it. */
+.j5l[data-n="v-sky"]{left:-0.6%!important;top:-0.6%!important;width:101.4%!important;height:69%!important}
+.j5l[data-n="s-sky"]{left:-0.6%!important;width:101.4%!important}

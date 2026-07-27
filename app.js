@@ -74,10 +74,13 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
       sprite.innerHTML=`<img src="${path}?v=101" alt="" loading="lazy" decoding="async" draggable="false">`;
       host.append(sprite);
       if(role==='descend'){
-        // gentle descend into place when the FLOWER itself scrolls into view
-        // (observing the host section fired too early, so nobody saw the motion)
-        const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){sprite.classList.add('eco-in');io.disconnect();}}),{threshold:.35});
-        io.observe(sprite);
+        // scroll-linked: the vines travel DOWN with the scroll through the
+        // section (Raisa: "they should come down as the person scrolls")
+        if(matchMedia('(prefers-reduced-motion: reduce)').matches){sprite.style.opacity='1';sprite.style.transform='none';return}
+        let raf=0;
+        const drive=()=>{raf=0;const r=host.getBoundingClientRect();const vh=innerHeight;const p=Math.max(0,Math.min(1,(vh-r.top)/(r.height+vh)));sprite.style.transform=`translateY(${(-70+p*150).toFixed(1)}px)`;if(p>0.02)sprite.classList.add('eco-live')};
+        addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(drive)},{passive:true});
+        drive();
       }
     });
   }

@@ -124,10 +124,13 @@
     'fearless-fruit-detox': 'program'
   });
 
+  const BEST_SELLER_HANDLES = Object.freeze(['zapped-in', 'sacred-sacral-sweetened', 'bowel-balance', 'cats-claw', 'scales-of-balance']);
+
   function productCardTemplate(options = {}) {
     const mediaPriority = options.priority ? ' priority="true"' : '';
     const cardClass = options.cardClass ? ` ${options.cardClass}` : '';
-    const word = options.keyword ? `<span class="storefront-card__word">${escapeAttribute(options.keyword)}</span>` : `<span class="storefront-card__type"><shopify-data query="product.productType"></shopify-data></span>`;
+    const badge = options.bestSeller ? '<span class="storefront-card__badge">Best Seller</span>' : '';
+    const word = options.keyword ? `<span class="storefront-card__word">${escapeAttribute(options.keyword)}</span>${badge}` : `<span class="storefront-card__type"><shopify-data query="product.productType"></shopify-data></span>${badge}`;
     return `
       <article class="storefront-card${cardClass}">
         <a
@@ -195,7 +198,7 @@
   function renderProductHandles(grid, handles, options = {}) {
     grid.innerHTML = handles.map((handle) => `
       <shopify-context data-storefront-source type="product" handle="${escapeAttribute(handle)}">
-        <template>${productCardTemplate({ ...options, keyword: CARD_KEYWORDS[handle] })}</template>
+        <template>${productCardTemplate({ ...options, keyword: CARD_KEYWORDS[handle], bestSeller: BEST_SELLER_HANDLES.includes(handle) })}</template>
         <div class="storefront-card storefront-card--skeleton" shopify-loading-placeholder aria-label="Loading product">
           <div class="storefront-skeleton storefront-skeleton--media"></div>
           <div class="storefront-card__body"><div class="storefront-skeleton storefront-skeleton--line"></div></div>
