@@ -36,16 +36,15 @@
     'Kit': 'assets/img/gen/story-morning-ritual.webp'
   };
 
-  // Full-bleed cinematic plates (section 2). Deterministic per-slug so pages differ.
+  // Full-bleed cinematic plates (section 2). Sharp landscape plates only
+  // (every file >= 1600px wide on disk); deterministic per-slug so pages differ.
   const CINEMA_POOL = [
-    'assets/img/real-jungle.webp',
-    'assets/img/real-amazon-river.webp',
     'assets/img/bg-cloudforest-edge.webp',
-    'assets/img/gen/philo-harvest-wide.webp',
-    'assets/img/real-waterfall.webp',
-    'assets/img/person-picking-herbs.webp',
-    'assets/img/real-amazon-basin.webp',
-    'assets/img/herbal-infusion.webp'
+    'assets/img/bg-highlands.webp',
+    'assets/img/bg-waterfall.webp',
+    'assets/img/bg-amazon-basin.webp',
+    'assets/img/bg-paramo-band.webp',
+    'assets/img/bg-footer-jungle.webp'
   ];
 
   // Photographic pool for the Blume-style highlight cards.
@@ -140,24 +139,10 @@
     </div>`;
   }
 
-  /* Rhode-style hero gallery: main frame + thumb rail. Sources, in order:
-     custom generated shots dropped into assets/img/pdp/<slug>/ (via the manifest
-     in pdp-manifest.js), then the curated pool of existing brand assets. */
-  const CONCERN_BOWL = {
-    'bowel-balance': 'con-digestive', 'bowel-banisher': 'con-digestive', 'one-way-out': 'con-detox',
-    'final-flush': 'con-detox', 'eliminate-regenerate': 'con-detox', 'sacred-sacral': 'con-womens',
-    'womens-kit': 'con-womens', 'mens-kit': 'con-energy', 'zapped-in': 'con-energy',
-    'guayusa-leaf': 'con-energy', 'valerian': 'con-sleep', 'scales-of-balance': 'con-nervous',
-    'cats-claw': 'con-joint', 'chuchuhuasi': 'con-joint', 'soursop': 'con-immune',
-    'matico': 'con-immune', 'river-of-life': 'con-all'
-  };
-  const BOTANICAL_PLATE = {
-    'cats-claw': 'apoth-cats-claw', 'chuchuhuasi': 'apoth-cats-claw',
-    'valerian': 'apoth-passionflower', 'scales-of-balance': 'apoth-passionflower',
-    'guayusa-leaf': 'apoth-guayusa', 'zapped-in': 'apoth-guayusa',
-    'matico': 'apoth-cinchona', 'soursop': 'apoth-cinchona', 'river-of-life': 'apoth-cinchona'
-  };
-  const RITUAL_POOL = ['generated/rituals/ritual-morning-jar.webp', 'generated/rituals/ritual-brewing-jar.webp', 'generated/rituals/ritual-evening-jar.webp', 'generated/rituals/ritual-shared-jar.webp'];
+  /* Hero gallery: REAL product imagery only. Products with approved custom pdp
+     shots (assets/img/pdp/<slug>/ via pdp-manifest.js) show product image +
+     those shots; every other product shows exactly its own Shopify product
+     image, single frame, no thumb rail. No pool padding. */
   function galleryFor(p) {
     const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug];
     if (custom && custom.length) {
@@ -165,13 +150,7 @@
       if (!custom.some((x) => x.includes('01-hero'))) shots.unshift({ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` });
       return shots.slice(0, 4);
     }
-    const shots = [{ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` }];
-    const bowl = CONCERN_BOWL[p.slug];
-    if (bowl) shots.push({ src: `assets/img/gen5/${bowl}.webp?v=63`, alt: `${p.name} whole herbs in a ceramic bowl` });
-    const plate = BOTANICAL_PLATE[p.slug];
-    if (plate) shots.push({ src: `assets/img/${plate}.webp?v=18`, alt: `${p.name} botanical illustration` });
-    shots.push({ src: `assets/img/${RITUAL_POOL[hashCode(p.slug) % RITUAL_POOL.length]}?v=105`, alt: 'Kawsaypac brewing ritual' });
-    return shots.slice(0, 4);
+    return [{ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` }];
   }
   function heroGallery(p) {
     const shots = galleryFor(p);
@@ -221,10 +200,12 @@
 
   function cinematicSection(p) {
     const line = p.cinematic || p.subline || p.name;
-    const img = CINEMA_POOL[hashCode(p.slug) % CINEMA_POOL.length];
+    const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug] || [];
+    const macro = custom.find((x) => x.includes('03-macro'));
+    const img = macro || CINEMA_POOL[hashCode(p.slug) % CINEMA_POOL.length];
     return `
     <section class="pp-cinema" data-sec="cinematic">
-      <img src="${esc(img)}?v=31" alt="" loading="lazy" width="1800" height="900">
+      <img src="${esc(img)}?v=32" alt="" loading="lazy" width="1800" height="900">
       <div class="pp-cinema-scrim" aria-hidden="true"></div>
       <p class="pp-cinema-line">${esc(line)}</p>
     </section>`;

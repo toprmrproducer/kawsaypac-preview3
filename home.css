@@ -695,3 +695,32 @@ body>*:last-child{margin-bottom:0}
 /* v112: Raisa - collections orchid is a STATIC frame, larger, no sway */
 .eco-left-frame img{animation:none!important}
 .eco-left-frame{--eco-size:clamp(300px,27vw,520px)!important}
+
+/* ===== v113 mobile polish (Shreyas phone QA 28 Jul): ornaments never sit under text ===== */
+/* Tablet band 721-900: measured at 768/795, even slim slivers of the bouquets
+   still cross the first/last credo column, so they rest below 900px entirely.
+   (Later in the cascade than the v78 display:grid!important, so this wins.) */
+@media(max-width:900px){
+  .philo-accent{display:none!important}
+}
+@media(max-width:720px){
+  /* 1. Collections orchid: the v112 300px frame swallowed the headline on phones.
+     Small left-edge accent beside the bowl row, below the heading block, mostly
+     clipped by the viewport edge so it can never sit under copy. */
+  .collections .eco-left-frame{--eco-size:clamp(96px,18vw,124px)!important;width:var(--eco-size)!important;top:auto!important;bottom:7%!important;transform:none!important;left:calc(var(--eco-size)*-0.45)!important;opacity:.9}
+  /* 1b + 5. Philosophy flank bouquets overlapped the numbered credo list on phones.
+     The pre-v78 design already hid them under 720px; restore that (this rule is
+     later in the cascade than the v78 display:grid!important, so it wins). */
+  .philo-accent{display:none!important}
+  /* 2. Shop-by-concern heliconia: slim top-corner slivers. Extra head clearance
+     plus a capped scroll-follow travel in app.js keeps them out of the
+     heading/subcopy bounding boxes at every scroll position. */
+  .concern-section{padding-block-start:clamp(56px,9vw,72px)}
+  .concern-section span.eco-descend{--eco-size:72px!important;width:72px!important;top:-44px!important}
+  .concern-section span.eco-descend:nth-of-type(1){left:-26px!important;right:auto!important}
+  .concern-section span.eco-descend:nth-of-type(2){left:auto!important;right:-26px!important}
+}
+@media(max-width:480px){
+  /* Smallest phones: the orchid cannot sit cleanly beside a swipeable labelled row */
+  .collections .eco-left-frame{display:none!important}
+}

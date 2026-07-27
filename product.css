@@ -115,9 +115,10 @@
 .pp-wheel-center-sub{fill:#8a6d1f;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 .pp-legend{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px}
 .pp-legend li{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--pp-line);border-radius:14px;padding:14px 16px}
-.pp-legend-dot{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fdfbf3;font-size:.82rem;font-weight:750}
+/* the number lives INSIDE the colored circle: white, dead-center, matching the wheel segments */
+.pp-legend-dot,.pp-legend span.pp-legend-dot{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fdfbf3;font-size:.82rem;font-weight:750;line-height:1;margin:0;letter-spacing:0;text-transform:none}
 .pp-legend strong{display:block;color:var(--pp-green)}
-.pp-legend span{display:block;font-size:.82rem;color:#8a6d1f;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.pp-legend li > div span{display:block;font-size:.82rem;color:#8a6d1f;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
 .pp-chiprow{display:flex;flex-wrap:wrap;gap:8px}
 .pp-pathway{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:0}
 .pp-pathway li{position:relative;display:flex;gap:18px;align-items:flex-start;padding:0 0 26px 0}
@@ -330,7 +331,7 @@
   .pp-tab-row-underline{gap:16px}
 }
 
-/* v32: Rhode-style hero gallery */
+/* v31: Rhode-style hero gallery */
 .pp-hero-media{display:flex;flex-direction:column;gap:14px}
 .pp-hero-frame{position:relative;aspect-ratio:1;border-radius:22px;overflow:hidden;background:#efe9dc}
 .pp-hero-frame .pp-hero-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;pointer-events:none}
@@ -341,3 +342,80 @@
 .pp-thumb:hover{transform:translateY(-2px)}
 .pp-thumb.is-active{border-color:#143b28;box-shadow:0 6px 16px rgba(20,59,40,.18)}
 @media(max-width:720px){.pp-thumb{width:56px}}
+
+/* ============================================================
+   v32 · premium craft pass (CSS-only; 16-section structure and
+   copy untouched). Bar: Rhode/Aesop. Palette: deep green #143b28,
+   gold #d7ae36, cream.
+   ============================================================ */
+
+/* --- section rhythm: one consistent vertical measure --- */
+.pp-band{padding:clamp(66px,7.2vw,112px) 0}
+.pp-claim{padding:clamp(66px,7.2vw,112px) 0}
+.pp-sub{margin-top:14px}
+.pp-main h2{text-wrap:balance}
+
+/* --- deliberate background cadence (cream / warm white / parchment / deep green) --- */
+.pp-results{background:#fffdf7}
+
+/* --- eyebrow: small caps gold with a hairline tick --- */
+.pp-eyebrow{display:inline-flex;align-items:center;gap:12px}
+.pp-eyebrow::before{content:"";width:26px;height:1px;background:var(--pp-gold);opacity:.85;flex:none}
+.pp-compare .pp-eyebrow{display:flex;justify-content:center}
+.pp-compare .pp-eyebrow::before{display:none}
+
+/* --- 1 · hero card refinement --- */
+.pp-hero-card{background:#fffdf7;border:1px solid rgba(20,59,40,.12);box-shadow:0 22px 54px rgba(20,59,40,.07)}
+.pp-hero-media{box-shadow:0 22px 54px rgba(20,59,40,.10)}
+.pp-hero-frame{box-shadow:inset 0 0 0 1px rgba(20,59,40,.05)}
+.pp-price-row{align-items:baseline;gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid var(--pp-line)}
+.pp-price{font-size:2.05rem;letter-spacing:-.02em}
+.pp-size{border:1px solid var(--pp-line);border-radius:999px;padding:6px 13px;background:#fff;font-size:.7rem}
+.pp-hero-acc .pp-acc-btn{transition:color .25s}
+.pp-hero-acc .pp-acc-btn:hover{background:transparent;color:#8a6d1f}
+
+/* --- 2 · cinematic band: sharp plate, intentional grade --- */
+.pp-cinema{min-height:clamp(340px,44vw,560px)}
+.pp-cinema img{transform:scale(1.02);transform-origin:center}
+.pp-cinema-scrim{background:
+  linear-gradient(180deg,rgba(8,20,14,.32) 0%,rgba(8,20,14,.16) 42%,rgba(8,20,14,.5) 100%),
+  radial-gradient(ellipse at center,rgba(8,20,14,.26) 0%,rgba(8,20,14,.1) 58%,rgba(8,20,14,.3) 100%)}
+
+/* --- unified imagery: corner radii + shadows --- */
+.pp-claim-media,.pp-howto-media,.pp-source-band{border-radius:var(--pp-radius)}
+.pp-claim-media{box-shadow:0 26px 60px rgba(0,0,0,.32)}
+.pp-hl-media{border-radius:18px}
+.pp-source-card{transition:transform .35s ease,box-shadow .35s ease}
+.pp-source-card:hover{transform:translateY(-4px);box-shadow:var(--pp-shadow)}
+
+/* --- tabs: hairline panes, gold active states, calm hover --- */
+.pp-tab-row button:hover{border-color:rgba(215,174,54,.8);color:var(--pp-green);background:#fffdf7}
+.pp-tab-row button.on{box-shadow:inset 0 0 0 1.5px rgba(215,174,54,.38)}
+.pp-tab-row button.on:hover{background:var(--pp-green);color:#fdfbf3}
+.pp-tab-pane{border-radius:18px;box-shadow:0 12px 30px rgba(20,59,40,.05)}
+.pp-tab-row-underline button:hover{background:transparent;border-color:transparent}
+.pp-tab-row-underline button:hover::after{background:rgba(215,174,54,.55)}
+.pp-tab-row-underline button.on{box-shadow:none}
+.pp-tab-row-underline button.on::after{background:var(--pp-gold);height:2.5px}
+
+/* --- study switcher: gold ring on the active circle --- */
+.pp-study-btn.on{box-shadow:0 14px 30px rgba(20,59,40,.25),inset 0 0 0 1.5px rgba(215,174,54,.45)}
+.pp-study-btn.on .pp-study-btn-label{color:var(--pp-gold-soft)}
+.pp-study-pane{box-shadow:0 12px 30px rgba(20,59,40,.05)}
+
+/* --- accordions: hairline rules, warm open state --- */
+.pp-accordion{box-shadow:0 14px 34px rgba(20,59,40,.05)}
+.pp-acc-btn{transition:background .25s,color .25s}
+.pp-accordion:not(.pp-hero-acc) .pp-acc-item.open{background:#fffdf7}
+.pp-acc-item.open .pp-acc-btn i::before,.pp-acc-item.open .pp-acc-btn i::after{background:#b8922e}
+
+/* --- FAQ + review cards: consistent padding and borders --- */
+.pp-review{padding:26px 24px;border-radius:20px}
+.pp-wall-card{padding:22px 24px;border-radius:18px}
+.pp-routine-card,.pp-proto-step{border-radius:20px}
+.pp-legend li{border-radius:16px}
+
+/* --- sticky buy bar: glass refinement --- */
+.pp-sticky-inner{background:rgba(255,253,247,.92);-webkit-backdrop-filter:blur(14px) saturate(1.05);backdrop-filter:blur(14px) saturate(1.05);border:1px solid rgba(20,59,40,.14);box-shadow:0 20px 48px rgba(20,59,40,.22)}
+.pp-sticky-inner img{border:1px solid var(--pp-line)}
+.pp-sticky-meta span{color:#8a6d1f}

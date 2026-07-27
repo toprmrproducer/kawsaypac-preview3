@@ -7,11 +7,13 @@
 <meta name="description" content="Kawsaypac was born from a deep reverence for the people, plants, and traditions that have quietly sustained life in the Andes and Amazon for generations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=109">
-<link rel="stylesheet" href="home.css?v=111">
-<script defer src="app.js?v=115"></script>
+<link rel="stylesheet" href="home.css?v=113">
+<script defer src="app.js?v=116"></script>
 <style>
 /* ============ Our Philosophy - page-scoped editorial layout ============ */
-.kx-philo{--kx-serif:'Fraunces',Georgia,serif;--kx-ivory:#FAF9F6;--kx-forest:#1F3A2A;--kx-forest2:#2C4A37;--kx-gold:#C9A942;--kx-ink:#3a463d;--kx-line:rgba(31,58,42,.14);--kx-card:0 20px 50px rgba(26,40,25,.08);--kx-card-hover:0 34px 74px rgba(26,40,25,.14);font-family:var(--body);color:var(--kx-forest);background:var(--kx-ivory);overflow-x:hidden}
+.kx-philo{--kx-serif:'Fraunces',Georgia,serif;--kx-ivory:#FAF9F6;--kx-forest:#1F3A2A;--kx-forest2:#2C4A37;--kx-gold:#C9A942;--kx-ink:#3a463d;--kx-line:rgba(31,58,42,.14);--kx-card:0 20px 50px rgba(26,40,25,.08);--kx-card-hover:0 34px 74px rgba(26,40,25,.14);font-family:var(--body);color:var(--kx-forest);background:var(--kx-ivory)}
+/* overflow-x guard lives on body (styles.css); keeping it on main broke position:sticky
+   for the On-this-page bar, which then rendered as a permanent overlay 84px into the hero */
 .kx-philo *{box-sizing:border-box}
 .kx-philo .kx-wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(20px,5vw,44px)}
 .kx-philo .kx-col{max-width:720px;margin-inline:auto}
@@ -31,8 +33,11 @@
 .kx-philo h2 em{font-style:italic;color:var(--kx-gold);font-weight:400}
 
 /* HERO */
-.kx-philo .kx-hero{position:relative;padding:clamp(94px,14vw,164px) 0 clamp(40px,6vw,72px);text-align:center;background:radial-gradient(120% 80% at 50% 0%,#eef1e8 0%,#f4f3ec 46%,var(--kx-ivory) 78%)}
-.kx-philo .kx-hero::before{content:"";position:absolute;left:50%;top:clamp(60px,9vw,96px);transform:translateX(-50%);width:min(760px,90vw);height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,66,.4),transparent);opacity:.6}
+.kx-philo .kx-hero{position:relative;padding:clamp(24px,3vw,52px) 0 clamp(40px,6vw,72px);text-align:center;background:radial-gradient(120% 80% at 50% 0%,#eef1e8 0%,#f4f3ec 46%,var(--kx-ivory) 78%)}
+.kx-philo .kx-hero::before{content:"";position:absolute;left:50%;top:clamp(12px,1.6vw,26px);transform:translateX(-50%);width:min(760px,90vw);height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,66,.4),transparent);opacity:.6}
+@media(min-width:721px){main.page-main.kx-philo{padding-top:112px}}
+@media(max-width:720px){.kx-philo .kx-hero{padding-top:20px}}
+@media(max-width:600px){.kx-philo .kx-hero h1{font-size:clamp(2.3rem,12.4vw,3.2rem)}}
 .kx-philo .kx-hero-inner{position:relative;max-width:960px;margin:0 auto}
 .kx-philo .kx-eyebrow{font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--kx-gold);font-weight:650;margin:0 0 24px}
 .kx-philo .kx-hero h1{font-family:var(--kx-serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.4rem);line-height:.88;letter-spacing:-.045em;margin:0;color:var(--kx-forest)}
@@ -234,7 +239,7 @@
   <div class="kx-band kx-rise">
     <figure>
       <div class="kx-band-frame">
-        <img src="assets/img/gen/philo-harvest-wide.webp?v=99" alt="Botanicals gathered and prepared by hand in the forest" loading="lazy" decoding="async">
+        <img src="assets/img/raisa-supplied/person-picking-herbs.webp?v=113" alt="Hands gathering wild herbs in the Ecuadorian forest" loading="lazy" decoding="async">
       </div>
       <figcaption>Gathered with intention, from healthy soil to your cup.</figcaption>
     </figure>

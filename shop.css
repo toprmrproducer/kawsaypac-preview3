@@ -1057,3 +1057,31 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 @media(max-width:720px){.shop-hero .shop-hero__content--statement{max-width:88vw!important;margin-left:6vw!important}}
 .shop-heading--tight{text-align:left;margin-bottom:18px}
 .shop-heading--tight .eyebrow{justify-content:flex-start}
+
+/* ============ v91: premium tile treatment (soft sand plates, blended
+   white-bg Shopify photos, refined type + hover) ============ */
+.shop-product-grid .storefront-card__media{background:#f4efe6;border-radius:16px;box-shadow:inset 0 0 0 1px rgba(31,58,42,.06);transition:box-shadow .45s cubic-bezier(.22,.9,.28,1)}
+/* subtle inner vignette so the photo sits IN the plate, not on it */
+.shop-product-grid .storefront-card__media::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(130% 105% at 50% 36%,rgba(255,255,255,0) 54%,rgba(31,58,42,.08) 100%)}
+/* white-background Shopify product photos blend into the sand plate */
+.shop-product-grid .storefront-card__media shopify-media{background:transparent}
+.shop-product-grid .storefront-card__media shopify-media img,
+.shop-product-grid .storefront-card__media shopify-media::part(image){mix-blend-mode:multiply}
+/* keyword word slightly larger, still lowercase editorial */
+.storefront-card__word{left:18px;top:14px;font-size:clamp(1.65rem,2vw,2.1rem)}
+/* refined star row: smaller, letterspaced */
+.storefront-card__stars{font-size:.58rem;letter-spacing:.34em;color:#c19d33}
+/* name / price row alignment + hierarchy */
+.shop-product-grid .storefront-card__body{gap:7px;padding:2px 4px 0}
+.shop-product-grid .storefront-card__heading{align-items:baseline}
+.shop-product-grid .storefront-card__heading h2{letter-spacing:.09em}
+.shop-product-grid .storefront-card__heading strong{font-family:var(--display,'Fraunces',serif);font-size:.98rem;font-weight:500;letter-spacing:0}
+/* gentle hover lift: shadow lives on the plate, never on the transparent card */
+.shop-product-grid .storefront-card{transition:transform .45s cubic-bezier(.22,.9,.28,1)}
+.shop-product-grid .storefront-card:hover{transform:translateY(-5px);box-shadow:none}
+.shop-product-grid .storefront-card:hover .storefront-card__media{box-shadow:inset 0 0 0 1px rgba(31,58,42,.06),0 24px 44px rgba(31,58,42,.16)}
+/* consistent radii across the shelf (14-18px) */
+.editorial-product-grid .storefront-card{border-radius:18px}
+.shop-product-grid .storefront-card--skeleton{border-radius:16px;background:#f4efe6}
+/* Best Seller badge stays; give it a hairline so it reads deliberate */
+.storefront-card__badge{border:1px solid rgba(247,243,232,.35)}

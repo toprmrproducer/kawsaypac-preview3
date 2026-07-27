@@ -82,7 +82,8 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
         // gliding down when you scroll down and back up when you scroll up.
         if(matchMedia('(prefers-reduced-motion: reduce)').matches){sprite.style.opacity='1';sprite.style.transform='none';return}
         let target=0,current=0,running=false;
-        const computeTarget=()=>{const r=host.getBoundingClientRect();const vh=innerHeight;const p=Math.max(0,Math.min(1,(vh-r.top)/(r.height+vh)));target=-130+p*300;if(p>0.02)sprite.classList.add('eco-live')};
+        const phoneMq=matchMedia('(max-width: 720px)');
+        const computeTarget=()=>{const r=host.getBoundingClientRect();const vh=innerHeight;const p=Math.max(0,Math.min(1,(vh-r.top)/(r.height+vh)));target=phoneMq.matches?(-18+p*30):(-130+p*300);if(p>0.02)sprite.classList.add('eco-live')};
         const tick=()=>{computeTarget();current+=(target-current)*0.055;sprite.style.transform=`translateY(${current.toFixed(1)}px)`;if(Math.abs(target-current)>0.3)requestAnimationFrame(tick);else running=false};
         const wake=()=>{if(!running){running=true;requestAnimationFrame(tick)}};
         addEventListener('scroll',wake,{passive:true});
