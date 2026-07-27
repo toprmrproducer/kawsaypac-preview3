@@ -7,6 +7,16 @@ window.KAWSAYPAC_PDP_GALLERY = {
     "assets/img/pdp/cats-claw/03-macro.webp",
     "assets/img/pdp/cats-claw/04-ritual.webp"
   ],
+  "chuchuhuasi": [
+    "assets/img/pdp/chuchuhuasi/02-editorial.webp",
+    "assets/img/pdp/chuchuhuasi/03-macro.webp",
+    "assets/img/pdp/chuchuhuasi/04-ritual.webp"
+  ],
+  "guayusa-leaf": [
+    "assets/img/pdp/guayusa-leaf/02-editorial.webp",
+    "assets/img/pdp/guayusa-leaf/03-macro.webp",
+    "assets/img/pdp/guayusa-leaf/04-ritual.webp"
+  ],
   "matico": [
     "assets/img/pdp/matico/02-editorial.webp",
     "assets/img/pdp/matico/03-macro.webp",
@@ -16,5 +26,10 @@ window.KAWSAYPAC_PDP_GALLERY = {
     "assets/img/pdp/soursop/02-editorial.webp",
     "assets/img/pdp/soursop/03-macro.webp",
     "assets/img/pdp/soursop/04-ritual.webp"
+  ],
+  "valerian": [
+    "assets/img/pdp/valerian/02-editorial.webp",
+    "assets/img/pdp/valerian/03-macro.webp",
+    "assets/img/pdp/valerian/04-ritual.webp"
   ]
 };
