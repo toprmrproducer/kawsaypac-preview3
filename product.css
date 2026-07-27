@@ -329,3 +329,15 @@
   .pp-ci svg{width:16px;height:16px}
   .pp-tab-row-underline{gap:16px}
 }
+
+/* v32: Rhode-style hero gallery */
+.pp-hero-media{display:flex;flex-direction:column;gap:14px}
+.pp-hero-frame{position:relative;aspect-ratio:1;border-radius:22px;overflow:hidden;background:#efe9dc}
+.pp-hero-frame .pp-hero-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.pp-hero-frame .pp-hero-shot.is-active{opacity:1}
+.pp-thumbs{display:flex;gap:10px}
+.pp-thumb{flex:0 0 auto;width:clamp(58px,6vw,76px);aspect-ratio:1;border-radius:14px;overflow:hidden;border:1.5px solid var(--border,#ded5c2);padding:0;background:#efe9dc;cursor:pointer;transition:border-color .25s,transform .25s;min-height:44px}
+.pp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pp-thumb:hover{transform:translateY(-2px)}
+.pp-thumb.is-active{border-color:#143b28;box-shadow:0 6px 16px rgba(20,59,40,.18)}
+@media(max-width:720px){.pp-thumb{width:56px}}

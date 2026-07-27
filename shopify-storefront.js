@@ -100,9 +100,34 @@
     })[character]);
   }
 
+  /* Rhode-style shop card: a soft tile with a lowercase concern word overlaid,
+     stars + name + price beneath. Reference: rhodeskin.com/collections/shop. */
+  const CARD_KEYWORDS = Object.freeze({
+    'valerian': 'sleep',
+    'guayusa': 'energy',
+    'sacred-sacral-sweetened': 'womb care',
+    'final-flush': 'detox',
+    'bowel-balance': 'digestion',
+    'soursop-leaves-graviola': 'immunity',
+    'cordoncillo-matico-1': 'lungs',
+    'zapped-in': 'energy',
+    'scales-of-balance': 'calm',
+    'bowel-banisher': 'gut repair',
+    'one-way-out': 'cleanse',
+    'river-of-life': 'heart',
+    'chuchuhuasi': 'joints',
+    'cats-claw': 'inflammation',
+    'eliminate-regenerate': 'full reset',
+    'her-fertile-waters': 'fertility',
+    'his-fertile-fires': 'vitality',
+    'gut-harmony': 'e-book',
+    'fearless-fruit-detox': 'program'
+  });
+
   function productCardTemplate(options = {}) {
     const mediaPriority = options.priority ? ' priority="true"' : '';
     const cardClass = options.cardClass ? ` ${options.cardClass}` : '';
+    const word = options.keyword ? `<span class="storefront-card__word">${escapeAttribute(options.keyword)}</span>` : `<span class="storefront-card__type"><shopify-data query="product.productType"></shopify-data></span>`;
     return `
       <article class="storefront-card${cardClass}">
         <a
@@ -119,28 +144,26 @@
             layout="constrained"
             sizes="(max-width: 680px) 92vw, (max-width: 980px) 45vw, 30vw"${mediaPriority}
           ></shopify-media>
-          <span class="storefront-card__type"><shopify-data query="product.productType"></shopify-data></span>
+          ${word}
+          <button
+            class="storefront-quick-add storefront-quick-add--tile"
+            type="button"
+            onclick="window.KawsaypacStorefront.addToCart(event)"
+            shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+          >Add to bag</button>
         </a>
         <div class="storefront-card__body">
+          <p class="storefront-card__stars" aria-label="Customer favorite">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
           <div class="storefront-card__heading">
             <h2><shopify-data query="product.title"></shopify-data></h2>
-            <strong><shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money></strong>
+            <strong><shopify-money format="money_without_trailing_zeros" query="product.selectedOrFirstAvailableVariant.price"></shopify-money></strong>
           </div>
-          <p class="storefront-card__description"><shopify-data query="product.description"></shopify-data></p>
-          <div class="storefront-card__actions">
-            <a
-              class="storefront-text-link"
-              href="product.html"
-              data-storefront-product-link
-              shopify-attr--data-product-handle="product.handle"
-            >View ritual <span aria-hidden="true">↗</span></a>
-            <button
-              class="storefront-quick-add"
-              type="button"
-              onclick="window.KawsaypacStorefront.addToCart(event)"
-              shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
-            >Add to bag</button>
-          </div>
+          <a
+            class="storefront-text-link"
+            href="product.html"
+            data-storefront-product-link
+            shopify-attr--data-product-handle="product.handle"
+          >View ritual <span aria-hidden="true">&#8599;</span></a>
         </div>
       </article>`;
   }
@@ -172,7 +195,7 @@
   function renderProductHandles(grid, handles, options = {}) {
     grid.innerHTML = handles.map((handle) => `
       <shopify-context data-storefront-source type="product" handle="${escapeAttribute(handle)}">
-        <template>${productCardTemplate(options)}</template>
+        <template>${productCardTemplate({ ...options, keyword: CARD_KEYWORDS[handle] })}</template>
         <div class="storefront-card storefront-card--skeleton" shopify-loading-placeholder aria-label="Loading product">
           <div class="storefront-skeleton storefront-skeleton--media"></div>
           <div class="storefront-card__body"><div class="storefront-skeleton storefront-skeleton--line"></div></div>

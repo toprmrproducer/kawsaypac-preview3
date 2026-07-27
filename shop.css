@@ -1000,3 +1000,23 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 /* pull the shelf heading up so products announce themselves in viewport one */
 .shop-shell{padding-top:clamp(30px,4vw,46px)}
 .shop-hero .shop-hero__content{margin-top:0!important}
+
+/* ============ v88: Rhode-style shop tiles (rhodeskin.com/collections/shop) ============ */
+.shop-product-grid .storefront-card{border:0;background:transparent;box-shadow:none;border-radius:0;overflow:visible;display:flex;flex-direction:column;gap:12px}
+.shop-product-grid .storefront-card__media{position:relative;display:block;aspect-ratio:1/1.06;border-radius:18px;overflow:hidden;background:#f1ece1;box-shadow:0 1px 0 rgba(31,58,42,.06)}
+.shop-product-grid .storefront-card__media shopify-media img,.shop-product-grid .storefront-card__media shopify-media::part(image){width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,.9,.28,1)}
+.shop-product-grid .storefront-card:hover .storefront-card__media shopify-media img,.shop-product-grid .storefront-card:hover .storefront-card__media shopify-media::part(image){transform:scale(1.035)}
+.storefront-card__media::before{content:'';position:absolute;inset:0 0 auto;height:34%;background:linear-gradient(180deg,rgba(250,248,242,.55),transparent);z-index:1;pointer-events:none}
+.storefront-card__word{position:absolute;left:16px;top:12px;z-index:2;font-family:var(--display,'Fraunces',serif);font-weight:500;font-size:clamp(1.5rem,1.8vw,1.9rem);letter-spacing:-.02em;text-transform:lowercase;color:#173525;pointer-events:none}
+.shop-product-grid .storefront-card__type{position:absolute;right:12px;top:12px;z-index:2}
+.storefront-quick-add--tile{position:absolute;left:50%;bottom:12px;transform:translate(-50%,8px);z-index:2;opacity:0;transition:opacity .3s,transform .3s;min-height:44px;border-radius:999px;padding:0 22px;background:rgba(250,249,246,.95);border:1px solid #143b28;color:#143b28;font-weight:750;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.storefront-card:hover .storefront-quick-add--tile,.storefront-quick-add--tile:focus-visible{opacity:1;transform:translate(-50%,0)}
+.storefront-quick-add--tile:hover{background:#143b28;color:#fff}
+@media(hover:none){.storefront-quick-add--tile{opacity:1;transform:translate(-50%,0)}}
+.storefront-card__stars{margin:0;color:#caa53d;font-size:.66rem;letter-spacing:.12em}
+.shop-product-grid .storefront-card__body{padding:0 2px;display:flex;flex-direction:column;gap:6px}
+.shop-product-grid .storefront-card__heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.shop-product-grid .storefront-card__heading h2{font-family:var(--body,'Satoshi',sans-serif);font-size:.8rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#173525;margin:0;line-height:1.3}
+.shop-product-grid .storefront-card__heading strong{font-size:.85rem;color:#173525;font-weight:650;white-space:nowrap}
+.shop-product-grid .storefront-card__description{display:none}
+.shop-product-grid .storefront-text-link{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;align-self:flex-start}

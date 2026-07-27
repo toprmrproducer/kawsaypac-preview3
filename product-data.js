@@ -1264,7 +1264,7 @@ window.KAWSAYPAC_PRODUCTS = {
    "PMS",
    "Relaxation"
   ],
-  "description": "Valerian root interacts with the GABA system in your brain through its active compound valerenic acid, a mechanism of action similar to benzodiazepine drugs, but without the dependency, the grogginess, or the prescription. Valerian is one of the most clinically studied plants on earth for anxiety and sleep. A systematic review and meta-analysis of 60 studies covering 6,894 participants confirmed Valerian's effectiveness in improving subjective sleep quality and reducing anxiety. Size: 2oz.Health Travel Junkie",
+  "description": "Valerian root interacts with the GABA system in your brain through its active compound valerenic acid, a mechanism of action similar to benzodiazepine drugs, but without the dependency, the grogginess, or the prescription. Valerian is one of the most clinically studied plants on earth for anxiety and sleep. A systematic review and meta-analysis of 60 studies covering 6,894 participants confirmed Valerian's effectiveness in improving subjective sleep quality and reducing anxiety. Size: 2oz.",
   "price": "$22.50",
   "size": "2oz",
   "benefits": [

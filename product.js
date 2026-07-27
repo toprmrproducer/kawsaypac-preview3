@@ -140,6 +140,48 @@
     </div>`;
   }
 
+  /* Rhode-style hero gallery: main frame + thumb rail. Sources, in order:
+     custom generated shots dropped into assets/img/pdp/<slug>/ (via the manifest
+     in pdp-manifest.js), then the curated pool of existing brand assets. */
+  const CONCERN_BOWL = {
+    'bowel-balance': 'con-digestive', 'bowel-banisher': 'con-digestive', 'one-way-out': 'con-detox',
+    'final-flush': 'con-detox', 'eliminate-regenerate': 'con-detox', 'sacred-sacral': 'con-womens',
+    'womens-kit': 'con-womens', 'mens-kit': 'con-energy', 'zapped-in': 'con-energy',
+    'guayusa-leaf': 'con-energy', 'valerian': 'con-sleep', 'scales-of-balance': 'con-nervous',
+    'cats-claw': 'con-joint', 'chuchuhuasi': 'con-joint', 'soursop': 'con-immune',
+    'matico': 'con-immune', 'river-of-life': 'con-all'
+  };
+  const BOTANICAL_PLATE = {
+    'cats-claw': 'apoth-cats-claw', 'chuchuhuasi': 'apoth-cats-claw',
+    'valerian': 'apoth-passionflower', 'scales-of-balance': 'apoth-passionflower',
+    'guayusa-leaf': 'apoth-guayusa', 'zapped-in': 'apoth-guayusa',
+    'matico': 'apoth-cinchona', 'soursop': 'apoth-cinchona', 'river-of-life': 'apoth-cinchona'
+  };
+  const RITUAL_POOL = ['generated/rituals/ritual-morning-jar.webp', 'generated/rituals/ritual-brewing-jar.webp', 'generated/rituals/ritual-evening-jar.webp', 'generated/rituals/ritual-shared-jar.webp'];
+  function galleryFor(p) {
+    const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug];
+    if (custom && custom.length) return custom.map((x) => ({ src: x, alt: `${p.name} by Kawsaypac` }));
+    const shots = [{ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` }];
+    const bowl = CONCERN_BOWL[p.slug];
+    if (bowl) shots.push({ src: `assets/img/gen5/${bowl}.webp?v=63`, alt: `${p.name} whole herbs in a ceramic bowl` });
+    const plate = BOTANICAL_PLATE[p.slug];
+    if (plate) shots.push({ src: `assets/img/${plate}.webp?v=18`, alt: `${p.name} botanical illustration` });
+    shots.push({ src: `assets/img/${RITUAL_POOL[hashCode(p.slug) % RITUAL_POOL.length]}?v=105`, alt: 'Kawsaypac brewing ritual' });
+    return shots.slice(0, 4);
+  }
+  function heroGallery(p) {
+    const shots = galleryFor(p);
+    const thumbs = shots.map((s, i) => `<button type="button" class="pp-thumb${i === 0 ? ' is-active' : ''}" data-thumb="${i}" aria-label="View image ${i + 1} of ${shots.length}"><img src="${esc(s.src)}" alt="" loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async"></button>`).join('');
+    return `
+        <div class="pp-hero-media" data-gallery>
+          <div class="pp-hero-frame">
+            ${shots.map((s, i) => `<img class="pp-hero-shot${i === 0 ? ' is-active' : ''}" data-shot="${i}" src="${esc(s.src)}" alt="${esc(s.alt)}" width="900" height="900" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`).join('')}
+            <span class="pp-hero-badge">Wild-harvested · Ecuador</span>
+          </div>
+          ${shots.length > 1 ? `<div class="pp-thumbs" role="tablist" aria-label="Product images">${thumbs}</div>` : ''}
+        </div>`;
+  }
+
   function heroSection(p) {
     const pills = (p.pills || []).map((x) => `<span class="pp-pill">${CHECK_ICON}<span>${esc(x)}</span></span>`).join('');
     const size = p.size ? `<span class="pp-size">${esc(p.size)} pouch</span>` : '';
@@ -147,10 +189,7 @@
     return `
     <section class="pp-hero" data-sec="hero">
       <div class="pp-shell pp-hero-grid">
-        <div class="pp-hero-media">
-          <img src="${esc(p.image)}?v=31" alt="${esc(p.name)} by Kawsaypac" width="900" height="900" fetchpriority="high">
-          <span class="pp-hero-badge">Wild-harvested · Ecuador</span>
-        </div>
+        ${heroGallery(p)}
         <div class="pp-hero-card">
           <nav class="pp-crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="shop.html">Shop</a><span>/</span><span>${esc(p.tag || 'Herbal Ritual')}</span></nav>
           <h1>${esc(p.name)}</h1>
@@ -750,6 +789,19 @@
   /* ---------- interactivity ---------- */
 
   function initInteractions(root, p) {
+    // hero gallery
+    const gal = root.querySelector('[data-gallery]');
+    if (gal) {
+      const shots = gal.querySelectorAll('.pp-hero-shot');
+      const thumbs = gal.querySelectorAll('.pp-thumb');
+      const show = (i) => {
+        shots.forEach((s) => s.classList.toggle('is-active', s.dataset.shot === String(i)));
+        thumbs.forEach((t) => t.classList.toggle('is-active', t.dataset.thumb === String(i)));
+      };
+      thumbs.forEach((t) => t.addEventListener('click', () => show(t.dataset.thumb)));
+      // hide any thumb whose image fails so a future manifest entry can never look broken
+      thumbs.forEach((t) => { const im = t.querySelector('img'); im.addEventListener('error', () => { t.remove(); }); });
+    }
     // quantity
     const qtyOut = root.querySelector('[data-qty-value]');
     let qty = 1;
