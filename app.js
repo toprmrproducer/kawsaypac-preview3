@@ -74,9 +74,10 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
       sprite.innerHTML=`<img src="${path}?v=101" alt="" loading="lazy" decoding="async" draggable="false">`;
       host.append(sprite);
       if(role==='descend'){
-        // gentle descend into place as the section scrolls into view, then hold
-        const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){sprite.classList.add('eco-in');io.disconnect();}}),{threshold:.22});
-        io.observe(host);
+        // gentle descend into place when the FLOWER itself scrolls into view
+        // (observing the host section fired too early, so nobody saw the motion)
+        const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){sprite.classList.add('eco-in');io.disconnect();}}),{threshold:.35});
+        io.observe(sprite);
       }
     });
   }
