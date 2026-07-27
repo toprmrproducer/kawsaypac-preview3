@@ -5,8 +5,8 @@
   const sticky=hero.querySelector('.journey-sticky');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const mobile=matchMedia('(max-width: 720px)').matches;
-  if(!mobile)hero.querySelectorAll('.j5l[data-src]').forEach(image=>{image.src=image.dataset.src;image.removeAttribute('data-src')});
-  if(mobile||reduce||!window.gsap||!window.ScrollTrigger){hero.classList.add('journey-static');return}
+  hero.querySelectorAll('.j5l[data-src]').forEach(image=>{image.src=image.dataset.src;image.removeAttribute('data-src')});
+  if(reduce||!window.gsap||!window.ScrollTrigger){hero.classList.add('journey-static');const counts=hero.querySelectorAll('.journey-final [data-count]');counts.forEach(el=>{const v=el.dataset.count;el.textContent=(el.dataset.decimals?Number(v).toFixed(Number(el.dataset.decimals)):v)+(el.dataset.suffix||'')});return}
 
   gsap.registerPlugin(ScrollTrigger);
   /* v95: the mobile URL bar collapsing changes innerHeight mid-scroll, which

@@ -122,3 +122,9 @@
 /* v108: narrow-phone header, brand wordmark must never collide with the search icon */
 @media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
 @media(max-width:400px){.nav-pill .brand img{display:none}}
+
+/* v109: with the sheet open, the nav pill (and its hamburger) must stay ABOVE
+   the sheet so the menu can actually be closed on a phone; also let a tap on
+   the sheet's empty backdrop close it. */
+@media(max-width:1120px){.nav-pill{z-index:9020}.mobile-sheet{z-index:8990}}
+@media(max-width:480px){.nav-pill .brand strong{font-size:.62rem;letter-spacing:.02em;white-space:nowrap}.nav-pill .brand small{display:none}}

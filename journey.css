@@ -135,7 +135,9 @@
 @keyframes cue-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
 .journey-static .journey-scrollcue{display:none}
 @media(max-width:720px){.journey-scrollcue small{font-size:.55rem}}
-@media(max-width:720px){.j5{display:none}.journey-static .journey-brand{display:none}.journey-mobile-scene{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% center;filter:saturate(.92) brightness(.68)}}
+/* v113: the scroll journey now runs on phones too (Raisa/Shreyas ask). The
+   static scene image is only the no-JS / reduced-motion fallback. */
+@media(max-width:720px){.journey-static .j5{display:none}.journey-static .journey-brand{display:none}.journey-static .journey-mobile-scene{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% center;filter:saturate(.92) brightness(.68)}.journey-brand strong{font-size:clamp(3.2rem,16vw,5rem)}}
 
 /* v70: Figma keyframes - page opens on Scene FINAL Compressed, scroll expands to Scene FINAL */
 .j5-stage{position:absolute;top:0;left:50%;width:max(100vw,102.55svh);margin-left:calc(max(100vw,102.55svh)/-2);aspect-ratio:1933/1885;will-change:transform}
