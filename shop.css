@@ -1045,3 +1045,7 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 .shop-hero .shop-hero__content--statement{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;max-width:1100px!important;padding:24px!important}
 .shop-hero .shop-hero__content--statement h1{font-size:clamp(2.6rem,5.4vw,5.4rem)!important;color:#fff!important;line-height:1.02!important;margin:0!important}
 @media(max-width:720px){.shop-hero{min-height:44vh!important}.shop-hero .shop-hero__content--statement h1{font-size:clamp(1.9rem,8.4vw,2.8rem)!important}}
+
+/* v89c: gold italic must not wash out over the bright waterfall */
+.shop-hero .shop-hero__content--statement h1 .accent{color:#f2da8a!important;text-shadow:0 2px 10px rgba(4,18,10,.9),0 4px 36px rgba(4,18,10,.75)}
+.shop-hero::after{background:linear-gradient(0deg,rgba(10,26,16,.6),rgba(10,26,16,.38) 45%,rgba(10,26,16,.42))}
