@@ -31,7 +31,7 @@ The homepage begins with a full-viewport pinned scene. Cotopaxi stays high and r
 - Form: high-contrast label, 52px field, visible focus ring, inline error or success copy.
 - Modal: focus-contained, Escape-close, labeled close button, and clear placeholder disclosure when footage is pending.
 - Page navigator: a quiet fixed left rail on wide screens and a horizontally scrollable pill strip on smaller screens. It may highlight the active section, but it must fade before the shared footer and must never sit over photography or footer copy.
-- Editorial ritual rail: an honest, horizontally scrollable sequence of human ritual photographs. Captions describe observable moments only; invented customer names, quotations, ratings, and outcomes are prohibited.
+- Editorial ritual rail: an honest, horizontally scrollable sequence of human ritual photographs with an explicit item counter and previous/next controls in addition to drag, swipe, and keyboard navigation. Captions describe observable moments only; invented customer names, quotations, ratings, and outcomes are prohibited.
 - Apothecary field note: a wide photographic study paired with numbered botanical metadata. Specimen cards may reveal additional preparation context on hover or focus, while retaining a legible static state.
 - Retreat chapter: photographic, asymmetrical editorial modules with thin rules and generous type hierarchy. Avoid repeated glass-card grids, ornamental clutter, and identical card proportions.
 
@@ -45,6 +45,7 @@ The hero is the single large motion moment. Its six visual layers rise from belo
 - Tablet: two-column content grids and mobile navigation sheet.
 - Mobile at 390px: static composed hero, visible product copy, hidden brand statement, single-column cards, no horizontal overflow, and at least 44px targets.
 - Horizontal rails use native scrolling, visible focus states, scroll snapping, and partial next-card affordance. They do not trap vertical scrolling.
+- Below-fold video is poster-first and receives its source only as it nears the viewport. Mobile uses a single optimized static hero composition; desktop alone loads the full cinematic layer set.
 
 ## 7. Accessibility and accepted integration debt
 

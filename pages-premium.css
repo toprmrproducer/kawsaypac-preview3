@@ -128,9 +128,10 @@
 }
 
 /* v103: a photographic field-note opening and tactile specimen reveals. */
-.apoth-page .premium-hero{width:min(1400px,calc(100% - 32px));min-height:clamp(590px,72vh,760px);grid-template-columns:.8fr 1.2fr;border-radius:30px}
-.apoth-page .premium-hero .page-hero-media{min-height:100%}
+.apoth-page .premium-hero{width:min(1400px,calc(100% - 32px));min-height:clamp(590px,72vh,760px);grid-template-columns:.8fr 1.2fr;border-radius:30px;overflow:hidden}
+.apoth-page .premium-hero .page-hero-media{min-height:100%;overflow:hidden}
 .apoth-page .premium-hero .page-hero-media img{object-position:center}
+.apoth-page .premium-hero:hover .page-hero-media img{transform:none}
 .apoth-page .specimen details{margin-top:16px;padding-top:14px;border-top:1px solid rgba(31,58,42,.12)}
 .apoth-page .specimen summary{display:flex;align-items:center;justify-content:space-between;min-height:42px;list-style:none;cursor:pointer;color:var(--forest);font-size:.67rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase}
 .apoth-page .specimen summary::-webkit-details-marker{display:none}
