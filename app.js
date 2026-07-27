@@ -74,13 +74,15 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
       sprite.innerHTML=`<img src="${path}?v=101" alt="" loading="lazy" decoding="async" draggable="false">`;
       host.append(sprite);
       if(role==='descend'){
-        // scroll-linked: the vines travel DOWN with the scroll through the
-        // section (Raisa: "they should come down as the person scrolls")
+        // lagged follow: the vines CHASE the scroll with a visible delay,
+        // gliding down when you scroll down and back up when you scroll up.
         if(matchMedia('(prefers-reduced-motion: reduce)').matches){sprite.style.opacity='1';sprite.style.transform='none';return}
-        let raf=0;
-        const drive=()=>{raf=0;const r=host.getBoundingClientRect();const vh=innerHeight;const p=Math.max(0,Math.min(1,(vh-r.top)/(r.height+vh)));sprite.style.transform=`translateY(${(-70+p*150).toFixed(1)}px)`;if(p>0.02)sprite.classList.add('eco-live')};
-        addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(drive)},{passive:true});
-        drive();
+        let target=0,current=0,running=false;
+        const computeTarget=()=>{const r=host.getBoundingClientRect();const vh=innerHeight;const p=Math.max(0,Math.min(1,(vh-r.top)/(r.height+vh)));target=-130+p*300;if(p>0.02)sprite.classList.add('eco-live')};
+        const tick=()=>{computeTarget();current+=(target-current)*0.055;sprite.style.transform=`translateY(${current.toFixed(1)}px)`;if(Math.abs(target-current)>0.3)requestAnimationFrame(tick);else running=false};
+        const wake=()=>{if(!running){running=true;requestAnimationFrame(tick)}};
+        addEventListener('scroll',wake,{passive:true});
+        wake();
       }
     });
   }
