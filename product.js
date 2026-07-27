@@ -160,7 +160,11 @@
   const RITUAL_POOL = ['generated/rituals/ritual-morning-jar.webp', 'generated/rituals/ritual-brewing-jar.webp', 'generated/rituals/ritual-evening-jar.webp', 'generated/rituals/ritual-shared-jar.webp'];
   function galleryFor(p) {
     const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug];
-    if (custom && custom.length) return custom.map((x) => ({ src: x, alt: `${p.name} by Kawsaypac` }));
+    if (custom && custom.length) {
+      const shots = custom.map((x) => ({ src: x, alt: `${p.name} by Kawsaypac` }));
+      if (!custom.some((x) => x.includes('01-hero'))) shots.unshift({ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` });
+      return shots.slice(0, 4);
+    }
     const shots = [{ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` }];
     const bowl = CONCERN_BOWL[p.slug];
     if (bowl) shots.push({ src: `assets/img/gen5/${bowl}.webp?v=63`, alt: `${p.name} whole herbs in a ceramic bowl` });
