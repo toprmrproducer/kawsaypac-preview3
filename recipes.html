@@ -7,8 +7,8 @@
     <meta name="description" content="The home for every Kawsaypac recipe, ebook and guided program. Digital field guides, recipe collections and protocol kits, kept in one calm place apart from the herb shop.">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=103">
-    <link rel="stylesheet" href="home.css?v=103">
-    <script defer src="app.js?v=103"></script>
+    <link rel="stylesheet" href="home.css?v=108">
+    <script defer src="app.js?v=108"></script>
     <style>
       /* ================= Recipes & Programs (scoped: .kx-recipes) ================= */
       .kx-recipes{--kx-ink:var(--charcoal);--kx-soft:#5e5b52;--kx-line:rgba(31,58,42,.12);--kx-line-2:rgba(31,58,42,.2);--kx-paper:#F3F0E9;--kx-card-shadow:0 20px 50px rgba(26,40,25,.08);--kx-card-shadow-lift:0 34px 70px rgba(26,40,25,.16);color:var(--kx-ink)}
@@ -76,12 +76,13 @@
       .kx-recipes .kx-cover--gen{display:block}
       .kx-recipes .kx-cover--gen .kx-cover-tex{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4;transform:none;transition:transform .8s var(--ease),opacity .8s var(--ease)}
       .kx-recipes .kx-ebook:hover .kx-cover--gen .kx-cover-tex{transform:scale(1.06);opacity:.5}
-      .kx-recipes .kx-cover--gen::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(130% 120% at 50% 8%,rgba(51,85,63,.72) 0%,rgba(31,58,42,.9) 46%,rgba(21,42,31,.96) 100%)}
-      .kx-recipes .kx-cover--gen::after{content:"";position:absolute;inset:16px;z-index:2;border:1px solid rgba(201,169,66,.4);border-radius:10px;pointer-events:none}
+      .kx-recipes .kx-cover--gen::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(130% 120% at 50% 8%,rgba(34,79,55,.78) 0%,rgba(20,59,40,.92) 46%,rgba(13,41,28,.97) 100%)}
+      .kx-recipes .kx-cover--gen::after{content:"";position:absolute;inset:16px;z-index:2;border:1px solid rgba(215,174,54,.5);border-radius:10px;pointer-events:none}
       .kx-recipes .kx-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px}
       .kx-recipes .kx-cover-seal{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(201,169,66,.55);margin:0 0 16px}
-      .kx-recipes .kx-cover-seal svg{width:20px;height:20px;stroke:rgba(201,169,66,.9);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-      .kx-recipes .kx-cover-mark{color:rgba(201,169,66,.9);font-size:.64rem;font-weight:750;letter-spacing:.28em;text-transform:uppercase}
+      .kx-recipes .kx-cover-seal{border-color:rgba(215,174,54,.6)}
+      .kx-recipes .kx-cover-seal svg{width:20px;height:20px;stroke:rgba(215,174,54,.95);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+      .kx-recipes .kx-cover-mark{color:rgba(215,174,54,.95);font-size:.64rem;font-weight:750;letter-spacing:.28em;text-transform:uppercase}
       .kx-recipes .kx-cover-title{font-family:var(--display);color:#f7f4ea;font-weight:500;letter-spacing:-.02em;line-height:1.08;font-size:clamp(1.35rem,2.6vw,1.75rem);margin:.5em 0 .55em;text-wrap:balance}
       .kx-recipes .kx-cover-sub{color:rgba(247,244,234,.66);font-size:.78rem;letter-spacing:.02em}
       .kx-recipes .kx-ebook-body{display:flex;flex-direction:column;flex:1;padding:clamp(20px,2.2vw,26px)}
@@ -93,6 +94,11 @@
       .kx-recipes .kx-link{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s var(--ease),gap .2s var(--ease)}
       .kx-recipes .kx-link:hover{color:var(--gold);gap:10px}
       .kx-recipes .kx-link svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .kx-recipes .kx-buy{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:#f7f4ea;background:#143b28;border:1px solid #143b28;border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease)}
+      .kx-recipes .kx-buy:hover,.kx-recipes .kx-buy:focus-visible{background:#d7ae36;border-color:#d7ae36;color:#143b28;transform:translateY(-2px);box-shadow:0 12px 26px rgba(20,59,40,.22)}
+      .kx-recipes .kx-buy svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .kx-recipes .kx-buy--ghost{background:transparent;color:#143b28;border-color:rgba(20,59,40,.35)}
+      .kx-recipes .kx-buy--ghost:hover,.kx-recipes .kx-buy--ghost:focus-visible{background:#143b28;border-color:#143b28;color:#f7f4ea}
 
       /* Program / protocol kits */
       .kx-recipes .kx-kits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,30px)}
@@ -149,6 +155,15 @@
         .kx-recipes .kx-recipe-grid{grid-template-columns:1fr}
         .kx-recipes .kx-ebooks{grid-template-columns:1fr}
       }
+
+      /* On This Page menu: pinned hard left inside the light margin, on its own
+         cream glass panel so it stays legible over any band it scrolls past */
+      @media (min-width:1280px){
+        main.has-page-side-nav{padding-left:238px}
+        .page-side-nav{left:18px;width:188px;box-sizing:border-box;padding:16px 15px 13px;background:rgba(250,249,246,.88);-webkit-backdrop-filter:blur(14px) saturate(1.08);backdrop-filter:blur(14px) saturate(1.08);border:1px solid rgba(20,59,40,.14);border-radius:16px;box-shadow:0 18px 44px rgba(20,59,40,.16)}
+        .page-side-nav__title{margin-bottom:10px}
+        .page-side-nav a{font-size:.85rem;min-height:34px;padding-block:7px}
+      }
     </style>
   </head>
   <body class="learn-page recipes-page">
@@ -160,11 +175,12 @@
         <ul>
           <li><a href="#learn-overview">Overview</a></li>
           <li><a href="#recipes">Recipes</a></li>
-          <li><a href="#ebooks">Ebooks &amp; Guides</a></li>
+          <li><a href="#ebooks">E-books &amp; Guides</a></li>
           <li><a href="#programs">Programs</a></li>
           <li><a href="#daily-rhythm">Daily Rhythm</a></li>
         </ul>
       </nav>
+<script>/* On This Page side-menu fix: the shared nav script calls link.scrollIntoView() on viewports under 1280px, which scrolls the document back to the sticky bar's static position and blocks page scrolling. Neutralize it on these links only; horizontal pill centering is cosmetic. */document.querySelectorAll('.page-side-nav a').forEach(function(a){a.scrollIntoView=function(){}});</script>
 
       <!-- Hero -->
       <section class="kx-hero" id="learn-overview">
@@ -230,7 +246,7 @@
         <div class="kx-wrap">
           <div class="kx-band-head kx-reveal">
             <p class="eyebrow">The library</p>
-            <h2>Ebooks &amp; <span class="accent">guides.</span></h2>
+            <h2>E-books &amp; <span class="accent">Guides.</span></h2>
             <p>Digital field guides and recipe collections. <span class="kx-hl">Instant download</span>, printable, and yours to keep. No physical ingredients and no medical claims.</p>
           </div>
           <div class="kx-ebooks kx-stagger">
@@ -244,7 +260,7 @@
                 <p>A digital field guide to infusions, decoctions, timing, and responsible use. Clear methods with printable references.</p>
                 <div class="kx-ebook-foot">
                   <span class="kx-price-chip">$18.00</span>
-                  <a class="kx-link" href="product.html?product=ebook-preparation">Get the guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+                  <a class="kx-buy" href="product.html?product=ebook-preparation">Buy the guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
                 </div>
               </div>
             </article>
@@ -265,7 +281,7 @@
                 <p>A collection of whole-herb infusions, blends, and everyday rituals drawn from the Kawsaypac apothecary. Simple to make, easy to repeat.</p>
                 <div class="kx-ebook-foot">
                   <span class="kx-price-chip"><small>Digital</small></span>
-                  <a class="kx-link" href="shop.html">View in shop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+                  <a class="kx-buy kx-buy--ghost" href="shop.html#ebooks">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
                 </div>
               </div>
             </article>
@@ -286,7 +302,7 @@
                 <p>Morning, after-meal, and evening preparations built around the blends you already love. A gentle rhythm for an ordinary day.</p>
                 <div class="kx-ebook-foot">
                   <span class="kx-price-chip"><small>Digital</small></span>
-                  <a class="kx-link" href="shop.html">View in shop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+                  <a class="kx-buy kx-buy--ghost" href="shop.html#ebooks">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
                 </div>
               </div>
             </article>
@@ -313,7 +329,7 @@
                 <p>A structured multi-blend program for a complete cleansing ritual. Coordinated small batches with a step-by-step guide from first pouch to Final Flush.</p>
                 <div class="kx-kit-foot">
                   <span class="kx-price-chip">$113.00</span>
-                  <a class="kx-link" href="product.html?product=eliminate-regenerate">View program <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+                  <a class="kx-buy" href="product.html?product=eliminate-regenerate">Buy the program <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
                 </div>
               </div>
             </article>
@@ -328,7 +344,7 @@
                 <p>A guided women's wellness program built around cyclical ritual, grounding, and care. Whole loose herbs with educational preparation notes throughout.</p>
                 <div class="kx-kit-foot">
                   <span class="kx-price-chip"><small>Guided program</small></span>
-                  <a class="kx-link" href="shop.html">Learn more <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+                  <a class="kx-buy kx-buy--ghost" href="shop.html#health-programs">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
                 </div>
               </div>
             </article>
@@ -343,7 +359,7 @@
                 <p>A guided men's vitality program centered on clean energy, presence, and focus. Whole botanicals with a clear daily rhythm from morning to evening.</p>
                 <div class="kx-kit-foot">
                   <span class="kx-price-chip"><small>Guided program</small></span>
-                  <a class="kx-link" href="shop.html">Learn more <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+                  <a class="kx-buy kx-buy--ghost" href="shop.html#health-programs">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
                 </div>
               </div>
             </article>
@@ -415,6 +431,24 @@
         items.forEach(function(el){io.observe(el);});
         // Safety net: force everything visible shortly after load
         window.setTimeout(function(){items.forEach(function(el){el.classList.add('kx-in');});},2500);
+        // On This Page: guarantee the anchor jump lands. On narrow viewports the
+        // shared nav script scrolls the clicked pill into view, which can cancel
+        // the page jump; re-assert the section position after it settles.
+        document.addEventListener('click',function(ev){
+          var a=ev.target.closest('.page-side-nav a[href^="#"]');
+          if(!a)return;
+          var t=document.querySelector(a.getAttribute('href'));
+          if(!t)return;
+          var go=function(smooth){
+            var y=t.getBoundingClientRect().top+window.scrollY-(window.innerWidth<1280?160:110);
+            window.scrollTo(smooth?{top:y,behavior:'smooth'}:{top:y});
+          };
+          window.setTimeout(function(){go(true);},90);
+          window.setTimeout(function(){
+            var r=t.getBoundingClientRect();
+            if(r.top>260||r.top<-80)go(false);
+          },800);
+        });
       })();
     </script>
   </body>

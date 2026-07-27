@@ -11,7 +11,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=106" />
-  <script defer src="app.js?v=106"></script>
+  <script defer src="app.js?v=108"></script>
 
   <style>
     /* ============================================================
@@ -393,15 +393,19 @@
     #rt-scope .experiences-scroll-wrapper{padding-inline:max(28px,calc((100vw - 1200px)/2));scroll-snap-type:x mandatory}
     #rt-scope .experiences-track{gap:24px}
     #rt-scope .exp-card{width:clamp(300px,31vw,460px);height:clamp(500px,58vw,650px);border-radius:28px;scroll-snap-align:start}
-    #rt-scope .exp-card:nth-child(even){margin-top:58px}
+    #rt-scope .experiences-track{align-items:stretch}
+    /* All cards share one horizontal baseline: no stagger, and the reveal
+       animation is fade-only so a not-yet-revealed card never sits 32px low. */
+    #rt-scope .exp-card{margin-top:0}
+    #rt-scope .exp-card.reveal{transform:none}
     #rt-scope .exp-card-content{padding:clamp(28px,3vw,42px)}
     #rt-scope .exp-card-title{font-size:clamp(1.55rem,2.2vw,2.1rem)}
     #rt-scope .testimonial-section{padding:clamp(90px,10vw,130px) 0}
     #rt-scope .accom-section{padding:clamp(96px,10vw,140px) 0;background:#fbfaf6}
     #rt-scope .accom-header{margin-bottom:64px}
-    #rt-scope .accom-grid{grid-template-columns:1.08fr .92fr;gap:28px;align-items:start}
-    #rt-scope .accom-card{border-radius:28px;box-shadow:0 28px 72px rgba(26,35,24,.15)}
-    #rt-scope .accom-card:nth-child(2){margin-top:68px}
+    #rt-scope .accom-grid{grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+    #rt-scope .accom-card{border-radius:28px;box-shadow:0 28px 72px rgba(26,35,24,.15);margin-top:0}
+    #rt-scope .accom-card-content{flex:1}
     #rt-scope .accom-card-title{font-size:clamp(1.75rem,2.5vw,2.35rem)}
     #rt-scope .who-section{padding:clamp(92px,10vw,132px) 0}
     #rt-scope .faq-section{padding:clamp(88px,9vw,120px) 0}
@@ -414,17 +418,30 @@
       #rt-scope .why-card,#rt-scope .why-card:nth-child(odd),#rt-scope .why-card:nth-child(even){min-height:0;padding:34px 0;border-left:0}
       #rt-scope .exp-card:nth-child(even){margin-top:0}
     }
-    #rt-scope .transform-photo{position:relative;min-height:clamp(470px,52vw,690px);margin:0;overflow:hidden;border-radius:24px;background:#1a2318;box-shadow:0 28px 64px rgba(20,35,22,.18)}
-    #rt-scope .transform-photo img{display:block;width:100%;height:100%;min-height:inherit;object-fit:cover;object-position:center 54%;filter:saturate(.9) contrast(1.02)}
-    #rt-scope .transform-photo::after{position:absolute;inset:0;background:linear-gradient(180deg,transparent 54%,rgba(12,29,18,.66));content:"";pointer-events:none}
-    #rt-scope .transform-photo figcaption{position:absolute;z-index:2;left:26px;right:26px;bottom:24px;display:flex;align-items:end;justify-content:space-between;gap:20px;color:#f7f1e6}
-    #rt-scope .transform-photo figcaption span{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#e6ca70}
-    #rt-scope .transform-photo figcaption strong{max-width:260px;font-family:Fraunces,Georgia,serif;font-size:clamp(1.2rem,2vw,1.7rem);font-weight:400;line-height:1.1;text-align:right}
-    @media(max-width:768px){
-      #rt-scope .transform-photo{min-height:480px}
-      #rt-scope .transform-photo figcaption{left:20px;right:20px;bottom:20px;display:block}
-      #rt-scope .transform-photo figcaption strong{display:block;margin-top:8px;text-align:left}
-    }
+    /* ============================================================
+       SHARED SITE FOOTER SKIN
+       The injected footer (app.js) is styled by styles.css, but its
+       dark skin + the absolute positioning of the decorative fern
+       leaves live in home.css, which this page does not load. Without
+       these rules the two fern images flow in-document and open a
+       huge empty dark band above the footer card. Replicated here,
+       scoped to .site-footer (which only exists in the injected footer).
+    ============================================================ */
+    .site-footer{position:relative;background:#060d09!important;padding-top:clamp(90px,9vw,150px);padding-bottom:clamp(110px,11vw,180px);min-height:0}
+    .site-footer::after{background:linear-gradient(180deg,rgba(6,13,9,.30),rgba(6,13,9,.62))!important}
+    .footer-bg{filter:brightness(.98) saturate(1.02)!important;opacity:1!important}
+    .footer-leaves{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+    .footer-leaves .fl{position:absolute;bottom:-54px;width:clamp(110px,34vw,170px);height:auto;filter:brightness(.55) saturate(.65) contrast(1.05) drop-shadow(0 18px 30px rgba(0,0,0,.6));transform-origin:bottom center}
+    .footer-leaves .fl-l{left:clamp(-64px,-4vw,-30px);transform:rotate(-6deg)}
+    .footer-leaves .fl-r{right:clamp(-64px,-4vw,-30px);transform:scaleX(-1) rotate(-6deg)}
+    .footer-card{background:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;color:#f2ede1!important;padding:clamp(24px,4vw,52px) 0!important}
+    .footer-card h3{color:#d9c07a!important;letter-spacing:.2em}
+    .footer-card a,.footer-card p,.footer-card small,.footer-card li a{color:#ece6d8!important}
+    .footer-card a:hover{color:#f0d269!important}
+    .footer-card .brand strong{color:#f2ede1!important}
+    .footer-card .brand small{color:#c9bfa6!important}
+    .site-footer,.site-footer *{text-shadow:0 2px 14px rgba(3,10,6,.75)}
+    .site-footer hr,.footer-card hr{border-color:rgba(236,230,216,.22)!important}
   </style>
 </head>
 <body>
@@ -509,11 +526,29 @@
 <section class="transform-section" id="transform" aria-label="What transforms during the retreat">
   <div class="container">
     <div class="transform-inner">
-      <div class="transform-image reveal">
-        <figure class="transform-photo">
-          <img src="assets/img/real-cotopaxi.webp?v=106" width="1184" height="1327" alt="A traveler and alpacas crossing the high páramo beneath Cotopaxi" loading="lazy" decoding="async">
-          <figcaption><span>Cotopaxi · Ecuador</span><strong>The reset begins above the clouds.</strong></figcaption>
-        </figure>
+      <div class="transform-image reveal" style="overflow:visible; background:none;">
+        <div class="andes-slider-track" style="border-radius:16px; overflow:hidden;">
+          <div class="andes-slides" id="andesSlides">
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258795/Section_3_Website_-_1_x7wxxa.png" alt="Sacred Andes 1" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258794/Section_3_Website_-_2_aaasdx.png" alt="Sacred Andes 2" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258794/Section_3_Website_-_4_tuyry8.png" alt="Sacred Andes 3" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258795/Section_3_Website_-_5_pbffbw.png" alt="Sacred Andes 4" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258796/Section_3_Website_-_3_fo2qgy.png" alt="Sacred Andes 5" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" /><div class="andes-slide-caption"></div></div>
+          </div>
+        </div>
+        <div class="andes-slider-controls" style="margin-top:12px;">
+          <div class="andes-dots" id="andesDots">
+            <button class="andes-dot active" onclick="andesGoTo(0)" aria-label="Slide 1"></button>
+            <button class="andes-dot" onclick="andesGoTo(1)" aria-label="Slide 2"></button>
+            <button class="andes-dot" onclick="andesGoTo(2)" aria-label="Slide 3"></button>
+            <button class="andes-dot" onclick="andesGoTo(3)" aria-label="Slide 4"></button>
+            <button class="andes-dot" onclick="andesGoTo(4)" aria-label="Slide 5"></button>
+          </div>
+          <div class="andes-arrows">
+            <button class="andes-arrow" onclick="andesPrev()" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="andes-arrow" onclick="andesNext()" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+        </div>
       </div>
       <div class="transform-content">
         <p class="section-label reveal">The Reset</p>
@@ -546,13 +581,13 @@
   </div>
   <div id="experiences-scroll" class="experiences-scroll-wrapper" role="region" aria-label="Scrollable list of retreat experiences">
     <div class="experiences-track">
-      <article class="exp-card reveal"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778261847/Sebastian2_nmvekj.png" alt="Indigenous healers Amazon" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Amazon Basin</p><h3 class="exp-card-title">Rainforest Immersion with Indigenous Healers</h3><p class="exp-card-desc">Step into living medicine. Work with healers whose ancestral knowledge spans generations — within one of the most biodiverse ecosystems on earth.</p></div></article>
-      <article class="exp-card reveal reveal-delay-1"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262284/Temazcal_cdoa7e.png" alt="Temazcal ancestral medicine" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Ancestral Medicine</p><h3 class="exp-card-title">Bufo, Temazcal &amp; Rapeh</h3><p class="exp-card-desc">Sacred medicines held in ceremony. From ego dissolution, to cellular purification, and full-body energetic release. Each ceremony is held with precision, reverence, and deep facilitation.</p></div></article>
-      <article class="exp-card reveal reveal-delay-2"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778261902/Cotopaxi_r5eseo.png" alt="Cotopaxi sacred highlands" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Andes Mountains</p><h3 class="exp-card-title">Sacred Highland Stay</h3><p class="exp-card-desc">High-altitude clarity meets sacred Andean tradition. Wake above the clouds, surrounded by the silence and majesty that changes how you see everything.</p></div></article>
-      <article class="exp-card reveal reveal-delay-2"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262046/Jungle_Waterfall_x5qhjr.png" alt="Jungle waterfall" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Water Healing</p><h3 class="exp-card-title">Waterfall &amp; Hot Springs</h3><p class="exp-card-desc">Nourish your body, reduce inflammation, and reset your nervous system with diverse forms of healing water immersions.</p></div></article>
-      <article class="exp-card reveal reveal-delay-3"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262112/Ceremony1_bpefkj.png" alt="Breathwork and movement" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Foundational Health Principles</p><h3 class="exp-card-title">Breathwork, Movement &amp; Meditation</h3><p class="exp-card-desc">Embrace and master practices your body requires daily to heal and thrive. Learn how to properly breathe, move, &amp; use your mind and emotions to transform your health.</p></div></article>
-      <article class="exp-card reveal reveal-delay-4"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262150/Bioelectric_Mag_b2eioh.png" alt="Biomagnetism energetic alignment" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Nervous System &amp; Energetic Alignment</p><h3 class="exp-card-title">Alphabiotics, Biomagnetism &amp; Lymphatic</h3><p class="exp-card-desc">Specialized therapies work at the intersection of somatic science and energetic intelligence — addressing root patterns your mind alone can't reach.</p></div></article>
-      <article class="exp-card reveal reveal-delay-5"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778345311/Sound_Healing_wfwzcr.png" alt="Sound healing" loading="lazy" /><div class="exp-card-content"><p class="exp-card-tag">Frequency Healing</p><h3 class="exp-card-title">Sound Bath Experience</h3><p class="exp-card-desc">Dissolve energetic blockages with frequency that penetrates deep within your tissues, guiding your nervous system into profound rest and cellular repair.</p></div></article>
+      <article class="exp-card reveal"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778261847/Sebastian2_nmvekj.png" alt="Indigenous healers Amazon" /><div class="exp-card-content"><p class="exp-card-tag">Amazon Basin</p><h3 class="exp-card-title">Rainforest Immersion with Indigenous Healers</h3><p class="exp-card-desc">Step into living medicine. Work with healers whose ancestral knowledge spans generations — within one of the most biodiverse ecosystems on earth.</p></div></article>
+      <article class="exp-card reveal reveal-delay-1"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262284/Temazcal_cdoa7e.png" alt="Temazcal ancestral medicine" /><div class="exp-card-content"><p class="exp-card-tag">Ancestral Medicine</p><h3 class="exp-card-title">Bufo, Temazcal &amp; Rapeh</h3><p class="exp-card-desc">Sacred medicines held in ceremony. From ego dissolution, to cellular purification, and full-body energetic release. Each ceremony is held with precision, reverence, and deep facilitation.</p></div></article>
+      <article class="exp-card reveal reveal-delay-2"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778261902/Cotopaxi_r5eseo.png" alt="Cotopaxi sacred highlands" /><div class="exp-card-content"><p class="exp-card-tag">Andes Mountains</p><h3 class="exp-card-title">Sacred Highland Stay</h3><p class="exp-card-desc">High-altitude clarity meets sacred Andean tradition. Wake above the clouds, surrounded by the silence and majesty that changes how you see everything.</p></div></article>
+      <article class="exp-card reveal reveal-delay-2"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262046/Jungle_Waterfall_x5qhjr.png" alt="Jungle waterfall" /><div class="exp-card-content"><p class="exp-card-tag">Water Healing</p><h3 class="exp-card-title">Waterfall &amp; Hot Springs</h3><p class="exp-card-desc">Nourish your body, reduce inflammation, and reset your nervous system with diverse forms of healing water immersions.</p></div></article>
+      <article class="exp-card reveal reveal-delay-3"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262112/Ceremony1_bpefkj.png" alt="Breathwork and movement" /><div class="exp-card-content"><p class="exp-card-tag">Foundational Health Principles</p><h3 class="exp-card-title">Breathwork, Movement &amp; Meditation</h3><p class="exp-card-desc">Embrace and master practices your body requires daily to heal and thrive. Learn how to properly breathe, move, &amp; use your mind and emotions to transform your health.</p></div></article>
+      <article class="exp-card reveal reveal-delay-4"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778262150/Bioelectric_Mag_b2eioh.png" alt="Biomagnetism energetic alignment" /><div class="exp-card-content"><p class="exp-card-tag">Nervous System &amp; Energetic Alignment</p><h3 class="exp-card-title">Alphabiotics, Biomagnetism &amp; Lymphatic</h3><p class="exp-card-desc">Specialized therapies work at the intersection of somatic science and energetic intelligence — addressing root patterns your mind alone can't reach.</p></div></article>
+      <article class="exp-card reveal reveal-delay-5"><img class="exp-card-photo" src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778345311/Sound_Healing_wfwzcr.png" alt="Sound healing" /><div class="exp-card-content"><p class="exp-card-tag">Frequency Healing</p><h3 class="exp-card-title">Sound Bath Experience</h3><p class="exp-card-desc">Dissolve energetic blockages with frequency that penetrates deep within your tissues, guiding your nervous system into profound rest and cellular repair.</p></div></article>
     </div>
   </div>
 </section>
@@ -595,19 +630,19 @@
       <div class="accom-card reveal">
         <div class="accom-slider" data-slider="quitoSlider">
           <div class="accom-slides-track" id="quitoSlider">
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258827/Wantara_kq3h4c.png" alt="Photo 1" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258830/Wantara_2_dd890r.png" alt="Photo 2" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258829/Wantara_6_kcidq7.png" alt="Photo 3" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258826/Wantara_10_m9faih.png" alt="Photo 4" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Wantara_5_krvjdp.png" alt="Photo 5" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258826/Wantara_3_s3yc8x.png" alt="Photo 6" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Wantara_4_v52wtn.png" alt="Photo 7" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258819/LAGARTO_ROOM_iwvk8h.png" alt="Photo 8" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258820/LAGARTO_ROOM_2_brxqns.png" alt="Photo 9" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258820/LAGARTO_ROOM_5_s345d5.png" alt="Photo 10" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258816/LAGARTO_ROOM_9_k3wciv.png" alt="Photo 11" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258822/LAGARTO_ROOM_6_xqq7ov.png" alt="Photo 12" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258813/LAGARTO_ROOM_8_bautns.png" alt="Photo 13" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258827/Wantara_kq3h4c.png" alt="Photo 1" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258830/Wantara_2_dd890r.png" alt="Photo 2" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258829/Wantara_6_kcidq7.png" alt="Photo 3" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258826/Wantara_10_m9faih.png" alt="Photo 4" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Wantara_5_krvjdp.png" alt="Photo 5" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258826/Wantara_3_s3yc8x.png" alt="Photo 6" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Wantara_4_v52wtn.png" alt="Photo 7" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258819/LAGARTO_ROOM_iwvk8h.png" alt="Photo 8" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258820/LAGARTO_ROOM_2_brxqns.png" alt="Photo 9" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258820/LAGARTO_ROOM_5_s345d5.png" alt="Photo 10" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258816/LAGARTO_ROOM_9_k3wciv.png" alt="Photo 11" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258822/LAGARTO_ROOM_6_xqq7ov.png" alt="Photo 12" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258813/LAGARTO_ROOM_8_bautns.png" alt="Photo 13" /></div>
           </div>
           <div class="accom-slider-controls">
             <div class="accom-dots">
@@ -640,13 +675,13 @@
       <div class="accom-card reveal reveal-delay-1">
         <div class="accom-slider" data-slider="banosSlider">
           <div class="accom-slides-track" id="banosSlider">
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258823/Banos_-_Aldea_i8g3ou.png" alt="Photo 1" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Banos_-_Aldea_1_q87ww4.png" alt="Photo 2" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258818/Banos_-_Aldea_2_qnetzt.png" alt="Photo 3" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258818/Banos_-_Aldea_3_qizmvm.png" alt="Photo 4" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258815/Banos_-_Aldea_6_xodcad.png" alt="Photo 5" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258817/Banos_-_Aldea_4_gcawsk.png" alt="Photo 6" loading="lazy" /></div>
-            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258815/Banos_-_Aldea_5_y7ztn6.png" alt="Photo 7" loading="lazy" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258823/Banos_-_Aldea_i8g3ou.png" alt="Photo 1" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258825/Banos_-_Aldea_1_q87ww4.png" alt="Photo 2" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258818/Banos_-_Aldea_2_qnetzt.png" alt="Photo 3" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258818/Banos_-_Aldea_3_qizmvm.png" alt="Photo 4" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258815/Banos_-_Aldea_6_xodcad.png" alt="Photo 5" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258817/Banos_-_Aldea_4_gcawsk.png" alt="Photo 6" /></div>
+            <div class="accom-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258815/Banos_-_Aldea_5_y7ztn6.png" alt="Photo 7" /></div>
           </div>
           <div class="accom-slider-controls">
             <div class="accom-dots">
@@ -687,10 +722,10 @@
       <div class="transform-image reveal" style="overflow:visible; background:none;">
         <div class="andes-slider-track" style="border-radius:16px; overflow:hidden;">
           <div class="andes-slides" id="whoSlides">
-            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258790/Section_3_Website_-_5_twrutf.png" alt="Photo 1" loading="lazy" /><div class="andes-slide-caption"></div></div>
-            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_2_knz1hu.png" alt="Photo 2" loading="lazy" /><div class="andes-slide-caption"></div></div>
-            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_3_dfszej.png" alt="Photo 3" loading="lazy" /><div class="andes-slide-caption"></div></div>
-            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_4_a29kr8.png" alt="Photo 4" loading="lazy" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258790/Section_3_Website_-_5_twrutf.png" alt="Photo 1" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_2_knz1hu.png" alt="Photo 2" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_3_dfszej.png" alt="Photo 3" /><div class="andes-slide-caption"></div></div>
+            <div class="andes-slide"><img src="https://res.cloudinary.com/dnmklihfo/image/upload/v1778258789/Section_3_Website_-_5_4_a29kr8.png" alt="Photo 4" /><div class="andes-slide-caption"></div></div>
           </div>
         </div>
         <div class="andes-slider-controls" style="margin-top:12px;">
@@ -864,6 +899,22 @@
     entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => observer.observe(el));
+
+  // Experience cards live in a horizontal scroll track, so cards beyond the
+  // viewport never intersect vertically. Reveal the whole row together the
+  // moment the section enters view so every card shares the same baseline.
+  const expSection = document.querySelector('.experiences-section');
+  if (expSection) {
+    const expObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          expSection.querySelectorAll('.reveal').forEach(el => { el.classList.add('visible'); observer.unobserve(el); });
+          expObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    expObserver.observe(expSection);
+  }
 
   // Mobile menu
   const menuToggle = document.getElementById('menuToggle');

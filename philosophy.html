@@ -7,8 +7,8 @@
 <meta name="description" content="Kawsaypac was born from a deep reverence for the people, plants, and traditions that have quietly sustained life in the Andes and Amazon for generations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=103">
-<link rel="stylesheet" href="home.css?v=103">
-<script defer src="app.js?v=103"></script>
+<link rel="stylesheet" href="home.css?v=108">
+<script defer src="app.js?v=108"></script>
 <style>
 /* ============ Our Philosophy - page-scoped editorial layout ============ */
 .kx-philo{--kx-serif:'Fraunces',Georgia,serif;--kx-ivory:#FAF9F6;--kx-forest:#1F3A2A;--kx-forest2:#2C4A37;--kx-gold:#C9A942;--kx-ink:#3a463d;--kx-line:rgba(31,58,42,.14);--kx-card:0 20px 50px rgba(26,40,25,.08);--kx-card-hover:0 34px 74px rgba(26,40,25,.14);font-family:var(--body);color:var(--kx-forest);background:var(--kx-ivory);overflow-x:hidden}
@@ -129,6 +129,15 @@
 
 /* The shared bounded page navigator owns positioning and footer collision. */
 .kx-philo #more-than-a-name,.kx-philo #a-journey,.kx-philo #every-herb,.kx-philo #rooted-in-reciprocity,.kx-philo #ancient-wisdom,.kx-philo #why-flower-of-life,.kx-philo #an-invitation{scroll-margin-top:120px}
+
+/* On This Page menu: pinned hard left inside the light margin, on its own
+   cream glass panel so it stays legible over any band it scrolls past */
+@media (min-width:1280px){
+  main.has-page-side-nav{padding-left:238px}
+  .page-side-nav{left:18px;width:188px;box-sizing:border-box;padding:16px 15px 13px;background:rgba(250,249,246,.88);-webkit-backdrop-filter:blur(14px) saturate(1.08);backdrop-filter:blur(14px) saturate(1.08);border:1px solid rgba(20,59,40,.14);border-radius:16px;box-shadow:0 18px 44px rgba(20,59,40,.16)}
+  .page-side-nav__title{margin-bottom:10px}
+  .page-side-nav a{font-size:.85rem;min-height:34px;padding-block:7px}
+}
 </style>
 </head>
 <body>
@@ -149,6 +158,7 @@
       <li><a href="#an-invitation" data-toc>An Invitation</a></li>
     </ul>
   </nav>
+<script>/* On This Page side-menu fix: the shared nav script calls link.scrollIntoView() on viewports under 1280px, which scrolls the document back to the sticky bar's static position and blocks page scrolling. Neutralize it on these links only; horizontal pill centering is cosmetic. */document.querySelectorAll('.page-side-nav a').forEach(function(a){a.scrollIntoView=function(){}});</script>
 
   <!-- HERO -->
   <section class="kx-hero">

@@ -978,4 +978,25 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 @media(max-width:720px){.shop-hero{padding-top:120px!important}}
 /* v86: unambiguous clearance under the floating nav */
 .shop-hero{align-content:start!important}
+
+/* v87: compact Rhode-style opening media band (~half the viewport), so the
+   Herbs / blends / bundles shelf is visibly waiting below the fold line */
+.shop-hero{aspect-ratio:auto!important;height:auto!important;min-height:0!important;max-height:none!important;padding-top:96px!important;padding-bottom:16px!important;align-content:center!important}
+.shop-hero .shop-hero__content{max-width:min(640px,90%);padding:clamp(12px,1.4vw,18px) clamp(18px,2vw,28px)}
+.shop-hero .shop-hero__content .eyebrow{margin-bottom:3px;font-size:.64rem}
+.shop-hero .shop-hero__content h1{font-size:clamp(1.4rem,2.2vw,2.05rem)!important;line-height:1.02;margin:0 0 5px}
+.shop-hero .shop-hero__content>p:not(.eyebrow){font-size:.88rem;line-height:1.45;margin:0 0 9px;max-width:52ch}
+.shop-hero .shop-hero__actions{margin-bottom:6px;gap:10px}
+.shop-hero .shop-hero__actions .btn,.shop-hero .shop-hero__actions .storefront-cart-button{padding:9px 16px;font-size:.7rem}
+.shop-hero .shop-hero__content>p.shop-proof--trust{font-size:.72rem;margin:0 0 6px;gap:9px}
+.shop-hero__index{margin-top:0;gap:13px;padding-top:6px}
+.shop-hero__index a,.shop-hero__index a:nth-child(2),.shop-hero__index a:last-child{font-size:.68rem;padding:0}
+.shop-hero__index span{font-size:.6rem}
+@media(max-width:720px){
+  .shop-hero{padding-top:98px!important;padding-bottom:22px!important}
+  .shop-hero .shop-hero__content{max-width:94%;padding:16px 18px}
+  .shop-hero .shop-hero__content h1{font-size:clamp(1.45rem,6vw,1.9rem)!important}
+}
+/* pull the shelf heading up so products announce themselves in viewport one */
+.shop-shell{padding-top:clamp(30px,4vw,46px)}
 .shop-hero .shop-hero__content{margin-top:0!important}

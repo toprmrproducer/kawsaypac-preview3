@@ -605,3 +605,49 @@ body>*:last-child{margin-bottom:0}
   .hv-head h2{font-size:clamp(3rem,15vw,5rem)}
   .hv-sub{font-size:1rem;line-height:1.58}
 }
+
+/* ============ v107: Raisa 27-Jul homepage round ============ */
+/* 3/4/6: tighten the seams between sections so the page reads continuous */
+.collections{padding-block-end:clamp(16px,2.2vw,34px)}
+.video-stories{padding-block-start:clamp(28px,3.4vw,52px)}
+.philosophy{padding-block:clamp(64px,7vw,104px) clamp(28px,3.4vw,52px)}
+.products{padding-block-end:clamp(14px,2vw,30px)}
+.concern-section{padding-block-start:clamp(22px,2.8vw,42px)}
+
+/* 2: the Collections orchid frames the content and breathes like the Philosophy blooms */
+@keyframes ecoSwayLeft{0%{transform:translateY(-50%) translateX(0) rotate(-2.2deg)}100%{transform:translateY(-51%) translateX(9px) rotate(2.4deg)}}
+.eco-left-frame{opacity:.96}
+
+/* 7: heliconia descend is soft, staggered, and clearly perceptible */
+.eco-descend{transform:translateY(-68px);opacity:0;transition:transform 2s cubic-bezier(.23,.68,.28,1) var(--eco-di,0s),opacity 1.15s ease var(--eco-di,0s)}
+.eco-descend.eco-in{transform:translateY(0);opacity:1}
+
+/* 8: on desktop the concern row wraps into two tidy centered rows;
+   no cropped bowls, no floating scroll button. Mobile keeps the swipe row. */
+@media(min-width:1000px){
+  .concern-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));justify-items:center;row-gap:36px;column-gap:clamp(12px,1.6vw,26px);overflow:visible;padding:8px 4px 8px;scroll-snap-type:none}
+  .concern-scroll{display:none}
+}
+
+/* 5: retreat band text block centered over the image, film beneath it */
+.retreat-film-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:clamp(26px,3.2vw,42px)}
+.retreat-copy{display:flex;flex-direction:column;align-items:center;max-width:760px}
+.retreat-copy .btn{align-self:center}
+.retreat-film{width:min(820px,100%)}
+.retreat-band::after{background:linear-gradient(0deg,rgba(15,37,24,.72),rgba(15,37,24,.28) 55%,rgba(15,37,24,.34))}
+
+/* 10: botanical illustration plates rise and fade in with a stagger */
+.principles-section .herb-plate.reveal{opacity:0;transform:translate3d(0,52px,0) scale(.96);transition:opacity 1s cubic-bezier(.22,.9,.28,1),transform 1s cubic-bezier(.22,.9,.28,1)}
+.principles-section .herb-plate.reveal.visible{opacity:1;transform:none}
+.principles-section .herb-plates .herb-plate:nth-child(2){transition-delay:.14s}
+.principles-section .herb-plates .herb-plate:nth-child(3){transition-delay:.28s}
+.principles-section .herb-plates .herb-plate:nth-child(4){transition-delay:.42s}
+
+/* 11: footer botanicals from the hero family rise gently into the composition */
+.footer-leaves .ff-rise{opacity:0;transform:translate3d(0,90px,0);transition:transform 2.1s cubic-bezier(.22,.68,.28,1),opacity 1.3s ease}
+.footer-alive .ff-rise{opacity:1;transform:translate3d(0,0,0)}
+.footer-leaves .ff-monstera{left:clamp(-90px,-6vw,-40px);bottom:-46px;width:clamp(230px,24vw,430px);filter:brightness(.5) saturate(.72) drop-shadow(0 18px 30px rgba(0,0,0,.6));transition-delay:.12s,.12s}
+.footer-leaves .ff-orchid-left{left:clamp(120px,13vw,300px);bottom:-18px;width:clamp(120px,12vw,215px);filter:brightness(.62) saturate(.8) drop-shadow(0 14px 26px rgba(0,0,0,.55));transition-delay:.4s,.4s}
+.footer-leaves .ff-orchid-right{left:auto;right:clamp(-60px,-3vw,-24px);bottom:-34px;width:clamp(200px,19vw,360px);filter:brightness(.55) saturate(.75) drop-shadow(0 16px 28px rgba(0,0,0,.58));transition-delay:.26s,.26s}
+@media(max-width:720px){.footer-leaves .ff-orchid-left{display:none}.footer-leaves .ff-monstera{width:clamp(150px,38vw,220px)}.footer-leaves .ff-orchid-right{width:clamp(130px,34vw,190px)}}
+@media(prefers-reduced-motion:reduce){.footer-leaves .ff-rise{opacity:1;transform:none;transition:none}.eco-descend{opacity:1;transform:none;transition:none}}
