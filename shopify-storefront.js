@@ -28,7 +28,10 @@
     'one-way-out',
     'river-of-life',
     'chuchuhuasi',
-    'cats-claw'
+    'cats-claw',
+    'eliminate-regenerate',
+    'her-fertile-waters',
+    'his-fertile-fires'
   ]);
 
   const EBOOK_PRODUCT_HANDLES = Object.freeze([
@@ -41,9 +44,6 @@
 
   const PROGRAM_PRODUCT_HANDLES = Object.freeze([
     'fearless-fruit-detox',
-    'her-fertile-waters',
-    'his-fertile-fires',
-    'eliminate-regenerate',
     '7-day-fruit-detox',
     '30-day-raw-reset',
     '10-day-transitional-detox',
@@ -52,8 +52,8 @@
 
   const CONCERN_FILTERS = Object.freeze([
     { label: 'All Physical Products', slug: 'all' },
-    { label: "Women's Wellness", slug: 'womens-wellness', products: ['sacred-sacral-sweetened'] },
-    { label: "Men's Wellness", slug: 'mens-wellness', products: ['zapped-in'] },
+    { label: "Women's Wellness", slug: 'womens-wellness', products: ['sacred-sacral-sweetened', 'her-fertile-waters'] },
+    { label: "Men's Wellness", slug: 'mens-wellness', products: ['zapped-in', 'his-fertile-fires'] },
     { label: 'Digestive Health', slug: 'digestive-health', products: ['bowel-balance', 'bowel-banisher', 'final-flush'] },
     { label: 'Auto-Immune Support', slug: 'auto-immune-support', products: ['cats-claw', 'soursop-leaves-graviola', 'chuchuhuasi'] },
     { label: 'Nervous System', slug: 'nervous-system', products: ['scales-of-balance', 'valerian'] },
@@ -65,7 +65,7 @@
     { label: 'Lung Support', slug: 'lung-support', products: ['cordoncillo-matico-1'] },
     { label: 'Hormone Balance', slug: 'hormone-balance', products: ['sacred-sacral-sweetened'] },
     { label: 'Sleep & Relaxation', slug: 'sleep-relaxation', products: ['valerian', 'scales-of-balance'] },
-    { label: 'Full Body Detox', slug: 'full-body-detox', products: ['final-flush'] }
+    { label: 'Full Body Detox', slug: 'full-body-detox', products: ['final-flush', 'eliminate-regenerate'] }
   ]);
 
   const TYPE_COLLECTIONS = Object.freeze({

@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=106" />
+  <link rel="stylesheet" href="styles.css?v=108" />
   <script defer src="app.js?v=108"></script>
 
   <style>
@@ -443,7 +443,10 @@
     .site-footer,.site-footer *{text-shadow:0 2px 14px rgba(3,10,6,.75)}
     .site-footer hr,.footer-card hr{border-color:rgba(236,230,216,.22)!important}
   </style>
-</head>
+<style>/* QA fix: prevent KAWSAYPAC wordmark overlapping the search icon on narrow phones (shared header grid gives the brand ~121px at <=480px) */
+@media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
+@media(max-width:400px){.nav-pill .brand img{display:none}}
+</style></head>
 <body>
 
 

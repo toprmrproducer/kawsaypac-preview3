@@ -6,7 +6,7 @@
   <title>Preparing Your Body | Kawsaypac Ancestral Herbs</title>
   <meta name="description" content="Herbs are amplifiers. Prepare your body to receive them: what to eat, how to hydrate, how to sleep, and how to support your nervous system through your herbal protocol.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=103"><link rel="stylesheet" href="home.css?v=108">
+  <link rel="stylesheet" href="styles.css?v=108"><link rel="stylesheet" href="home.css?v=108">
   <script defer src="app.js?v=108"></script>
   <style>
   /* ============ Preparing Your Body, page-scoped, prefixed .kx-body ============ */
@@ -82,6 +82,7 @@
   .kx-body .kx-avoid{border-top:1px dashed rgba(176,106,78,.35)}
   .kx-body .kx-avoid li::before{background:transparent;border:1.5px solid #b06a4e;box-shadow:none;width:8px;height:8px;top:.55em}
   .kx-body .kx-list-cap{font-family:var(--kx-sans);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin:0 0 4px;color:var(--kx-soft)}
+  .kx-body .kx-list li.kx-list-cap::before,.kx-body .kx-avoid li.kx-list-cap::before{content:none}
   .kx-body .kx-avoid .kx-list-cap{color:#b06a4e}
 
   /* ---- Reminder strip ---- */
@@ -124,7 +125,10 @@
   .page-side-nav a{font-size:.85rem;min-height:34px;padding-block:7px}
 }
 </style>
-</head>
+<style>/* QA fix: prevent KAWSAYPAC wordmark overlapping the search icon on narrow phones (shared header grid gives the brand ~121px at <=480px) */
+@media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
+@media(max-width:400px){.nav-pill .brand img{display:none}}
+</style></head>
 <body class="kx-body">
   <a class="skip-link" href="#main">Skip to content</a>
   <div data-site-header></div>

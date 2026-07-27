@@ -118,3 +118,7 @@
 }
 @media(max-width:1279px){.has-page-side-nav .kx-wrap{width:min(1120px,92vw)}}
 @media(max-width:720px){.page-side-nav{top:84px;padding-inline:12px}}
+
+/* v108: narrow-phone header, brand wordmark must never collide with the search icon */
+@media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
+@media(max-width:400px){.nav-pill .brand img{display:none}}

@@ -6,7 +6,7 @@
     <title>Recipes &amp; Programs | Kawsaypac Ancestral Herbs</title>
     <meta name="description" content="The home for every Kawsaypac recipe, ebook and guided program. Digital field guides, recipe collections and protocol kits, kept in one calm place apart from the herb shop.">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=103">
+    <link rel="stylesheet" href="styles.css?v=108">
     <link rel="stylesheet" href="home.css?v=108">
     <script defer src="app.js?v=108"></script>
     <style>
@@ -135,6 +135,8 @@
       .kx-recipes .kx-closing .eyebrow{color:rgba(201,169,66,.94)}
       .kx-recipes .kx-closing h2{font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1;font-size:clamp(2.1rem,4.6vw,3.7rem);margin:.05em 0 .4em;max-width:16ch;text-wrap:balance}
       .kx-recipes .kx-closing p{margin:0 0 clamp(24px,2.6vw,32px);max-width:42ch;color:rgba(247,244,234,.88);font-size:1.06rem}
+      .kx-recipes .kx-closing .btn-outline{color:#f7f4ea;border-color:rgba(247,244,234,.68);background:rgba(15,28,20,.32)}
+      .kx-recipes .kx-closing .btn-outline:hover{color:#10231a;background:#f7f4ea;border-color:#f7f4ea}
 
       /* Reveal (visible by default; JS only ADDS a class) */
       .kx-recipes .kx-reveal{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -165,7 +167,10 @@
         .page-side-nav a{font-size:.85rem;min-height:34px;padding-block:7px}
       }
     </style>
-  </head>
+  <style>/* QA fix: prevent KAWSAYPAC wordmark overlapping the search icon on narrow phones (shared header grid gives the brand ~121px at <=480px) */
+@media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
+@media(max-width:400px){.nav-pill .brand img{display:none}}
+</style></head>
   <body class="learn-page recipes-page">
     <a class="skip-link" href="#main">Skip to content</a>
     <div data-site-header></div>

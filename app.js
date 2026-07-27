@@ -143,17 +143,8 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     addEventListener('scroll',()=>{if(active)hide()},{passive:true});
   }
   function initFooterHummingbird(){
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    let seen=false;try{seen=!!sessionStorage.getItem('kwsp-hummingbird')}catch(e){}
-    if(seen)return;
-    const footer=$('.site-footer');if(!footer)return;
-    const io=new IntersectionObserver(es=>es.forEach(entry=>{
-      if(!entry.isIntersecting)return;io.disconnect();
-      try{sessionStorage.setItem('kwsp-hummingbird','1')}catch(e){}
-      const bird=document.createElement('img');bird.src='assets/sprites/hummingbirds/hummingbird-flight.webp?v=25';bird.alt='';bird.className='footer-hummingbird';bird.setAttribute('aria-hidden','true');
-      footer.append(bird);bird.addEventListener('animationend',()=>bird.remove());
-    }),{threshold:.3});
-    io.observe(footer);
+    /* Raisa 23-24 Jul: "this little hummingbird can go" - removed per her request */
+    return;
   }
   function initSectionDrift(){
     if(matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(max-width: 720px)').matches)return;

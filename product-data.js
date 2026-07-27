@@ -4305,3 +4305,11 @@ window.KAWSAYPAC_PRODUCTS = {
  }
 };
 window.KAWSAYPAC_PRODUCT_ALIASES = {"detox-kit": "eliminate-regenerate", "guayusa": "guayusa-leaf", "cats-claw-bark": "cats-claw", "sacred-sacral-sweetened": "sacred-sacral"};
+// Section 2 cinematic overlay lines, word-for-word from the client's landing doc.
+// Only these products carry an overlay line in the doc; others fall back to their subline.
+(function (P) {
+  if (!P) return;
+  if (P['cats-claw']) P['cats-claw'].cinematic = 'The vine the Amazon has used for centuries';
+  if (P['guayusa-leaf']) P['guayusa-leaf'].cinematic = 'Before the sun rises, the Amazon wakes with Guayusa.';
+  if (P['chuchuhuasi']) P['chuchuhuasi'].cinematic = 'The Amazon does not produce weak medicine. Neither do we.';
+})(window.KAWSAYPAC_PRODUCTS);
