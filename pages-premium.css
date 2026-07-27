@@ -127,6 +127,22 @@
   color: #fff;
 }
 
+/* v103: a photographic field-note opening and tactile specimen reveals. */
+.apoth-page .premium-hero{width:min(1400px,calc(100% - 32px));min-height:clamp(590px,72vh,760px);grid-template-columns:.8fr 1.2fr;border-radius:30px}
+.apoth-page .premium-hero .page-hero-media{min-height:100%}
+.apoth-page .premium-hero .page-hero-media img{object-position:center}
+.apoth-page .specimen details{margin-top:16px;padding-top:14px;border-top:1px solid rgba(31,58,42,.12)}
+.apoth-page .specimen summary{display:flex;align-items:center;justify-content:space-between;min-height:42px;list-style:none;cursor:pointer;color:var(--forest);font-size:.67rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase}
+.apoth-page .specimen summary::-webkit-details-marker{display:none}
+.apoth-page .specimen summary::after{content:"+";display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(31,58,42,.18);border-radius:50%;font-family:var(--body);font-size:1rem;transition:transform .25s var(--ease),background .25s,color .25s}
+.apoth-page .specimen details[open] summary::after{transform:rotate(45deg);background:var(--forest);color:#fff}
+.apoth-page .specimen details p{padding:7px 0 3px;font-size:.82rem;line-height:1.55}
+.apoth-page .apothecary-grid{align-items:start}
+@media(max-width:800px){
+  .apoth-page .premium-hero{width:calc(100% - 22px);grid-template-columns:1fr;border-radius:22px}
+  .apoth-page .premium-hero .page-hero-media{min-height:340px}
+}
+
 /* ---------- journal: editorial card treatment ---------- */
 
 .journal-page .journal-shell__intro .eyebrow {

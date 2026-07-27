@@ -30,6 +30,10 @@ The homepage begins with a full-viewport pinned scene. Cotopaxi stays high and r
 - Card: cream or forest surface with 18px radius, border, image crop, and small vertical hover lift. Empty and unavailable commerce states stay explicit.
 - Form: high-contrast label, 52px field, visible focus ring, inline error or success copy.
 - Modal: focus-contained, Escape-close, labeled close button, and clear placeholder disclosure when footage is pending.
+- Page navigator: a quiet fixed left rail on wide screens and a horizontally scrollable pill strip on smaller screens. It may highlight the active section, but it must fade before the shared footer and must never sit over photography or footer copy.
+- Editorial ritual rail: an honest, horizontally scrollable sequence of human ritual photographs. Captions describe observable moments only; invented customer names, quotations, ratings, and outcomes are prohibited.
+- Apothecary field note: a wide photographic study paired with numbered botanical metadata. Specimen cards may reveal additional preparation context on hover or focus, while retaining a legible static state.
+- Retreat chapter: photographic, asymmetrical editorial modules with thin rules and generous type hierarchy. Avoid repeated glass-card grids, ornamental clutter, and identical card proportions.
 
 ## 5. Motion
 
@@ -40,7 +44,10 @@ The hero is the single large motion moment. Its six visual layers rise from belo
 - Desktop: pinned hero and full pill navigation.
 - Tablet: two-column content grids and mobile navigation sheet.
 - Mobile at 390px: static composed hero, visible product copy, hidden brand statement, single-column cards, no horizontal overflow, and at least 44px targets.
+- Horizontal rails use native scrolling, visible focus states, scroll snapping, and partial next-card affordance. They do not trap vertical scrolling.
 
 ## 7. Accessibility and accepted integration debt
 
 Semantic headings, visible focus rings, descriptive image text, keyboard menus, focus-contained modals, and reduced-motion support are required. Product claims remain educational and include the FDA disclaimer. Cart and checkout remain Shopify integration boundaries. The preview may acknowledge an item selection but must not present a fake checkout.
+
+Customer proof must be real and client-approved. Generated or editorial lifestyle imagery can demonstrate a ritual, but it must not be paired with fabricated names, quotations, star ratings, or health outcomes.
