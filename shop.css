@@ -404,8 +404,11 @@
 /* e-book / program covers are portrait art (9:16-ish), not square jars —
    give the card a taller box so the full cover shows, no top/bottom crop. */
 .storefront-card--editorial .storefront-card__media{aspect-ratio:3/4;margin:0;border-radius:16px 16px 0 0;background:#f4efe6}
+/* the web component injects its own per-instance object-fit:cover !important
+   rule (.shopify-media-image-N), so ours must be !important + more specific
+   to actually win and show the whole cover instead of cropping it. */
 .storefront-card--editorial .storefront-card__media shopify-media::part(image),
-.storefront-card--editorial .storefront-card__media shopify-media img{object-fit:contain;object-position:center}
+.storefront-card--editorial .storefront-card__media shopify-media img{object-fit:contain!important;object-position:center!important}
 
 .storefront-card--editorial {
   border-color: rgba(31, 58, 42, .15);

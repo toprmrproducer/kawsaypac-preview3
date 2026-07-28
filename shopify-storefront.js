@@ -131,8 +131,11 @@
     const cardClass = options.cardClass ? ` ${options.cardClass}` : '';
     const badge = options.bestSeller ? '<span class="storefront-card__badge">Best Seller</span>' : '';
     const word = options.keyword ? `<span class="storefront-card__word">${escapeAttribute(options.keyword)}</span>${badge}` : `<span class="storefront-card__type"><shopify-data query="product.productType"></shopify-data></span>${badge}`;
-    // e-books/programs ship portrait 9:16-ish cover art; herbs are square jars/bowls.
-    const mediaAspect = options.cardClass && options.cardClass.includes('editorial') ? '3/4' : '1';
+    // e-books/programs ship portrait cover art; herbs are square jars/bowls.
+    // NOTE: shopify-media parses this via parseFloat, so it must be a plain
+    // decimal (width/height) — a "3/4" fraction string parses to 3, which
+    // requests a wide 3:1 crop from Shopify's CDN and destroys the cover.
+    const mediaAspect = options.cardClass && options.cardClass.includes('editorial') ? '0.75' : '1';
     return `
       <article class="storefront-card${cardClass}">
         <a
