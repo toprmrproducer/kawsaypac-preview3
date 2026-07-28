@@ -130,7 +130,7 @@
     const mediaPriority = options.priority ? ' priority="true"' : '';
     const cardClass = options.cardClass ? ` ${options.cardClass}` : '';
     const badge = options.bestSeller ? '<span class="storefront-card__badge">Best Seller</span>' : '';
-    const word = options.keyword ? `<span class="storefront-card__word">${escapeAttribute(options.keyword)}</span>${badge}` : `<span class="storefront-card__type"><shopify-data query="product.productType"></shopify-data></span>${badge}`;
+    const word = badge;
     // e-books/programs ship portrait cover art; herbs are square jars/bowls.
     // NOTE: shopify-media parses this via parseFloat, so it must be a plain
     // decimal (width/height) — a "3/4" fraction string parses to 3, which

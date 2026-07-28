@@ -1011,7 +1011,9 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 .shop-hero .shop-hero__content{margin-top:0!important}
 
 /* ============ v88: Rhode-style shop tiles (rhodeskin.com/collections/shop) ============ */
-.shop-product-grid .storefront-card{border:0;background:transparent;box-shadow:none;border-radius:0;overflow:visible;display:flex;flex-direction:column;gap:12px}
+.shop-product-grid .storefront-card{border:1px solid rgba(20,59,40,.16);background:#fff;box-shadow:none;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;gap:0;padding:10px 10px 16px}
+.shop-product-grid .storefront-card__media{border-radius:13px}
+.shop-product-grid .storefront-card__body{padding:12px 4px 0}
 .shop-product-grid .storefront-card__media{position:relative;display:block;aspect-ratio:1/1.06;border-radius:18px;overflow:hidden;background:#f1ece1;box-shadow:0 1px 0 rgba(31,58,42,.06)}
 .shop-product-grid .storefront-card__media shopify-media img,.shop-product-grid .storefront-card__media shopify-media::part(image){width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,.9,.28,1)}
 .shop-product-grid .storefront-card:hover .storefront-card__media shopify-media img,.shop-product-grid .storefront-card:hover .storefront-card__media shopify-media::part(image){transform:scale(1.035)}
