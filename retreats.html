@@ -1,12 +1,28 @@
 <style>
-  /* Hide Shopify theme header, footer, and any default page elements */
-  header, footer, .site-header, .site-footer, 
+  /* Hide Shopify theme header, footer, and any default page elements.
+     Scoped to exclude the Kawsaypac site's own injected nav/footer, which
+     coincidentally share the .site-header/.site-footer class names this
+     rule was written to hide on the Shopify theme this page was authored
+     for. Raisa's content below this block is unchanged. */
+  header:not(.site-header), footer:not(.site-footer),
+  .header:not(.site-header), .footer:not(.site-footer),
   #shopify-section-header, #shopify-section-footer,
-  .header, .footer, nav.header__inline-menu,
+  nav.header__inline-menu,
   .announcement-bar, .cart-notification,
   #MainContent > .shopify-section:not(#kawsay-landing) {
     display: none !important;
   }
+  /* Kawsaypac site chrome (injected nav + footer) skinned to match the rest
+     of the site, scoped so it never touches Raisa's #kawsay-landing rules. */
+  body [data-site-footer]{position:relative;z-index:5;isolation:isolate}
+  .site-footer{background:#060d09!important;padding-bottom:clamp(130px,13vw,200px)}
+  .footer-leaves{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+  .footer-leaves .fl{position:absolute;bottom:-70px;width:clamp(150px,20vw,320px);height:auto;filter:brightness(.55) saturate(.65) contrast(1.05) drop-shadow(0 18px 30px rgba(0,0,0,.6));transform-origin:bottom center;opacity:0;transform:translate3d(0,70px,0) rotate(-6deg);transition:transform 2.2s cubic-bezier(.22,.68,.28,1) .05s,opacity 1.4s ease .05s}
+  .footer-leaves .fl-l{left:clamp(-64px,-4vw,-30px)}
+  .footer-leaves .fl-r{right:clamp(-64px,-4vw,-30px);transform:translate3d(0,70px,0) scaleX(-1) rotate(-6deg)}
+  .footer-alive .fl-l{opacity:1;transform:translate3d(0,0,0) rotate(-6deg)}
+  .footer-alive .fl-r{opacity:1;transform:translate3d(0,0,0) scaleX(-1) rotate(-6deg)}
+  @media(max-width:720px){.footer-leaves .fl{width:clamp(110px,34vw,170px);bottom:-54px}}
   /* Remove any padding Shopify adds around page content */
   main#MainContent, .main-content, #main {
     padding: 0 !important;
@@ -2178,8 +2194,13 @@
     /* Prevent text size adjust on rotation */
     html { -webkit-text-size-adjust: 100%; }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=109">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div data-site-header></div>
+<script defer src="app.js?v=116"></script>
+<main id="main">
 <div id="kawsay-landing">
 
 <!-- ============================================================
@@ -3382,6 +3403,7 @@
     if (e.key === 'Escape') closeEmailPopup();
   });
 </script>
-
+</main>
+<div data-site-footer></div>
 </body>
 </html>

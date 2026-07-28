@@ -131,6 +131,8 @@
     const cardClass = options.cardClass ? ` ${options.cardClass}` : '';
     const badge = options.bestSeller ? '<span class="storefront-card__badge">Best Seller</span>' : '';
     const word = options.keyword ? `<span class="storefront-card__word">${escapeAttribute(options.keyword)}</span>${badge}` : `<span class="storefront-card__type"><shopify-data query="product.productType"></shopify-data></span>${badge}`;
+    // e-books/programs ship portrait 9:16-ish cover art; herbs are square jars/bowls.
+    const mediaAspect = options.cardClass && options.cardClass.includes('editorial') ? '3/4' : '1';
     return `
       <article class="storefront-card${cardClass}">
         <a
@@ -143,7 +145,7 @@
           <shopify-media
             query="product.selectedOrFirstAvailableVariant.image"
             width="720"
-            aspect-ratio="1"
+            aspect-ratio="${mediaAspect}"
             layout="constrained"
             sizes="(max-width: 680px) 92vw, (max-width: 980px) 45vw, 30vw"${mediaPriority}
           ></shopify-media>
