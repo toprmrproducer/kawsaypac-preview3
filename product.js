@@ -293,6 +293,22 @@
     return `M${x0.toFixed(1)} ${y0.toFixed(1)} A${rOut} ${rOut} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)} A${rIn} ${rIn} 0 ${large} 0 ${x3.toFixed(1)} ${y3.toFixed(1)} Z`;
   }
 
+  /* Wheel legend: pair each compound with a real concern-bowl image where the
+     benefit maps cleanly (sleep, digestion, energy, immunity, hormones, detox). */
+  function legendBenefitImg(a) {
+    const t = ((a.name || '') + ' ' + (a.role || '')).toLowerCase();
+    const M = [
+      [/sleep|sedat|calm|relax|gaba/, 'bowl-sleep-340'],
+      [/digest|gut|colon|bowel/, 'bowl-digestive-340'],
+      [/energy|activat|stimul|focus/, 'bowl-energy-340'],
+      [/immun|antioxid|protect|defen/, 'bowl-immune-340'],
+      [/hormon|womb|balance|estrogen/, 'bowl-womens-340'],
+      [/detox|cleanse|eliminat|flush|repair/, 'bowl-detox-340']
+    ];
+    for (const [re, f] of M) if (re.test(t)) return `assets/img/${f}.webp`;
+    return '';
+  }
+
   function wheelInfographic(p) {
     const acts = (p.actives || []).filter((a) => a.name);
     if (!acts.length) return systemsInfographic(p);
@@ -305,9 +321,13 @@
       const [lx, ly] = polar(150, 150, 107, (a0 + a1) / 2);
       segs += `<text class="pp-wheel-num pp-wseg" data-widx="${i}" style="--i:${i}" x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" text-anchor="middle" dominant-baseline="middle">${i + 1}</text>`;
     }
-    const legend = acts.map((a, i) => `
+    const legend = acts.map((a, i) => {
+      const bi = legendBenefitImg(a);
+      return `
       <li data-widx="${i}"><span class="pp-legend-dot" style="background:${colors[i % colors.length]}">${i + 1}</span>
-      <div><strong>${esc(a.name)}</strong>${a.role ? `<span>${esc(a.role)}</span>` : ''}</div></li>`).join('');
+      <div><strong>${esc(a.name)}</strong>${a.role ? `<span>${esc(a.role)}</span>` : ''}</div>
+      ${bi ? `<img class="pp-legend-thumb" src="${esc(bi)}?v=35" alt="" loading="lazy" width="88" height="88">` : ''}</li>`;
+    }).join('');
     return `
     <section class="pp-band pp-info" data-sec="infographic">
       <div class="pp-shell pp-info-grid">
@@ -857,7 +877,37 @@
       thumbs.forEach((t) => t.addEventListener('click', () => show(t.dataset.thumb)));
       // hide any thumb whose image fails so a future manifest entry can never look broken
       thumbs.forEach((t) => { const im = t.querySelector('img'); im.addEventListener('error', () => { t.remove(); }); });
+      // Shopify sources arrive in mixed orientations: squarish shots render
+      // contained (full image, no forced tall crop) instead of being stretched.
+      shots.forEach((im) => {
+        // custom pdp scene shots are composed full-bleed and keep the cover
+        // crop; this targets the Shopify packshot-style sources only.
+        if ((im.getAttribute('src') || '').indexOf('/pdp/') !== -1) return;
+        const mark = () => {
+          const r = im.naturalWidth / im.naturalHeight;
+          // squarish AND portrait packshots (Shopify ships 1:1 and 3:4) render
+          // contained; only genuinely tall editorial sources keep the cover crop
+          if (r > 0.68 && r < 1.25) im.classList.add('pp-contain');
+        };
+        if (im.complete && im.naturalWidth) mark();
+        else im.addEventListener('load', mark, { once: true });
+      });
     }
+    // hard equal-height guarantee: the gallery column ends exactly where the
+    // buy card ends, never running on into the cinematic band (29 Jul report)
+    const mediaEl = root.querySelector('.pp-hero-media');
+    const cardEl = root.querySelector('.pp-hero-card');
+    if (mediaEl && cardEl) {
+      const sync = () => {
+        if (window.innerWidth > 960) mediaEl.style.maxHeight = cardEl.offsetHeight + 'px';
+        else mediaEl.style.maxHeight = '';
+      };
+      sync();
+      window.addEventListener('resize', sync, { passive: true });
+      window.setTimeout(sync, 700);
+      if ('ResizeObserver' in window) new ResizeObserver(sync).observe(cardEl);
+    }
+
     // quantity
     const qtyOut = root.querySelector('[data-qty-value]');
     let qty = 1;

@@ -223,3 +223,13 @@
    leaking the dark stage as a left strip + curved hero corners. Overscan it. */
 .j5l[data-n="v-sky"]{left:-0.6%!important;top:-0.6%!important;width:101.4%!important;height:69%!important}
 .j5l[data-n="s-sky"]{left:-0.6%!important;width:101.4%!important}
+
+/* v114: mobile hero, hide the yellowish sunrise band at the frame bottom.
+   Push the plate's crop upward and blend the hero out into the page cream
+   so the second section starts clean (all phones). */
+@media(max-width:720px){
+  .journey-landscape-master{object-position:53% 24%;transform:scale(1.16)!important}
+  .journey-sticky{min-height:590px}
+  .journey-sticky::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:96px;z-index:6;pointer-events:none;background:linear-gradient(180deg,rgba(250,249,246,0),#FAF9F6 92%)}
+  .journey-final{bottom:56px}
+}

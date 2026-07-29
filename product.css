@@ -530,7 +530,9 @@
    ============================================================ */
 
 /* --- gallery thumbs: standing column on the left of the image --- */
-.pp-hero-media{position:relative}
+/* top:auto kills the base sticky rule's top:120px, which otherwise shifts the
+   relative-positioned media 120px down into the cinematic band */
+.pp-hero-media{position:relative;top:auto}
 .pp-thumbs{left:14px;top:50%;bottom:auto;transform:translateY(-50%);flex-direction:column;gap:8px}
 @media (max-width:960px){.pp-thumbs{top:auto;bottom:10px;transform:none;flex-direction:row}}
 
@@ -552,3 +554,31 @@
 @keyframes ppFloraSway{0%{translate:0 0;rotate:-1.6deg}100%{translate:6px -9px;rotate:1.8deg}}
 @media (max-width:1100px){.pp-flora{display:none}}
 @media (prefers-reduced-motion:reduce){.pp-flora{animation:none}}
+
+/* ============================================================
+   v35 · 29 Jul round 3: seam gap before the cinematic band,
+   clearer cinema plate + stronger line, squarish Shopify shots
+   render contained (never force-cropped tall), wheel legend
+   benefit imagery.
+   ============================================================ */
+
+/* hero -> cinematic band: a deliberate breath, not a collision */
+.pp-hero{padding-bottom:clamp(44px,5.2vw,76px)}
+
+/* cinematic band: image reads clearly, the line carries more weight */
+.pp-cinema-scrim{background:
+  linear-gradient(180deg,rgba(8,20,14,.2) 0%,rgba(8,20,14,.08) 45%,rgba(8,20,14,.34) 100%)}
+.pp-cinema-line{font-size:clamp(1.7rem,4.1vw,3.1rem);font-weight:500;letter-spacing:-.01em;text-shadow:0 3px 30px rgba(0,0,0,.66),0 1px 6px rgba(0,0,0,.5)}
+
+/* squarish Shopify packshots: full image, framed on cream, no tall crop */
+.pp-hero-shot.pp-contain{object-fit:contain;background:#f1ece1;padding:clamp(8px,1.4vw,18px)}
+
+/* the media column never outruns the buy card into section 2: the stretch row
+   sets the height, the floor stays modest (his final-flush overlap report) */
+.pp-hero-frame{min-height:clamp(420px,44vw,560px)}
+
+/* wheel legend: benefit imagery on the compound cards */
+.pp-legend li{align-items:center}
+.pp-legend li>div{flex:1;min-width:0}
+.pp-legend-thumb{flex:none;width:52px;height:52px;border-radius:12px;object-fit:cover;border:1px solid var(--pp-line);background:var(--pp-cream-2)}
+@media (max-width:560px){.pp-legend-thumb{width:44px;height:44px}}

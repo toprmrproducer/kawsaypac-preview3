@@ -6,9 +6,9 @@
 <title>Our Story | Kawsaypac Ancestral Herbs</title>
 <meta name="description" content="We are Raisa and Brian. Two diagnoses changed our path, and a journey through the Ecuadorian Andes and Amazon became Kawsaypac. Welcome, friend.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=109">
+<link rel="stylesheet" href="styles.css?v=110">
 <link rel="stylesheet" href="home.css?v=114">
-<script defer src="app.js?v=116"></script>
+<script defer src="app.js?v=117"></script>
 <style>
 /* ============ .kx-story page-scoped editorial layout ============ */
 .kx-story{--kx-cream:#FAF9F6;--kx-paper:#F3F0E9;--kx-paper2:#EFEBE1;--kx-forest:#1F3A2A;--kx-forest2:#16281D;--kx-gold:#C9A942;--kx-gold-soft:rgba(201,169,66,.30);--kx-ink:#2b2b26;--kx-muted:#5f6157;--kx-line:rgba(31,58,42,.14);background:var(--kx-cream);color:var(--kx-ink);font-family:var(--body,Satoshi,Arial,sans-serif);overflow-x:hidden}
@@ -169,6 +169,15 @@
   .page-side-nav__title{margin-bottom:10px}
   .page-side-nav a{font-size:.85rem;min-height:34px;padding-block:7px}
 }
+
+/* 29 Jul: hero CTA micro-interaction (sheen sweep + arrow nudge + press) */
+.kx-cta{position:relative;overflow:hidden}
+.kx-cta::before{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);transition:left .65s ease}
+.kx-cta:hover::before{left:130%}
+.kx-cta svg{transition:transform .35s ease}
+.kx-cta:hover svg{transform:translateX(6px)}
+.kx-cta:active{transform:translateY(-1px) scale(.985)}
+@media (prefers-reduced-motion:reduce){.kx-cta::before{display:none}}
 </style>
 <style>/* QA fix: prevent KAWSAYPAC wordmark overlapping the search icon on narrow phones (shared header grid gives the brand ~121px at <=480px) */
 @media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}

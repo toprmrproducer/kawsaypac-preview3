@@ -128,3 +128,21 @@
    the sheet's empty backdrop close it. */
 @media(max-width:1120px){.nav-pill{z-index:9020}.mobile-sheet{z-index:8990}}
 @media(max-width:480px){.nav-pill .brand strong{font-size:.62rem;letter-spacing:.02em;white-space:nowrap}.nav-pill .brand small{display:none}}
+
+/* ============ v110: mobile menu accordions + premium button polish (29 Jul) ============ */
+.msheet-group{display:block}
+.msheet-toggle{width:100%;justify-content:space-between;gap:12px;cursor:pointer;padding:0}
+.msheet-arrow{width:20px;height:20px;flex:none;stroke:var(--gold);transition:transform .35s var(--ease)}
+.msheet-group.open .msheet-toggle .msheet-arrow{transform:rotate(180deg)}
+.msheet-panel{display:grid;max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.msheet-group.open .msheet-panel{max-height:900px;overflow-y:auto}
+.msheet-panel a.mobile-sub{min-height:46px}
+.msheet-panel a.mobile-sub:last-child{border-bottom:0}
+.msheet-group{border-bottom:1px solid var(--border)}
+.msheet-group .msheet-toggle{border-bottom:0}
+
+/* primary buttons: soft sheen sweep + arrow nudge, site-wide */
+.btn-primary{position:relative;overflow:hidden;isolation:isolate}
+.btn-primary::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-18deg);transition:left .6s var(--ease);z-index:-1}
+.btn-primary:hover::after{left:125%}
+@media (prefers-reduced-motion:reduce){.btn-primary::after{display:none}}

@@ -729,3 +729,17 @@ body>*:last-child{margin-bottom:0}
    (supersedes the v112 static freeze; same soft register as the Philosophy blooms) */
 .eco-left-frame img{animation:ecoImgSway 14s ease-in-out .6s infinite alternate!important;transform-origin:50% 12%}
 @media (prefers-reduced-motion:reduce){.eco-left-frame img{animation:none!important}}
+
+/* ============ v115: Raisa no-dead-space sweep + footer foliage sway (29 Jul) ============ */
+.section{padding-block:clamp(30px,4vw,54px)}
+.philosophy{padding-block:clamp(44px,5vw,72px) clamp(22px,2.6vw,40px)}
+@media(max-width:720px){.section{padding-block:40px}}
+
+/* footer corner frames: gentle perpetual sway */
+.footer-leaves .fl-l{animation:ffGentleL 15s ease-in-out 1s infinite alternate}
+.footer-leaves .fl-r{animation:ffGentleR 17s ease-in-out 2s infinite alternate}
+@keyframes ffGentleL{0%{transform:translate3d(0,0,0) rotate(-6deg)}100%{transform:translate3d(5px,-7px,0) rotate(-4.6deg)}}
+@keyframes ffGentleR{0%{transform:translate3d(0,0,0) rotate(0)}100%{transform:translate3d(-5px,-8px,0) rotate(1.2deg)}}
+.footer-alive .fl-l{animation:ffGentleL 15s ease-in-out 1s infinite alternate}
+.footer-alive .fl-r{animation:ffGentleR 17s ease-in-out 2s infinite alternate}
+@media(prefers-reduced-motion:reduce){.footer-leaves .fl-l,.footer-leaves .fl-r,.footer-alive .fl-l,.footer-alive .fl-r{animation:none}}

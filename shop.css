@@ -1110,3 +1110,21 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
   .shop-product-grid .storefront-quick-add--buy{opacity:1;transform:translateY(0)}
   .shop-product-grid .storefront-card__hover{display:none}
 }
+
+/* v97 · e-books + digital products carry the exact herb-card chrome
+   (Shreyas 29 Jul: replicate the herb card format for the ebooks). */
+.editorial-product-grid .storefront-card--editorial{border:1px solid rgba(20,59,40,.16);background:#fff;box-shadow:none;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;gap:0;padding:10px 10px 16px;transition:transform .38s cubic-bezier(.22,1,.36,1),box-shadow .38s cubic-bezier(.22,1,.36,1)}
+.editorial-product-grid .storefront-card--editorial:hover{transform:translateY(-6px);box-shadow:0 26px 54px rgba(20,59,40,.14)}
+.editorial-product-grid .storefront-card--editorial .storefront-card__media{position:relative;border-radius:13px;overflow:hidden;background:#f1ece1;aspect-ratio:3/4;margin:0;box-shadow:0 1px 0 rgba(31,58,42,.06)}
+.editorial-product-grid .storefront-card--editorial .storefront-card__media shopify-media img,
+.editorial-product-grid .storefront-card--editorial .storefront-card__media shopify-media::part(image){object-fit:contain!important;object-position:center!important;transition:transform .5s cubic-bezier(.22,.9,.28,1)}
+.editorial-product-grid .storefront-card--editorial:hover .storefront-card__media shopify-media img,
+.editorial-product-grid .storefront-card--editorial:hover .storefront-card__media shopify-media::part(image){transform:scale(1.035)}
+.editorial-product-grid .storefront-card--editorial .storefront-card__body{padding:12px 4px 0}
+.editorial-product-grid .storefront-card--editorial .storefront-card__heading h2{font-family:var(--display);font-weight:500;letter-spacing:-.01em}
+.editorial-product-grid .storefront-card--editorial .storefront-card__heading strong{font-size:1.05rem;font-family:var(--display);letter-spacing:.01em}
+.editorial-product-grid .storefront-card--editorial .storefront-quick-add{position:absolute;left:50%;bottom:12px;transform:translate(-50%,8px);z-index:2;opacity:0;transition:opacity .3s,transform .3s;min-height:44px;border-radius:999px;padding:0 22px;background:rgba(250,249,246,.95);border:1px solid #143b28;color:#143b28;font-weight:750;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.editorial-product-grid .storefront-card--editorial:hover .storefront-quick-add,
+.editorial-product-grid .storefront-card--editorial .storefront-quick-add:focus-visible{opacity:1;transform:translate(-50%,0)}
+.editorial-product-grid .storefront-card--editorial .storefront-quick-add:hover{background:#143b28;color:#fff}
+@media(hover:none){.editorial-product-grid .storefront-card--editorial .storefront-quick-add{opacity:1;transform:translate(-50%,0)}}
