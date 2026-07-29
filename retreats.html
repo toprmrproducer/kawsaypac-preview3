@@ -156,7 +156,11 @@
     /* ============================================================
        BUTTONS
     ============================================================ */
-    .btn-primary {
+    /* Scoped to #kawsay-landing: these bare class names (.btn-primary,
+       .btn-outline) also exist on the shared site header/footer (Shop Herbs,
+       Read Field Note, etc). Unscoped, they hijacked the nav's Shop Herbs
+       button into a white square (Shreyas 29 Jul report). */
+    #kawsay-landing .btn-primary {
       display: inline-flex !important;
       align-items: center !important;
       gap: 10px !important;
@@ -174,7 +178,7 @@
       border: 2px solid #ffffff !important;
       text-decoration: none !important;
     }
-    .btn-primary:hover {
+    #kawsay-landing .btn-primary:hover {
       background: var(--gold) !important;
       border-color: var(--gold) !important;
       color: #111111 !important;
@@ -182,7 +186,7 @@
       box-shadow: 0 8px 32px rgba(201,168,76,0.35) !important;
     }
 
-    .btn-outline {
+    #kawsay-landing .btn-outline {
       display: inline-flex !important;
       align-items: center !important;
       gap: 10px !important;
@@ -200,13 +204,13 @@
       border: 2px solid #ffffff !important;
       text-decoration: none !important;
     }
-    .btn-outline:hover {
+    #kawsay-landing .btn-outline:hover {
       background: var(--gold) !important;
       border-color: var(--gold) !important;
       color: #111111 !important;
     }
 
-    .btn-outline-dark {
+    #kawsay-landing .btn-outline-dark {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -223,7 +227,7 @@
       transition: var(--transition);
       border: 1px solid var(--gold);
     }
-    .btn-outline-dark:hover {
+    #kawsay-landing .btn-outline-dark:hover {
       background: var(--gold);
       color: var(--forest);
     }
@@ -2139,7 +2143,7 @@
     @media (max-width: 768px) {
       
       /* Touch-friendly buttons */
-      .btn-primary, .btn-outline, .btn-outline-dark {
+      #kawsay-landing .btn-primary, #kawsay-landing .btn-outline, #kawsay-landing .btn-outline-dark {
         min-height: 48px;
         padding: 14px 28px;
       }
