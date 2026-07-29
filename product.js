@@ -676,15 +676,18 @@
     if (!f.length) return '';
     return `
     <section class="pp-band pp-faq" data-sec="faq">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">Questions, answered</p>
-        <h2>${esc(p.name)} FAQ.</h2>
-        <div class="pp-accordion" data-accordion data-faq>
-          ${f.map((it, i) => `
-          <div class="pp-acc-item${i === 0 ? ' open' : ''}">
-            <button type="button" class="pp-acc-btn" aria-expanded="${i === 0}"><span>${esc(it.q)}</span><i aria-hidden="true"></i></button>
-            <div class="pp-acc-body">${it.a.map((par) => `<p>${esc(par)}</p>`).join('')}</div>
-          </div>`).join('')}
+      <div class="pp-shell pp-split pp-split-rev">
+        <figure class="pp-split-media"><img src="${esc(galleryShot(p, '03-macro', 'assets/img/gen2/apoth-texture.webp'))}?v=38" alt="${esc(p.name)} botanicals up close" loading="lazy" width="720" height="900"></figure>
+        <div class="pp-split-copy">
+          <p class="pp-eyebrow">Questions, answered</p>
+          <h2>${esc(p.name)} FAQ.</h2>
+          <div class="pp-accordion pp-split-acc" data-accordion data-faq>
+            ${f.map((it, i) => `
+            <div class="pp-acc-item${i === 0 ? ' open' : ''}">
+              <button type="button" class="pp-acc-btn" aria-expanded="${i === 0}"><span>${esc(it.q)}</span><i aria-hidden="true"></i></button>
+              <div class="pp-acc-body">${it.a.map((par) => `<p>${esc(par)}</p>`).join('')}</div>
+            </div>`).join('')}
+          </div>
         </div>
       </div>
     </section>`;
