@@ -677,7 +677,7 @@
     return `
     <section class="pp-band pp-faq" data-sec="faq">
       <div class="pp-shell pp-split pp-split-rev">
-        <figure class="pp-split-media"><img src="${esc(galleryShot(p, '03-macro', 'assets/img/gen2/apoth-texture.webp'))}?v=38" alt="${esc(p.name)} botanicals up close" loading="lazy" width="720" height="900"></figure>
+        <figure class="pp-split-media"><img src="${esc(galleryShot(p, '03-macro', 'assets/img/gen2/apoth-texture.webp'))}" alt="${esc(p.name)} botanicals up close" loading="lazy" width="720" height="900"></figure>
         <div class="pp-split-copy">
           <p class="pp-eyebrow">Questions, answered</p>
           <h2>${esc(p.name)} FAQ.</h2>

@@ -732,7 +732,8 @@ body>*:last-child{margin-bottom:0}
 
 /* ============ v115: Raisa no-dead-space sweep + footer foliage sway (29 Jul) ============ */
 .section{padding-block:clamp(30px,4vw,54px)}
-.philosophy{padding-block:clamp(44px,5vw,72px) clamp(22px,2.6vw,40px)}
+/* !important needed: line ~568 pins the old 104px rhythm with !important */
+.philosophy{padding-block:clamp(44px,5vw,72px) clamp(22px,2.6vw,40px)!important}
 @media(max-width:720px){.section{padding-block:40px}}
 
 /* footer corner frames: gentle perpetual sway */
