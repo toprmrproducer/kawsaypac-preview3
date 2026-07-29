@@ -7,8 +7,12 @@
     <meta name="description" content="The home for every Kawsaypac recipe, ebook and guided program. Digital field guides, recipe collections and protocol kits, kept in one calm place apart from the herb shop.">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=109">
-    <link rel="stylesheet" href="home.css?v=113">
+    <link rel="stylesheet" href="home.css?v=114">
+    <link rel="stylesheet" href="shopify-storefront.css?v=18">
+    <link rel="stylesheet" href="shop.css?v=96">
+    <script type="module" data-storefront-components src="https://cdn.shopify.com/storefront/web-components.js"></script>
     <script defer src="app.js?v=116"></script>
+    <script defer src="shopify-storefront.js?v=26"></script>
     <style>
       /* ================= Recipes & Programs (scoped: .kx-recipes) ================= */
       .kx-recipes{--kx-ink:var(--charcoal);--kx-soft:#5e5b52;--kx-line:rgba(31,58,42,.12);--kx-line-2:rgba(31,58,42,.2);--kx-paper:#F3F0E9;--kx-card-shadow:0 20px 50px rgba(26,40,25,.08);--kx-card-shadow-lift:0 34px 70px rgba(26,40,25,.16);color:var(--kx-ink)}
@@ -174,6 +178,7 @@
   <body class="learn-page recipes-page">
     <a class="skip-link" href="#main">Skip to content</a>
     <div data-site-header></div>
+    <shopify-store data-storefront-config store-domain="https://theelectriceats.com" country="US" language="en"></shopify-store>
     <main class="page-main kx-recipes has-page-side-nav" id="main">
       <nav class="page-side-nav" data-page-nav aria-label="Learn sections">
         <p class="page-side-nav__title">On this page</p>
@@ -199,8 +204,8 @@
           </div>
           <div class="kx-hero-tags">
             <span>2 recipes</span>
-            <span>3 ebooks</span>
-            <span>3 programs</span>
+            <span>5 e-books</span>
+            <span>5 programs</span>
           </div>
         </div>
         <div class="kx-hero-media">
@@ -212,7 +217,7 @@
       <div class="kx-intro kx-reveal">
         <p class="eyebrow">Recipes + Programs</p>
         <div class="kx-rule"></div>
-        <p>Two small recipes, a shelf of digital guides, and three guided programs. Everything here follows the directions printed on your pouch.</p>
+        <p>Two small recipes, a live shelf of e-books and recipe collections, and five guided programs. Everything here follows the directions printed on your pouch.</p>
       </div>
 
       <!-- Recipes -->
@@ -250,67 +255,17 @@
       <section class="kx-band" id="ebooks">
         <div class="kx-wrap">
           <div class="kx-band-head kx-reveal">
-            <p class="eyebrow">The library</p>
+            <p class="eyebrow">The library &middot; Live from Shopify</p>
             <h2>E-books &amp; <span class="accent">Guides.</span></h2>
-            <p>Digital field guides and recipe collections. <span class="kx-hl">Instant download</span>, printable, and yours to keep. No physical ingredients and no medical claims.</p>
+            <p>Every published Kawsaypac e-book and recipe collection, with its real cover, price, and checkout. <span class="kx-hl">Instant download</span>, printable, and yours to keep.</p>
           </div>
-          <div class="kx-ebooks kx-stagger">
-            <article class="kx-ebook kx-reveal">
-              <div class="kx-cover">
-                <img src="assets/img/new/kawsaypac-herbal-field-journal.webp?v=99" alt="The Herbal Preparation Book, a botanical field journal" loading="lazy" decoding="async" width="480" height="600">
-                <span class="kx-format kx-chip kx-chip--forest">eBook</span>
-              </div>
-              <div class="kx-ebook-body">
-                <h3>The Herbal Preparation Book</h3>
-                <p>A digital field guide to infusions, decoctions, timing, and responsible use. Clear methods with printable references.</p>
-                <div class="kx-ebook-foot">
-                  <span class="kx-price-chip">$18.00</span>
-                  <a class="kx-buy" href="product.html?product=ebook-preparation">Buy the guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                </div>
-              </div>
-            </article>
-
-            <article class="kx-ebook kx-reveal">
-              <div class="kx-cover kx-cover--gen">
-                <img class="kx-cover-tex" src="assets/img/gen/texture-botanical-macro.webp?v=99" alt="" loading="lazy" decoding="async" width="480" height="600">
-                <div class="kx-cover-inner">
-                  <span class="kx-cover-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V8"/><path d="M12 12c-3 0-5-2-5-5 3 0 5 2 5 5Z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5Z"/></svg></span>
-                  <span class="kx-cover-mark">Kawsaypac</span>
-                  <div class="kx-cover-title">Ancestral Infusions Recipe Book</div>
-                  <span class="kx-cover-sub">Recipe eBook &middot; Digital download</span>
-                </div>
-                <span class="kx-format kx-chip kx-chip--gold">Recipes</span>
-              </div>
-              <div class="kx-ebook-body">
-                <h3>Ancestral Infusions Recipe Book</h3>
-                <p>A collection of whole-herb infusions, blends, and everyday rituals drawn from the Kawsaypac apothecary. Simple to make, easy to repeat.</p>
-                <div class="kx-ebook-foot">
-                  <span class="kx-price-chip"><small>Digital</small></span>
-                  <a class="kx-buy kx-buy--ghost" href="shop.html#ebooks">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                </div>
-              </div>
-            </article>
-
-            <article class="kx-ebook kx-reveal">
-              <div class="kx-cover kx-cover--gen">
-                <img class="kx-cover-tex" src="assets/img/herbal-infusion.webp?v=99" alt="" loading="lazy" decoding="async" width="480" height="600">
-                <div class="kx-cover-inner">
-                  <span class="kx-cover-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V8"/><path d="M12 12c-3 0-5-2-5-5 3 0 5 2 5 5Z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5Z"/></svg></span>
-                  <span class="kx-cover-mark">Kawsaypac</span>
-                  <div class="kx-cover-title">Everyday Rituals Recipe Book</div>
-                  <span class="kx-cover-sub">Recipe eBook &middot; Digital download</span>
-                </div>
-                <span class="kx-format kx-chip kx-chip--gold">Recipes</span>
-              </div>
-              <div class="kx-ebook-body">
-                <h3>Everyday Rituals Recipe Book</h3>
-                <p>Morning, after-meal, and evening preparations built around the blends you already love. A gentle rhythm for an ordinary day.</p>
-                <div class="kx-ebook-foot">
-                  <span class="kx-price-chip"><small>Digital</small></span>
-                  <a class="kx-buy kx-buy--ghost" href="shop.html#ebooks">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                </div>
-              </div>
-            </article>
+          <p class="shop-status" data-ebooks-status aria-live="polite">Connecting to the digital library&hellip;</p>
+          <div class="editorial-product-grid" data-ebooks-grid aria-live="polite" aria-busy="true"></div>
+          <div class="catalog-empty" data-ebooks-empty hidden>
+            <p class="eyebrow">Digital shelf unavailable</p>
+            <h3>No published e-books could be loaded.</h3>
+            <p>Refresh this page or browse the live Shopify store directly.</p>
+            <a class="btn btn-outline" href="https://theelectriceats.com/collections/eproducts">Visit digital products</a>
           </div>
         </div>
       </section>
@@ -319,55 +274,17 @@
       <section class="kx-band" id="programs">
         <div class="kx-wrap">
           <div class="kx-band-head kx-reveal">
-            <p class="eyebrow">The programs</p>
-            <h2>Protocol <span class="accent">kits.</span></h2>
-            <p>Complete ritual kits that pair complementary blends with step-by-step guidance. Each pouch carries its own formula and preparation directions.</p>
+            <p class="eyebrow">The programs &middot; Live from Shopify</p>
+            <h2>Guided <span class="accent">programs.</span></h2>
+            <p>Structured resets and detox paths with a beginning, a rhythm, and a next step. Each program carries its own guidance and preparation directions.</p>
           </div>
-          <div class="kx-kits kx-stagger">
-            <article class="kx-kit kx-reveal">
-              <div class="kx-kit-media">
-                <img src="assets/img/blend-eliminate-regenerate.webp?v=99" alt="Eliminate and Regenerate full-body detox kit" loading="lazy" decoding="async" width="640" height="440">
-                <span class="kx-format kx-chip kx-chip--gold">Program Kit</span>
-              </div>
-              <div class="kx-kit-body">
-                <h3>Eliminate &amp; Regenerate Kit</h3>
-                <p>A structured multi-blend program for a complete cleansing ritual. Coordinated small batches with a step-by-step guide from first pouch to Final Flush.</p>
-                <div class="kx-kit-foot">
-                  <span class="kx-price-chip">$113.00</span>
-                  <a class="kx-buy" href="product.html?product=eliminate-regenerate">Buy the program <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                </div>
-              </div>
-            </article>
-
-            <article class="kx-kit kx-reveal">
-              <div class="kx-kit-media">
-                <img src="assets/img/blend-sacred-sacral.webp?v=99" alt="Her Fertile Waters women's wellness program kit" loading="lazy" decoding="async" width="640" height="440">
-                <span class="kx-format kx-chip kx-chip--gold">Program Kit</span>
-              </div>
-              <div class="kx-kit-body">
-                <h3>Her Fertile Waters Kit</h3>
-                <p>A guided women's wellness program built around cyclical ritual, grounding, and care. Whole loose herbs with educational preparation notes throughout.</p>
-                <div class="kx-kit-foot">
-                  <span class="kx-price-chip"><small>Guided program</small></span>
-                  <a class="kx-buy kx-buy--ghost" href="shop.html#health-programs">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                </div>
-              </div>
-            </article>
-
-            <article class="kx-kit kx-reveal">
-              <div class="kx-kit-media">
-                <img src="assets/img/new/kawsaypac-zapped-in-editorial-hero.webp?v=99" alt="His Fertile Fires men's vitality program kit" loading="lazy" decoding="async" width="640" height="440">
-                <span class="kx-format kx-chip kx-chip--gold">Program Kit</span>
-              </div>
-              <div class="kx-kit-body">
-                <h3>His Fertile Fires Kit</h3>
-                <p>A guided men's vitality program centered on clean energy, presence, and focus. Whole botanicals with a clear daily rhythm from morning to evening.</p>
-                <div class="kx-kit-foot">
-                  <span class="kx-price-chip"><small>Guided program</small></span>
-                  <a class="kx-buy kx-buy--ghost" href="shop.html#health-programs">View details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-                </div>
-              </div>
-            </article>
+          <p class="shop-status" data-programs-status aria-live="polite">Connecting to health programs&hellip;</p>
+          <div class="editorial-product-grid" data-programs-grid aria-live="polite" aria-busy="true"></div>
+          <div class="catalog-empty" data-programs-empty hidden>
+            <p class="eyebrow">Program shelf unavailable</p>
+            <h3>No published health programs could be loaded.</h3>
+            <p>Refresh this page or browse the live Shopify programs directly.</p>
+            <a class="btn btn-secondary" href="https://theelectriceats.com/collections/transitional-programs">Visit health programs</a>
           </div>
         </div>
       </section>
@@ -414,6 +331,16 @@
       </section>
 
     </main>
+
+    <shopify-cart id="storefront-cart" target="_top">
+      <div class="storefront-cart-empty" slot="empty">
+        <strong>Your ritual bag is empty.</strong>
+        <p>Choose a live product to begin.</p>
+      </div>
+      <span slot="checkout-button">Secure Shopify checkout</span>
+    </shopify-cart>
+    <p class="storefront-notice" data-storefront-notice role="status" aria-live="polite" hidden></p>
+
     <div data-site-footer></div>
     <div data-site-modal></div>
     <script>

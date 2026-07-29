@@ -200,7 +200,7 @@
             href="product.html"
             data-storefront-product-link
             shopify-attr--data-product-handle="product.handle"
-          >View ritual <span aria-hidden="true">&#8599;</span></a>
+          >${options.cardClass && options.cardClass.includes('editorial') ? 'View details' : 'View ritual'} <span aria-hidden="true">&#8599;</span></a>
         </div>
       </article>`;
   }
@@ -361,6 +361,12 @@
       }
     });
 
+    initEditorialGrids();
+  }
+
+  /* Live e-book + program grids. Independent of initShop so any page
+     (shop.html, recipes.html) can host them by including the markup. */
+  function initEditorialGrids() {
     const editorialSections = [
       {
         grid: document.querySelector('[data-ebooks-grid]'),
@@ -380,6 +386,7 @@
 
     editorialSections.forEach((section, index) => {
       if (!section.grid || !section.status || !section.empty) return;
+      if (section.grid.dataset.renderId) return; // already initialized
       const renderId = `editorial-${index + 1}`;
       section.grid.dataset.renderId = renderId;
       section.grid.dataset.state = 'loading';
@@ -564,6 +571,9 @@
     ensureJournalLinks();
     initProductLinks();
     initJournal();
+    // Pages without the shop grid (recipes.html) still get live e-book/program
+    // shelves; on shop.html initShop initializes them first and this no-ops.
+    if (!document.querySelector('[data-shop-grid]')) initEditorialGrids();
     document.documentElement.dataset.storefrontConfigured = 'true';
   }
 

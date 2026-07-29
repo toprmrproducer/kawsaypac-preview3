@@ -523,3 +523,32 @@
   .pp-split-media{min-height:240px}
   .pp-protocol-list .pp-proto-step{flex-direction:column}
 }
+
+/* ============================================================
+   v34 · 29 Jul round 2: vertical gallery selector, larger
+   interactive compound wheel, botanical flank sprites.
+   ============================================================ */
+
+/* --- gallery thumbs: standing column on the left of the image --- */
+.pp-hero-media{position:relative}
+.pp-thumbs{left:14px;top:50%;bottom:auto;transform:translateY(-50%);flex-direction:column;gap:8px}
+@media (max-width:960px){.pp-thumbs{top:auto;bottom:10px;transform:none;flex-direction:row}}
+
+/* --- compound wheel: larger, and hover links segment <-> compound card --- */
+.pp-info-visual svg{width:min(470px,88vw)}
+.pp-info-visual svg [data-widx]{cursor:pointer;transition:opacity .35s ease,transform .35s ease}
+.pp-legend [data-widx]{cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease,opacity .35s ease}
+.pp-wheel-hover svg [data-widx]:not(.is-hot){opacity:.22}
+.pp-wheel-hover svg path.is-hot{transform:scale(1.045);transform-origin:150px 150px}
+.pp-wheel-hover .pp-legend [data-widx]:not(.is-hot){opacity:.45}
+.pp-legend li.is-hot{transform:translateY(-3px);border-color:rgba(215,174,54,.8);box-shadow:0 14px 32px rgba(20,59,40,.14)}
+
+/* --- botanical flank sprites: premium framing on the empty margins --- */
+.pp-band{position:relative}
+.pp-band .pp-shell{position:relative;z-index:1}
+.pp-flora{position:absolute;top:var(--ft,30%);width:var(--fw,120px);z-index:0;pointer-events:none;user-select:none;opacity:.85;filter:drop-shadow(0 10px 22px rgba(20,59,40,.16));animation:ppFloraSway 13s ease-in-out var(--fd,0s) infinite alternate}
+.pp-flora-left{left:calc(var(--fw,120px) * -0.32)}
+.pp-flora-right{right:calc(var(--fw,120px) * -0.32);transform:scaleX(-1)}
+@keyframes ppFloraSway{0%{translate:0 0;rotate:-1.6deg}100%{translate:6px -9px;rotate:1.8deg}}
+@media (max-width:1100px){.pp-flora{display:none}}
+@media (prefers-reduced-motion:reduce){.pp-flora{animation:none}}

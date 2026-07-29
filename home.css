@@ -724,3 +724,8 @@ body>*:last-child{margin-bottom:0}
   /* Smallest phones: the orchid cannot sit cleanly beside a swipeable labelled row */
   .collections .eco-left-frame{display:none!important}
 }
+
+/* v114: Raisa 28-Jul checklist item 1 - the Collections orchid breathes again
+   (supersedes the v112 static freeze; same soft register as the Philosophy blooms) */
+.eco-left-frame img{animation:ecoImgSway 14s ease-in-out .6s infinite alternate!important;transform-origin:50% 12%}
+@media (prefers-reduced-motion:reduce){.eco-left-frame img{animation:none!important}}

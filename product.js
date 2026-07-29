@@ -301,17 +301,17 @@
     let segs = '';
     for (let i = 0; i < n; i++) {
       const a0 = (360 / n) * i + gap / 2, a1 = (360 / n) * (i + 1) - gap / 2;
-      segs += `<path class="pp-wseg" style="--i:${i}" d="${arcPath(150, 150, 130, 84, a0, a1)}" fill="${colors[i % colors.length]}" opacity="0.94"></path>`;
+      segs += `<path class="pp-wseg" data-widx="${i}" style="--i:${i}" d="${arcPath(150, 150, 130, 84, a0, a1)}" fill="${colors[i % colors.length]}" opacity="0.94"></path>`;
       const [lx, ly] = polar(150, 150, 107, (a0 + a1) / 2);
-      segs += `<text class="pp-wheel-num pp-wseg" style="--i:${i}" x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" text-anchor="middle" dominant-baseline="middle">${i + 1}</text>`;
+      segs += `<text class="pp-wheel-num pp-wseg" data-widx="${i}" style="--i:${i}" x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" text-anchor="middle" dominant-baseline="middle">${i + 1}</text>`;
     }
     const legend = acts.map((a, i) => `
-      <li><span class="pp-legend-dot" style="background:${colors[i % colors.length]}">${i + 1}</span>
+      <li data-widx="${i}"><span class="pp-legend-dot" style="background:${colors[i % colors.length]}">${i + 1}</span>
       <div><strong>${esc(a.name)}</strong>${a.role ? `<span>${esc(a.role)}</span>` : ''}</div></li>`).join('');
     return `
     <section class="pp-band pp-info" data-sec="infographic">
       <div class="pp-shell pp-info-grid">
-        <div class="pp-info-visual">
+        <div class="pp-info-visual" data-wheel>
           <svg viewBox="0 0 300 300" role="img" aria-label="Active compound wheel for ${esc(p.name)}">
             <circle cx="150" cy="150" r="140" fill="none" stroke="#d7ae36" stroke-width="1" stroke-dasharray="2 6"/>
             ${segs}
@@ -907,6 +907,23 @@
       }));
     });
 
+    // compound wheel hover: hovering a segment lights its legend card and vice versa
+    const wheelSec = root.querySelector('[data-sec="infographic"]');
+    if (wheelSec && wheelSec.querySelector('[data-wheel]')) {
+      const segsAll = Array.from(wheelSec.querySelectorAll('svg [data-widx]'));
+      const cards = Array.from(wheelSec.querySelectorAll('.pp-legend [data-widx]'));
+      const setHot = (idx) => {
+        wheelSec.classList.toggle('pp-wheel-hover', idx !== null);
+        segsAll.forEach((s) => s.classList.toggle('is-hot', s.dataset.widx === String(idx)));
+        cards.forEach((c) => c.classList.toggle('is-hot', c.dataset.widx === String(idx)));
+      };
+      [...segsAll, ...cards].forEach((el) => {
+        el.addEventListener('mouseenter', () => setHot(el.dataset.widx));
+        el.addEventListener('mouseleave', () => setHot(null));
+        el.addEventListener('focus', () => setHot(el.dataset.widx), true);
+      });
+    }
+
     // sequential "wheel" reveals: numbered items open 1-2-3-4-5 as they scroll in
     if ('IntersectionObserver' in window) {
       const seqIo = new IntersectionObserver((entries) => {
@@ -934,6 +951,31 @@
       }, { rootMargin: '0px 0px -8% 0px' });
       root.querySelectorAll('.pp-band, .pp-claim, .pp-hero-grid').forEach((el) => { el.classList.add('pp-anim'); io.observe(el); });
     }
+  }
+
+  /* Premium botanical sprites on the PDP flanks (Raisa: left/right feel bland).
+     Anchored per cream section, varied scale, gentle sway, always behind content. */
+  const FLORA = [
+    ['highlights', 'left', 'passionflower-vine', 150], ['highlights', 'right', 'orchid-cluster', 84],
+    ['besttime', 'right', 'cats-claw-vine', 170], ['besttime', 'left', 'seed-pod', 62],
+    ['results', 'left', 'guayusa-sprig', 120], ['science', 'right', 'cinchona-bark-leaves', 130],
+    ['secret', 'right', 'passionflower-vine', 96], ['faq', 'left', 'cinchona-bark-leaves', 110],
+    ['routine', 'right', 'guayusa-sprig', 150], ['reviews-wall', 'left', 'orchid-cluster', 70]
+  ];
+  function sprinkleFlora(root) {
+    FLORA.forEach(([sec, side, icon, size], i) => {
+      const host = root.querySelector(`[data-sec="${sec}"]`);
+      if (!host) return;
+      const img = document.createElement('img');
+      img.className = `pp-flora pp-flora-${side}`;
+      img.src = `assets/sprites/herb-icons/${icon}.webp?v=33`;
+      img.alt = '';
+      img.setAttribute('aria-hidden', 'true');
+      img.style.setProperty('--fw', size + 'px');
+      img.style.setProperty('--fd', ((i % 5) * 1.3).toFixed(1) + 's');
+      img.style.setProperty('--ft', (18 + (i * 13) % 52) + '%');
+      host.appendChild(img);
+    });
   }
 
   /* ---------- boot ---------- */
@@ -969,6 +1011,7 @@
       disclaimerSection(),
       stickyBar(p)
     ].join('\n'));
+    sprinkleFlora(root);
     initInteractions(root, p);
   }
 

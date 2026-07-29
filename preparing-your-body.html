@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Preparing Your Body | Kawsaypac Ancestral Herbs</title>
-  <meta name="description" content="Herbs are amplifiers. Prepare your body to receive them: what to eat, how to hydrate, how to sleep, and how to support your nervous system through your herbal protocol.">
+  <meta name="description" content="Supporting your healing protocol. What you put in your body matters, and so does everything else: what to reduce, what to prioritize, movement, hydration, sleep, stress, mindset, and intention.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=109"><link rel="stylesheet" href="home.css?v=113">
+  <link rel="stylesheet" href="styles.css?v=109"><link rel="stylesheet" href="home.css?v=114">
   <script defer src="app.js?v=116"></script>
   <style>
   /* ============ Preparing Your Body, page-scoped, prefixed .kx-body ============ */
@@ -26,7 +26,7 @@
   /* ---- Hero ---- */
   .kx-body .kx-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,66px);align-items:center;padding:clamp(42px,5.5vw,80px) 0 clamp(30px,4vw,54px)}
   .kx-body .kx-hero h1{font-size:clamp(2.6rem,6.2vw,5rem)}
-  .kx-body .kx-hero .kx-lede{font-size:1.18rem;color:#4a4a42;margin-top:22px;max-width:36ch;line-height:1.6}
+  .kx-body .kx-hero .kx-lede{font-family:var(--kx-serif);font-style:italic;font-size:1.32rem;color:#4a4a42;margin-top:22px;max-width:34ch;line-height:1.5}
   .kx-body .kx-hero-rule{width:64px;height:2px;background:linear-gradient(90deg,var(--kx-gold),transparent);margin-top:26px}
   .kx-body .kx-hero-media{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--kx-shadow-lift);border:1px solid rgba(255,255,255,.5)}
   .kx-body .kx-hero-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
@@ -43,21 +43,25 @@
   .kx-body .kx-open h2{font-size:clamp(1.95rem,4vw,3rem);margin-bottom:20px}
   .kx-body .kx-open .kx-dropcap::first-letter{font-family:var(--kx-serif);font-size:3.1em;line-height:.78;float:left;margin:.06em .12em 0 0;color:var(--kx-gold);font-weight:400}
   .kx-body .kx-open .kx-lead{text-align:left;max-width:60ch;margin-inline:auto;font-size:1.12rem}
+  .kx-body .kx-seed{font-family:var(--kx-serif);font-style:italic;font-size:clamp(1.24rem,2.2vw,1.6rem);color:var(--kx-ink);max-width:44ch;margin:26px auto 0;padding-top:24px;border-top:1px solid var(--kx-line);line-height:1.45}
 
-  /* ---- Amplifier band ---- */
-  .kx-body .kx-amp{background:var(--kx-paper);position:relative}
-  .kx-body .kx-amp .kx-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,60px);align-items:stretch}
-  .kx-body .kx-amp-media{border-radius:20px;overflow:hidden;box-shadow:var(--kx-shadow);border:1px solid rgba(255,255,255,.5);min-height:100%}
-  .kx-body .kx-amp-media img{width:100%;height:100%;object-fit:cover;display:block}
-  .kx-body .kx-amp-copy{background:#fff;border:1px solid var(--kx-line);border-radius:20px;box-shadow:var(--kx-shadow);padding:clamp(28px,3.4vw,46px);display:flex;flex-direction:column;justify-content:center}
-  .kx-body .kx-amp h2{font-size:clamp(2.1rem,4.4vw,3.3rem);margin-bottom:18px}
-  .kx-body .kx-pull{position:relative;font-family:var(--kx-serif);font-style:italic;font-size:clamp(1.24rem,2vw,1.5rem);line-height:1.42;color:var(--kx-ink);margin:26px 0 0;padding:22px 0 0 34px;border-top:1px solid var(--kx-line)}
-  .kx-body .kx-pull::before{content:"\201C";position:absolute;left:-4px;top:8px;font-family:var(--kx-serif);font-size:3.2rem;line-height:1;color:var(--kx-gold);opacity:.55}
-
-  /* ---- Pillars intro ---- */
-  .kx-body .kx-pillars-intro{text-align:center;max-width:60ch;margin:0 auto clamp(30px,3.6vw,52px)}
+  /* ---- Section intro (centered) ---- */
+  .kx-body .kx-pillars-intro{text-align:center;max-width:62ch;margin:0 auto clamp(30px,3.6vw,52px)}
   .kx-body .kx-pillars-intro h2{font-size:clamp(1.95rem,4vw,3rem);margin-bottom:16px}
   .kx-body .kx-pillars-intro .kx-eyebrow{justify-content:center}
+
+  /* ---- Card grids (Reduce / Prioritize) ---- */
+  .kx-body .kx-cardgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.2vw,26px)}
+  .kx-body .kx-cardgrid .kx-card{padding:clamp(22px,2.6vw,34px)}
+  .kx-body .kx-cardgrid .kx-card h3{font-size:clamp(1.34rem,2.2vw,1.72rem);margin-bottom:10px}
+  .kx-body .kx-cardgrid .kx-card>p:last-child{margin-bottom:0}
+  .kx-body .kx-span2{grid-column:1/-1}
+  .kx-body .kx-card-tag{font-family:var(--kx-sans);font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--kx-gold-deep);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .kx-body .kx-card-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--kx-gold);box-shadow:0 0 0 4px rgba(201,169,66,.16);flex:0 0 auto}
+  .kx-body .kx-card-reduce{border-top:3px solid rgba(176,106,78,.5)}
+  .kx-body .kx-card-reduce .kx-card-tag{color:#b06a4e}
+  .kx-body .kx-card-reduce .kx-card-tag::before{background:transparent;border:1.5px solid #b06a4e;box-shadow:none}
+  .kx-body .kx-card-prio{border-top:3px solid rgba(201,169,66,.55)}
 
   /* ---- Pillar rows (image | premium card) ---- */
   .kx-body .kx-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,52px);align-items:stretch;margin-bottom:clamp(24px,3vw,40px)}
@@ -74,7 +78,7 @@
   .kx-body .kx-ico svg{width:24px;height:24px}
   .kx-body .kx-card-label{font-family:var(--kx-sans);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--kx-gold-deep)}
   .kx-body .kx-card h3{font-size:clamp(1.6rem,3vw,2.3rem);margin:0 0 12px}
-  .kx-body .kx-card>p{margin-bottom:.2rem}
+  .kx-body .kx-card>p:last-child{margin-bottom:0}
   .kx-body .kx-list{list-style:none;margin:16px 0 0;padding:16px 0 0;border-top:1px dashed var(--kx-line)}
   .kx-body .kx-list li{position:relative;padding-left:26px;margin-bottom:12px;color:var(--kx-soft);font-family:var(--kx-sans);font-size:1.02rem;line-height:1.55}
   .kx-body .kx-list li:last-child{margin-bottom:0}
@@ -85,7 +89,19 @@
   .kx-body .kx-list li.kx-list-cap::before,.kx-body .kx-avoid li.kx-list-cap::before{content:none}
   .kx-body .kx-avoid .kx-list-cap{color:#b06a4e}
 
-  /* ---- Reminder strip ---- */
+  /* ---- Dark card + editorial bands ---- */
+  .kx-body .kx-card-dark{background:var(--kx-ink);border-color:rgba(250,249,246,.08)}
+  .kx-body .kx-card-dark h3,.kx-body .kx-card-dark .kx-card-label{color:var(--kx-cream)}
+  .kx-body .kx-card-dark .kx-card-label{color:var(--kx-gold)}
+  .kx-body .kx-card-dark p{color:rgba(250,249,246,.84)}
+  .kx-body .kx-card-dark .kx-hl{color:#fff;background:linear-gradient(transparent 62%,rgba(201,169,66,.4) 0)}
+  .kx-body .kx-card-dark .kx-em{color:var(--kx-gold)}
+  .kx-body .kx-mind{background:var(--kx-paper);border-radius:22px;padding:clamp(32px,4.2vw,58px) clamp(22px,4vw,64px)}
+  .kx-body .kx-mind h2{font-size:clamp(1.95rem,4vw,3rem);margin-bottom:18px}
+  .kx-body .kx-mind p{max-width:66ch}
+  .kx-body .kx-mind p:last-child{margin-bottom:0}
+
+  /* ---- Reminder / CTA strip ---- */
   .kx-body .kx-remind{position:relative;background:var(--kx-ink);color:var(--kx-cream);border-radius:22px;padding:clamp(34px,4.4vw,60px);text-align:center;overflow:hidden;box-shadow:var(--kx-shadow-lift)}
   .kx-body .kx-remind::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 0%,rgba(201,169,66,.16),transparent 60%);pointer-events:none}
   .kx-body .kx-remind-mark{position:relative;font-family:var(--kx-serif);font-size:3.4rem;line-height:1;color:var(--kx-gold);margin-bottom:6px}
@@ -93,13 +109,29 @@
   .kx-body .kx-remind p{color:rgba(250,249,246,.84);max-width:62ch;margin-inline:auto;position:relative}
   .kx-body .kx-remind .kx-em{color:var(--kx-gold)}
   .kx-body .kx-remind .kx-hl{color:#fff;background:linear-gradient(transparent 62%,rgba(201,169,66,.4) 0)}
+  .kx-body .kx-remind .kx-cta{position:relative;display:flex;justify-content:center;margin-top:22px}
 
   /* ---- Closing ---- */
   .kx-body .kx-close{text-align:center;padding:clamp(42px,5vw,76px) 0 clamp(50px,6vw,92px)}
   .kx-body .kx-close h2{font-size:clamp(2.1rem,4.4vw,3.4rem);margin-bottom:16px}
-  .kx-body .kx-close>p{max-width:52ch;margin-inline:auto}
+  .kx-body .kx-close>p{max-width:58ch;margin-inline:auto}
   .kx-body .kx-close .kx-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-  .kx-body .kx-note{font-size:.88rem;color:#8a877e;font-family:var(--kx-sans);max-width:58ch;margin:26px auto 0;padding-top:22px;border-top:1px solid var(--kx-line);font-style:italic}
+  .kx-body .kx-close .kx-seal{font-family:var(--kx-serif);font-style:italic;font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--kx-ink);margin:8px auto 0}
+
+  /* ---- FAQ accordion ---- */
+  .kx-body .kx-faq{width:min(860px,calc(100% - 40px));margin-inline:auto}
+  .kx-body .kx-faq details{background:#fff;border:1px solid var(--kx-line);border-radius:16px;box-shadow:var(--kx-shadow);margin-bottom:14px;overflow:hidden;transition:box-shadow .4s cubic-bezier(.22,1,.36,1)}
+  .kx-body .kx-faq details:hover{box-shadow:var(--kx-shadow-lift)}
+  .kx-body .kx-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px clamp(18px,2.6vw,28px);font-family:var(--kx-serif);font-size:clamp(1.08rem,1.8vw,1.32rem);color:var(--kx-ink);line-height:1.3}
+  .kx-body .kx-faq summary::-webkit-details-marker{display:none}
+  .kx-body .kx-faq summary::after{content:"";flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid rgba(201,169,66,.45);background:
+    linear-gradient(var(--kx-gold-deep),var(--kx-gold-deep)) center/12px 1.5px no-repeat,
+    linear-gradient(var(--kx-gold-deep),var(--kx-gold-deep)) center/1.5px 12px no-repeat,
+    rgba(201,169,66,.1);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+  .kx-body .kx-faq details[open] summary::after{transform:rotate(135deg)}
+  .kx-body .kx-faq details[open] summary{border-bottom:1px dashed var(--kx-line)}
+  .kx-body .kx-faq .kx-faq-a{padding:18px clamp(18px,2.6vw,28px) 22px}
+  .kx-body .kx-faq .kx-faq-a p{margin-bottom:0}
 
   /* Progressive-enhancement reveal, visible by default */
   .kx-body .kx-rise{opacity:1;transform:none}
@@ -110,12 +142,12 @@
   @media (max-width:860px){
     .kx-body .kx-hero{grid-template-columns:1fr;gap:26px;padding-top:26px}
     .kx-body .kx-hero-media{aspect-ratio:16/11;order:-1}
-    .kx-body .kx-amp .kx-grid{grid-template-columns:1fr}
+    .kx-body .kx-cardgrid{grid-template-columns:1fr}
     .kx-body .kx-row{grid-template-columns:1fr;gap:18px}
     .kx-body .kx-row.kx-flip .kx-row-media{order:-1}
     .kx-body .kx-row-media{order:-1;min-height:260px}
   }
-  
+
 /* On This Page menu: pinned hard left inside the light margin, on its own
    cream glass panel so it stays legible over any band it scrolls past */
 @media (min-width:1280px){
@@ -137,10 +169,13 @@
       <p class="page-side-nav__title">On this page</p>
       <ul>
         <li><a href="#body-overview">Overview</a></li>
-        <li><a href="#foundation">Foundation</a></li>
-        <li><a href="#amplifiers">The Principle</a></li>
-        <li><a href="#prepare-ground">Four Practices</a></li>
-        <li><a href="#gentle-note">Gentle Note</a></li>
+        <li><a href="#reduce-avoid">Reduce or Avoid</a></li>
+        <li><a href="#prioritize">Prioritize</a></li>
+        <li><a href="#movement">Movement &amp; Hydration</a></li>
+        <li><a href="#sleep">Sleep &amp; Stress</a></li>
+        <li><a href="#mindset">Mindset &amp; Ceremony</a></li>
+        <li><a href="#bundle">Digital Bundle</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
 <script>/* On This Page side-menu fix: the shared nav script calls link.scrollIntoView() on viewports under 1280px, which scrolls the document back to the sticky bar's static position and blocks page scrolling. Neutralize it on these links only; horizontal pill centering is cosmetic. */document.querySelectorAll('.page-side-nav a').forEach(function(a){a.scrollIntoView=function(){}});</script>
@@ -148,78 +183,125 @@
     <!-- HERO -->
     <section class="kx-wrap kx-hero" id="body-overview">
       <div class="kx-hero-copy kx-rise">
-        <p class="kx-eyebrow">Before You Brew</p>
+        <p class="kx-eyebrow">Supporting Your Healing Protocol</p>
         <h1>How to Prepare Your <span class="kx-em">Body</span>.</h1>
-        <p class="kx-lede">The herbs are ready. But are you? <span class="kx-hl">How you live in your body decides how far these plants can go.</span></p>
+        <p class="kx-lede">What you put in your body matters. So does everything else.</p>
         <div class="kx-hero-rule"></div>
       </div>
       <div class="kx-hero-media kx-rise">
         <img src="assets/img/gen/story-morning-ritual.webp" alt="A quiet morning ritual with a warm herbal brew resting in soft light" fetchpriority="high">
-        <span class="kx-hero-cap">The Companion Ritual</span>
+        <span class="kx-hero-cap">Prepare the Soil</span>
       </div>
     </section>
 
     <!-- OPENING -->
     <section class="kx-narrow kx-open kx-rise" id="foundation">
       <p class="kx-eyebrow">The Foundation</p>
-      <h2>Before you begin any herbal protocol, <span class="kx-em">start with the ground it grows in.</span></h2>
-      <p class="kx-lead kx-dropcap">What you put in your body, and how you live in your body, determines <span class="kx-hl">how far these plants can go</span>. This is the companion guide to your herbs: what to eat, what to avoid, how to hydrate, and how to support your nervous system, so your herbs can do what they were designed to do.</p>
+      <h2>The plants are ready. <span class="kx-em">The question is, are you?</span></h2>
+      <p class="kx-lead kx-dropcap">In the Amazon and Andes, plant medicine has never been just about the plant. The healers we sit with in Ecuador understand something that modern wellness has largely forgotten that <span class="kx-hl">the person receiving the medicine is as important as the medicine itself</span>. Before a ceremony, before a protocol, before the first cup is poured, there is preparation. Intention. A clearing of what no longer serves so that what is being offered can actually land.</p>
+      <p class="kx-lead">This page is your preparation. Because your body is a living ecosystem, and the more you tend to it, what you feed it, how you rest it, how you move it, how you speak to it, <span class="kx-key">the more your herbs can do what they came to do</span>.</p>
+      <p class="kx-seed">Think of your herbs as seeds. This page is how you prepare the soil.</p>
     </section>
 
-    <!-- AMPLIFIER BAND -->
-    <section class="kx-amp kx-sec" id="amplifiers">
-      <div class="kx-wrap kx-grid">
-        <div class="kx-amp-media kx-rise">
-          <img src="assets/img/gen/texture-botanical-macro.webp" alt="Macro detail of fresh botanical leaves and herbs">
-        </div>
-        <div class="kx-amp-copy kx-rise">
-          <p class="kx-eyebrow">The Principle</p>
-          <h2>Herbs are <span class="kx-em">amplifiers</span>.</h2>
-          <p>The cleaner the foundation you give them, <span class="kx-key">the deeper and faster they work</span>. What you eat, how much you sleep, how you manage stress, and how well you hydrate all play a direct role in your results.</p>
-          <p class="kx-pull">A cup of Cat's Claw in a body running on processed food, poor sleep, and chronic stress will not reach the same depth as that same cup in a body that has been intentionally prepared to receive it.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOUR PILLARS -->
-    <section class="kx-wrap kx-sec" id="prepare-ground">
+    <!-- WHAT TO REDUCE OR AVOID -->
+    <section class="kx-wrap kx-sec" id="reduce-avoid">
       <div class="kx-pillars-intro kx-rise">
-        <p class="kx-eyebrow">Prepare the Ground</p>
-        <h2>Four ways to help your body <span class="kx-em">receive</span>.</h2>
-        <p>None of this asks for perfection. It asks for <span class="kx-key">intention</span>. Give your herbs a body that is ready, and they will meet you halfway.</p>
+        <p class="kx-eyebrow">Clearing the Way</p>
+        <h2>What to Reduce or <span class="kx-em">Avoid</span></h2>
+        <p>These are the inputs that work directly against what your herbs are trying to do. You do not have to be perfect. But the more you can reduce these, <span class="kx-hl">the more your body can focus on healing instead of managing</span>.</p>
       </div>
+      <div class="kx-cardgrid">
+        <div class="kx-card kx-card-reduce kx-rise">
+          <p class="kx-card-tag">Reduce 01</p>
+          <h3>Processed and packaged foods</h3>
+          <p>Artificial preservatives, dyes, and additives create inflammatory load in the body, the exact environment your herbs are working to clear. If it comes in a box and has ingredients you cannot pronounce, your body is spending energy processing it instead of healing.</p>
+        </div>
+        <div class="kx-card kx-card-reduce kx-rise">
+          <p class="kx-card-tag">Reduce 02</p>
+          <h3>Refined sugar</h3>
+          <p>Sugar feeds inflammation, disrupts hormonal balance, spikes blood sugar, and suppresses immune function. It directly undermines your detox, hormonal, and digestive protocols. This includes sodas, candy, pastries, and most packaged snacks.</p>
+        </div>
+        <div class="kx-card kx-card-reduce kx-rise">
+          <p class="kx-card-tag">Reduce 03</p>
+          <h3>Alcohol</h3>
+          <p>Alcohol taxes the liver, the organ responsible for processing and eliminating the toxins and excess hormones your herbs are mobilizing. Drinking while on a healing protocol is counterproductive. Your liver cannot do two things at once.</p>
+        </div>
+        <div class="kx-card kx-card-reduce kx-rise">
+          <p class="kx-card-tag">Reduce 04</p>
+          <h3>Seed oils</h3>
+          <p>Canola, soybean, sunflower, and vegetable oils are highly inflammatory. Swap them for olive oil, coconut oil, or avocado oil wherever possible.</p>
+        </div>
+        <div class="kx-card kx-card-reduce kx-rise">
+          <p class="kx-card-tag">Reduce 05</p>
+          <h3>Dairy</h3>
+          <p>For many people, dairy creates mucous buildup and contributes to inflammation, particularly problematic when working on respiratory, gut, or hormonal protocols. Consider reducing or eliminating during your healing cycle.</p>
+        </div>
+        <div class="kx-card kx-card-reduce kx-rise">
+          <p class="kx-card-tag">Reduce 06</p>
+          <h3>Gluten</h3>
+          <p>Gluten can increase intestinal permeability, commonly called leaky gut, and trigger systemic inflammation in sensitive individuals. If you are working on gut health or autoimmune conditions, reducing gluten during your protocol is worth trying.</p>
+        </div>
+        <div class="kx-card kx-card-reduce kx-span2 kx-rise">
+          <p class="kx-card-tag">Reduce 07</p>
+          <h3>Caffeine from coffee</h3>
+          <p>If you are on a nervous system, sleep, or hormonal protocol, coffee's acidity and cortisol-spiking effects work against your herbs. <span class="kx-hl">Guayusa is your answer: same caffeine, none of the disruption.</span></p>
+        </div>
+      </div>
+    </section>
 
-      <!-- EAT -->
+    <!-- WHAT TO PRIORITIZE -->
+    <section class="kx-wrap kx-sec-tight" id="prioritize">
+      <div class="kx-pillars-intro kx-rise">
+        <p class="kx-eyebrow">Feeding the Work</p>
+        <h2>What to <span class="kx-em">Prioritize</span></h2>
+      </div>
+      <div class="kx-cardgrid">
+        <div class="kx-card kx-card-prio kx-rise">
+          <p class="kx-card-tag">Prioritize 01</p>
+          <h3>Whole, living foods</h3>
+          <p>Fruits, vegetables, legumes, whole grains, and clean proteins give your body the nutrients it needs to rebuild. <span class="kx-hl">The more color on your plate, the broader the antioxidant support</span> you are giving your cells.</p>
+        </div>
+        <div class="kx-card kx-card-prio kx-rise">
+          <p class="kx-card-tag">Prioritize 02</p>
+          <h3>Anti-inflammatory foods</h3>
+          <p>Turmeric, ginger, garlic, leafy greens, berries, and omega-3 rich foods like walnuts and flaxseed work alongside your herbs rather than against them.</p>
+        </div>
+        <div class="kx-card kx-card-prio kx-rise">
+          <p class="kx-card-tag">Prioritize 03</p>
+          <h3>Fermented foods</h3>
+          <p>Sauerkraut, kimchi, kefir, and natural yogurt support your gut microbiome, the ecosystem that determines how well your body absorbs everything, including your herbs.</p>
+        </div>
+        <div class="kx-card kx-card-prio kx-rise">
+          <p class="kx-card-tag">Prioritize 04</p>
+          <h3>Fiber</h3>
+          <p>A fiber-rich diet keeps your elimination pathways moving. Your herbs are mobilizing toxins and waste. <span class="kx-key">Fiber helps carry it out.</span> Leafy greens, chia seeds, flaxseed, and legumes are your allies here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVEMENT -->
+    <section class="kx-wrap kx-sec" id="movement">
       <div class="kx-row kx-rise">
         <div class="kx-card">
           <div class="kx-card-head">
             <span class="kx-numeral">01</span>
             <span class="kx-ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-4.4 3.4-8.4 9-9 .3 6.4-1.6 12.4-2 16Z"/><path d="M11 20c0-4 2.2-8 6-11"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="m6 21 3-6 2-3-1-5 4 2 2 3h3"/><path d="m9 12-3 2-2 4"/></svg>
             </span>
-            <span class="kx-card-label">Eat</span>
+            <span class="kx-card-label">Movement</span>
           </div>
-          <h3>Feed the body <span class="kx-em">real food</span>.</h3>
-          <p>Lean toward whole, anti-inflammatory foods that give your system less to fight and more to work with. <span class="kx-hl">The simpler your plate, the more room your herbs have to do their work.</span></p>
-          <ul class="kx-list">
-            <li class="kx-list-cap" style="padding-left:0">Lean toward</li>
-            <li>Whole vegetables, fruit, and clean proteins as the base of most meals</li>
-            <li>Naturally anti-inflammatory foods: leafy greens, ginger, turmeric, healthy fats</li>
-            <li>Cooked, warm, easy-to-digest meals while you are on a protocol</li>
-          </ul>
-          <ul class="kx-list kx-avoid">
-            <li class="kx-list-cap" style="padding-left:0">Ease off</li>
-            <li>Avoid processed and packaged food that keeps the body inflamed</li>
-            <li>Avoid refined sugar, it works against the herbs, especially hormonal and blood-sugar blends</li>
-            <li>Avoid alcohol, which taxes the same systems your herbs are trying to restore</li>
-          </ul>
+          <h3>Movement</h3>
+          <p>You do not need an intense training program to support your healing. <span class="kx-hl">You need consistency and flow.</span></p>
+          <p>Your lymphatic system, one of the primary drainage pathways your herbs work through, has no pump of its own. It moves through muscle contraction and body movement. When you are sedentary, lymphatic fluid stagnates. When you move, it flows.</p>
+          <p>A 30-minute walk daily does more for your detoxification, circulation, and hormonal health than most people realize. Add gentle yoga, stretching, or swimming if it feels right. The goal is not performance. <span class="kx-key">The goal is flow</span>, keeping your body's internal rivers moving so your herbs have clear pathways to work through.</p>
+          <p>If you are on the Eliminate &amp; Regenerate or River of Life protocols especially, daily movement is not optional. It is part of the protocol.</p>
         </div>
         <div class="kx-row-media">
-          <img src="assets/img/gen/philo-harvest-wide.webp" alt="Freshly harvested whole plants and produce laid out in warm daylight">
+          <img src="assets/img/bg-cloudforest-edge.webp" alt="A walking path along the edge of the cloud forest in soft light">
         </div>
       </div>
 
-      <!-- HYDRATE -->
+      <!-- HYDRATION -->
       <div class="kx-row kx-flip kx-rise">
         <div class="kx-row-media">
           <img src="assets/img/bg-waterfall.webp" alt="Clear water falling through the cloud forest">
@@ -230,20 +312,19 @@
             <span class="kx-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11Z"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.5 2"/></svg>
             </span>
-            <span class="kx-card-label">Hydrate</span>
+            <span class="kx-card-label">Hydration</span>
           </div>
-          <h3>Water is the <span class="kx-em">carrier</span>.</h3>
-          <p>Your herbs move through your body in water. <span class="kx-hl">A well-hydrated system carries their compounds further</span> and clears what is being released more gently. Hydration is the quiet half of every protocol.</p>
-          <ul class="kx-list">
-            <li>Drink clean water steadily through the day, not all at once</li>
-            <li>Begin the morning with water before caffeine or food</li>
-            <li>Add more on days your protocol is working the detox and digestive systems</li>
-            <li>Remember your warm brewed herbs count toward the ritual, always taken warm</li>
-          </ul>
+          <h3>Hydration</h3>
+          <p>Water is not optional: <span class="kx-hl">it is the vehicle everything else travels in</span>.</p>
+          <p>Your herbs work by drawing compounds into your bloodstream, mobilizing toxins from deep tissue, and moving waste through your elimination pathways. Without adequate water, that entire process slows down, becomes uncomfortable, and loses effectiveness.</p>
+          <p>Aim for <span class="kx-key">half your body weight in ounces of water daily</span> as a baseline. During an active detox or cleansing protocol, increase that. Add lemon for liver support, Camu Camu for Vitamin C and iron absorption, or a pinch of sea salt for electrolyte balance.</p>
+          <p>Herbal teas count toward your daily intake. Coffee and alcohol do not.</p>
         </div>
       </div>
+    </section>
 
-      <!-- SLEEP -->
+    <!-- SLEEP -->
+    <section class="kx-wrap kx-sec-tight" id="sleep">
       <div class="kx-row kx-rise">
         <div class="kx-card">
           <div class="kx-card-head">
@@ -253,24 +334,20 @@
             </span>
             <span class="kx-card-label">Sleep</span>
           </div>
-          <h3>Rest is where the <span class="kx-em">work lands</span>.</h3>
-          <p>Sleep is when the body repairs and integrates. <span class="kx-hl">The same protocol reaches further in a rested body than in a depleted one</span>, because rest is when your system finally has the space to respond.</p>
-          <ul class="kx-list">
-            <li>Protect a consistent sleep and wake rhythm while you are on your herbs</li>
-            <li>Wind down away from screens and bright light before bed</li>
-            <li>Keep evenings calm and unhurried so the body can settle</li>
-            <li>Let the nighttime blends, taken warm, become part of your close-of-day ritual</li>
-          </ul>
+          <h3>Sleep</h3>
+          <p>Your body does not heal while you are busy. <span class="kx-hl">It heals while you rest.</span></p>
+          <p>Most cellular repair, hormonal regulation, immune rebuilding, and detoxification happen during deep sleep. If you are shortchanging your rest, your herbs can only do a fraction of what they are capable of. Aim for 7 to 9 hours. Take your evening herbs, Valerian Root, Scales of Balance, Sacred Sacral, before bed and let the plants support what your body is designed to do in the dark.</p>
+          <p>Create a wind-down ritual. Dim the lights. Put the screens away. Drink your evening cup with intention. Sleep is not passive. <span class="kx-key">It is when the real work happens.</span></p>
         </div>
         <div class="kx-row-media">
           <img src="assets/img/gen/story-evening-cup.webp" alt="A warm cup resting in low evening light before rest">
         </div>
       </div>
 
-      <!-- NERVOUS SYSTEM -->
+      <!-- STRESS -->
       <div class="kx-row kx-flip kx-rise">
         <div class="kx-row-media">
-          <img src="assets/img/gen/closing-sunrise-cup.webp" alt="Sunrise stillness with a warm cup held in both hands">
+          <img src="assets/img/chip-hands.webp" alt="Hands held open in a moment of stillness">
         </div>
         <div class="kx-card">
           <div class="kx-card-head">
@@ -278,40 +355,105 @@
             <span class="kx-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.2-6 3.4 12 2.4-6H22"/></svg>
             </span>
-            <span class="kx-card-label">Support Your Nervous System</span>
+            <span class="kx-card-label">Stress</span>
           </div>
-          <h3>Calm the system that <span class="kx-em">holds it all</span>.</h3>
-          <p>Chronic stress keeps the body braced, and a braced body cannot fully receive. <span class="kx-hl">Softening your nervous system is not a luxury on a protocol, it is part of the protocol.</span> This is where the deepest results are protected.</p>
-          <ul class="kx-list">
-            <li>Manage daily stress instead of letting it run in the background</li>
-            <li>Use slow, intentional breathwork to bring the body out of its guard</li>
-            <li>Move your body gently and often, walking, stretching, unrushed movement</li>
-            <li>Make room for stillness, the way the communities these herbs come from always have</li>
-          </ul>
+          <h3>Stress</h3>
+          <p>Chronic stress is one of the most powerful disruptors of healing. It elevates cortisol, suppresses immune function, disrupts hormonal balance, slows digestion, and keeps your nervous system in a state that makes deep restoration nearly impossible.</p>
+          <p>You do not have to eliminate stress. But you do have to <span class="kx-hl">create space away from it, daily</span>. Even 10 minutes of stillness, breathwork, time in nature, or quiet prayer changes your body's chemistry in ways that directly support your herbs' work.</p>
+          <p>If stress is a significant factor in your health picture, <span class="kx-key">Scales of Balance, Restoring Order, and Chuchuhuasi</span> are your closest allies in this catalog.</p>
         </div>
       </div>
     </section>
 
-    <!-- REMINDER -->
-    <section class="kx-wrap kx-sec-tight" id="gentle-note">
-      <div class="kx-remind kx-rise">
-        <div class="kx-remind-mark" aria-hidden="true">&sect;</div>
-        <p class="kx-eyebrow" style="color:var(--kx-gold);justify-content:center">A Gentle Note</p>
-        <h2>This is <span class="kx-em">groundwork</span>, not gatekeeping.</h2>
-        <p>You do not have to arrive perfect. <span class="kx-hl">Prepare the body intentionally, live a little cleaner while your herbs are working,</span> and you give these plants their best chance to reach their full depth. Always consult a qualified clinician about pregnancy, nursing, medications, allergies, or ongoing conditions before starting any herbal protocol.</p>
+    <!-- MINDSET -->
+    <section class="kx-wrap kx-sec-tight" id="mindset">
+      <div class="kx-mind kx-rise">
+        <p class="kx-eyebrow">The Inner Ground</p>
+        <h2>Mindset</h2>
+        <p>This one does not get talked about enough in wellness spaces, but it matters more than most people are willing to admit.</p>
+        <p>The way you approach your healing protocol changes the outcome. Coming to your herbs with skepticism, inconsistency, or the quiet belief that nothing will work for you creates exactly that environment in your body. Coming with <span class="kx-key">intention, patience, and genuine trust</span> in your body's ability to restore itself creates a very different one.</p>
+        <p>Your body is not fighting you. It is communicating with you. Symptoms are not failure, they are information. <span class="kx-hl">Healing is not linear, it is a spiral.</span> Some days will feel like progress and others will feel like a step back. Both are part of the process.</p>
+        <p>Be patient with yourself. Stay consistent even when you do not feel immediate results. Give your body the time it is asking for.</p>
       </div>
     </section>
 
-    <!-- CLOSING -->
-    <section class="kx-narrow kx-close kx-rise">
-      <p class="kx-eyebrow">Next in the Ritual</p>
-      <h2>Body ready. <span class="kx-em">Now brew.</span></h2>
-      <p>You have prepared the ground. The next step is the cup itself, how to steep, simmer, store, and get the most from every pouch.</p>
-      <div class="kx-cta">
-        <a class="btn btn-primary" href="tea-preparation.html">Read: Preparing Your Herbs</a>
-        <a class="btn btn-outline" href="shop.html">Shop the Apothecary</a>
+    <!-- INTENTION & CEREMONY -->
+    <section class="kx-wrap kx-sec" id="ceremony">
+      <div class="kx-row kx-rise" style="margin-bottom:0">
+        <div class="kx-row-media">
+          <img src="assets/img/gen/closing-sunrise-cup.webp" alt="Sunrise stillness with a warm cup held in both hands">
+        </div>
+        <div class="kx-card kx-card-dark">
+          <div class="kx-card-head">
+            <span class="kx-remind-mark" aria-hidden="true" style="margin:0;font-size:2.6rem">&sect;</span>
+            <span class="kx-card-label">A Living Relationship</span>
+          </div>
+          <h3>Intention &amp; Ceremony</h3>
+          <p>The healers we sit with in Ecuador do not approach plants casually. Before they harvest, they ask. Before they brew, they give thanks. Before they drink, they set an intention: a clear, conscious statement of what they are asking the plant to help them with.</p>
+          <p>This is not superstition. It is a <span class="kx-hl">technology of attention</span>. Where your focus goes, your body follows. When you drink your herbs with a clear intention, <em>I am supporting my womb</em>, <em>I am clearing what no longer serves me</em>, <em>I am rebuilding my strength</em>, you are not just taking a supplement. You are entering into a relationship with a living being that has been doing this work for centuries.</p>
+          <p>You do not have to perform a ceremony. But you can bring ceremony to your cup. Light a candle. Sit in stillness for a moment before you drink. Hold the mug with both hands. Breathe. Ask. Receive.</p>
+          <p><span class="kx-em">The plants will meet you there.</span></p>
+        </div>
       </div>
-      <p class="kx-note">This page is a working draft of the body-preparation guide, built from the current Kawsaypac principles. It is ready to be finalized word for word once the dedicated Preparing Your Body copy is provided.</p>
+    </section>
+
+    <!-- DIGITAL BUNDLE CTA -->
+    <section class="kx-wrap kx-sec-tight" id="bundle">
+      <div class="kx-remind kx-rise">
+        <p class="kx-eyebrow" style="color:var(--kx-gold);justify-content:center">Go Deeper</p>
+        <h2>Take It Further With Our <span class="kx-em">Digital Bundle</span></h2>
+        <p>Your herbs work best when your whole lifestyle supports them. Our digital bundle brings together all of our plant-based ebooks and detox guides in one place: everything you need to nourish your body, support your protocol, and <span class="kx-hl">build a lifestyle that makes your healing last</span> long after the last cup is brewed.</p>
+        <div class="kx-cta">
+          <a class="btn btn-primary" href="recipes.html#ebooks">Shop the Digital Bundle</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRINGING IT ALL TOGETHER -->
+    <section class="kx-narrow kx-close kx-rise" id="together">
+      <p class="kx-eyebrow">Bringing It All Together</p>
+      <h2>Bringing It All <span class="kx-em">Together</span></h2>
+      <p>Healing is not one thing. It is not one herb, one diet change, one good night of sleep, or one moment of stillness. It is <span class="kx-hl">the accumulation of small, consistent, intentional choices</span> made in the direction of your wellbeing, day after day, cup after cup.</p>
+      <p>The herbs in our Kawsaypac line were chosen, harvested, and prepared by people who understand that the body and the earth are in constant conversation. Your job is to make sure your body is listening.</p>
+      <p class="kx-seal">Tend the soil. The seeds will do the rest.</p>
+      <div class="kx-cta">
+        <a class="btn btn-primary" href="tea-preparation.html">Ready to brew? Visit our Preparing Your Herbs guide</a>
+        <a class="btn btn-outline" href="shop.html">Not sure where to start? Shop our herb line</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="kx-wrap kx-sec" id="faq">
+      <div class="kx-pillars-intro kx-rise">
+        <p class="kx-eyebrow">Questions, Answered</p>
+        <h2>Frequently Asked <span class="kx-em">Questions</span></h2>
+      </div>
+      <div class="kx-faq kx-rise">
+        <details open>
+          <summary>How long before starting my herbs should I begin preparing my body?</summary>
+          <div class="kx-faq-a"><p>Ideally, begin reducing processed foods, alcohol, and sugar at 7 days before starting your herbal protocol. If you are beginning a full kit like the Eliminate &amp; Regenerate, we recommend completing a colon prep with Final Flush first, which naturally gives your body a 7-day preparation window. The longer you prepare, the more receptive your body will be when the herbs begin their work.</p></div>
+        </details>
+        <details>
+          <summary>Do I have to follow all of this perfectly to see results?</summary>
+          <div class="kx-faq-a"><p>No. Perfection is not the goal, direction is. Even making two or three of these changes consistently will create a meaningfully different environment for your herbs to work in. Start where you are. Do what you can. Your body will respond to every step you take toward it.</p></div>
+        </details>
+        <details>
+          <summary>Can I do this protocol if I have a chronic illness or am on medication?</summary>
+          <div class="kx-faq-a"><p>Many of our customers manage chronic conditions and have found significant support through our herbs. However, several herbs in our catalog interact with specific medications, particularly blood thinners, immunosuppressants, blood pressure medication, and hormonal treatments. Always consult your healthcare provider before beginning any herbal protocol alongside prescription medication.</p></div>
+        </details>
+        <details>
+          <summary>What if I slip up and eat something I shouldn't during my protocol?</summary>
+          <div class="kx-faq-a"><p>You continue. One meal, one day, one decision does not undo a protocol. What matters is the pattern over time, not the individual moment. Acknowledge it, hydrate well, and come back to your herbs and your intentions the next morning. Your body is far more resilient than you give it credit for.</p></div>
+        </details>
+        <details>
+          <summary>Is this suitable for vegetarians and vegans?</summary>
+          <div class="kx-faq-a"><p>Yes. Every herb and blend in our catalog is 100% plant-based. The dietary recommendations on this page are also entirely compatible with vegetarian and vegan lifestyles. For clean protein, prioritize legumes, tempeh, quinoa, hemp seeds, and spirulina alongside your daily Guayusa brew for its complete amino acid profile.</p></div>
+        </details>
+        <details>
+          <summary>How do I know if my body is ready to start the herbs?</summary>
+          <div class="kx-faq-a"><p>Your body is ready when you are consistent enough to take them daily, hydrated enough to support the process, and open enough to give it time. You do not need to have your diet perfect or your life in complete order. You just need to begin with intention, with water, and with the willingness to meet the plants halfway.</p></div>
+        </details>
+      </div>
     </section>
 
   </main>
