@@ -126,6 +126,32 @@
 
   const BEST_SELLER_HANDLES = Object.freeze(['zapped-in', 'sacred-sacral-sweetened', 'bowel-balance', 'cats-claw', 'scales-of-balance']);
 
+  /* Rhode shop hover: on hover the packshot swaps to the product's full-bleed
+     editorial shot (custom pdp set) with a white BUY pill. Handle -> pdp slug. */
+  const HOVER_SHOTS = Object.freeze({
+    'valerian': 'valerian',
+    'guayusa': 'guayusa-leaf',
+    'sacred-sacral-sweetened': 'sacred-sacral',
+    'final-flush': 'final-flush',
+    'bowel-balance': 'bowel-balance',
+    'soursop-leaves-graviola': 'soursop',
+    'cordoncillo-matico-1': 'matico',
+    'zapped-in': 'zapped-in',
+    'scales-of-balance': 'scales-of-balance',
+    'bowel-banisher': 'bowel-banisher',
+    'one-way-out': 'one-way-out',
+    'river-of-life': 'river-of-life',
+    'chuchuhuasi': 'chuchuhuasi',
+    'cats-claw': 'cats-claw',
+    'eliminate-regenerate': 'eliminate-regenerate',
+    'her-fertile-waters': 'womens-kit',
+    'his-fertile-fires': 'mens-kit'
+  });
+  function hoverShotFor(handle) {
+    const slug = HOVER_SHOTS[handle];
+    return slug ? `assets/img/pdp/${slug}/02-editorial.webp` : '';
+  }
+
   function productCardTemplate(options = {}) {
     const mediaPriority = options.priority ? ' priority="true"' : '';
     const cardClass = options.cardClass ? ` ${options.cardClass}` : '';
@@ -152,13 +178,16 @@
             layout="constrained"
             sizes="(max-width: 680px) 92vw, (max-width: 980px) 45vw, 30vw"${mediaPriority}
           ></shopify-media>
+          ${options.hoverImage ? `<img class="storefront-card__hover" src="${escapeAttribute(options.hoverImage)}?v=33" alt="" loading="lazy" decoding="async">` : ''}
           ${word}
           <button
-            class="storefront-quick-add storefront-quick-add--tile"
+            class="storefront-quick-add storefront-quick-add--tile${options.hoverImage ? ' storefront-quick-add--buy' : ''}"
             type="button"
             onclick="window.KawsaypacStorefront.addToCart(event)"
             shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
-          >Add to bag</button>
+          >${options.hoverImage
+            ? 'Buy · <shopify-money format="money_without_trailing_zeros" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>'
+            : 'Add to bag'}</button>
         </a>
         <div class="storefront-card__body">
           <p class="storefront-card__stars" aria-label="Customer favorite">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
@@ -203,7 +232,7 @@
   function renderProductHandles(grid, handles, options = {}) {
     grid.innerHTML = handles.map((handle) => `
       <shopify-context data-storefront-source type="product" handle="${escapeAttribute(handle)}">
-        <template>${productCardTemplate({ ...options, keyword: CARD_KEYWORDS[handle], bestSeller: BEST_SELLER_HANDLES.includes(handle) })}</template>
+        <template>${productCardTemplate({ ...options, keyword: CARD_KEYWORDS[handle], bestSeller: BEST_SELLER_HANDLES.includes(handle), hoverImage: hoverShotFor(handle) })}</template>
         <div class="storefront-card storefront-card--skeleton" shopify-loading-placeholder aria-label="Loading product">
           <div class="storefront-skeleton storefront-skeleton--media"></div>
           <div class="storefront-card__body"><div class="storefront-skeleton storefront-skeleton--line"></div></div>

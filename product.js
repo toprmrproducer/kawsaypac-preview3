@@ -66,6 +66,11 @@
   }
   function dots(s) { return String(s || '').split('·').map((x) => x.trim()).filter(Boolean); }
   function hashCode(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
+  /* Pull a specific custom pdp shot (02-editorial / 03-macro / 04-ritual) with a graceful fallback. */
+  function galleryShot(p, marker, fallback) {
+    const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug] || [];
+    return custom.find((x) => x.indexOf(marker) !== -1) || fallback;
+  }
 
   function handleFromUrl() {
     const requested = new URLSearchParams(window.location.search).get('product') || DEFAULT_HANDLE;
@@ -252,13 +257,16 @@
     return `
     <section class="pp-band pp-highlights" data-sec="highlights">
       <div class="pp-shell">
-        <p class="pp-eyebrow">Inside every cup</p>
-        ${h.heading ? `<h2>${esc(h.heading)}${/[.?!]$/.test(h.heading) ? '' : '.'}</h2>` : ''}
-        ${h.subtext ? `<p class="pp-sub">${esc(h.subtext)}</p>` : ''}
-        <div class="pp-hl-grid pp-hl-${Math.min(h.cards.length, 5)}">
+        <div class="pp-center-head">
+          <p class="pp-eyebrow">Inside every cup</p>
+          ${h.heading ? `<h2>${esc(h.heading)}${/[.?!:]$/.test(h.heading) ? '' : '.'}</h2>` : ''}
+          ${h.subtext ? `<p class="pp-sub">${esc(h.subtext)}</p>` : ''}
+        </div>
+        <div class="pp-hl-grid pp-hl-${Math.min(h.cards.length, 5)} pp-seq">
           ${h.cards.map((c, i) => `
           <article class="pp-hl-card">
             <figure class="pp-hl-media">
+              <span class="pp-hl-num" aria-hidden="true">0${i + 1}</span>
               <img src="${esc(HIGHLIGHT_POOL[(base + i) % HIGHLIGHT_POOL.length])}?v=31" alt="" loading="lazy" width="560" height="640">
               <figcaption>
                 <strong>${esc(c.title)}</strong>
@@ -293,9 +301,9 @@
     let segs = '';
     for (let i = 0; i < n; i++) {
       const a0 = (360 / n) * i + gap / 2, a1 = (360 / n) * (i + 1) - gap / 2;
-      segs += `<path d="${arcPath(150, 150, 130, 84, a0, a1)}" fill="${colors[i % colors.length]}" opacity="0.94"></path>`;
+      segs += `<path class="pp-wseg" style="--i:${i}" d="${arcPath(150, 150, 130, 84, a0, a1)}" fill="${colors[i % colors.length]}" opacity="0.94"></path>`;
       const [lx, ly] = polar(150, 150, 107, (a0 + a1) / 2);
-      segs += `<text x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" text-anchor="middle" dominant-baseline="middle" class="pp-wheel-num">${i + 1}</text>`;
+      segs += `<text class="pp-wheel-num pp-wseg" style="--i:${i}" x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" text-anchor="middle" dominant-baseline="middle">${i + 1}</text>`;
     }
     const legend = acts.map((a, i) => `
       <li><span class="pp-legend-dot" style="background:${colors[i % colors.length]}">${i + 1}</span>
@@ -315,7 +323,7 @@
           <p class="pp-eyebrow">Product infographic</p>
           <h2>The ${esc(p.name)} compound wheel.</h2>
           <p class="pp-sub">Each active compound in this pouch carries a different job. Together they make the full effect.</p>
-          <ul class="pp-legend">${legend}</ul>
+          <ul class="pp-legend pp-seq">${legend}</ul>
         </div>
       </div>
     </section>`;
@@ -325,16 +333,20 @@
     const steps = dots((p.claim || {}).howItHelps);
     if (!steps.length) return '';
     const chips = dots((p.claim || {}).usedFor).slice(0, 8).map((x) => `<span>${esc(x)}</span>`).join('');
+    const img = galleryShot(p, '03-macro', 'assets/img/gen/texture-botanical-macro.webp');
     return `
     <section class="pp-band pp-info" data-sec="infographic">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">Product infographic</p>
-        <h2>How ${esc(p.name)} moves through your body.</h2>
-        <p class="pp-sub">One cup, ${steps.length} coordinated actions. Follow the pathway.</p>
-        <ol class="pp-pathway">
-          ${steps.map((s, i) => `<li><span class="pp-path-node">${i + 1}</span><p>${esc(s)}</p></li>`).join('')}
-        </ol>
-        ${chips ? `<div class="pp-path-foot"><h3>Reached systems &amp; concerns</h3><div class="pp-chiprow pp-chiprow-dark">${chips}</div></div>` : ''}
+      <div class="pp-shell pp-split">
+        <div class="pp-split-copy">
+          <p class="pp-eyebrow">Product infographic</p>
+          <h2>How ${esc(p.name)} moves through your body.</h2>
+          <p class="pp-sub">One cup, ${steps.length} coordinated actions. Follow the pathway.</p>
+          <ol class="pp-pathway pp-seq">
+            ${steps.map((s, i) => `<li><span class="pp-path-node">${i + 1}</span><p>${esc(s)}</p></li>`).join('')}
+          </ol>
+          ${chips ? `<div class="pp-path-foot"><h3>Reached systems &amp; concerns</h3><div class="pp-chiprow pp-chiprow-dark">${chips}</div></div>` : ''}
+        </div>
+        <figure class="pp-split-media"><img src="${esc(img)}?v=33" alt="${esc(p.name)} botanicals in macro detail" loading="lazy" width="720" height="900"></figure>
       </div>
     </section>`;
   }
@@ -345,17 +357,20 @@
     const icons = ['☀︎', '☼︎', '☾︎', '✦︎', '✧︎'];
     return `
     <section class="pp-band pp-info" data-sec="infographic">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">Product infographic</p>
-        <h2>Your day on the ${esc(p.name)}.</h2>
-        <p class="pp-sub">A protocol, not a product. Each blend holds a fixed place in your day.</p>
-        <div class="pp-protocol">
-          ${slots.map((s, i) => `
-          <article class="pp-proto-step">
-            <span class="pp-proto-ico" aria-hidden="true">${icons[i % icons.length]}</span>
-            <h3>${esc(s.label || 'Step ' + (i + 1))}</h3>
-            <p>${esc(s.body)}</p>
-          </article>`).join('')}
+      <div class="pp-shell pp-split pp-split-rev">
+        <figure class="pp-split-media"><img src="${esc(galleryShot(p, '04-ritual', 'assets/img/gen/story-morning-ritual.webp'))}?v=33" alt="${esc(p.name)} daily ritual" loading="lazy" width="720" height="900"></figure>
+        <div class="pp-split-copy">
+          <p class="pp-eyebrow">Product infographic</p>
+          <h2>Your day on the ${esc(p.name)}.</h2>
+          <p class="pp-sub">A protocol, not a product. Each blend holds a fixed place in your day.</p>
+          <div class="pp-protocol pp-protocol-list pp-seq">
+            ${slots.map((s, i) => `
+            <article class="pp-proto-step">
+              <span class="pp-proto-ico" aria-hidden="true">${icons[i % icons.length]}</span>
+              <h3>${esc(s.label || 'Step ' + (i + 1))}</h3>
+              <p>${esc(s.body)}</p>
+            </article>`).join('')}
+          </div>
         </div>
       </div>
     </section>`;
@@ -400,17 +415,22 @@
     const bt = (p.bestTime && p.bestTime.length) ? p.bestTime
       : (p.infographic === 'protocol' ? (p.results || []) : []);
     if (!bt.length) return '';
+    const img = galleryShot(p, '04-ritual', 'assets/img/gen2/tea-brew-strip.webp');
     return `
     <section class="pp-band pp-besttime" data-sec="besttime">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">Timing is part of the medicine</p>
-        <h2>Best time to drink.</h2>
-        <div class="pp-tabs" data-tabs data-besttime-tabs>
-          <div class="pp-tab-row" role="tablist" aria-label="Best time to drink">
-            ${bt.map((t, i) => `<button type="button" role="tab" id="pp-bt-tab-${i}" aria-controls="pp-bt-pane-${i}" aria-selected="${i === 0}" class="${i === 0 ? 'on' : ''}" data-tab="${i}">${esc(t.label || 'Ritual ' + (i + 1))}</button>`).join('')}
+      <div class="pp-shell pp-split">
+        <div class="pp-split-copy">
+          <p class="pp-eyebrow">Timing is part of the medicine</p>
+          <h2>Best time to drink.</h2>
+          <div class="pp-accordion pp-split-acc" data-accordion>
+            ${bt.map((t, i) => `
+            <div class="pp-acc-item${i === 0 ? ' open' : ''}">
+              <button type="button" class="pp-acc-btn" aria-expanded="${i === 0}"><span>${esc(t.label || 'Ritual ' + (i + 1))}</span><i aria-hidden="true"></i></button>
+              <div class="pp-acc-body"><p>${esc(t.body)}</p></div>
+            </div>`).join('')}
           </div>
-          ${bt.map((t, i) => `<div class="pp-tab-pane ${i === 0 ? 'on' : ''}" id="pp-bt-pane-${i}" role="tabpanel" aria-labelledby="pp-bt-tab-${i}" ${i === 0 ? '' : 'hidden'}><p>${esc(t.body)}</p></div>`).join('')}
         </div>
+        <figure class="pp-split-media"><img src="${esc(img)}?v=33" alt="A ${esc(p.name)} cup in ritual" loading="lazy" width="720" height="900"></figure>
       </div>
     </section>`;
   }
@@ -444,26 +464,38 @@
     if (!s || !s.items || !s.items.length) return '';
     return `
     <section class="pp-band pp-studies" data-sec="science">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">Rooted in research</p>
-        <h2>${esc(s.heading || 'The research speaks')}${/[.:!?]$/.test(s.heading || '') ? '' : ':'}</h2>
-        <div class="pp-study" data-study>
-          <div class="pp-study-btns" role="tablist" aria-label="Clinical studies">
+      <div class="pp-shell pp-split">
+        <div class="pp-split-copy">
+          <p class="pp-eyebrow">Rooted in research</p>
+          <h2>${esc(s.heading || 'The research speaks')}${/[.:!?]$/.test(s.heading || '') ? '' : ':'}</h2>
+          <div class="pp-study" data-study>
+            <div class="pp-study-btns" role="tablist" aria-label="Clinical studies">
+              ${s.items.map((it, i) => `
+              <button type="button" role="tab" id="pp-study-tab-${i}" aria-controls="pp-study-pane-${i}" aria-selected="${i === 0}" class="pp-study-btn${i === 0 ? ' on' : ''}" data-study-btn="${i}">
+                <span class="pp-study-btn-num">0${i + 1}</span>
+                <span class="pp-study-btn-label">Study</span>
+              </button>`).join('')}
+            </div>
             ${s.items.map((it, i) => `
-            <button type="button" role="tab" id="pp-study-tab-${i}" aria-controls="pp-study-pane-${i}" aria-selected="${i === 0}" class="pp-study-btn${i === 0 ? ' on' : ''}" data-study-btn="${i}">
-              <span class="pp-study-btn-num">0${i + 1}</span>
-              <span class="pp-study-btn-label">Study</span>
-            </button>`).join('')}
+            <div class="pp-study-pane${i === 0 ? ' on' : ''}" id="pp-study-pane-${i}" role="tabpanel" aria-labelledby="pp-study-tab-${i}" ${i === 0 ? '' : 'hidden'}>
+              <p class="pp-study-tag">${esc(it.label)}</p>
+              <p class="pp-study-body">${esc(it.body)}</p>
+              ${it.link ? `<a class="pp-study-link" href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.link.replace(/^https?:\/\//, ''))} <span aria-hidden="true">↗</span></a>` : ''}
+            </div>`).join('')}
           </div>
-          ${s.items.map((it, i) => `
-          <div class="pp-study-pane${i === 0 ? ' on' : ''}" id="pp-study-pane-${i}" role="tabpanel" aria-labelledby="pp-study-tab-${i}" ${i === 0 ? '' : 'hidden'}>
-            <p class="pp-study-tag">${esc(it.label)}</p>
-            <p class="pp-study-body">${esc(it.body)}</p>
-            ${it.link ? `<a class="pp-study-link" href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.link.replace(/^https?:\/\//, ''))} <span aria-hidden="true">↗</span></a>` : ''}
-          </div>`).join('')}
         </div>
+        <figure class="pp-split-media pp-study-media">
+          ${s.items.map((it, i) => `<img class="pp-study-shot${i === 0 ? ' on' : ''}" data-study-shot="${i}" src="${esc(studyShot(p, i))}?v=33" alt="${esc(p.name)} research imagery" ${i === 0 ? '' : 'loading="lazy"'} width="720" height="900">`).join('')}
+        </figure>
       </div>
     </section>`;
+  }
+
+  /* Each study gets its own visual: cycle the product's custom gallery shots. */
+  function studyShot(p, i) {
+    const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug] || [];
+    const pool = custom.length ? custom : ['assets/img/gen/texture-botanical-macro.webp', 'assets/img/gen2/apoth-texture.webp', 'assets/img/herbal-infusion.webp'];
+    return pool[i % pool.length];
   }
 
   /* ---------- section 9: competitor comparison (same table for all products) ---------- */
@@ -526,19 +558,22 @@
     ].filter((g) => g.items.length);
     return `
     <section class="pp-band pp-results" data-sec="results">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">What to expect</p>
-        <h2>The ${esc(p.name)} timeline.</h2>
-        <div class="pp-tabs" data-tabs data-results-tabs>
-          <div class="pp-tab-row pp-tab-row-underline" role="tablist" aria-label="Results timeline">
-            ${groups.map((g, i) => `<button type="button" role="tab" id="pp-rs-tab-${i}" aria-controls="pp-rs-pane-${i}" aria-selected="${i === 0}" class="${i === 0 ? 'on' : ''}" data-tab="${i}">${esc(g.label)}</button>`).join('')}
+      <div class="pp-shell pp-split pp-split-rev">
+        <figure class="pp-split-media"><img src="${esc(galleryShot(p, '02-editorial', 'assets/img/gen/story-morning-ritual.webp'))}?v=33" alt="${esc(p.name)} editorial still" loading="lazy" width="720" height="900"></figure>
+        <div class="pp-split-copy">
+          <p class="pp-eyebrow">What to expect</p>
+          <h2>The ${esc(p.name)} timeline.</h2>
+          <div class="pp-accordion pp-split-acc" data-accordion>
+            ${groups.map((g, i) => `
+            <div class="pp-acc-item${i === 0 ? ' open' : ''}">
+              <button type="button" class="pp-acc-btn" aria-expanded="${i === 0}"><span>${esc(g.label)}</span><i aria-hidden="true"></i></button>
+              <div class="pp-acc-body">
+                <ol class="pp-timeline">
+                  ${g.items.map((it) => `<li><h3>${esc(it.label)}</h3><p>${esc(it.body)}</p></li>`).join('')}
+                </ol>
+              </div>
+            </div>`).join('')}
           </div>
-          ${groups.map((g, i) => `
-          <div class="pp-tab-pane pp-rs-pane ${i === 0 ? 'on' : ''}" id="pp-rs-pane-${i}" role="tabpanel" aria-labelledby="pp-rs-tab-${i}" ${i === 0 ? '' : 'hidden'}>
-            <ol class="pp-timeline">
-              ${g.items.map((it) => `<li><h3>${esc(it.label)}</h3><p>${esc(it.body)}</p></li>`).join('')}
-            </ol>
-          </div>`).join('')}
         </div>
       </div>
     </section>`;
@@ -562,15 +597,19 @@
     if (!s.length) return '';
     return `
     <section class="pp-band pp-secret" data-sec="secret">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">The secret for best results</p>
-        <h2>Meet the plants halfway.</h2>
-        <div class="pp-tabs" data-tabs data-secret-tabs>
-          <div class="pp-tab-row" role="tablist" aria-label="The secret for best results">
-            ${s.map((it, i) => `<button type="button" role="tab" id="pp-sc-tab-${i}" aria-controls="pp-sc-pane-${i}" aria-selected="${i === 0}" class="${i === 0 ? 'on' : ''}" data-tab="${i}">${esc(it.label)}</button>`).join('')}
+      <div class="pp-shell pp-split">
+        <div class="pp-split-copy">
+          <p class="pp-eyebrow">The secret for best results</p>
+          <h2>Meet the plants halfway.</h2>
+          <div class="pp-accordion pp-split-acc" data-accordion>
+            ${s.map((it, i) => `
+            <div class="pp-acc-item${i === 0 ? ' open' : ''}">
+              <button type="button" class="pp-acc-btn" aria-expanded="${i === 0}"><span>${esc(it.label)}</span><i aria-hidden="true"></i></button>
+              <div class="pp-acc-body"><p class="pp-secret-par">${esc(it.body)}</p></div>
+            </div>`).join('')}
           </div>
-          ${s.map((it, i) => `<div class="pp-tab-pane ${i === 0 ? 'on' : ''}" id="pp-sc-pane-${i}" role="tabpanel" aria-labelledby="pp-sc-tab-${i}" ${i === 0 ? '' : 'hidden'}><p>${esc(it.body)}</p></div>`).join('')}
         </div>
+        <figure class="pp-split-media"><img src="assets/img/gen/closing-sunrise-cup.webp?v=33" alt="Morning herbal ritual at sunrise" loading="lazy" width="720" height="900"></figure>
       </div>
     </section>`;
   }
@@ -640,6 +679,37 @@
     return esc(label);
   }
 
+  /* Raisa: the routine steps are upsells, so every product a step advertises
+     (image + price + link) lives inside the step box itself. Scan the label
+     AND body text for catalog product names. */
+  const ROUTINE_NAME_HINTS = [
+    [/zapped in/i, 'zapped-in'], [/guayusa/i, 'guayusa-leaf'], [/cat'?s claw/i, 'cats-claw'],
+    [/bowel balance/i, 'bowel-balance'], [/bowel banisher/i, 'bowel-banisher'],
+    [/final flush/i, 'final-flush'], [/one way out/i, 'one-way-out'],
+    [/river of life/i, 'river-of-life'], [/chuchuhuasi/i, 'chuchuhuasi'],
+    [/scales of balance/i, 'scales-of-balance'], [/valerian/i, 'valerian'],
+    [/soursop/i, 'soursop'], [/matico|cordoncillo/i, 'matico'],
+    [/sacred sacral|fertile waters/i, 'sacred-sacral'],
+    [/eliminate\s*(&|and|\+)?\s*regenerate|detox kit/i, 'eliminate-regenerate'],
+    [/fertile fires/i, 'mens-kit'], [/her sacred cycle/i, 'womens-kit']
+  ];
+  function routineProductTiles(item, currentSlug) {
+    const text = `${item.label || ''} ${item.body || ''}`;
+    const slugs = [];
+    ROUTINE_NAME_HINTS.forEach(([re, slug]) => {
+      if (re.test(text) && slug !== currentSlug && CATALOG[slug] && slugs.indexOf(slug) === -1) slugs.push(slug);
+    });
+    return slugs.slice(0, 2).map((slug) => {
+      const q = CATALOG[slug];
+      return `
+      <a class="pp-routine-prod" href="product.html?product=${esc(slug)}">
+        <img src="${esc(q.image)}?v=33" alt="${esc(q.name)}" loading="lazy" width="120" height="120">
+        <span class="pp-routine-prod-meta"><strong>${esc(q.name)}</strong><em>${esc(q.price || '')} · Shop this blend</em></span>
+        <span class="pp-routine-prod-arrow" aria-hidden="true">&#8599;</span>
+      </a>`;
+    }).join('');
+  }
+
   function routineSection(p) {
     let r = p.routine;
     // Products without a routine block in the doc: their preparation order (or daily
@@ -661,6 +731,7 @@
             <span class="pp-routine-num${i === 0 ? ' pp-routine-num-fill' : ''}">0${i + 1}</span>
             ${it.label ? `<h3>${routineStepLink(it.label, p.slug)}</h3>` : ''}
             <p>${esc(it.body)}</p>
+            ${routineProductTiles(it, p.slug)}
           </article>`).join('')}
         </div>
         ${r.note ? `<p class="pp-routine-note">${esc(r.note)}</p>` : ''}
@@ -822,16 +893,31 @@
       }));
     });
 
-    // study switcher
+    // study switcher (Raisa: clicking a new study also swaps the section image)
     root.querySelectorAll('[data-study]').forEach((wrap) => {
       const btns = Array.from(wrap.querySelectorAll('[data-study-btn]'));
       const panes = Array.from(wrap.querySelectorAll('.pp-study-pane'));
+      const section = wrap.closest('[data-sec="science"]') || root;
+      const shots = Array.from(section.querySelectorAll('[data-study-shot]'));
       btns.forEach((btn) => btn.addEventListener('click', () => {
         const i = Number(btn.dataset.studyBtn);
         btns.forEach((b, j) => { b.classList.toggle('on', j === i); b.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
         panes.forEach((pn, j) => { pn.classList.toggle('on', j === i); if (j === i) pn.removeAttribute('hidden'); else pn.setAttribute('hidden', ''); });
+        shots.forEach((sh) => sh.classList.toggle('on', sh.dataset.studyShot === String(i)));
       }));
     });
+
+    // sequential "wheel" reveals: numbered items open 1-2-3-4-5 as they scroll in
+    if ('IntersectionObserver' in window) {
+      const seqIo = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('pp-seq-in'); seqIo.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -12% 0px' });
+      root.querySelectorAll('.pp-seq').forEach((wrap) => {
+        Array.from(wrap.children).forEach((kid, i) => { kid.style.transitionDelay = (i * 0.14).toFixed(2) + 's'; });
+        wrap.classList.add('pp-seq-ready');
+        seqIo.observe(wrap);
+      });
+    }
 
     // sticky buy bar
     const sticky = root.querySelector('[data-sticky]');

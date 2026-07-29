@@ -419,3 +419,107 @@
 .pp-sticky-inner{background:rgba(255,253,247,.92);-webkit-backdrop-filter:blur(14px) saturate(1.05);backdrop-filter:blur(14px) saturate(1.05);border:1px solid rgba(20,59,40,.14);box-shadow:0 20px 48px rgba(20,59,40,.22)}
 .pp-sticky-inner img{border:1px solid var(--pp-line)}
 .pp-sticky-meta span{color:#8a6d1f}
+
+/* ============================================================
+   v33 · Raisa PDP round (29 Jul): Rhode-tight rhythm, full-height
+   hero gallery, image-beside-every-section, accordions replace
+   tab walls, sequential 1-5 reveals, routine upsell tiles.
+   ============================================================ */
+
+/* --- 1 · padding cut across every band (her #1 note) --- */
+.pp-band{padding:clamp(40px,4.8vw,68px) 0}
+.pp-claim{padding:clamp(40px,4.8vw,68px) 0}
+.pp-hero{padding:clamp(20px,2.6vw,36px) 0 clamp(34px,4vw,52px)}
+.pp-sub{margin-top:10px}
+.pp-eyebrow{margin-bottom:9px}
+.pp-hl-grid{margin-top:26px}
+.pp-claim-rows{margin-top:24px}
+.pp-study{margin-top:22px}
+.pp-routine-grid,.pp-source-grid,.pp-review-grid,.pp-xs-grid{margin-top:26px}
+.pp-wall{margin-top:26px}
+.pp-howto-steps{margin-top:22px}
+.pp-disclaimer{padding:26px 0 44px}
+
+/* --- 2 · hero: gallery extends the full height of the buy card (Rhode) --- */
+.pp-hero-grid{align-items:stretch}
+.pp-hero-media{position:static;display:flex;flex-direction:column;gap:0;border-radius:var(--pp-radius);overflow:hidden}
+.pp-hero-frame{position:relative;flex:1;aspect-ratio:auto;min-height:clamp(460px,52vw,660px);border-radius:var(--pp-radius)}
+.pp-thumbs{position:absolute;left:14px;bottom:14px;z-index:3;gap:8px;background:rgba(250,247,239,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(20,59,40,.14);border-radius:16px;padding:7px}
+.pp-thumb{width:clamp(46px,4.4vw,58px);border-radius:10px;border-width:1.5px;min-height:0}
+.pp-hero-badge{top:14px;left:14px}
+
+/* --- 3 · buy-box accordion: air between text, rules, and edges --- */
+.pp-hero-acc .pp-acc-btn{padding:17px 14px;letter-spacing:.18em}
+.pp-hero-acc .pp-acc-body{padding:2px 14px 20px}
+
+/* --- 4 · centered section header (five compounds etc.) --- */
+.pp-center-head{text-align:center;max-width:760px;margin-inline:auto}
+.pp-center-head .pp-eyebrow{justify-content:center}
+.pp-center-head .pp-eyebrow::after{content:"";width:26px;height:1px;background:var(--pp-gold);opacity:.85;flex:none}
+.pp-center-head .pp-sub{margin-inline:auto}
+
+/* numbered chips on the compound cards */
+.pp-hl-num{position:absolute;top:12px;left:12px;z-index:2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(250,247,239,.9);color:var(--pp-green);font-weight:750;font-size:.78rem;letter-spacing:.02em;border:1px solid rgba(20,59,40,.16)}
+
+/* --- 5 · sequential reveal: items open 1-2-3-4-5 on scroll --- */
+.pp-seq-ready>*{transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.pp-seq-ready:not(.pp-seq-in)>*{opacity:0;transform:translateY(26px)}
+.pp-seq-in>*{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.pp-seq-ready>*{transition:none;opacity:1;transform:none}}
+
+/* compound wheel: segments draw in 1-5 with the section reveal */
+.pp-wseg{transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i,0)*.16s);transform-origin:150px 150px}
+.pp-anim:not(.pp-in) .pp-wseg{opacity:0;transform:scale(.86) rotate(-8deg)}
+@media (prefers-reduced-motion:reduce){.pp-wseg{transition:none;opacity:1;transform:none}}
+
+/* --- 6 · split layout: every copy section gets an image beside it --- */
+.pp-split{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(24px,3.6vw,54px);align-items:stretch}
+.pp-split-rev{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+.pp-split-media{position:relative;margin:0;border-radius:var(--pp-radius);overflow:hidden;background:var(--pp-cream-2);box-shadow:var(--pp-shadow);min-height:380px}
+.pp-split-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pp-split-copy{min-width:0}
+.pp-split-acc{margin-top:22px}
+.pp-split-acc .pp-acc-btn{padding:18px 20px}
+.pp-split-acc .pp-acc-body{padding:0 20px 20px}
+.pp-secret-par{font-family:var(--pp-display);font-weight:400;font-size:clamp(1.02rem,1.6vw,1.22rem);line-height:1.62;color:#2f3a2e}
+
+/* studies: stacked shots crossfade when a new study is clicked */
+.pp-study-media img.pp-study-shot{opacity:0;transition:opacity .5s ease}
+.pp-study-media img.pp-study-shot.on{opacity:1}
+.pp-study-pane{padding:24px 24px}
+.pp-study-body{font-size:clamp(1.02rem,1.7vw,1.28rem)}
+
+/* accordion inner timeline breathing */
+.pp-split-acc .pp-timeline{margin-top:4px}
+.pp-split-acc .pp-timeline li{padding-bottom:22px}
+
+/* --- 7 · routine upsell tile: the advertised product lives in the box --- */
+.pp-routine-prod{display:flex;align-items:center;gap:14px;margin-top:auto;padding:12px 14px;border:1px solid var(--pp-line);border-radius:16px;background:var(--pp-cream);transition:border-color .25s,box-shadow .25s,transform .25s}
+.pp-routine-prod:hover{border-color:rgba(215,174,54,.75);box-shadow:0 10px 26px rgba(20,59,40,.1);transform:translateY(-2px)}
+.pp-routine-prod img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none;background:var(--pp-cream-2);border:1px solid var(--pp-line)}
+.pp-routine-prod-meta{display:grid;gap:2px;min-width:0;flex:1}
+.pp-routine-prod-meta strong{color:var(--pp-green);font-size:.92rem;line-height:1.25}
+.pp-routine-prod-meta em{font-style:normal;font-size:.74rem;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:#8a6d1f}
+.pp-routine-prod-arrow{flex:none;color:var(--pp-green);font-size:1rem}
+
+/* protocol rendered as a stacked list inside the split copy column */
+.pp-protocol-list{grid-template-columns:1fr;gap:12px;margin-top:24px}
+.pp-protocol-list .pp-proto-step{flex-direction:row;align-items:flex-start;gap:16px;padding:18px 18px}
+.pp-protocol-list .pp-proto-ico{flex:none;width:40px;height:40px}
+.pp-protocol-list .pp-proto-step h3{margin-top:8px}
+.pp-protocol-list .pp-proto-step div{min-width:0}
+
+/* --- 8 · responsive --- */
+@media (max-width:960px){
+  .pp-split,.pp-split-rev{grid-template-columns:1fr}
+  .pp-split-media{min-height:300px;order:-1}
+  .pp-split-rev .pp-split-media{order:-1}
+  .pp-hero-frame{min-height:0;aspect-ratio:1}
+}
+@media (max-width:560px){
+  .pp-band,.pp-claim{padding:34px 0}
+  .pp-thumbs{left:10px;bottom:10px;padding:5px}
+  .pp-thumb{width:44px}
+  .pp-split-media{min-height:240px}
+  .pp-protocol-list .pp-proto-step{flex-direction:column}
+}

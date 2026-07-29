@@ -1096,3 +1096,17 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 .shop-product-grid .storefront-card--skeleton{border-radius:16px;background:#f4efe6}
 /* Best Seller badge stays; give it a hairline so it reads deliberate */
 .storefront-card__badge{border:1px solid rgba(247,243,232,.35)}
+
+/* v95 · Rhode shop hover: packshot crossfades to the full-bleed editorial
+   shot, quick-add becomes a white BUY pill (his 29 Jul screen recording). */
+.shop-product-grid .storefront-card__hover{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .45s ease,transform .9s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.shop-product-grid .storefront-card:hover .storefront-card__hover,
+.shop-product-grid .storefront-card:focus-within .storefront-card__hover{opacity:1;transform:scale(1)}
+.shop-product-grid .storefront-quick-add--buy{z-index:2;left:12px;right:12px;transform:translateY(8px);width:auto;max-width:none;white-space:nowrap;background:rgba(255,255,255,.96);border:0;box-shadow:0 10px 26px rgba(10,26,18,.28);font-size:.72rem;letter-spacing:.12em;min-height:46px}
+.shop-product-grid .storefront-card:hover .storefront-quick-add--buy,
+.shop-product-grid .storefront-quick-add--buy:focus-visible{opacity:1;transform:translateY(0)}
+.shop-product-grid .storefront-quick-add--buy:hover{background:#143b28;color:#fff}
+@media(hover:none){
+  .shop-product-grid .storefront-quick-add--buy{opacity:1;transform:translateY(0)}
+  .shop-product-grid .storefront-card__hover{display:none}
+}
