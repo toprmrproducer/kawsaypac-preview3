@@ -4,6 +4,46 @@
   const DEFAULT_HANDLE = 'zapped-in';
   const DATA = window.KAWSAYPAC_PRODUCTS || {};
   const ALIASES = window.KAWSAYPAC_PRODUCT_ALIASES || {};
+  const SHOPIFY = window.KAWSAYPAC_SHOPIFY || {};
+
+  /* Client keeps the full-bleed cinematic band ONLY on herbs with real jungle
+     footage. Her forthcoming list is a one-line change here. */
+  const KEEP_CINEMATIC = ['guayusa-leaf', 'cats-claw'];
+  const CINEMA_VIDEO = {
+    'guayusa-leaf': 'assets/video/pdp/guayusa-jungle.mp4',
+    'cats-claw': 'assets/video/pdp/cats-claw-jungle.mp4'
+  };
+
+  /* Digital/ebook handles route to ebook.html, never this template. */
+  const DIGITAL_HANDLES = [
+    'gut-harmony',
+    'fearless-fruit-detox',
+    '7-day-fruit-detox',
+    '30-day-raw-reset',
+    '10-day-transitional-detox',
+    'free-lets-get-raw-a-3-day-raw-alkaline-plant-based-experience',
+    'r-a-w-by-law-the-uncookbook-of-135-rawfully-tasty-colorful-sun-food-recipes',
+    'the-electric-eats-cookbook-130-electrifyingly-delicious-easy-to-make-plant-based-recipes',
+    'from-our-feed-to-your-kitchen-50-plant-based-recipes-inspired-by-dr-sebis-cell-food-guide-e-book',
+    'alkaline-vegan-dishes-top-10-favorites-from-our-kitchen-to-yours'
+  ];
+
+  /* Loox (their live Shopify review app). */
+  const LOOX_KEY = 'Dno6nRon81';
+  const LOOX_SHOP = 'the-electric-eats.myshopify.com';
+  const LOOX_SCRIPT = `https://loox.io/widget/${LOOX_KEY}/loox.1678282618137.js?shop=${LOOX_SHOP}`;
+
+  /* Cache-bust local assets only; Shopify CDN urls already carry their own ?v=.
+     CDN urls also get a width param so the gallery never waits on a 2500px source PNG. */
+  const ASSET_V = 40;
+  function vsrc(src) {
+    src = String(src || '');
+    if (src.indexOf('cdn.shopify.com') !== -1 && src.indexOf('width=') === -1) {
+      return src + (src.indexOf('?') === -1 ? '?' : '&') + 'width=1600';
+    }
+    return src.indexOf('?') === -1 ? `${src}?v=${ASSET_V}` : src;
+  }
+  function shopifyHandleFor(p) { return (SHOPIFY[p.slug] || {}).handle || p.slug; }
 
   // Products that exist in the shop but have no approved landing doc yet.
   const EXTRA = {
@@ -36,36 +76,12 @@
     'Kit': 'assets/img/gen/story-morning-ritual.webp'
   };
 
-  // Full-bleed cinematic plates (section 2). Sharp landscape plates only
-  // (every file >= 1600px wide on disk); deterministic per-slug so pages differ.
-  const CINEMA_POOL = [
-    'assets/img/bg-cloudforest-edge.webp',
-    'assets/img/bg-highlands.webp',
-    'assets/img/bg-waterfall.webp',
-    'assets/img/bg-amazon-basin.webp',
-    'assets/img/bg-paramo-band.webp',
-    'assets/img/bg-footer-jungle.webp'
-  ];
-
-  // Photographic pool for the Blume-style highlight cards.
-  const HIGHLIGHT_POOL = [
-    'assets/img/gen/texture-botanical-macro.webp',
-    'assets/img/gen2/apoth-texture.webp',
-    'assets/img/herbal-infusion.webp',
-    'assets/img/gen2/tea-brew-strip.webp',
-    'assets/img/gen/story-energy-pouch.webp',
-    'assets/img/gen4/cup-sage.webp',
-    'assets/img/gen/closing-sunrise-cup.webp',
-    'assets/img/gen4/pouch-front.webp'
-  ];
-
   function esc(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
   function dots(s) { return String(s || '').split('·').map((x) => x.trim()).filter(Boolean); }
-  function hashCode(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
   /* Pull a specific custom pdp shot (02-editorial / 03-macro / 04-ritual) with a graceful fallback. */
   function galleryShot(p, marker, fallback) {
     const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug] || [];
@@ -73,9 +89,11 @@
   }
 
   function handleFromUrl() {
-    const requested = new URLSearchParams(window.location.search).get('product') || DEFAULT_HANDLE;
-    const safe = /^[a-z0-9][a-z0-9-]{0,120}$/.test(requested) ? requested : DEFAULT_HANDLE;
-    return ALIASES[safe] || safe;
+    const requested = new URLSearchParams(window.location.search).get('product');
+    if (!requested) return DEFAULT_HANDLE;
+    // Malformed handles resolve to nothing; boot() sends them to shop.html.
+    if (!/^[a-z0-9][a-z0-9-]{0,120}$/.test(requested)) return '';
+    return ALIASES[requested] || requested;
   }
 
   function toast(message) {
@@ -144,18 +162,17 @@
     </div>`;
   }
 
-  /* Hero gallery: REAL product imagery only. Products with approved custom pdp
-     shots (assets/img/pdp/<slug>/ via pdp-manifest.js) show product image +
-     those shots; every other product shows exactly its own Shopify product
-     image, single frame, no thumb rail. No pool padding. */
+  /* Hero gallery: frame 1 (and 2) are the product's REAL Shopify CDN images,
+     hotlinked from their own store. The local assets/img/pdp/<slug>/ scenes
+     (02-editorial / 03-macro / 04-ritual) stay as secondary styled frames.
+     No pool padding, ever. */
   function galleryFor(p) {
-    const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug];
-    if (custom && custom.length) {
-      const shots = custom.map((x) => ({ src: x, alt: `${p.name} by Kawsaypac` }));
-      if (!custom.some((x) => x.includes('01-hero'))) shots.unshift({ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` });
-      return shots.slice(0, 4);
-    }
-    return [{ src: `${p.image}?v=31`, alt: `${p.name} by Kawsaypac` }];
+    const cdn = ((SHOPIFY[p.slug] || {}).images || []);
+    const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug] || [];
+    const shots = cdn.map((src) => ({ src: vsrc(src), alt: `${p.name} by Kawsaypac` }));
+    if (!shots.length) shots.push({ src: vsrc(p.image), alt: `${p.name} by Kawsaypac` });
+    custom.forEach((x) => shots.push({ src: vsrc(x), alt: `${p.name} styled by Kawsaypac` }));
+    return shots.slice(0, 5);
   }
   function heroGallery(p) {
     const shots = galleryFor(p);
@@ -201,16 +218,16 @@
     </section>`;
   }
 
-  /* ---------- section 2: cinematic editorial band ---------- */
+  /* ---------- section 2: cinematic band (KEEP_CINEMATIC herbs only, real jungle video) ---------- */
 
   function cinematicSection(p) {
+    if (KEEP_CINEMATIC.indexOf(p.slug) === -1 || !CINEMA_VIDEO[p.slug]) return '';
     const line = p.cinematic || p.subline || p.name;
-    const custom = (window.KAWSAYPAC_PDP_GALLERY || {})[p.slug] || [];
-    const macro = custom.find((x) => x.includes('03-macro'));
-    const img = macro || CINEMA_POOL[hashCode(p.slug) % CINEMA_POOL.length];
     return `
     <section class="pp-cinema" data-sec="cinematic">
-      <img src="${esc(img)}?v=32" alt="" loading="lazy" width="1800" height="900">
+      <video class="pp-cinema-video" data-cinema-video muted loop playsinline autoplay preload="auto" aria-hidden="true">
+        <source src="${esc(CINEMA_VIDEO[p.slug])}" type="video/mp4">
+      </video>
       <div class="pp-cinema-scrim" aria-hidden="true"></div>
       <p class="pp-cinema-line">${esc(line)}</p>
     </section>`;
@@ -248,39 +265,7 @@
     </section>`;
   }
 
-  /* ---------- section 4: highlights (Blume photographic cards) ---------- */
-
-  function highlightsSection(p) {
-    const h = p.highlights;
-    if (!h || !h.cards || !h.cards.length) return '';
-    const base = hashCode(p.slug + 'hl');
-    return `
-    <section class="pp-band pp-highlights" data-sec="highlights">
-      <div class="pp-shell">
-        <div class="pp-center-head">
-          <p class="pp-eyebrow">Inside every cup</p>
-          ${h.heading ? `<h2>${esc(h.heading)}${/[.?!:]$/.test(h.heading) ? '' : '.'}</h2>` : ''}
-          ${h.subtext ? `<p class="pp-sub">${esc(h.subtext)}</p>` : ''}
-        </div>
-        <div class="pp-hl-grid pp-hl-${Math.min(h.cards.length, 5)} pp-seq">
-          ${h.cards.map((c, i) => `
-          <article class="pp-hl-card">
-            <figure class="pp-hl-media">
-              <span class="pp-hl-num" aria-hidden="true">0${i + 1}</span>
-              <img src="${esc(HIGHLIGHT_POOL[(base + i) % HIGHLIGHT_POOL.length])}?v=31" alt="" loading="lazy" width="560" height="640">
-              <figcaption>
-                <strong>${esc(c.title)}</strong>
-                ${c.tag ? `<span>${esc(c.tag)}</span>` : ''}
-              </figcaption>
-            </figure>
-            <p>${esc(c.body)}</p>
-          </article>`).join('')}
-        </div>
-      </div>
-    </section>`;
-  }
-
-  /* ---------- infographics (kept feature; pure SVG/CSS, per product archetype) ---------- */
+  /* ---------- infographics (pure SVG/CSS, per product archetype) ---------- */
 
   function polar(cx, cy, r, deg) {
     const rad = (deg - 90) * Math.PI / 180;
@@ -293,57 +278,64 @@
     return `M${x0.toFixed(1)} ${y0.toFixed(1)} A${rOut} ${rOut} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)} A${rIn} ${rIn} 0 ${large} 0 ${x3.toFixed(1)} ${y3.toFixed(1)} Z`;
   }
 
-  /* Wheel legend: pair each compound with a real concern-bowl image where the
-     benefit maps cleanly (sleep, digestion, energy, immunity, hormones, detox). */
-  function legendBenefitImg(a) {
-    const t = ((a.name || '') + ' ' + (a.role || '')).toLowerCase();
-    const M = [
-      [/sleep|sedat|calm|relax|gaba/, 'bowl-sleep-340'],
-      [/digest|gut|colon|bowel/, 'bowl-digestive-340'],
-      [/energy|activat|stimul|focus/, 'bowl-energy-340'],
-      [/immun|antioxid|protect|defen/, 'bowl-immune-340'],
-      [/hormon|womb|balance|estrogen/, 'bowl-womens-340'],
-      [/detox|cleanse|eliminat|flush|repair/, 'bowl-detox-340']
-    ];
-    for (const [re, f] of M) if (re.test(t)) return `assets/img/${f}.webp`;
-    return '';
+  /* Each compound's long-form description lives in the product doc's
+     highlights cards. Match by name so the wheel carries the full story
+     (the separate "Inside Every Cup" text section is gone: client call). */
+  function compoundDetail(p, a, i) {
+    const cards = ((p.highlights || {}).cards || []);
+    const key = normName(a.name);
+    const hit = cards.find((c) => normName(c.title) === key) || cards[i];
+    return hit ? hit.body : (a.role || '');
   }
 
   function wheelInfographic(p) {
-    const acts = (p.actives || []).filter((a) => a.name);
+    // Kits carry no chemical actives; their wheel segments are the blends in
+    // the kit (title + timing tag from the doc's kit cards).
+    let acts = (p.actives || []).filter((a) => a.name);
+    const isKit = !acts.length;
+    if (isKit) {
+      acts = (((p.highlights || {}).cards) || [])
+        .filter((c) => c.title)
+        .map((c) => ({ name: c.title, role: c.tag || '' }));
+    }
     if (!acts.length) return systemsInfographic(p);
+    const wheelLabel = isKit ? 'kit wheel' : 'compound wheel';
     const colors = ['#143b28', '#d7ae36', '#2c5a40', '#b8922a', '#3f7355', '#8a6d1f'];
     const n = acts.length, gap = 3;
     let segs = '';
     for (let i = 0; i < n; i++) {
       const a0 = (360 / n) * i + gap / 2, a1 = (360 / n) * (i + 1) - gap / 2;
-      segs += `<path class="pp-wseg" data-widx="${i}" style="--i:${i}" d="${arcPath(150, 150, 130, 84, a0, a1)}" fill="${colors[i % colors.length]}" opacity="0.94"></path>`;
+      segs += `<path class="pp-wseg" data-widx="${i}" style="--i:${i}" d="${arcPath(150, 150, 130, 84, a0, a1)}" fill="${colors[i % colors.length]}" opacity="0.94"><title>${esc(acts[i].name || '')}</title></path>`;
       const [lx, ly] = polar(150, 150, 107, (a0 + a1) / 2);
       segs += `<text class="pp-wheel-num pp-wseg" data-widx="${i}" style="--i:${i}" x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" text-anchor="middle" dominant-baseline="middle">${i + 1}</text>`;
     }
-    const legend = acts.map((a, i) => {
-      const bi = legendBenefitImg(a);
-      return `
-      <li data-widx="${i}"><span class="pp-legend-dot" style="background:${colors[i % colors.length]}">${i + 1}</span>
-      <div><strong>${esc(a.name)}</strong>${a.role ? `<span>${esc(a.role)}</span>` : ''}</div>
-      ${bi ? `<img class="pp-legend-thumb" src="${esc(bi)}?v=35" alt="" loading="lazy" width="88" height="88">` : ''}</li>`;
-    }).join('');
+    const legend = acts.map((a, i) => `
+      <li class="pp-comp${i === 0 ? ' open' : ''}" data-widx="${i}">
+        <button type="button" class="pp-comp-btn" data-comp-btn="${i}" aria-expanded="${i === 0 ? 'true' : 'false'}">
+          <span class="pp-legend-dot" style="background:${colors[i % colors.length]}">${i + 1}</span>
+          <span class="pp-comp-meta"><strong>${esc(a.name)}</strong>${a.role ? `<span>${esc(a.role)}</span>` : ''}</span>
+          <i class="pp-comp-chev" aria-hidden="true"></i>
+        </button>
+        <div class="pp-comp-body"><p>${esc(compoundDetail(p, a, i))}</p></div>
+      </li>`).join('');
+    const h = p.highlights || {};
     return `
     <section class="pp-band pp-info" data-sec="infographic">
       <div class="pp-shell pp-info-grid">
         <div class="pp-info-visual" data-wheel>
-          <svg viewBox="0 0 300 300" role="img" aria-label="Active compound wheel for ${esc(p.name)}">
+          <svg viewBox="0 0 300 300" role="img" aria-label="Active compound wheel for ${esc(p.name)}: tap a segment to read what each compound does">
             <circle cx="150" cy="150" r="140" fill="none" stroke="#d7ae36" stroke-width="1" stroke-dasharray="2 6"/>
             ${segs}
             <text x="150" y="143" text-anchor="middle" class="pp-wheel-center">${esc(p.name.split(' ')[0])}</text>
-            <text x="150" y="163" text-anchor="middle" class="pp-wheel-center-sub">compound wheel</text>
+            <text x="150" y="163" text-anchor="middle" class="pp-wheel-center-sub">${wheelLabel}</text>
           </svg>
+          <p class="pp-wheel-hint">Tap a segment to open its compound</p>
         </div>
         <div class="pp-info-copy">
-          <p class="pp-eyebrow">Product infographic</p>
-          <h2>The ${esc(p.name)} compound wheel.</h2>
-          <p class="pp-sub">Each active compound in this pouch carries a different job. Together they make the full effect.</p>
-          <ul class="pp-legend pp-seq">${legend}</ul>
+          <p class="pp-eyebrow">${isKit ? 'Inside your kit' : 'Inside every cup'}</p>
+          <h2>${esc(h.heading || 'The ' + p.name + ' ' + wheelLabel)}${/[.?!:]$/.test(h.heading || '') ? '' : '.'}</h2>
+          <p class="pp-sub">${esc(h.subtext || (isKit ? 'Each blend in this kit holds a fixed place in your day. Together they make the full protocol.' : 'Each active compound in this pouch carries a different job. Together they make the full effect.'))}</p>
+          <ul class="pp-legend pp-legend-inter pp-seq">${legend}</ul>
         </div>
       </div>
     </section>`;
@@ -397,7 +389,12 @@
   }
 
   function infographicSection(p) {
-    if (p.infographic === 'wheel') return wheelInfographic(p);
+    // Every product with named actives gets the interactive compound wheel
+    // (it now carries the compound long-copy that used to sit in its own
+    // section). Kits render the same wheel from their per-blend kit cards,
+    // so that copy survives the section merge.
+    if ((p.actives || []).some((a) => a.name)) return wheelInfographic(p);
+    if (((p.highlights || {}).cards || []).some((c) => c.title)) return wheelInfographic(p);
     if (p.infographic === 'protocol') return protocolInfographic(p);
     return systemsInfographic(p);
   }
@@ -489,23 +486,24 @@
           <p class="pp-eyebrow">Rooted in research</p>
           <h2>${esc(s.heading || 'The research speaks')}${/[.:!?]$/.test(s.heading || '') ? '' : ':'}</h2>
           <div class="pp-study" data-study>
-            <div class="pp-study-btns" role="tablist" aria-label="Clinical studies">
+            <div class="pp-study-rows">
               ${s.items.map((it, i) => `
-              <button type="button" role="tab" id="pp-study-tab-${i}" aria-controls="pp-study-pane-${i}" aria-selected="${i === 0}" class="pp-study-btn${i === 0 ? ' on' : ''}" data-study-btn="${i}">
-                <span class="pp-study-btn-num">0${i + 1}</span>
-                <span class="pp-study-btn-label">Study</span>
-              </button>`).join('')}
+              <article class="pp-study-row${i === 0 ? ' on' : ''}" data-study-row="${i}">
+                <button type="button" class="pp-study-row-head" data-study-btn="${i}" aria-expanded="${i === 0 ? 'true' : 'false'}" aria-controls="pp-study-pane-${i}">
+                  <span class="pp-study-row-num">0${i + 1}</span>
+                  <span class="pp-study-tag">${esc(it.label)}</span>
+                  <i class="pp-comp-chev" aria-hidden="true"></i>
+                </button>
+                <div class="pp-study-row-body" id="pp-study-pane-${i}">
+                  <p class="pp-study-body">${esc(it.body)}</p>
+                  ${it.link ? `<a class="pp-study-link" href="${esc(it.link)}" target="_blank" rel="noopener">Read the study <span aria-hidden="true">↗</span></a>` : ''}
+                </div>
+              </article>`).join('')}
             </div>
-            ${s.items.map((it, i) => `
-            <div class="pp-study-pane${i === 0 ? ' on' : ''}" id="pp-study-pane-${i}" role="tabpanel" aria-labelledby="pp-study-tab-${i}" ${i === 0 ? '' : 'hidden'}>
-              <p class="pp-study-tag">${esc(it.label)}</p>
-              <p class="pp-study-body">${esc(it.body)}</p>
-              ${it.link ? `<a class="pp-study-link" href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.link.replace(/^https?:\/\//, ''))} <span aria-hidden="true">↗</span></a>` : ''}
-            </div>`).join('')}
           </div>
         </div>
         <figure class="pp-split-media pp-study-media">
-          ${s.items.map((it, i) => `<img class="pp-study-shot${i === 0 ? ' on' : ''}" data-study-shot="${i}" src="${esc(studyShot(p, i))}?v=33" alt="${esc(p.name)} research imagery" ${i === 0 ? '' : 'loading="lazy"'} width="720" height="900">`).join('')}
+          ${s.items.map((it, i) => `<img class="pp-study-shot${i === 0 ? ' on' : ''}" data-study-shot="${i}" src="${esc(vsrc(studyShot(p, i)))}" alt="${esc(p.name)} research imagery" ${i === 0 ? '' : 'loading="lazy"'} width="720" height="900">`).join('')}
         </figure>
       </div>
     </section>`;
@@ -518,50 +516,66 @@
     return pool[i % pool.length];
   }
 
-  /* ---------- section 9: competitor comparison (same table for all products) ---------- */
+  /* ---------- section 9: per-product villain comparison (from p.comparison) ---------- */
 
-  const COMPARE_ICONS = {
-    q: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.4"/><path d="M9.6 9.3c.3-1.4 1.4-2.2 2.7-2.2 1.5 0 2.6 1 2.6 2.4 0 2-2.5 2.2-2.5 4"/><circle class="pp-ci-dot" cx="12.3" cy="16.6" r="1"/></svg>',
-    factory: '<svg viewBox="0 0 24 24"><path d="M4 19V9l5 3.4V9l5 3.4V6.5h6V19z"/><path d="M8 16h1.6M13 16h1.6M17.5 16h1.6"/></svg>',
-    box: '<svg viewBox="0 0 24 24"><path d="M12 3l8 4.4v9.2L12 21l-8-4.4V7.4z"/><path d="M4 7.4l8 4.4 8-4.4M12 11.8V21"/></svg>',
-    chart: '<svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6.5 19v-4M10.8 19v-7M15 19v-5M19.2 19v-9"/></svg>',
-    eye: '<svg viewBox="0 0 24 24"><path d="M2.5 12S6 6.2 12 6.2 21.5 12 21.5 12 18 17.8 12 17.8 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.6"/></svg>',
-    cart: '<svg viewBox="0 0 24 24"><path d="M3.5 5h2.4l2 10.4h9.7L20 8H7"/><circle cx="9.4" cy="18.8" r="1.4"/><circle cx="16.4" cy="18.8" r="1.4"/></svg>',
-    sprout: '<svg viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13c0-4 2.8-6.5 7-6.5 0 4.2-2.8 6.5-7 6.5zM12 11.5C12 8 9.6 6 6 6c0 3.6 2.4 5.5 6 5.5z"/></svg>',
-    leaf: '<svg viewBox="0 0 24 24"><path d="M5 19C5 10 10.5 5 19.5 4.5 20 13.5 15 19 6 19z"/><path d="M5 19c3-4.5 7-8.5 11-11"/></svg>',
-    truck: '<svg viewBox="0 0 24 24"><path d="M2.8 6.5h11.4v9.6H2.8zM14.2 9.5h4l3 3.3v3.3h-7"/><circle cx="7" cy="17.8" r="1.7"/><circle cx="17.4" cy="17.8" r="1.7"/></svg>',
-    flask: '<svg viewBox="0 0 24 24"><path d="M9.6 3.5h4.8M10.5 3.5v5L5.4 18a1.8 1.8 0 001.6 2.6h10a1.8 1.8 0 001.6-2.6l-5.1-9.5v-5"/><path d="M8 14.5h8"/></svg>',
-    doc: '<svg viewBox="0 0 24 24"><path d="M6.5 3.5h7.5l3.5 3.5v13.5h-11z"/><path d="M14 3.5V7h3.5M9 11h6M9 14.4h6M9 17.8h4"/></svg>',
-    hands: '<svg viewBox="0 0 24 24"><path d="M7.7 12.9L4 9.9a2 2 0 012.5-3.1l3.6 2.6M16.3 12.9l3.7-3a2 2 0 00-2.5-3.1l-3.6 2.6"/><path d="M8.5 9.7l3.5 2.5 3.5-2.5M6.7 13.8L12 17.9l5.3-4.1"/></svg>'
-  };
+  const MARK_YES = '<svg class="pp-mark pp-mark-yes" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6.8 11.4l2.8 2.8 5.4-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const MARK_NO = '<svg class="pp-mark pp-mark-no" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7.4 7.4l7.2 7.2M14.6 7.4l-7.2 7.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>';
 
-  const COMPARE_ROWS = [
-    ['q', 'Unclear origin', 'sprout', 'Direct from trusted growers'],
-    ['factory', 'Mass-produced', 'leaf', 'Small-batch'],
-    ['box', 'Sits on shelves for months (or years)', 'truck', 'Harvested fresh, shipped fast'],
-    ['chart', 'Lower potency', 'flask', 'Higher potency & purity'],
-    ['eye', 'Little to no transparency', 'doc', 'Full transparency from farm to you'],
-    ['cart', 'Generic commodity', 'hands', 'Relationships with growers & communities']
-  ];
+  /* Accepts the stored doc shape ({header, subtext, columns}) or the fuller
+     merge shape ({header, subtext, columns:[...], rows:[{label, values:[bool|string,...]}]}).
+     Renders only what the product's own data carries; no data, no section. */
+  function normalizeComparison(c) {
+    if (!c || typeof c !== 'object') return null;
+    const out = {
+      header: String(c.header || '').trim(),
+      subtext: String(c.subtext || '').trim(),
+      columns: Array.isArray(c.columns) ? c.columns.map((x) => String(x || '').trim()).filter(Boolean) : [],
+      rows: Array.isArray(c.rows) ? c.rows.map((r) => ({
+        label: String((r && r.label) || '').trim(),
+        values: Array.isArray(r && r.values) ? r.values : []
+      })).filter((r) => r.label || r.values.length) : []
+    };
+    if (!out.header && !out.subtext && !out.rows.length) return null;
+    return out;
+  }
 
-  function comparisonSection() {
+  function compareCell(val) {
+    if (val === true) return MARK_YES;
+    if (val === false || val == null || val === '') return MARK_NO;
+    return `<em>${esc(val)}</em>`;
+  }
+
+  function comparisonSection(p) {
+    const c = normalizeComparison(p.comparison);
+    if (!c) return '';
+    const cols = c.columns;
+    const table = (c.rows.length && cols.length) ? `
+        <div class="pp-vsx" role="table" aria-label="${esc(c.header || p.name + ' comparison')}" style="--vs-cols:${cols.length}">
+          <div class="pp-vsx-row pp-vsx-head" role="row">
+            <span class="pp-vsx-label" role="columnheader"><span class="pp-visually-hidden">Benefit</span></span>
+            ${cols.map((col, i) => `<span class="pp-vsx-col${i === 0 ? ' pp-vsx-us' : ''}" role="columnheader">${esc(col)}</span>`).join('')}
+          </div>
+          ${c.rows.map((r) => `
+          <div class="pp-vsx-row" role="row">
+            <span class="pp-vsx-label" role="rowheader">${esc(r.label)}</span>
+            ${cols.map((col, i) => `<span class="pp-vsx-cell${i === 0 ? ' pp-vsx-us' : ''}" role="cell">${compareCell(r.values[i])}</span>`).join('')}
+          </div>`).join('')}
+        </div>` : (cols.length ? `
+        <div class="pp-vs-strip" aria-label="${esc(p.name)} versus the alternatives">
+          ${cols.map((col, i) => i === 0
+            ? `<span class="pp-vs-name pp-vs-ours">${esc(col)}</span>`
+            : `<span class="pp-vs-sep" aria-hidden="true">vs</span><span class="pp-vs-name">${esc(col)}</span>`).join('')}
+        </div>` : '');
     return `
     <section class="pp-band pp-compare" data-sec="compare">
       <div class="pp-shell">
-        <p class="pp-eyebrow">Compare</p>
-        <h2 class="pp-compare-title">Big Box Brands vs. Our Herbs</h2>
-        <span class="pp-compare-sprig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13c0-4 2.8-6.5 7-6.5 0 4.2-2.8 6.5-7 6.5zM12 11.5C12 8 9.6 6 6 6c0 3.6 2.4 5.5 6 5.5z"/></svg></span>
-        <div class="pp-compare-table" role="table" aria-label="Big box brands versus our herbs">
-          <div class="pp-compare-head" role="row">
-            <span class="pp-ch-them" role="columnheader">Big Box Brands</span>
-            <span class="pp-ch-us" role="columnheader">The Electric Eats</span>
-          </div>
-          ${COMPARE_ROWS.map(([i1, t1, i2, t2]) => `
-          <div class="pp-compare-tr" role="row">
-            <span class="pp-cc-them" role="cell"><i class="pp-ci" aria-hidden="true">${COMPARE_ICONS[i1]}</i>${esc(t1)}</span>
-            <span class="pp-cc-us" role="cell"><i class="pp-ci" aria-hidden="true">${COMPARE_ICONS[i2]}</i><strong>${esc(t2)}</strong></span>
-          </div>`).join('')}
+        <div class="pp-center-head">
+          <p class="pp-eyebrow">Compare</p>
+          ${c.header ? `<h2 class="pp-compare-title">${esc(c.header)}</h2>` : ''}
+          <span class="pp-compare-sprig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13c0-4 2.8-6.5 7-6.5 0 4.2-2.8 6.5-7 6.5zM12 11.5C12 8 9.6 6 6 6c0 3.6 2.4 5.5 6 5.5z"/></svg></span>
+          ${c.subtext ? `<p class="pp-sub">${esc(c.subtext)}</p>` : ''}
         </div>
+        ${table}
       </div>
     </section>`;
   }
@@ -634,40 +648,8 @@
     </section>`;
   }
 
-  /* ---------- section 12: sourcing transparency (Blume cards + macro imagery) ---------- */
-
-  function sourcingImage(title, idx) {
-    const t = String(title || '').toLowerCase();
-    if (/bark|plant|leaf|herb|blend/.test(t)) return 'assets/img/gen/texture-botanical-macro.webp';
-    if (/land/.test(t)) return 'assets/img/real-amazon-basin.webp';
-    if (/hand/.test(t)) return 'assets/img/chip-hands.webp';
-    if (/process/.test(t)) return 'assets/img/gen2/apoth-texture.webp';
-    return ['assets/img/gen/texture-botanical-macro.webp', 'assets/img/real-amazon-basin.webp', 'assets/img/chip-hands.webp', 'assets/img/gen2/apoth-texture.webp'][idx % 4];
-  }
-
-  function sourcingSection(p) {
-    const s = p.sourcing;
-    if (!s || !s.cards || !s.cards.length) return '';
-    return `
-    <section class="pp-band pp-sourcing" data-sec="sourcing">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">Sourcing transparency</p>
-        <h2>${esc(s.heading || 'Where your herbs come from')}${/[.:!?]$/.test(s.heading || '') ? '' : '.'}</h2>
-        ${s.subtext ? `<p class="pp-sub">${esc(s.subtext)}</p>` : ''}
-        <div class="pp-source-grid">
-          ${s.cards.map((c, i) => `
-          <article class="pp-source-card">
-            <img src="${esc(sourcingImage(c.title, i))}?v=31" alt="" loading="lazy" width="480" height="360">
-            <div class="pp-source-copy"><h3>${esc(c.title)}</h3><p>${esc(c.body)}</p></div>
-          </article>`).join('')}
-        </div>
-        <a class="pp-source-band" href="story.html">
-          <img src="assets/img/chip-hands.webp?v=31" alt="Hands holding harvested Ecuadorian herbs" loading="lazy" width="1200" height="500">
-          <span><small>Direct trade · Ecuadorian Amazon</small><strong>Read the sourcing story behind every pouch.</strong></span>
-        </a>
-      </div>
-    </section>`;
-  }
+  /* Sourcing cards section removed on every product (client: repeats the
+     homepage sourcing story, reads as mental fatigue). */
 
   /* ---------- section 13: faq accordion ---------- */
 
@@ -693,129 +675,116 @@
     </section>`;
   }
 
-  /* ---------- section 14: the routine (Rhode numbered circles, linked steps) ---------- */
+  /* ---------- section 14: the upsell (routine context merged onto product cards) ---------- */
 
-  function routineStepLink(label, currentSlug) {
-    const base = String(label || '').replace(/\(.*?\)/g, '').trim();
-    const slug = findSlugByName(base);
-    if (slug && slug !== currentSlug) return `<a href="product.html?product=${esc(slug)}">${esc(label)}</a>`;
-    return esc(label);
-  }
-
-  /* Raisa: the routine steps are upsells, so every product a step advertises
-     (image + price + link) lives inside the step box itself. Scan the label
-     AND body text for catalog product names. */
-  const ROUTINE_NAME_HINTS = [
-    [/zapped in/i, 'zapped-in'], [/guayusa/i, 'guayusa-leaf'], [/cat'?s claw/i, 'cats-claw'],
+  /* Kits and blends are checked FIRST so a step like "Full Detox Support"
+     resolves to the Eliminate & Regenerate kit, never to one of its parts
+     (client correction, valerian call). */
+  const UPSELL_HINTS = [
+    [/eliminate\s*(&|and|\+)?\s*regenerate|full detox kit|detox kit/i, 'eliminate-regenerate'],
+    [/his fertile fires|fertile fires/i, 'mens-kit'],
+    [/her fertile waters|fertile waters|her sacred cycle/i, 'womens-kit'],
+    [/sacred sacral/i, 'sacred-sacral'],
+    [/scales of balance/i, 'scales-of-balance'],
     [/bowel balance/i, 'bowel-balance'], [/bowel banisher/i, 'bowel-banisher'],
     [/final flush/i, 'final-flush'], [/one way out/i, 'one-way-out'],
-    [/river of life/i, 'river-of-life'], [/chuchuhuasi/i, 'chuchuhuasi'],
-    [/scales of balance/i, 'scales-of-balance'], [/valerian/i, 'valerian'],
-    [/soursop/i, 'soursop'], [/matico|cordoncillo/i, 'matico'],
-    [/sacred sacral|fertile waters/i, 'sacred-sacral'],
-    [/eliminate\s*(&|and|\+)?\s*regenerate|detox kit/i, 'eliminate-regenerate'],
-    [/fertile fires/i, 'mens-kit'], [/her sacred cycle/i, 'womens-kit']
+    [/river of life/i, 'river-of-life'], [/zapped in/i, 'zapped-in'],
+    [/guayusa/i, 'guayusa-leaf'], [/cat'?s claw/i, 'cats-claw'],
+    [/chuchuhuasi/i, 'chuchuhuasi'], [/valerian/i, 'valerian'],
+    [/soursop/i, 'soursop'], [/matico|cordoncillo/i, 'matico']
   ];
-  function routineProductTiles(item, currentSlug) {
-    const text = `${item.label || ''} ${item.body || ''}`;
-    const slugs = [];
-    ROUTINE_NAME_HINTS.forEach(([re, slug]) => {
-      if (re.test(text) && slug !== currentSlug && CATALOG[slug] && slugs.indexOf(slug) === -1) slugs.push(slug);
-    });
-    return slugs.slice(0, 2).map((slug) => {
-      const q = CATALOG[slug];
-      return `
-      <a class="pp-routine-prod" href="product.html?product=${esc(slug)}">
-        <img src="${esc(q.image)}?v=33" alt="${esc(q.name)}" loading="lazy" width="120" height="120">
-        <span class="pp-routine-prod-meta"><strong>${esc(q.name)}</strong><em>${esc(q.price || '')} · Shop this blend</em></span>
-        <span class="pp-routine-prod-arrow" aria-hidden="true">&#8599;</span>
-      </a>`;
-    }).join('');
+
+  function upsellImage(slug) {
+    const cdn = ((SHOPIFY[slug] || {}).images || [])[0];
+    return cdn || vsrc((CATALOG[slug] || {}).image || '');
   }
 
-  function routineSection(p) {
-    let r = p.routine;
-    // Products without a routine block in the doc: their preparation order (or daily
-    // ritual timing) is the routine, rendered in the same numbered-step format.
-    if (!r || !r.items || !r.items.length) {
-      const items = (p.prepare || []).length >= 2 ? p.prepare
-        : ((p.bestTime || []).length >= 2 ? p.bestTime : (p.prepare || []));
-      if (items.length) r = { header: 'The ' + p.name + ' routine', items };
-    }
-    if (!r || !r.items || !r.items.length) return '';
+  function upsellEntries(p) {
+    const entries = [];
+    const seen = new Set([p.slug]);
+    ((p.routine && p.routine.items) || []).forEach((it) => {
+      const text = `${it.label || ''} ${it.body || ''}`;
+      for (const [re, slug] of UPSELL_HINTS) {
+        if (re.test(text) && !seen.has(slug) && CATALOG[slug]) {
+          seen.add(slug);
+          entries.push({ slug, label: it.label || '', context: it.body || '' });
+          break;
+        }
+      }
+    });
+    (p.crossSell || []).forEach((name) => {
+      if (entries.length >= 3) return;
+      const slug = findSlugByName(String(name).replace(/\(.*?\)/g, '').trim());
+      if (slug && !seen.has(slug) && CATALOG[slug]) {
+        seen.add(slug);
+        const q = CATALOG[slug];
+        entries.push({ slug, label: 'Pairs well', context: q.subline || (q.description || '').slice(0, 140) });
+      }
+    });
+    return entries.slice(0, 3);
+  }
+
+  function upsellSection(p) {
+    const entries = upsellEntries(p);
+    if (!entries.length) return '';
+    const r = p.routine || {};
     return `
-    <section class="pp-band pp-routine" data-sec="routine">
+    <section class="pp-band pp-upsell" data-sec="upsell">
       <div class="pp-shell">
-        <p class="pp-eyebrow">The routine</p>
-        <h2>${esc(r.header || 'Where ' + p.name + ' fits')}${/[.:!?]$/.test(r.header || '') ? '' : '.'}</h2>
-        <div class="pp-routine-grid">
-          ${r.items.map((it, i) => `
-          <article class="pp-routine-card">
-            <span class="pp-routine-num${i === 0 ? ' pp-routine-num-fill' : ''}">0${i + 1}</span>
-            ${it.label ? `<h3>${routineStepLink(it.label, p.slug)}</h3>` : ''}
-            <p>${esc(it.body)}</p>
-            ${routineProductTiles(it, p.slug)}
-          </article>`).join('')}
+        <p class="pp-eyebrow">Continue the ritual</p>
+        <h2>${esc(r.header || 'Blends that pair with ' + p.name)}${/[.:!?]$/.test(r.header || '') ? '' : '.'}</h2>
+        <div class="pp-upsell-grid">
+          ${entries.map((e, i) => {
+            const q = CATALOG[e.slug];
+            return `
+          <a class="pp-up-card" href="product.html?product=${esc(e.slug)}">
+            <figure class="pp-up-media"><img src="${esc(upsellImage(e.slug))}" alt="${esc(q.name)}" loading="lazy" width="480" height="480"></figure>
+            <div class="pp-up-copy">
+              <span class="pp-up-step">0${i + 1}${e.label ? ` · ${esc(e.label)}` : ''}</span>
+              <strong>${esc(q.name)}</strong>
+              ${e.context ? `<p>${esc(e.context)}</p>` : ''}
+              <em>${esc(q.price || '')} · Shop this blend</em>
+            </div>
+          </a>`;
+          }).join('')}
         </div>
         ${r.note ? `<p class="pp-routine-note">${esc(r.note)}</p>` : ''}
       </div>
     </section>`;
   }
 
-  /* ---------- section 15: reviews wall (all reviews on the site) ---------- */
+  /* ---------- section 15: this product's reviews (Loox live widget, static fallback) ---------- */
 
-  function reviewsWallSection(p) {
-    const seen = new Set();
-    const all = [];
-    Object.keys(DATA).forEach((slug) => {
-      (DATA[slug].reviews || []).forEach((rv) => {
-        const key = rv.quote + '|' + rv.author;
-        if (seen.has(key)) return;
-        seen.add(key);
-        all.push({ quote: rv.quote, author: rv.author, product: DATA[slug].name, slug });
-      });
-    });
-    if (!all.length) return '';
-    // Put the current product's reviews first.
-    all.sort((a, b) => (a.slug === p.slug ? -1 : 0) - (b.slug === p.slug ? -1 : 0));
-    return `
-    <section class="pp-band pp-reviews-wall" data-sec="reviews-wall">
-      <div class="pp-shell">
-        <p class="pp-eyebrow">The review wall</p>
-        <h2>${all.length} reviews across the apothecary.</h2>
-        <div class="pp-wall">
-          ${all.map((rv) => `
-          <figure class="pp-wall-card">
+  function reviewsAllSection(p) {
+    const r = p.reviews || [];
+    const handle = shopifyHandleFor(p);
+    const writeUrl = `https://theelectriceats.com/products/${encodeURIComponent(handle)}#looxReviews`;
+    const VISIBLE = 4; // two rows of the two-column grid
+    const cards = r.map((rv, i) => `
+          <figure class="pp-wall-card"${i >= VISIBLE ? ' hidden data-review-extra' : ''}>
             <span class="pp-stars pp-stars-sm" aria-label="5 star review">${STAR.repeat(5)}</span>
             <blockquote>&ldquo;${esc(rv.quote)}&rdquo;</blockquote>
-            <figcaption><strong>${esc(rv.author)}</strong><a href="product.html?product=${esc(rv.slug)}">${esc(rv.product)}</a></figcaption>
-          </figure>`).join('')}
-        </div>
-      </div>
-    </section>`;
-  }
-
-  /* ---------- section 16: you may also like ---------- */
-
-  function crossSellSection(p) {
-    const wanted = (p.crossSell || []).map(findSlugByName).filter((s) => s && s !== p.slug);
-    const pool = Object.keys(DATA).filter((s) => s !== p.slug && wanted.indexOf(s) === -1);
-    while (wanted.length < 3 && pool.length) wanted.push(pool.shift());
-    const items = wanted.slice(0, 3).map((slug) => {
-      const q = CATALOG[slug];
-      return `
-      <a class="pp-xs-card" href="product.html?product=${esc(slug)}">
-        <img src="${esc(q.image)}?v=31" alt="${esc(q.name)}" loading="lazy" width="480" height="480">
-        <span class="pp-xs-copy"><strong>${esc(q.name)}</strong>${q.subline ? `<small>${esc(q.subline)}</small>` : ''}<em>${esc(q.price || '')} · Shop this blend</em></span>
-      </a>`;
-    }).join('');
-    if (!items) return '';
+            <figcaption><strong>${esc(rv.author)}</strong><span>${esc(p.name)}</span></figcaption>
+          </figure>`).join('');
+    if (!r.length && !handle) return '';
     return `
-    <section class="pp-band pp-xs" data-sec="cross-sell">
+    <section class="pp-band pp-reviews-wall" data-sec="reviews-all">
       <div class="pp-shell">
-        <p class="pp-eyebrow">You may also like</p>
-        <h2>Continue the ritual.</h2>
-        <div class="pp-xs-grid">${items}</div>
+        <div class="pp-revhead">
+          <div>
+            <p class="pp-eyebrow">From the community</p>
+            <h2>${esc(p.name)} reviews.</h2>
+            <div class="pp-star-row">${starRow(r.length)}</div>
+          </div>
+          <a class="btn pp-write-review" href="${esc(writeUrl)}" target="_blank" rel="noopener">Write a review</a>
+        </div>
+        <div class="pp-loox" data-loox data-handle="${esc(handle)}" hidden>
+          <div id="looxReviews" data-loox-container class="loox-reviews-default"></div>
+        </div>
+        <div class="pp-wall pp-wall-product" data-static-reviews>
+          ${cards}
+          ${r.length > VISIBLE ? `<div class="pp-wall-more"><button type="button" class="btn" data-reviews-more>See all ${r.length} reviews</button></div>` : ''}
+        </div>
       </div>
     </section>`;
   }
@@ -833,7 +802,7 @@
     return `
     <div class="pp-sticky" data-sticky>
       <div class="pp-sticky-inner">
-        <img src="${esc(p.image)}?v=31" alt="" width="56" height="56">
+        <img src="${esc(vsrc(p.image))}" alt="" width="56" height="56">
         <div class="pp-sticky-meta"><strong>${esc(p.name)}</strong><span>${esc(p.price || '')}</span></div>
         <button class="btn btn-primary pp-add" type="button" data-add-ritual>Add to Cart</button>
       </div>
@@ -843,7 +812,8 @@
   /* ---------- meta ---------- */
 
   function setMeta(p) {
-    const url = `https://theelectriceats.com/products/${encodeURIComponent(p.slug)}`;
+    // Canonical/OG point at the REAL store handle (differs from our slug on 6 products).
+    const url = `https://theelectriceats.com/products/${encodeURIComponent(shopifyHandleFor(p))}`;
     document.title = `${p.name} | Kawsaypac Ancestral Herbs`;
     const md = document.querySelector('meta[name="description"]');
     if (md && p.description) md.setAttribute('content', p.description.slice(0, 158));
@@ -946,36 +916,82 @@
       }));
     });
 
-    // study switcher (Raisa: clicking a new study also swaps the section image)
+    // studies: hovering (desktop) or tapping a row opens it and swaps the section image
     root.querySelectorAll('[data-study]').forEach((wrap) => {
-      const btns = Array.from(wrap.querySelectorAll('[data-study-btn]'));
-      const panes = Array.from(wrap.querySelectorAll('.pp-study-pane'));
+      const rows = Array.from(wrap.querySelectorAll('[data-study-row]'));
       const section = wrap.closest('[data-sec="science"]') || root;
       const shots = Array.from(section.querySelectorAll('[data-study-shot]'));
-      btns.forEach((btn) => btn.addEventListener('click', () => {
-        const i = Number(btn.dataset.studyBtn);
-        btns.forEach((b, j) => { b.classList.toggle('on', j === i); b.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
-        panes.forEach((pn, j) => { pn.classList.toggle('on', j === i); if (j === i) pn.removeAttribute('hidden'); else pn.setAttribute('hidden', ''); });
+      const hoverable = window.matchMedia && window.matchMedia('(hover:hover)').matches;
+      const open = (i) => {
+        rows.forEach((row) => {
+          const on = row.dataset.studyRow === String(i);
+          row.classList.toggle('on', on);
+          const head = row.querySelector('[data-study-btn]');
+          if (head) head.setAttribute('aria-expanded', on ? 'true' : 'false');
+        });
         shots.forEach((sh) => sh.classList.toggle('on', sh.dataset.studyShot === String(i)));
-      }));
+      };
+      rows.forEach((row) => {
+        const i = row.dataset.studyRow;
+        const head = row.querySelector('[data-study-btn]');
+        if (head) head.addEventListener('click', () => open(i));
+        if (hoverable) row.addEventListener('mouseenter', () => open(i));
+      });
     });
 
-    // compound wheel hover: hovering a segment lights its legend card and vice versa
+    // compound wheel: click a segment (or its row) to open that compound's story;
+    // hover still cross-lights segment <-> row. One compound is open by default.
     const wheelSec = root.querySelector('[data-sec="infographic"]');
     if (wheelSec && wheelSec.querySelector('[data-wheel]')) {
       const segsAll = Array.from(wheelSec.querySelectorAll('svg [data-widx]'));
-      const cards = Array.from(wheelSec.querySelectorAll('.pp-legend [data-widx]'));
+      const rows = Array.from(wheelSec.querySelectorAll('.pp-legend > [data-widx]'));
       const setHot = (idx) => {
         wheelSec.classList.toggle('pp-wheel-hover', idx !== null);
         segsAll.forEach((s) => s.classList.toggle('is-hot', s.dataset.widx === String(idx)));
-        cards.forEach((c) => c.classList.toggle('is-hot', c.dataset.widx === String(idx)));
+        rows.forEach((c) => c.classList.toggle('is-hot', c.dataset.widx === String(idx)));
       };
-      [...segsAll, ...cards].forEach((el) => {
+      const openComp = (idx) => {
+        rows.forEach((row) => {
+          const on = row.dataset.widx === String(idx);
+          row.classList.toggle('open', on);
+          const btn = row.querySelector('.pp-comp-btn');
+          if (btn) btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+        });
+        segsAll.forEach((s) => s.classList.toggle('is-open', s.dataset.widx === String(idx)));
+      };
+      segsAll.forEach((el) => {
+        el.addEventListener('click', () => openComp(el.dataset.widx));
         el.addEventListener('mouseenter', () => setHot(el.dataset.widx));
         el.addEventListener('mouseleave', () => setHot(null));
-        el.addEventListener('focus', () => setHot(el.dataset.widx), true);
       });
+      rows.forEach((row) => {
+        const btn = row.querySelector('.pp-comp-btn');
+        if (btn) btn.addEventListener('click', () => openComp(row.dataset.widx));
+        row.addEventListener('mouseenter', () => setHot(row.dataset.widx));
+        row.addEventListener('mouseleave', () => setHot(null));
+      });
+      openComp(0);
     }
+
+    // cinematic jungle video: autoplay kick for blocked browsers
+    const cinema = root.querySelector('[data-cinema-video]');
+    if (cinema) {
+      const kick = () => { try { if (cinema.readyState === 0) cinema.load(); } catch (e) { /* noop */ } cinema.play().catch(() => {}); };
+      kick();
+      window.addEventListener('pointerdown', kick, { once: true, passive: true });
+      window.addEventListener('scroll', kick, { once: true, passive: true });
+    }
+
+    // reviews: "See all reviews" expander
+    root.querySelectorAll('[data-reviews-more]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        root.querySelectorAll('[data-review-extra]').forEach((el) => el.removeAttribute('hidden'));
+        btn.closest('.pp-wall-more').remove();
+      });
+    });
+
+    // reviews: attempt the live Loox widget; fall back to the static grid.
+    initLoox(root);
 
     // sequential "wheel" reveals: numbered items open 1-2-3-4-5 as they scroll in
     if ('IntersectionObserver' in window) {
@@ -1006,29 +1022,38 @@
     }
   }
 
-  /* Premium botanical sprites on the PDP flanks (Raisa: left/right feel bland).
-     Anchored per cream section, varied scale, gentle sway, always behind content. */
-  const FLORA = [
-    ['highlights', 'left', 'passionflower-vine', 150], ['highlights', 'right', 'orchid-cluster', 84],
-    ['besttime', 'right', 'cats-claw-vine', 170], ['besttime', 'left', 'seed-pod', 62],
-    ['results', 'left', 'guayusa-sprig', 120], ['science', 'right', 'cinchona-bark-leaves', 130],
-    ['secret', 'right', 'passionflower-vine', 96], ['faq', 'left', 'cinchona-bark-leaves', 110],
-    ['routine', 'right', 'guayusa-sprig', 150], ['reviews-wall', 'left', 'orchid-cluster', 70]
-  ];
-  function sprinkleFlora(root) {
-    FLORA.forEach(([sec, side, icon, size], i) => {
-      const host = root.querySelector(`[data-sec="${sec}"]`);
-      if (!host) return;
-      const img = document.createElement('img');
-      img.className = `pp-flora pp-flora-${side}`;
-      img.src = `assets/sprites/herb-icons/${icon}.webp?v=33`;
-      img.alt = '';
-      img.setAttribute('aria-hidden', 'true');
-      img.style.setProperty('--fw', size + 'px');
-      img.style.setProperty('--fd', ((i % 5) * 1.3).toFixed(1) + 's');
-      img.style.setProperty('--ft', (18 + (i * 13) % 52) + '%');
-      host.appendChild(img);
-    });
+  /* Decorative sprites are OFF on product pages (client call: no mini
+     flowers/leaves on the PDP flanks). The suppression lives in product.css
+     scoped to body.pp-body so shared ornament systems stay untouched. */
+
+  /* Loox live reviews: resolve the numeric Shopify product id from the store's
+     own /products/<handle>.js endpoint, mount the widget, and only reveal it
+     if it actually rendered within ~4s. The static grid is the safety net. */
+  function initLoox(root) {
+    const wrap = root.querySelector('[data-loox]');
+    if (!wrap || !window.fetch) return;
+    const handle = wrap.dataset.handle;
+    const mount = wrap.querySelector('[data-loox-container]');
+    const staticBlock = root.querySelector('[data-static-reviews]');
+    if (!handle || !mount) return;
+    fetch(`https://theelectriceats.com/products/${encodeURIComponent(handle)}.js`)
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error('product lookup failed'))))
+      .then((prod) => {
+        if (!prod || !prod.id) throw new Error('no product id');
+        mount.setAttribute('data-product-id', String(prod.id));
+        const s = document.createElement('script');
+        s.src = LOOX_SCRIPT;
+        s.async = true;
+        document.body.appendChild(s);
+        window.setTimeout(() => {
+          const rendered = mount.childElementCount > 0 && mount.textContent.trim().length > 0;
+          if (rendered) {
+            wrap.hidden = false;
+            if (staticBlock) staticBlock.hidden = true;
+          }
+        }, 4000);
+      })
+      .catch(() => { /* static reviews stay in place */ });
   }
 
   /* ---------- boot ---------- */
@@ -1036,35 +1061,44 @@
   function boot() {
     const root = document.querySelector('[data-product-root]');
     if (!root) return;
-    let slug = handleFromUrl();
+    const requested = new URLSearchParams(window.location.search).get('product');
+    // Digital/ebook handles belong to the ebook template, never this one.
+    if (requested && DIGITAL_HANDLES.indexOf(requested) !== -1) {
+      window.location.replace(`ebook.html?product=${encodeURIComponent(requested)}`);
+      return;
+    }
+    const slug = handleFromUrl();
     let p = DATA[slug] || EXTRA[slug];
-    if (!p) { slug = DEFAULT_HANDLE; p = DATA[slug]; }
-    if (!p) return;
-    p = Object.assign({ slug }, p);
+    if (!p) {
+      // A requested slug that resolves to nothing goes back to the shop,
+      // never to a silently-wrong product.
+      if (requested) { window.location.replace('shop.html'); return; }
+      p = DATA[DEFAULT_HANDLE];
+      if (!p) return;
+      p = Object.assign({ slug: DEFAULT_HANDLE }, p);
+    } else {
+      p = Object.assign({ slug }, p);
+    }
 
     setMeta(p);
     root.insertAdjacentHTML('afterbegin', [
-      heroSection(p),          // 1
-      cinematicSection(p),     // 2
-      claimSection(p),         // 3
-      highlightsSection(p),    // 4
-      infographicSection(p),   //   (kept bonus feature)
-      prepareSection(p),       // 5
-      bestTimeSection(p),      // 6
-      reviewsSection(p),       // 7
-      studiesSection(p),       // 8
-      comparisonSection(p),    // 9
-      resultsSection(p),       // 10
-      secretSection(p),        // 11
-      sourcingSection(p),      // 12
-      faqSection(p),           // 13
-      routineSection(p),       // 14
-      reviewsWallSection(p),   // 15
-      crossSellSection(p),     // 16
+      heroSection(p),          // 1 · hero + real-image gallery, rail outside the frame
+      cinematicSection(p),     // 2 · jungle video band (KEEP_CINEMATIC only)
+      claimSection(p),         // 3 · why-this-herb ruled rows
+      infographicSection(p),   // 4 · interactive compound wheel (carries the compound long-copy)
+      prepareSection(p),       // 5 · how to prepare
+      bestTimeSection(p),      // 6 · best time to drink
+      reviewsSection(p),       // 7 · condition-specific quotes
+      studiesSection(p),       // 8 · research rows (hover/tap to open)
+      comparisonSection(p),    // 9 · per-product villain comparison (data-driven)
+      resultsSection(p),       // 10 · what to expect
+      secretSection(p),        // 11 · meet the plants halfway
+      faqSection(p),           // 12 · faq
+      upsellSection(p),        // 13 · routine-context upsell cards (before reviews, Blume)
+      reviewsAllSection(p),    // 14 · this product's reviews (Loox live, static fallback)
       disclaimerSection(),
       stickyBar(p)
     ].join('\n'));
-    sprinkleFlora(root);
     initInteractions(root, p);
   }
 

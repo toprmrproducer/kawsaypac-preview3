@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Digital Library | Kawsaypac Ancestral Herbs</title>
+    <meta id="ebook-meta-description" name="description" content="Kawsaypac digital field guides, cookbooks and guided programs. Instant downloads with secure Shopify checkout.">
+    <link id="ebook-canonical" rel="canonical" href="https://theelectriceats.com/collections/eproducts">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="Kawsaypac Ancestral Herbs">
+    <meta id="ebook-og-title" property="og:title" content="Kawsaypac Digital Library">
+    <meta id="ebook-og-description" property="og:description" content="Digital field guides, cookbooks and guided programs with instant download.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=118">
+    <link rel="stylesheet" href="home.css?v=118">
+    <link rel="stylesheet" href="shopify-storefront.css?v=19">
+    <script type="module" data-storefront-components src="https://cdn.shopify.com/storefront/web-components.js"></script>
+    <script defer src="app.js?v=118"></script>
+    <script defer src="shopify-storefront.js?v=27"></script>
+    <script defer src="ebook-data.js?v=1"></script>
+    <script defer src="ebook.js?v=1"></script>
+    <style>
+      /* ================= Digital product detail page (scoped: .eb-main) ================= */
+      .eb-main{--eb-ink:var(--charcoal);--eb-soft:#5e5b52;--eb-line:rgba(31,58,42,.12);--eb-line-2:rgba(31,58,42,.2);--eb-paper:#F3F0E9;--eb-shadow:0 20px 50px rgba(26,40,25,.08);--eb-shadow-lift:0 34px 70px rgba(26,40,25,.16);color:var(--eb-ink)}
+      .eb-main .eb-wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+
+      /* Breadcrumb */
+      .eb-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:clamp(18px,2.4vw,30px) 0 clamp(18px,2.4vw,28px);font-size:.74rem;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--olive)}
+      .eb-crumbs a{color:var(--olive);transition:color .2s}
+      .eb-crumbs a:hover{color:var(--forest);text-decoration:underline;text-underline-offset:4px}
+      .eb-crumbs .eb-crumb-sep{color:rgba(149,142,89,.55)}
+      .eb-crumbs .eb-crumb-here{color:var(--forest);font-weight:750;max-width:34ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+      /* Hero: cover + buy box */
+      .eb-hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(26px,4vw,64px);align-items:start;padding-bottom:clamp(34px,4.5vw,64px)}
+      .eb-gallery{position:sticky;top:130px}
+      .eb-cover{position:relative;border-radius:22px;overflow:hidden;background:#f1ece1;border:1px solid var(--eb-line);box-shadow:var(--eb-shadow);aspect-ratio:4/5}
+      .eb-cover img{width:100%;height:100%;object-fit:contain;background:#f1ece1;transition:transform .8s var(--ease)}
+      .eb-cover:hover img{transform:scale(1.03)}
+      .eb-cover::after{content:"";position:absolute;inset:0;border-radius:22px;border:1px solid rgba(247,244,234,.3);pointer-events:none}
+      .eb-thumbs{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+      .eb-thumbs button{width:72px;height:90px;flex:none;padding:0;border:1px solid var(--eb-line);border-radius:12px;overflow:hidden;background:#f1ece1;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
+      .eb-thumbs button img{width:100%;height:100%;object-fit:cover}
+      .eb-thumbs button:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(26,40,25,.14)}
+      .eb-thumbs button[aria-current="true"]{border:2px solid var(--gold)}
+
+      .eb-buy .eb-badge{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:750;letter-spacing:.16em;text-transform:uppercase;color:#f7f4ea;background:#143b28;border-radius:999px;padding:8px 15px;margin:0 0 16px}
+      .eb-buy .eb-badge svg{width:13px;height:13px;stroke:#d7ae36;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .eb-buy h1{font-family:var(--display);font-weight:500;letter-spacing:-.035em;line-height:1;margin:0 0 14px;font-size:clamp(2.1rem,4.2vw,3.5rem);color:var(--forest);text-wrap:balance}
+      .eb-stars{margin:0 0 14px;color:#caa53d;font-size:.72rem;letter-spacing:.3em}
+      .eb-price-row{display:flex;align-items:baseline;gap:12px;margin:0 0 18px}
+      .eb-price{font-family:var(--display);font-weight:500;font-size:clamp(1.6rem,2.6vw,2.1rem);color:var(--forest);font-variant-numeric:tabular-nums}
+      .eb-price-meta{font-size:.72rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase;color:var(--olive)}
+      .eb-lead{margin:0 0 22px;color:var(--eb-soft);font-size:1.08rem;line-height:1.6;max-width:52ch}
+      .eb-buy-panel{border:1px solid var(--eb-line);border-radius:20px;background:linear-gradient(180deg,#fff,var(--cream));box-shadow:var(--eb-shadow);padding:clamp(20px,2.4vw,28px)}
+      .eb-buy-buttons{display:flex;flex-wrap:wrap;gap:10px}
+      .eb-buy-buttons .btn{flex:1 1 200px}
+      .eb-buy-fallback{display:grid;gap:10px;justify-items:start}
+      .eb-buy-fallback p{margin:0;color:var(--eb-soft);font-size:.84rem}
+      .eb-trust{display:grid;gap:8px;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--eb-line);list-style:none}
+      .eb-trust li{display:flex;align-items:center;gap:10px;color:var(--eb-soft);font-size:.86rem}
+      .eb-trust svg{width:15px;height:15px;flex:none;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      .eb-note{margin:18px 0 0;padding:14px 16px;border:1px solid rgba(201,169,66,.38);border-left:3px solid var(--gold);border-radius:12px;background:#f5efd8;color:#5c5a48;font-size:.82rem;line-height:1.5}
+      .eb-tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+      .eb-tags span{font-size:.64rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase;color:var(--olive);border:1px solid var(--eb-line-2);border-radius:999px;padding:6px 12px}
+
+      /* What's inside */
+      .eb-band{padding:clamp(36px,4.6vw,64px) 0;border-top:1px solid var(--eb-line)}
+      .eb-band-head{max-width:640px;margin:0 0 clamp(22px,2.8vw,36px)}
+      .eb-band-head h2{font-family:var(--display);font-weight:500;letter-spacing:-.04em;line-height:.98;margin:.05em 0 .3em;font-size:clamp(1.9rem,3.6vw,3rem);color:var(--forest);text-wrap:balance}
+      .eb-band-head p{margin:0;color:var(--eb-soft);font-size:1rem;max-width:56ch}
+      .eb-inside-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .eb-inside-grid li{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--eb-line);border-radius:16px;background:#fff;padding:16px 18px;color:#494b43;font-size:.95rem;line-height:1.5;box-shadow:0 8px 22px rgba(26,40,25,.05);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+      .eb-inside-grid li:hover{transform:translateY(-3px);box-shadow:var(--eb-shadow);border-color:var(--eb-line-2)}
+      .eb-inside-grid{list-style:none;margin:0;padding:0}
+      .eb-inside-grid svg{width:18px;height:18px;flex:none;margin-top:2px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+      /* About + look inside strip */
+      .eb-about-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;max-width:760px}
+      .eb-about-grid p{margin:0;color:#494b43;font-size:1.02rem;line-height:1.68}
+      .eb-about-grid p:first-child::first-letter{initial-letter:2;-webkit-initial-letter:2;color:var(--gold);font-weight:500;margin-right:.08em;font-family:var(--display)}
+      .eb-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,300px);gap:14px;margin-top:clamp(24px,3vw,36px);overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+      .eb-strip figure{margin:0;border:1px solid var(--eb-line);border-radius:16px;overflow:hidden;background:#f1ece1;aspect-ratio:3/4;scroll-snap-align:start;box-shadow:var(--eb-shadow)}
+      .eb-strip img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+      .eb-strip figure:hover img{transform:scale(1.045)}
+
+      /* Cross links */
+      .eb-more-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+      .eb-more-card{display:flex;flex-direction:column;border:1px solid var(--eb-line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--eb-shadow);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+      .eb-more-card:hover{transform:translateY(-6px);box-shadow:var(--eb-shadow-lift);border-color:var(--eb-line-2)}
+      .eb-more-card .eb-more-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:#f1ece1}
+      .eb-more-card .eb-more-media img{width:100%;height:100%;object-fit:contain;transition:transform .7s var(--ease)}
+      .eb-more-card:hover .eb-more-media img{transform:scale(1.05)}
+      .eb-more-card .eb-more-media span{position:absolute;top:12px;left:12px;font-size:.6rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#f7f3e8;background:#143b28;border-radius:999px;padding:6px 11px}
+      .eb-more-body{display:flex;flex-direction:column;gap:8px;flex:1;padding:16px 18px 20px}
+      .eb-more-body h3{font-family:var(--display);font-weight:500;letter-spacing:-.015em;font-size:1.12rem;line-height:1.15;margin:0;color:var(--forest)}
+      .eb-more-body strong{color:#806a1f;font-family:var(--display);font-weight:500;font-size:1rem}
+      .eb-more-body .eb-more-cta{margin-top:auto;font-size:.7rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase;color:var(--forest)}
+      .eb-more-card:hover .eb-more-cta{color:#856e21}
+
+      /* Closing */
+      .eb-closing{position:relative;width:min(1180px,calc(100% - 40px));margin:clamp(40px,5.5vw,72px) auto clamp(24px,3vw,40px);border-radius:26px;overflow:hidden;isolation:isolate;padding:clamp(46px,6.5vw,88px) clamp(26px,4vw,64px);color:#f7f4ea;box-shadow:var(--eb-shadow-lift)}
+      .eb-closing img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+      .eb-closing::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,rgba(15,28,20,.86),rgba(15,28,20,.5))}
+      .eb-closing h2{font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1;font-size:clamp(2rem,4.2vw,3.3rem);margin:.05em 0 .4em;max-width:18ch;text-wrap:balance}
+      .eb-closing p{margin:0 0 clamp(20px,2.4vw,28px);max-width:44ch;color:rgba(247,244,234,.88)}
+      .eb-closing .btn-outline{color:#f7f4ea;border-color:rgba(247,244,234,.68);background:rgba(15,28,20,.32)}
+      .eb-closing .btn-outline:hover{color:#10231a;background:#f7f4ea;border-color:#f7f4ea}
+
+      @media (max-width:900px){
+        .eb-hero{grid-template-columns:1fr;gap:26px}
+        .eb-gallery{position:static}
+        .eb-inside-grid{grid-template-columns:1fr}
+        .eb-more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      }
+      @media (max-width:560px){
+        .eb-more-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+        .eb-more-body{padding:12px 12px 14px}
+        .eb-more-body h3{font-size:.98rem}
+        .eb-cover{aspect-ratio:auto;min-height:340px}
+        .eb-buy-buttons .btn{flex:1 1 100%}
+      }
+    </style>
+  <style>/* QA fix: prevent KAWSAYPAC wordmark overlapping the search icon on narrow phones (shared header grid gives the brand ~121px at <=480px) */
+@media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
+@media(max-width:400px){.nav-pill .brand img{display:none}}
+</style></head>
+  <body class="ebook-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-site-header></div>
+    <shopify-store data-storefront-config store-domain="https://theelectriceats.com" country="US" language="en"></shopify-store>
+
+    <main class="page-main eb-main" id="main" data-ebook-root aria-busy="true">
+      <noscript>
+        <div class="eb-wrap" style="padding:60px 0">
+          <h1>Kawsaypac Digital Library</h1>
+          <p>This page needs JavaScript to display the full guide. Please enable JavaScript, or browse <a href="recipes.html">Recipes &amp; Programs</a> directly.</p>
+        </div>
+      </noscript>
+    </main>
+
+    <shopify-cart id="storefront-cart" target="_top">
+      <div class="storefront-cart-empty" slot="empty">
+        <strong>Your ritual bag is empty.</strong>
+        <p>Choose a live product to begin.</p>
+      </div>
+      <span slot="checkout-button">Secure Shopify checkout</span>
+    </shopify-cart>
+    <p class="storefront-notice" data-storefront-notice role="status" aria-live="polite" hidden></p>
+
+    <div data-site-footer></div>
+    <div data-site-modal></div>
+  </body>
+</html>

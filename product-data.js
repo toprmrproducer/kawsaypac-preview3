@@ -5,7 +5,7 @@ window.KAWSAYPAC_PRODUCTS = {
   "slug": "cats-claw",
   "name": "Cat's Claw",
   "tag": "Single Herb",
-  "image": "assets/img/apoth-cats-claw.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Cat_sClaw.png?v=1699942275",
   "infographic": "wheel",
   "subline": "Relief for the pain & cellular repair",
   "pills": [
@@ -282,7 +282,7 @@ window.KAWSAYPAC_PRODUCTS = {
   "slug": "soursop",
   "name": "Soursop",
   "tag": "Single Herb",
-  "image": "assets/img/bowl-immune.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Soursop.png?v=1707841150",
   "infographic": "wheel",
   "subline": "Cellular support",
   "pills": [
@@ -511,7 +511,7 @@ window.KAWSAYPAC_PRODUCTS = {
   "slug": "matico",
   "name": "Matico",
   "tag": "Single Herb",
-  "image": "assets/img/bowl-digestive.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Matico.png?v=1707841069",
   "infographic": "wheel",
   "subline": "Respiratory + Skin",
   "pills": [
@@ -752,7 +752,7 @@ window.KAWSAYPAC_PRODUCTS = {
   "slug": "guayusa-leaf",
   "name": "Guayusa",
   "tag": "Single Herb",
-  "image": "assets/img/apoth-guayusa.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Guayusa.png?v=1699942164",
   "infographic": "wheel",
   "subline": "Energy + Clarity",
   "pills": [
@@ -994,13 +994,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "Scales Of Balance",
    "Her Fertile Waters Kit",
    "His Fertile Fires Kit"
+  ],
+  "comparison": {
+  "header": "Coffee + Green Tea Comparison Chart",
+  "subtext": "",
+  "columns": [
+    "The Electric Eats Guayusa",
+    "Coffee",
+    "Green Tea"
+  ],
+  "rows": [
+    {
+      "label": "Clean sustained energy without jitters",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Complete profile of 15 essential amino acids",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "50% more antioxidants than green tea",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Supports lucid dreaming and dream recall",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Blood sugar and appetite support",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "No acidity or bitter finish",
+      "values": [
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        true
+      ]
+    }
   ]
- },
+}
+},
  "chuchuhuasi": {
   "slug": "chuchuhuasi",
   "name": "Chuchuhuasi",
   "tag": "Single Herb",
-  "image": "assets/img/apoth-cinchona.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Chuchuhuasi.png?v=1699942211",
   "infographic": "wheel",
   "subline": "Iron Rich - Warrior’s Bark",
   "pills": [
@@ -1249,13 +1324,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "Zapped In",
    "River of Life",
    "His Fertile Fires Kit"
+  ],
+  "comparison": {
+  "header": "Chuchuhuasi vs. Ashwagandha & Ginseng",
+  "subtext": "",
+  "columns": [
+    "The Electric Eats Chuchuhuasi",
+    "Ashwagandha",
+    "Ginseng"
+  ],
+  "rows": [
+    {
+      "label": "Naturally iron-rich",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Supports adrenal recovery",
+      "values": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "Wild-harvested from the Amazon",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Sourced from indigenous communities",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Supports reproductive blood flow",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Anti-inflammatory exceeding diclofenac in studies",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Natural pain relief for joints and back",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        true
+      ]
+    }
   ]
- },
+}
+},
  "valerian": {
   "slug": "valerian",
   "name": "Valerian",
   "tag": "Single Herb",
-  "image": "assets/img/bowl-sleep.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Valerian_Root.png?v=1764021798",
   "infographic": "wheel",
   "subline": "Sleep + Anxiety relief",
   "pills": [
@@ -1400,10 +1550,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "Nature Already Made the Answer.",
-   "subtext": "Most sleep aids create dependency. Valerian creates balance."
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -1507,13 +1653,80 @@ window.KAWSAYPAC_PRODUCTS = {
    "Scales of Balance",
    "Sacred Sacral",
    "Cat’s Claw"
+  ],
+  "comparison": {
+  "header": "Nature Already Made the Answer.",
+  "subtext": "Most sleep aids create dependency. Valerian creates balance.",
+  "columns": [
+    "The Electric Eats Valerian",
+    "Melatonin",
+    "Prescription Sleep Aids"
+  ],
+  "rows": [
+    {
+      "label": "Activates GABA naturally",
+      "values": [
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "No dependency or withdrawal",
+      "values": [
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "Supports PMS and menopause",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "No morning grogginess",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by 60+ published studies",
+      "values": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "No prescription required",
+      "values": [
+        true,
+        true,
+        false
+      ]
+    }
   ]
- },
+}
+},
  "zapped-in": {
   "slug": "zapped-in",
   "name": "Zapped In",
   "tag": "Herbal Blend",
-  "image": "assets/img/new/kawsaypac-zapped-in-editorial-hero.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/ZappedInCover.png?v=1699937055",
   "infographic": "systems",
   "subline": "Energy + Immunity",
   "pills": [
@@ -1658,16 +1871,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "One Blend. Every Advantage.",
-   "subtext": "Most morning drinks give you one thing. Zapped In gives you four.",
-   "columns": [
-    "Zapped In",
-    "Coffee",
-    "Energy Tea",
-    "Elderberry Syrup"
-   ]
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -1767,13 +1970,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "His Fertile Fires",
    "One Way Out",
    "Scales of Balance"
+  ],
+  "comparison": {
+  "header": "One Blend. Every Advantage.",
+  "subtext": "Most morning drinks give you one thing. Zapped In gives you four.",
+  "columns": [
+    "Zapped In",
+    "Coffee",
+    "Store-bought Energy Tea",
+    "Elderberry Syrup"
+  ],
+  "rows": [
+    {
+      "label": "Clean energy without jitters",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Antiviral immune defense",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Pre-workout anti-inflammatory support",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Iron-rich endurance support",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "No crash, no dependency",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        false,
+        true
+      ]
+    }
   ]
- },
+}
+},
  "one-way-out": {
   "slug": "one-way-out",
   "name": "One Way Out",
   "tag": "Herbal Blend",
-  "image": "assets/img/bowl-detox.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/OnewayOut.png?v=1699937208",
   "infographic": "systems",
   "subline": "Lymphatic + Kidney Support",
   "pills": [
@@ -1910,16 +2188,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "Nothing Drains Like Nature Does.",
-   "subtext": "Most detox teas target one system. One Way Out targets three.",
-   "columns": [
-    "Zapped In",
-    "Standard Detox Tea",
-    "Cranberry Supplement",
-    "Lymphatic Massage"
-   ]
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -2019,13 +2287,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "Zapped In",
    "Eliminate and Regenerate Full Detox Kit",
    "Cat's Claw"
+  ],
+  "comparison": {
+  "header": "Nothing Drains Like Nature Does.",
+  "subtext": "Most detox teas target one system. One Way Out targets three.",
+  "columns": [
+    "One Way Out",
+    "Standard Detox Tea",
+    "Cranberry Supplement",
+    "Lymphatic Massage"
+  ],
+  "rows": [
+    {
+      "label": "Kidney stone support",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Lymphatic drainage support",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Lung tissue repair",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Liver and kidney flush",
+      "values": [
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "No dependency or harsh laxative effect",
+      "values": [
+        true,
+        false,
+        true,
+        true
+      ]
+    }
   ]
- },
+}
+},
  "bowel-banisher": {
   "slug": "bowel-banisher",
   "name": "Bowel Banisher",
   "tag": "Herbal Blend",
-  "image": "assets/img/bowl-digestive.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/BowelBanisher.png?v=1699937131",
   "infographic": "systems",
   "subline": "Gastritis relief + Digestive restoration",
   "pills": [
@@ -2174,16 +2517,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "Most Products Treat the Symptom. This Treats the System.",
-   "subtext": "Most digestive remedies suppress acid. Bowel Banisher addresses why your stomach is producing too much of it.",
-   "columns": [
-    "Bowel Banisher",
-    "Antacids",
-    "Proton Pump Inhibitors",
-    "Probiotic Supplement"
-   ]
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -2277,13 +2610,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "Bowel Balance",
    "Final Flush (Natural Laxative",
    "Eliminate and Regenerate Full Detox Kit"
+  ],
+  "comparison": {
+  "header": "Most Products Treat the Symptom. This Treats the System.",
+  "subtext": "Most digestive remedies suppress acid. Bowel Banisher addresses why your stomach is producing too much of it.",
+  "columns": [
+    "Bowel Banisher",
+    "Antacids",
+    "Proton Pump Inhibitors",
+    "Probiotic Supplements"
+  ],
+  "rows": [
+    {
+      "label": "Addresses root inflammation",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Immune modulation for autoimmune gut conditions",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Tones and repairs stomach lining",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "No dependency or rebound effect",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Wild-harvested, sourced from Ecuador",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "No long-term nutrient depletion risk",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    }
   ]
- },
+}
+},
  "river-of-life": {
   "slug": "river-of-life",
   "name": "River of Life",
   "tag": "Herbal Blend",
-  "image": "assets/img/blend-river-of-life.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/RiverOfLife.png?v=1699940764",
   "infographic": "systems",
   "subline": "Blood purification + Vitality",
   "pills": [
@@ -2425,15 +2833,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "Your Blood Has a Story. Make It a Clean One.",
-   "subtext": "Most circulation supplements give you one herb. River of Life gives you three working in sync.",
-   "columns": [
-    "River of life",
-    "Ginseng",
-    "Standard Blood Purifier"
-   ]
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -2525,13 +2924,80 @@ window.KAWSAYPAC_PRODUCTS = {
    "His Fertile Fires Kit",
    "Cat's Claw",
    "One Way Out"
+  ],
+  "comparison": {
+  "header": "Your Blood Has a Story. Make It a Clean One.",
+  "subtext": "Most circulation supplements give you one herb. River of Life gives you three working in sync.",
+  "columns": [
+    "River of Life",
+    "Ginseng",
+    "Standard Blood Purifier"
+  ],
+  "rows": [
+    {
+      "label": "Deep blood purification",
+      "values": [
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Joint and pain relief",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Bronchodilator and respiratory support",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Male vitality and adrenal support",
+      "values": [
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "Wild-harvested from the Ecuadorian Amazon",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "No fillers or additives",
+      "values": [
+        true,
+        false,
+        false
+      ]
+    }
   ]
- },
+}
+},
  "scales-of-balance": {
   "slug": "scales-of-balance",
   "name": "Scales of Balance",
   "tag": "Herbal Blend",
-  "image": "assets/img/blend-scales-of-balance.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/ScalesOfBalance.png?v=1699937323",
   "infographic": "wheel",
   "subline": "Nervous system + Sleep",
   "pills": [
@@ -2672,16 +3138,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "Balance Without Dependancy",
-   "subtext": "Most anxiety and sleep aids create dependency or dull your senses. Scales of Balance restores balance.",
-   "columns": [
-    "Scales of Balance",
-    "Meds",
-    "Melatonin",
-    "CBD Oil"
-   ]
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -2778,13 +3234,88 @@ window.KAWSAYPAC_PRODUCTS = {
   "crossSell": [
    "Zapped In",
    "Eliminate and Regenerate Full Detox Kit"
+  ],
+  "comparison": {
+  "header": "Balance Without Dependency",
+  "subtext": "Most anxiety and sleep aids create dependency or dull your senses. Scales of Balance restores balance.",
+  "columns": [
+    "Scales of Balance",
+    "Prescription Benzodiazepines",
+    "Melatonin",
+    "CBD Oil"
+  ],
+  "rows": [
+    {
+      "label": "Activates GABA naturally",
+      "values": [
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "No dependency or withdrawal",
+      "values": [
+        true,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "Addresses anxiety at the root",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Blood purification and nervous system cleanse",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "No morning grogginess",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    }
   ]
- },
+}
+},
  "final-flush": {
   "slug": "final-flush",
   "name": "Final Flush",
   "tag": "Herbal Blend",
-  "image": "assets/img/blend-final-flush.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Final_Flush.png?v=1762373697",
   "infographic": "systems",
   "subline": "Gentle Colon Cleanse",
   "pills": [
@@ -2919,16 +3450,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "When Your Body Needs to Let Go, Make It Easy.",
-   "subtext": "Most laxatives are harsh, chemical, and create dependency. Final Flush is plant-based, gentle, and built for cycles.",
-   "columns": [
-    "Final Flush",
-    "Laxatives",
-    "Fiber",
-    "Colon Cleanses"
-   ]
-  },
   "results": [
    {
     "label": "Days 1 & 2",
@@ -3032,13 +3553,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "Eliminate and Regenerate Full Detox Kit",
    "Bowel Balance",
    "One Way Out"
+  ],
+  "comparison": {
+  "header": "When Your Body Needs to Let Go, Make It Easy.",
+  "subtext": "Most laxatives are harsh, chemical, and create dependency. Final Flush is plant-based, gentle, and built for cycles.",
+  "columns": [
+    "Final Flush",
+    "Pharmacy Laxatives",
+    "Fiber Supplements",
+    "Colon Cleanses"
+  ],
+  "rows": [
+    {
+      "label": "Stimulates bowel movement in 6-12 hours",
+      "values": [
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Soothes gut lining during elimination",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Antispasmodic, reduces cramping",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Built for safe cycling, 7 days on, 3 weeks off",
+      "values": [
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "No synthetic chemicals or additives",
+      "values": [
+        true,
+        false,
+        true,
+        false
+      ]
+    }
   ]
- },
+}
+},
  "bowel-balance": {
   "slug": "bowel-balance",
   "name": "Bowel Balance",
   "tag": "Herbal Blend",
-  "image": "assets/img/blend-bowel-balance.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/BowelBalance.png?v=1762372003",
   "infographic": "wheel",
   "subline": "Gentle Colon Cleanse",
   "pills": [
@@ -3183,16 +3779,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "Daily Digestive Support That Tastes as Good as It Works..",
-   "subtext": "Most digestive teas are medicinal and unpleasant. Bowel Balance is the exception.",
-   "columns": [
-    "Final Flush",
-    "Laxatives",
-    "Fiber",
-    "Colon Cleanses"
-   ]
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -3300,13 +3886,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "Final Flush",
    "Bowel Banisher",
    "Eliminate and Regenerate"
+  ],
+  "comparison": {
+  "header": "Daily Digestive Support That Tastes as Good as It Works.",
+  "subtext": "Most digestive teas are medicinal and unpleasant. Bowel Balance is the exception.",
+  "columns": [
+    "Bowel Balance",
+    "Standard Digestive Tea",
+    "Probiotic Supplements",
+    "Peppermint Tea"
+  ],
+  "rows": [
+    {
+      "label": "IBS symptom relief backed by research",
+      "values": [
+        true,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "Naturally sweet with no added sugar",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Gut lining repair and protection",
+      "values": [
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "Antispasmodic, reduces cramping",
+      "values": [
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Gentle enough for daily use, no cycling required",
+      "values": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        false,
+        true,
+        true
+      ]
+    }
   ]
- },
+}
+},
  "sacred-sacral": {
   "slug": "sacred-sacral",
   "name": "Sacred Sacral",
   "tag": "Women's Wellness",
-  "image": "assets/img/blend-sacred-sacral.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/SacredSacral.png?v=1762375079",
   "infographic": "wheel",
   "subline": "Womb Nourishing + Feminine Vitality",
   "pills": [
@@ -3447,16 +4108,6 @@ window.KAWSAYPAC_PRODUCTS = {
     }
    ]
   },
-  "comparison": {
-   "header": "Four Plants. One Sacred Herbal Blend.",
-   "subtext": "Most period products suppress symptoms. Sacred Sacral supports the root.",
-   "columns": [
-    "Sacred Sacral",
-    "Birth Control",
-    "Period Medication",
-    "Standard Herbal Tea"
-   ]
-  },
   "results": [
    {
     "label": "Week 1 & 2",
@@ -3560,13 +4211,88 @@ window.KAWSAYPAC_PRODUCTS = {
    "Her Fertile Waters Women's Reproductive Kit",
    "Restoring Order",
    "Scales of Balance"
+  ],
+  "comparison": {
+  "header": "Four Plants. One Sacred Herbal Blend.",
+  "subtext": "Most period products suppress symptoms. Sacred Sacral supports the root.",
+  "columns": [
+    "Sacred Sacral",
+    "Birth Control Pill",
+    "Period Pain Medication",
+    "Standard Herbal Tea"
+  ],
+  "rows": [
+    {
+      "label": "Supports hormonal balance naturally",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "May support fertility and folliculogenesis",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Eases menstrual cramps and inflammation",
+      "values": [
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "No synthetic hormones",
+      "values": [
+        true,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "Naturally sweet, blood sugar stable",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Wild-harvested, direct trade from Ecuador",
+      "values": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "Backed by published research",
+      "values": [
+        true,
+        true,
+        true,
+        false
+      ]
+    }
   ]
- },
+}
+},
  "eliminate-regenerate": {
   "slug": "eliminate-regenerate",
   "name": "Eliminate & Regenerate - Detox Kit",
   "tag": "Kit",
-  "image": "assets/img/blend-eliminate-regenerate.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Eliminate_Regenerate.png?v=1699938353",
   "infographic": "protocol",
   "subline": "30-day full body reset kit",
   "pills": [
@@ -3837,7 +4563,7 @@ window.KAWSAYPAC_PRODUCTS = {
   "slug": "womens-kit",
   "name": "Her Fertile Waters",
   "tag": "Kit",
-  "image": "assets/img/bowl-womens.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/HerFertileWaters.png?v=1702905822",
   "infographic": "protocol",
   "subline": "30-day Women's Reproductive Kit",
   "pills": [
@@ -4081,7 +4807,7 @@ window.KAWSAYPAC_PRODUCTS = {
   "slug": "mens-kit",
   "name": "His Fertile Fires",
   "tag": "Kit",
-  "image": "assets/img/bowl-energy.webp",
+  "image": "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/HisFertileFires.png?v=1699938443",
   "infographic": "protocol",
   "subline": "30-day Men's Reproductive Kit",
   "pills": [
@@ -4304,7 +5030,7 @@ window.KAWSAYPAC_PRODUCTS = {
   ]
  }
 };
-window.KAWSAYPAC_PRODUCT_ALIASES = {"detox-kit": "eliminate-regenerate", "guayusa": "guayusa-leaf", "cats-claw-bark": "cats-claw", "sacred-sacral-sweetened": "sacred-sacral"};
+window.KAWSAYPAC_PRODUCT_ALIASES = {"detox-kit": "eliminate-regenerate", "guayusa": "guayusa-leaf", "cats-claw-bark": "cats-claw", "sacred-sacral-sweetened": "sacred-sacral", "soursop-leaves-graviola": "soursop", "cordoncillo-matico-1": "matico", "her-fertile-waters": "womens-kit", "his-fertile-fires": "mens-kit"};
 // Section 2 cinematic overlay lines, word-for-word from the client's landing doc.
 // Only these products carry an overlay line in the doc; others fall back to their subline.
 (function (P) {
@@ -4313,3 +5039,129 @@ window.KAWSAYPAC_PRODUCT_ALIASES = {"detox-kit": "eliminate-regenerate", "guayus
   if (P['guayusa-leaf']) P['guayusa-leaf'].cinematic = 'Before the sun rises, the Amazon wakes with Guayusa.';
   if (P['chuchuhuasi']) P['chuchuhuasi'].cinematic = 'The Amazon does not produce weak medicine. Neither do we.';
 })(window.KAWSAYPAC_PRODUCTS);
+
+// Real Shopify store data per slug: handle + CDN gallery images
+// (source: the-electric-eats.myshopify.com product feed, 30 Jul 2026).
+// Frame 1 of every PDP gallery and every p.image above come from here.
+window.KAWSAYPAC_SHOPIFY = {
+ "valerian": {
+  "handle": "valerian",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Valerian_Root.png?v=1764021798",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Valerian2.png?v=1764021798"
+  ]
+ },
+ "guayusa-leaf": {
+  "handle": "guayusa",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Guayusa.png?v=1699942164",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Guayusa2.png?v=1699942175"
+  ]
+ },
+ "sacred-sacral": {
+  "handle": "sacred-sacral-sweetened",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/SacredSacral.png?v=1762375079",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Sacred_Sacral_Tea.png?v=1762375099"
+  ]
+ },
+ "final-flush": {
+  "handle": "final-flush",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Final_Flush.png?v=1762373697",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/FinalFlushTea.png?v=1762373697"
+  ]
+ },
+ "bowel-balance": {
+  "handle": "bowel-balance",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/BowelBalance.png?v=1762372003",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Bowel_Balance_Tea.png?v=1762372010"
+  ]
+ },
+ "soursop": {
+  "handle": "soursop-leaves-graviola",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Soursop.png?v=1707841150",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Soursop2.png?v=1707841150"
+  ]
+ },
+ "matico": {
+  "handle": "cordoncillo-matico-1",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Matico.png?v=1707841069",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Matico3.png?v=1707841083"
+  ]
+ },
+ "womens-kit": {
+  "handle": "her-fertile-waters",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/HerFertileWaters.png?v=1702905822",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/26.png?v=1702905841"
+  ]
+ },
+ "mens-kit": {
+  "handle": "his-fertile-fires",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/HisFertileFires.png?v=1699938443",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/HisFertileFires2.png?v=1699940703"
+  ]
+ },
+ "eliminate-regenerate": {
+  "handle": "eliminate-regenerate",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Eliminate_Regenerate.png?v=1699938353",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Eliminate_Regenerate2.png?v=1699940665"
+  ]
+ },
+ "zapped-in": {
+  "handle": "zapped-in",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/ZappedInCover.png?v=1699937055",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/ZappedIn2.png?v=1699940851"
+  ]
+ },
+ "scales-of-balance": {
+  "handle": "scales-of-balance",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/ScalesOfBalance.png?v=1699937323",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/ScalesofBalance1.png?v=1699940826"
+  ]
+ },
+ "bowel-banisher": {
+  "handle": "bowel-banisher",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/BowelBanisher.png?v=1699937131",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/BowelBanisher3.png?v=1699940634"
+  ]
+ },
+ "one-way-out": {
+  "handle": "one-way-out",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/OnewayOut.png?v=1699937208",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/OneWayOut2.png?v=1699940725"
+  ]
+ },
+ "river-of-life": {
+  "handle": "river-of-life",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/RiverOfLife.png?v=1699940764",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/RiverofLife3.png?v=1699940779"
+  ]
+ },
+ "chuchuhuasi": {
+  "handle": "chuchuhuasi",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Chuchuhuasi.png?v=1699942211",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Chuchuhuasi2.png?v=1699942221"
+  ]
+ },
+ "cats-claw": {
+  "handle": "cats-claw",
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Cat_sClaw.png?v=1699942275",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Cat_sClaw2.png?v=1699942283",
+   "https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Cat_sClawCuts.png?v=1701259975"
+  ]
+ }
+};

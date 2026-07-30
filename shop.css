@@ -1128,3 +1128,55 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
 .editorial-product-grid .storefront-card--editorial .storefront-quick-add:focus-visible{opacity:1;transform:translate(-50%,0)}
 .editorial-product-grid .storefront-card--editorial .storefront-quick-add:hover{background:#143b28;color:#fff}
 @media(hover:none){.editorial-product-grid .storefront-card--editorial .storefront-quick-add{opacity:1;transform:translate(-50%,0)}}
+
+/* ============ v98 · digital card hover, 2-up phone grid, hero halo ============ */
+
+/* e-book / program cards: real cover hover reveal (Shopify CDN art) so they
+   feel as alive as the herb cards. Cover crossfades from contained packshot
+   to a full-bleed crop with the white Buy pill, same language as the herbs. */
+.editorial-product-grid .storefront-card--editorial .storefront-card__hover{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .45s ease,transform .9s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.editorial-product-grid .storefront-card--editorial:hover .storefront-card__hover,
+.editorial-product-grid .storefront-card--editorial:focus-within .storefront-card__hover{opacity:1;transform:scale(1)}
+.editorial-product-grid .storefront-card--editorial .storefront-quick-add--buy{left:12px;right:12px;transform:translateY(8px);width:auto;max-width:none;white-space:nowrap;background:rgba(255,255,255,.96);border:0;box-shadow:0 10px 26px rgba(10,26,18,.28);font-size:.72rem;letter-spacing:.12em;min-height:46px}
+.editorial-product-grid .storefront-card--editorial:hover .storefront-quick-add--buy,
+.editorial-product-grid .storefront-card--editorial .storefront-quick-add--buy:focus-visible{opacity:1;transform:translateY(0)}
+.editorial-product-grid .storefront-card--editorial .storefront-quick-add--buy:hover{background:#143b28;color:#fff}
+@media(hover:none){
+  .editorial-product-grid .storefront-card--editorial .storefront-quick-add--buy{opacity:1;transform:translateY(0)}
+  .editorial-product-grid .storefront-card--editorial .storefront-card__hover{display:none}
+}
+
+/* Phone shelves show 2 products per row (4 per screen), matching the live
+   theelectriceats.com store, with type tightened so 2-up reads clean.
+   This later block intentionally overrides the earlier 600px 1-column rule. */
+@media (max-width: 640px){
+  .shop-product-grid,
+  .editorial-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .shop-product-grid .storefront-card,
+  .editorial-product-grid .storefront-card--editorial{padding:7px 7px 12px;border-radius:16px}
+  .shop-product-grid .storefront-card__media,
+  .editorial-product-grid .storefront-card--editorial .storefront-card__media{border-radius:11px}
+  .storefront-card__word{left:10px;top:8px;font-size:1.05rem}
+  .storefront-card__badge{right:8px;top:8px;padding:5px 9px;font-size:.52rem}
+  .shop-product-grid .storefront-card__type{right:8px;top:8px}
+  .shop-product-grid .storefront-card__body,
+  .editorial-product-grid .storefront-card--editorial .storefront-card__body{padding:8px 2px 0;gap:5px}
+  .shop-product-grid .storefront-card__heading,
+  .editorial-product-grid .storefront-card__heading{flex-direction:column;align-items:flex-start;gap:2px}
+  .shop-product-grid .storefront-card__heading h2{font-size:.66rem;letter-spacing:.07em}
+  .editorial-product-grid .storefront-card--editorial .storefront-card__heading h2{font-size:.92rem;line-height:1.12}
+  .shop-product-grid .storefront-card__heading strong{font-size:.85rem}
+  .editorial-product-grid .storefront-card--editorial .storefront-card__heading strong{font-size:.9rem}
+  .storefront-card__stars{font-size:.5rem;letter-spacing:.26em}
+  .storefront-quick-add--tile{min-height:38px;padding:0 14px;font-size:.6rem;bottom:8px}
+  .shop-product-grid .storefront-quick-add--buy,
+  .editorial-product-grid .storefront-card--editorial .storefront-quick-add--buy{left:8px;right:8px;min-height:38px;font-size:.6rem;letter-spacing:.08em}
+  .shop-product-grid .storefront-text-link,
+  .editorial-product-grid .storefront-text-link{font-size:.58rem;padding:6px 10px}
+}
+
+/* Shop hero statement: soft radial halo scrim + text shadow so the heading
+   holds the 4.5:1 floor over the brightest video frames, without a heavy
+   white overlay (her explicit ask). Dark halo, because the type is white. */
+.shop-hero .shop-hero__content--statement::before{content:'';position:absolute;inset:-14% -12%;z-index:0;background:radial-gradient(58% 64% at 42% 52%,rgba(7,20,13,.58) 0%,rgba(7,20,13,.34) 52%,rgba(7,20,13,0) 78%);pointer-events:none}
+.shop-hero .shop-hero__content--statement h1{position:relative;z-index:1;text-shadow:0 2px 8px rgba(4,18,10,.85),0 6px 34px rgba(4,18,10,.7)!important}

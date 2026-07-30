@@ -50,6 +50,36 @@
     'free-lets-get-raw-a-3-day-raw-alkaline-plant-based-experience'
   ]);
 
+  /* Every digital product (e-book or guided program). These handles route to
+     ebook.html; only physical herb handles may ever reach product.html, which
+     would otherwise silently fall back to the Zapped In page. */
+  const DIGITAL_HANDLES = Object.freeze([...EBOOK_PRODUCT_HANDLES, ...PROGRAM_PRODUCT_HANDLES]);
+
+  /* Real Shopify CDN cover/interior art per digital handle, used for the card
+     hover reveal (digital products have no local pdp editorial set). */
+  const DIGITAL_COVER_SHOTS = Object.freeze({
+    'fearless-fruit-detox': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/files/Fruit_Collage.png?v=1730987231',
+    'gut-harmony': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/files/GutHarmonyCover.png?v=1729337646',
+    '7-day-fruit-detox': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/files/iPadMocksForWebSite.jpg?v=1692663906',
+    '30-day-raw-reset': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/products/iPadMocksForWebSite.png?v=1673917658',
+    'r-a-w-by-law-the-uncookbook-of-135-rawfully-tasty-colorful-sun-food-recipes': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/products/ScreenShot2022-07-28at8.23.50PM.png?v=1659055522',
+    'the-electric-eats-cookbook-130-electrifyingly-delicious-easy-to-make-plant-based-recipes': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/products/ScreenShot2022-06-03at8.45.38PM.png?v=1654309565',
+    '10-day-transitional-detox': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/products/6.png?v=1645062120',
+    'free-lets-get-raw-a-3-day-raw-alkaline-plant-based-experience': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/products/LetsGoRaw.png?v=1654311864',
+    'from-our-feed-to-your-kitchen-50-plant-based-recipes-inspired-by-dr-sebis-cell-food-guide-e-book': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/products/3.png?v=1654311984',
+    'alkaline-vegan-dishes-top-10-favorites-from-our-kitchen-to-yours': 'https://cdn.shopify.com/s/files/1/0507/1660/6628/products/IMG_0120.jpg?v=1654311700'
+  });
+
+  /* Single source of truth for where a product card leads. Digital products
+     go to their own detail page, physical herbs to the herb PDP, and any
+     unknown handle (collections can publish new products at any time) goes to
+     the live Shopify PDP instead of a wrong local page. */
+  function productPageHref(handle) {
+    if (DIGITAL_HANDLES.includes(handle)) return `ebook.html?product=${encodeURIComponent(handle)}`;
+    if (PHYSICAL_PRODUCT_HANDLES.includes(handle)) return `product.html?product=${encodeURIComponent(handle)}`;
+    return `${STOREFRONT_CONFIG.storeDomain}/products/${encodeURIComponent(handle)}`;
+  }
+
   const CONCERN_FILTERS = Object.freeze([
     { label: 'All Physical Products', slug: 'all' },
     { label: "Women's Wellness", slug: 'womens-wellness', products: ['sacred-sacral-sweetened', 'her-fertile-waters'] },
@@ -65,7 +95,7 @@
     { label: 'Lung Support', slug: 'lung-support', products: ['cordoncillo-matico-1'] },
     { label: 'Hormone Balance', slug: 'hormone-balance', products: ['sacred-sacral-sweetened'] },
     { label: 'Sleep & Relaxation', slug: 'sleep-relaxation', products: ['valerian', 'scales-of-balance'] },
-    { label: 'Full Body Detox', slug: 'full-body-detox', products: ['final-flush', 'eliminate-regenerate'] }
+    { label: 'Full Body Detox', slug: 'full-body-detox', products: ['final-flush', 'eliminate-regenerate', 'one-way-out'] }
   ]);
 
   const TYPE_COLLECTIONS = Object.freeze({
@@ -149,7 +179,8 @@
   });
   function hoverShotFor(handle) {
     const slug = HOVER_SHOTS[handle];
-    return slug ? `assets/img/pdp/${slug}/02-editorial.webp` : '';
+    if (slug) return `assets/img/pdp/${slug}/02-editorial.webp?v=33`;
+    return DIGITAL_COVER_SHOTS[handle] || '';
   }
 
   function productCardTemplate(options = {}) {
@@ -178,7 +209,7 @@
             layout="constrained"
             sizes="(max-width: 680px) 92vw, (max-width: 980px) 45vw, 30vw"${mediaPriority}
           ></shopify-media>
-          ${options.hoverImage ? `<img class="storefront-card__hover" src="${escapeAttribute(options.hoverImage)}?v=33" alt="" loading="lazy" decoding="async">` : ''}
+          ${options.hoverImage ? `<img class="storefront-card__hover" src="${escapeAttribute(options.hoverImage)}" alt="" loading="lazy" decoding="async">` : ''}
           ${word}
           <button
             class="storefront-quick-add storefront-quick-add--tile${options.hoverImage ? ' storefront-quick-add--buy' : ''}"
@@ -317,6 +348,9 @@
 
     const applyConcernFilter = (slug, syncUrl = true) => {
       const filter = CONCERN_FILTERS.find((item) => item.slug === slug) || CONCERN_FILTERS[0];
+      /* Unknown ?concern= values resolve to All: normalize the URL and make
+         the All pill visibly active instead of leaving a dead junk param. */
+      if (filter.slug !== slug) syncUrl = true;
       const handles = filter.products || PHYSICAL_PRODUCT_HANDLES;
       const label = filter.slug === 'all' ? '' : filter.label;
       grid.dataset.activeLabel = label;
@@ -440,15 +474,48 @@
     showStorefrontNotice.timer = window.setTimeout(() => { notice.hidden = true; }, 5000);
   }
 
+  /* Keep every card link's real href in sync with its product handle so
+     hover previews, middle-click, and copy-link are correct, not only the
+     intercepted click. The Shopify web component fills data-product-handle
+     asynchronously, so hrefs are rewritten the moment the attribute lands. */
+  function syncProductLinkHrefs(scope) {
+    if (!scope || typeof scope.querySelectorAll !== 'function') return;
+    scope.querySelectorAll('[data-storefront-product-link][data-product-handle]').forEach((link) => {
+      const target = productPageHref(link.dataset.productHandle);
+      if (link.getAttribute('href') !== target) link.setAttribute('href', target);
+    });
+  }
+
   function initProductLinks() {
     document.addEventListener('click', (event) => {
       const link = event.target.closest('[data-storefront-product-link]');
       if (!link) return;
-      const handle = link.dataset.productHandle;
-      if (!handle) return;
       event.preventDefault();
-      window.location.href = `product.html?product=${encodeURIComponent(handle)}`;
+      const handle = link.dataset.productHandle;
+      /* No handle yet (component still hydrating): swallow the click instead
+         of following the bare product.html href, which silently falls back
+         to the Zapped In herb page. */
+      if (!handle) return;
+      window.location.href = productPageHref(handle);
     });
+
+    const linkObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes') {
+          const link = mutation.target;
+          if (link.matches && link.matches('[data-storefront-product-link]') && link.dataset.productHandle) {
+            const target = productPageHref(link.dataset.productHandle);
+            if (link.getAttribute('href') !== target) link.setAttribute('href', target);
+          }
+        } else if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) syncProductLinkHrefs(node);
+          });
+        }
+      });
+    });
+    linkObserver.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-product-handle'] });
+    syncProductLinkHrefs(document);
 
     document.addEventListener('click', (event) => {
       const link = event.target.closest('[data-journal-article-link]');
