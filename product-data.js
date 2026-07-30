@@ -111,19 +111,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "My arthritis pain reduced in two weeks.",
-    "author": "Carmen R., Texas"
-   },
-   {
-    "quote": "I had chronic gut inflammation for years. Cat's Claw was the first thing that actually helped.",
-    "author": "Moana L., Hawaii"
-   },
-   {
-    "quote": "I started sleeping through the night. No more joint stiffness waking me up.",
-    "author": "David K., Canada"
-   }
-  ],
+  {
+    "quote": "I struggled with a herniated disc in my lower back for over 5 years. After finally giving in and having a microdiscectomy, I was still dealing with inflammation. That’s when I discovered The Electric Eats and there cat’s claw root tea. It felt like medicine. Drinking it on an empty stomach each morning became the one thing that truly...",
+    "author": "Taffa R."
+  },
+  {
+    "quote": "If you can get your hands on this cats claw before it sells out, then do not hesitate! This is the purest form of cats claw I’ve ever tried,literally straight from the tree, unprocessed and gathered with love and intention. It works wonders for my arthritis and general body inflammation too.",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "High quality herbs in one place my iron levels have increased in 2 weeks , went back by my Dr. She was like good continue taking the iron pill 💊 😀 i mixed together with sarsaparilla. \"THEELECTRICEATS\" are my supplements supplier forever.. peace and love to you both 💚💚💚 🥰..",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "Cat’s Claw with other herbs like sarsaparilla I love it . wish you all will do blend as well hopefully near in the future😍",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "This was my remedy after getting Covid due to its anti-viral properties! I brewed the cats claw with the canchalagua and I could feel how healing it was to my body right away .",
+    "author": "Jenny P."
+  },
+  {
+    "quote": "I use this the Cat’s Claw with other herbs and I love it. I do wish you all had blends. Maybe in the future?",
+    "author": "Crystal S."
+  },
+  {
+    "quote": "Great product",
+    "author": "Texas T."
+  },
+  {
+    "quote": "Great product",
+    "author": "Charles H."
+  }
+],
   "studies": {
    "heading": "The research speaks",
    "items": [
@@ -383,19 +403,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I've struggled with bloating for years. I drink this 1 hour before lunch and it’s actually helped a ton.",
-    "author": "Renata S., Florida"
-   },
-   {
-    "quote": "My skin has genuinely cleared up since I started drinking this daily.",
-    "author": "Priya M., New Jersey"
-   },
-   {
-    "quote": "I take Soursop and Cat’s Claw at night and and it's helped with my joint pain and inflammation.",
-    "author": "Eileen L., Texas"
-   }
-  ],
+  {
+    "quote": "I can literally feel the electric goodness of this nutrient dense medicinal herb rich in antioxidants, Vitamin C, iron, copper and potassium working to help boost immunity, reduce inflammation and defend against pathogens. I also discovered from the testimonials from other Sour Sop tea drinkers that the use of this tea help assist in the...",
+    "author": "Brenda P."
+  },
+  {
+    "quote": "This tea was a fantastic immune booster during the winter and helped with my dry skin. I started drinking 20 ounces of it every morning on an empty stomach. The leaves are small and ground, so they sometimes slip through my strainer, but it’s easy to clean up. After a week, you get used to it, haha. This was my second time buying this...",
+    "author": "Taffa R."
+  },
+  {
+    "quote": "High quality herbs🔥🔥",
+    "author": "Sheena F."
+  },
+  {
+    "quote": "I like the soursop leaves. Only tried them once. I haven't tried the Cordoncillo (matico) but I will this weekend. I'm sure it will also be wonderful.",
+    "author": "Lakeshia B."
+  },
+  {
+    "quote": "The herb looks so green. I’ve purchased from other sellers before and it’s usually darker which I feel like that’s an indicator it’s not fresh. I’m so happy I FINALLY found quality soursop. 🙂",
+    "author": "Maylin S."
+  },
+  {
+    "quote": "I was very impressed with the speed of delivery and how green the leaves look. I’ve seen other leaves and they look more brown. This one looks like the real deal. The instruction card that came with is helpful. I do enjoy the taste of sour sauce and I can tell this is quality product.",
+    "author": "Sonma L."
+  },
+  {
+    "quote": "I have been waiting to get my hands on some soursop for YEARS and I couldn’t be more thrilled with how fresh and effective this tea is! I swear could feel a difference in my body within the first week of using it, and I love the anti-parasitic properties it has. Once again, Electric Eats you guys have knocked it our of the park!!!",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "I’ve been wanting to get my hands on soursop leaves to help with glucose levels and this is the real deal. You can tell it’s fresh and very clean. Will be buying more when I run out.",
+    "author": "Ronnie D."
+  }
+],
   "studies": {
    "heading": "The research speaks",
    "items": [
@@ -623,23 +663,35 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I've had eczema since childhood. This is the first natural remedy that has genuinely reduced my flares. I drink it and use the cooled tea on my skin.",
-    "author": "Sandra T., Colorado"
-   },
-   {
-    "quote": "My acne has been hormonal and stubborn for years. Three weeks in and my skin is clearing.",
-    "author": "Yolanda M., New York"
-   },
-   {
-    "quote": "Recurring UTIs were ruining my life. I haven't had one since I started this about two months ago.",
-    "author": "Tasha B., Atlanta"
-   },
-   {
-    "quote": "I quit smoking two years ago but my lungs have felt tight and damaged. Since I started the Matico steam ritual I can breathe deeper than I have in a decade.",
-    "author": "Tony C., Chicago"
-   }
-  ],
+  {
+    "quote": "This blend of the Matico herb has been a life saver for my Dad! After being a smoker for 50+ years (he quit about 8 years ago) he suffers from residual lung issues (COPD) and was experiencing respiratory strain and severe coughing fits after a recent detox and cleanse. I made him a pot of the Matico tea every day for 5 days in a row, and...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "I bought this because I’ve been fighting candida and have tried just about EVERYTHING!!! I remember watching a Dr. Sebi video talk about how this is a powerful herb and he wasn’t lying!!!! My digestive system has been feeling much better and I’ve noticed my skin clearing up too. It’s been a hard week because I’ve been tempted to eat...",
+    "author": "Natasha V."
+  },
+  {
+    "quote": "I started using matico for skin flare ups after reading about its healing properties, and I’m blown away. I drink it as a tea and also use it topically as a wash and within a week my skin looked calmer and the redness went down. It feels good knowing I’m using something natural and powerful, not a chemical cream with side effects.",
+    "author": "Alina V."
+  },
+  {
+    "quote": "We’ve been experiencing an abundance of forest fires in my area over the last few weeks, and the smoke has caused my kids and I to have a dry cough, sore throat, dry burning eyes and other respiratory issues. I made a pot of Matico tea since it’s a lung detoxifier and after ONE USE we have already seen a noticeable decrease in the...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "My skin has cleared up of cystic acne! I drink this every morning on an empty stomach, I follow a clean whole foods meal plan, and exercise daily. But this was the game changer.",
+    "author": "Isabella J."
+  },
+  {
+    "quote": "This blend of the Matico herb has been a life saver for my Dad! After being a smoker for 50+ years (he quit about 8 years ago) he suffers from residual lung issues (COPD) and was experiencing respiratory strain and severe coughing fits after a recent detox and cleanse. I made him a pot of the Matico tea every day for 5 days in a row, and...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Helped with my UTI",
+    "author": "April S."
+  }
+],
   "studies": {
    "heading": "The research speaks",
    "items": [
@@ -857,19 +909,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I gave up coffee three months ago and Guayusa is the only reason I survived it. Same energy, no anxiety, no crash. I will never go back.",
-    "author": "Patricia M., Nebraska"
-   },
-   {
-    "quote": "I've been trying to lose weight and I noticed my appetite is genuinely less intense since I started drinking this in the morning.",
-    "author": "Reina L., Virginia"
-   },
-   {
-    "quote": "As someone with blood sugar issues, this has been a game changer. Steady energy all day without the spikes.",
-    "author": "Janelle O., Georgia"
-   }
-  ],
+  {
+    "quote": "Zapped In Tea Blend has honestly been one of those small changes that makes a big difference. It gives me a smooth, steady boost of energy without that shaky, crash feeling you get from coffee. What I love most is that it’s not just about energy,it also supports my digestion, and assisted me with inflammation. It’s gentle on my body,...",
+    "author": "Kenya K."
+  },
+  {
+    "quote": "This Zapped In Energy blend saves me so much time in the morning,-I set it up on the stove top each night to steep for 8-10ish hours, and it’s perfectly ready for me to grab a cup upon rising! The unique blend of the elderberries and ginger note only provide a delicious flavour, but I’ve noticed the added benefit of increased immunity! I...",
+    "author": "K M."
+  },
+  {
+    "quote": "The brewing adds a cathartic connection. The spice punch is addictive. My husband is a truck driver and uses this tea daily to give him stamina to unload and keep going to the next stop. I use it for the focus support and to help my iron absorption. This has become a daily regimen in our home. We drink it hot and sometimes cold. Prefer...",
+    "author": "Shawn B."
+  },
+  {
+    "quote": "Honestly I’ve been drinking coffee for so many years I was skeptical that this blend would give me the energy my busy lie requires. But boy was I wrong! I no longer drink coffee because this blend is the bomb! I love the spicy zing of the ginger, it really wakes up the mind and body. And the energy that this blend provides is FAR...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Returning customer ! Presently my favorite blend of all time in this season 🤧 drink it this morning and evening have energy to kill in the flu season about to order me some more 💯",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "My husband and I favorite morning tea always stocked. 💚💚 keeping the energy levels up do your self a favor and grab a bag or 2 🤗 \" put the coffee aside for a bit and try or replace it GUAYUAS \"you will not regret your purchase.",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "This tea is a game changer!! By drinking a cup of two first thing in the morning (after my key lime water) I’ve finally been able to give up my coffee habit! It gives me a steady and constant level of alert energy without the jitteriness or crash. And the taste is delicious as is,like a robust tasting black tea ❤️ Fan for life!",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "This stuff is wonderful! I mix it with juniper berries, ginger and sarsaparilla. I am so much more energized in the mornings! I have not had a cup of coffee in two weeks now and have had so much more stable energy! Highly recommend:)",
+    "author": "Masha P."
+  }
+],
   "studies": {
    "heading": "The research speaks",
    "items": [
@@ -1184,23 +1256,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have rheumatoid arthritis and I've been managing it naturally for two years. Chuchuhuasi is the one herb I will never give up.",
-    "author": "Sandra T., Arizona"
-   },
-   {
-    "quote": "I mix this with Guayusa every morning before I train. The combination is unreal. Energy, focus, and my body keeps pushing.",
-    "author": "Marcus R., New York"
-   },
-   {
-    "quote": "My iron has been low for years and I've been anemic. Since drinking this with orange juice every morning, my levels have improved and my energy is back.",
-    "author": "Kezia M., London"
-   },
-   {
-    "quote": "My libido was completely gone after having my second child. Three weeks of Chuchuhuasi and I feel like myself again.",
-    "author": "Camila S., Miami"
-   }
-  ],
+  {
+    "quote": "I struggled with a herniated disc in my lower back for over 5 years. After finally giving in and having a microdiscectomy, I was still dealing with inflammation. That’s when I discovered The Electric Eats and there cat’s claw root tea. It felt like medicine. Drinking it on an empty stomach each morning became the one thing that truly...",
+    "author": "Taffa R."
+  },
+  {
+    "quote": "If you can get your hands on this cats claw before it sells out, then do not hesitate! This is the purest form of cats claw I’ve ever tried,literally straight from the tree, unprocessed and gathered with love and intention. It works wonders for my arthritis and general body inflammation too.",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "High quality herbs in one place my iron levels have increased in 2 weeks , went back by my Dr. She was like good continue taking the iron pill 💊 😀 i mixed together with sarsaparilla. \"THEELECTRICEATS\" are my supplements supplier forever.. peace and love to you both 💚💚💚 🥰..",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "Cat’s Claw with other herbs like sarsaparilla I love it . wish you all will do blend as well hopefully near in the future😍",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "This was my remedy after getting Covid due to its anti-viral properties! I brewed the cats claw with the canchalagua and I could feel how healing it was to my body right away .",
+    "author": "Jenny P."
+  },
+  {
+    "quote": "I use this the Cat’s Claw with other herbs and I love it. I do wish you all had blends. Maybe in the future?",
+    "author": "Crystal S."
+  },
+  {
+    "quote": "Great product",
+    "author": "Texas T."
+  },
+  {
+    "quote": "Great product",
+    "author": "Charles H."
+  }
+],
   "studies": {
    "heading": "The research speaks",
    "items": [
@@ -1513,23 +1601,35 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have not slept through the night in three years. Two weeks of Valerian and I am waking up rested for the first time since I can remember.",
-    "author": "Danielle K., New Zealand"
-   },
-   {
-    "quote": "I was taking Xanax for anxiety and I wanted off it. Valerian was the first natural thing that actually made a difference.",
-    "author": "Ali A., Dubai"
-   },
-   {
-    "quote": "My hot flashes were waking me up four times a night. One month of Valerian before bed and they have dropped to maybe once. I cannot believe it\\!",
-    "author": "Robert B., Texas"
-   },
-   {
-    "quote": "I drink this the night before my period starts and my cramps are so much more manageable. It also helps me sleep through the discomfort. Game changer.",
-    "author": "Yara S., North Carolina"
-   }
-  ],
+  {
+    "quote": "My 70 year old father has suffered from severe insomnia for years and nothing, I mean NOTHING has worked to keep him asleep for more than 1-2 hours each night. Not even prescribed sleeping pills (which we try to keep him away from since they are part of the big pharma devil corporations). Anyways, he didn’t have a lot of faith that the...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Valerian is my go to for anytime I’ve had a long day and want to get a deeper sleep or feeling anxious (which rarely happens after completing the 21 day fruit detox). I also make it for my brothers as a night time tea when we want to relax and cheese out at home.",
+    "author": "Kai B."
+  },
+  {
+    "quote": "100 percent",
+    "author": "Beverly M."
+  },
+  {
+    "quote": "Ok this valerian herbal tea is the real thing I had the bag and forgot all about it but I was having such a really hard time sleeping at night and I remember I had this so I made me a cup of tea Wow I had a great night so I was skeptical and I drink another cup the next day this was amazing I was feeling so rested I have my daughter who...",
+    "author": "Yesika L."
+  },
+  {
+    "quote": "The relaxation delivered by this herb was EVERYTHING!!! I felt so calm at the end of the night coupled with undisturbed sleep makes for an energy filled day. A must re-Order.",
+    "author": "Kareem W."
+  },
+  {
+    "quote": "Sleey time tea I drink this before bed everyday and I always have the. best sleep.",
+    "author": "Marisol R."
+  },
+  {
+    "quote": "Super fresh! I knew i’d be getting fresh valerian but I didn’t realize how fresh. I made a cup for bed time last night because I’ve been stressed and I don’t remember how long after I fell asleep but it was the best I’ve slept in forever! I can’t wait to try other herbs. You guys are the best. ❤️",
+    "author": "Andrea J."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -1834,23 +1934,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I replaced my morning coffee with Zapped In three weeks ago and I have not looked back. Same energy, no anxiety, no crash at 2pm. The ginger kick is everything.",
-    "author": "Andrea M., Washington"
-   },
-   {
-    "quote": "I drink this before every workout now. My joints feel better, my energy is more sustained, and I am recovering faster. It is the most unexpected pre-workout I have ever used since it's tea but I love it.",
-    "author": "Tobias L., England"
-   },
-   {
-    "quote": "The taste alone sold me. Spicy, warming, and with a little honey it is the most satisfying morning drink I have ever had. The energy is just a bonus.",
-    "author": "Jenni B., New Jersey"
-   },
-   {
-    "quote": "I gave this to my whole family during flu season. None of us got sick. My husband was the biggest skeptic and now he asks me to make it every morning.",
-    "author": "Raya D., Wisconsin"
-   }
-  ],
+  {
+    "quote": "Everything looks great, and the packaging is great and very detailed! This is a whole different quality!",
+    "author": "Dan T."
+  },
+  {
+    "quote": "Zapped In Tea Blend has honestly been one of those small changes that makes a big difference. It gives me a smooth, steady boost of energy without that shaky, crash feeling you get from coffee. What I love most is that it’s not just about energy,it also supports my digestion, and assisted me with inflammation. It’s gentle on my body,...",
+    "author": "Kenya K."
+  },
+  {
+    "quote": "This Zapped In Energy blend saves me so much time in the morning,-I set it up on the stove top each night to steep for 8-10ish hours, and it’s perfectly ready for me to grab a cup upon rising! The unique blend of the elderberries and ginger note only provide a delicious flavour, but I’ve noticed the added benefit of increased immunity! I...",
+    "author": "K M."
+  },
+  {
+    "quote": "The brewing adds a cathartic connection. The spice punch is addictive. My husband is a truck driver and uses this tea daily to give him stamina to unload and keep going to the next stop. I use it for the focus support and to help my iron absorption. This has become a daily regimen in our home. We drink it hot and sometimes cold. Prefer...",
+    "author": "Shawn B."
+  },
+  {
+    "quote": "I was hesitant to switch to the “Scales of Balance” blend since I’ve been using the plain Valerian Root tea for a while and love it. But I decided to give it a chance and I’m sure glad I did. Both my 70 year old dad and myself suffer from restless legs syndrome at night, along with a lot of anxiety and racing thoughts which make it...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Honestly I’ve been drinking coffee for so many years I was skeptical that this blend would give me the energy my busy lie requires. But boy was I wrong! I no longer drink coffee because this blend is the bomb! I love the spicy zing of the ginger, it really wakes up the mind and body. And the energy that this blend provides is FAR...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Returning customer ! Presently my favorite blend of all time in this season 🤧 drink it this morning and evening have energy to kill in the flu season about to order me some more 💯",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "My husband and I favorite morning tea always stocked. 💚💚 keeping the energy levels up do your self a favor and grab a bag or 2 🤗 \" put the coffee aside for a bit and try or replace it GUAYUAS \"you will not regret your purchase.",
+    "author": "Petrena T."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -2155,19 +2271,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I quit smoking eight months ago and my lungs still felt tight. 1 month of One Way Out and I can take deeper breath for the first time in years.",
-    "author": "Earling M., Georgia"
-   },
-   {
-    "quote": "I hold water rention like crazy, especially before my cycle. This tea has reduced my bloating\\!",
-    "author": "Danielle K., California"
-   },
-   {
-    "quote": "My lymph nodes used to swell constantly. Since I started this blend my immune system feels less overwhelmed and the swelling has calmed down significantly.",
-    "author": "Zuleka M., New York"
-   }
-  ],
+  {
+    "quote": "This “One Way Out” blend is the real deal! I have a couple autoimmune disorders that severely compromise my lymphatic system, and over the years I’ve tried several teas and supplements that claimed to support the lymphatic system. Nothing worked until I tried this blend. Within ONE DAY I noticed a HUGE difference. (I won’t go into...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Really great",
+    "author": "Sarh M."
+  },
+  {
+    "quote": "I’ve been drinking this every day for the past 30 days and have noticed a considerable difference in the way my body retains water. I’ve been also getting lymphatic massages and have noticed an improved difference in circulation.",
+    "author": "Irene M."
+  },
+  {
+    "quote": "Drank this during a detox and I felt great. I don’t feel as bloated and I definitely see a reduction in inflammation.",
+    "author": "Myra L."
+  },
+  {
+    "quote": "UTI goodbye! I had come a bacterial infection which lead to a UTI and I didn't want to take conventional meds. I fasted on coconut water and drank this herb. Within the first day I felt so much better and on day 3 I was no longer in pain.",
+    "author": "Rhudy M."
+  },
+  {
+    "quote": "I actually passed a kidney stone...I COULD NOT BELIEVE IT!! I was on a fast and included this tea. On day 4 I passed the stone and I was in complete shock. My wife has been taking this to address a UTI and she's also seen a huge improvement.",
+    "author": "Marty W."
+  },
+  {
+    "quote": "I was VERY skeptical, but this blend helped me pass a kidney stone!! ZERO painkillers. Consistency is key. I drank it for 3 weeks.",
+    "author": "Silas L."
+  },
+  {
+    "quote": "I've been dealing with recurring UTIs for years, and nothing helped has really helped... until this. I saw a video they shared on Instagram talking about this tea and let me tell you within the first day I felt so much relief! Not just symptom relief, but like deep support. I've been drinking this for 4 days now and haven’t had a flare...",
+    "author": "Kamaria M."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -2480,23 +2616,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have had gastritis for four years and nothing my doctor gave me fixed it long term. I tell you, 4 weeks of Bowel Banisher and the acid reflux after meals has reduced dramatically.",
-    "author": "Mary M., Australia"
-   },
-   {
-    "quote": "I was living on antacids. Since I started this blend I have not needed them once. My stomach finally feels calm, I could cry\\!",
-    "author": "Mimi L., Florida"
-   },
-   {
-    "quote": "I have inflammatory bowel disorder and this is the first herbal blend that has actually made a difference in my flares.",
-    "author": "Simone R., California"
-   },
-   {
-    "quote": "My acid reflux was waking me up at night. This tea after dinner has been a complete change for my sleep.",
-    "author": "Danny U., Indiana"
-   }
-  ],
+  {
+    "quote": "Listen... I didn’t think I was that backed up. I was wrong. This blend got things MOVING in the best way. Not crampy. Not explosive. Just... smooth, effective release. I feel lighter, less bloated, and honestly clearer in my thoughts too.",
+    "author": "Liana V."
+  },
+  {
+    "quote": "I have gastroparesis and I was hoping the tea help my bowels to move but it didn’t. However it did stop the acid reflux which I truly appreciated. The taste is bitter but tolerable and you get use to it.",
+    "author": "Marianela P."
+  },
+  {
+    "quote": "Bowel Banisher does exactly what you’d expect it to, without any tummy discomfort or bowel irritation. My 75 year of father was recently told he needed to do a bowel cleanse, and after about a week and a half of drinking Bowel Banisher on an empty stomach every morning, he was almost completely cleared! Highly recommend.",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "I love the bowel banisher. It does exactly what it says. I think it also helps with mental cramps. Normally I have really bad symptoms/cramps the first 2 days but I didn't have any nor did i have any bloating. Also, I haven't had any problems with my Gerd! These are wonderful! I will continue to purchase.",
+    "author": "Lakeshia B."
+  },
+  {
+    "quote": "Has helped bowel movements & acid reflux! I was confused at first on how to make it but I made a big batch per their suggestion. It does take a while to prepare I made enough for 5 days. I recommend doing the same. It’s been two weeks and I dont have the nasty battery acid taste in my mouth from the reflux and I have been going regularly...",
+    "author": "Benjamin L."
+  },
+  {
+    "quote": "I still wonder why people still believe that there is no cure for HERPES VIRUS, I was diagnosed of this virus and tried everything I could but was never cured. I heard so many people talking about DR Enosetale and testifying of how they got cured by his herbal medicine and I decided to give it a try. I took his medicine for two weeks and...",
+    "author": "Benedict"
+  },
+  {
+    "quote": "The tea is bitter and potent. Within 1 week I noticed a huge difference in my digestion. I would always burp a lot too but the past few days not a single sound.",
+    "author": "Bernardo T."
+  },
+  {
+    "quote": "Has helped a ton with my gastritis!",
+    "author": "Safir M."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -2800,19 +2952,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I started this blend for circulation and my skin cleared up within weeks. I had no idea the two were connected.",
-    "author": "Yessica M., Arizona"
-   },
-   {
-    "quote": "As a man in my 50s my energy and vitality have really changed. Four weeks of River of Life and Zapped In…I feel like I’m in my 30’s.",
-    "author": "Alexis B., Maryland"
-   },
-   {
-    "quote": "I have had rheumatoid arthritis for six years. River of Life is the first thing I have taken that has made a consistent difference in my joint pain and morning stiffness.",
-    "author": "Byron O., Maine"
-   }
-  ],
+  {
+    "quote": "I love this tea! I feel the movement in my bloodstream and it taking affect. I would highly recommend it to anyone feeling sluggish. It really helped me in more ways than one. My skin looks better, I feel more alive and I notice myself getting a little bit of what I was before. I love these teas and that's why I will continue on...",
+    "author": "Mirna Q."
+  },
+  {
+    "quote": "Life others have said, I wish the herb was cut down just a bit more. On the bright side I can make bigger batches that last around 4 days. Since taking this for the past month, I’ve noticed in improvement in circulation for example my pumps and recoveries at the gym have drastically improved. I have way more energy than I used to. I also...",
+    "author": "Nestor R."
+  },
+  {
+    "quote": "Been taking this tea for about 2 weeks now. I have felt less lethargic and more energetic. This is my first time trying their teas from natural herbs and have found it to be very beneficial to my overall health. Recently purchased their book and will be looking to have a more raw/natural diet. Can’t wait to see how my body feels after a...",
+    "author": "Alex F."
+  },
+  {
+    "quote": "River of Life is exactly what is sounds like! After being told a year ago by my naturopath that I had “dirty” or “sluggish” blood” I ordered the River of Life blend and have been drinking it regularly. Almost immediately I could see the positive effects on my circulatory system,-after drinking it each day my veins become much more...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "This is my second order because these herbs saved me! For months I suffered from low testosterone and ED. The doctors wanted to give me pills but I was scared of the side effects. So I got serious and started a fruit detox (I’m on day 27) and also used these herbs. I’m finally feeling like myself but even better. I plan to do 3 months of...",
+    "author": "Jerome J."
+  },
+  {
+    "quote": "I still wonder why people still believe that there is no cure for HERPES VIRUS, I was diagnosed of this virus and tried everything I could but was never cured. I heard so many people talking about DR Enosetale and testifying of how they got cured by his herbal medicine and I decided to give it a try. I took his medicine for two weeks and...",
+    "author": "Benedict"
+  },
+  {
+    "quote": "Nicely packaged, extremely fast delivery",
+    "author": "Solomon C."
+  },
+  {
+    "quote": "For the first time in a long I'm back in \"the mood.\" I've been going through some rough personal things which impacted everything down to my stamina at the gym. Slowly and surely I'm getting back up there. I'd say theses teas played a huge role. Thank you for all you guys do.",
+    "author": "Javier L."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -3101,23 +3273,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have had anxiety for most of my adult life and I have tried everything. Scales of Balance has really helped me feel genuinely calm without making me feel sedated.",
-    "author": "Fatima O., Toronto"
-   },
-   {
-    "quote": "I was waking up at 3am every night with my mind going. 1 week of this blend and I am sleeping through for the first time in months.",
-    "author": "Patrick H., Sydney"
-   },
-   {
-    "quote": "The anxiety I carry from work was really starting to affect my mood. This tea has become my non-negotiable evening ritual. My whole household notices the difference.",
-    "author": "Delana N., Dallas"
-   },
-   {
-    "quote": "I was on anti-anxiety medication for four years and wanted to find something natural to transition with. This blend has been extraordinary.",
-    "author": "Isabel V., Barcelona"
-   }
-  ],
+  {
+    "quote": "Everything looks great, and the packaging is great and very detailed! This is a whole different quality!",
+    "author": "Dan T."
+  },
+  {
+    "quote": "Zapped In Tea Blend has honestly been one of those small changes that makes a big difference. It gives me a smooth, steady boost of energy without that shaky, crash feeling you get from coffee. What I love most is that it’s not just about energy,it also supports my digestion, and assisted me with inflammation. It’s gentle on my body,...",
+    "author": "Kenya K."
+  },
+  {
+    "quote": "This Zapped In Energy blend saves me so much time in the morning,-I set it up on the stove top each night to steep for 8-10ish hours, and it’s perfectly ready for me to grab a cup upon rising! The unique blend of the elderberries and ginger note only provide a delicious flavour, but I’ve noticed the added benefit of increased immunity! I...",
+    "author": "K M."
+  },
+  {
+    "quote": "The brewing adds a cathartic connection. The spice punch is addictive. My husband is a truck driver and uses this tea daily to give him stamina to unload and keep going to the next stop. I use it for the focus support and to help my iron absorption. This has become a daily regimen in our home. We drink it hot and sometimes cold. Prefer...",
+    "author": "Shawn B."
+  },
+  {
+    "quote": "I was hesitant to switch to the “Scales of Balance” blend since I’ve been using the plain Valerian Root tea for a while and love it. But I decided to give it a chance and I’m sure glad I did. Both my 70 year old dad and myself suffer from restless legs syndrome at night, along with a lot of anxiety and racing thoughts which make it...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Honestly I’ve been drinking coffee for so many years I was skeptical that this blend would give me the energy my busy lie requires. But boy was I wrong! I no longer drink coffee because this blend is the bomb! I love the spicy zing of the ginger, it really wakes up the mind and body. And the energy that this blend provides is FAR...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Returning customer ! Presently my favorite blend of all time in this season 🤧 drink it this morning and evening have energy to kill in the flu season about to order me some more 💯",
+    "author": "Petrena T."
+  },
+  {
+    "quote": "Love the Scales of Balance , I suffer from Epilepsy, however don’t have them often because it’s about a lifestyle .You are what you drink and eat! This tea calms me in the eve and I sleep like a baby. I do add just a punch of raw honey and I truly love it! As a Massage Therapist , I enjoy drinking this tea after work! Thank You! ✌🏼❤️",
+    "author": "Laurie D."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -3413,23 +3601,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I used this before starting the Eliminate and Regenerate kit and it made such a difference. My body was ready to detox.",
-    "author": "Henrik S., Stockholm"
-   },
-   {
-    "quote": "The Licorice and Tipo make all the difference. No cramps, no urgency. Just clean, gentle relief overnight.",
-    "author": "Naledi M., Johannesburg"
-   },
-   {
-    "quote": "I was bloated every single day for the past few weeks. 1 week of Final Flush and I felt so much lighter.",
-    "author": "Celia F., Washington, D.C"
-   },
-   {
-    "quote": "I did this before my detox kit like the instructions said and the difference was night and day. Everything worked better.",
-    "author": "Kwame A., California"
-   }
-  ],
+  {
+    "quote": "Yup this sent me to the bathroom a few times. Good thing we have 2 bathrooms because I gave it to my wife and we were both in and out.",
+    "author": "Wilson O."
+  },
+  {
+    "quote": "My boyfriend is NOT happy! I did 3 rounds of Final Flush after all those holiday dinners and instantly dropped 5 lbs. My boyfriend has been in the gym trying to drop the weight. Now he's BIG mad because I look more \"disciplined\" than him. Would not recommend if you don't want to upset your partner. 🫠",
+    "author": "Janette R."
+  },
+  {
+    "quote": "I’ve tried cleanses before and usually end up hangry and over it by day 3. This was totally different. I followed the guidance from the bundle, kept my meals clean, and I felt lighter, clearer, and way more energetic by the end. My skin even cleared up in spots I thought were just permanent. If you’re thinking about it, do it. You’ll...",
+    "author": "Marcus J."
+  },
+  {
+    "quote": "This was worth the time and money! I noticed the difference within the second week. I saw things that I know were not meant to be inside me. I feel this detox was everything I needed. I finished the 3 weeks and I felt so much better. I could tell my body was able to retain nutrients that for some reason was having a hard time doing so...",
+    "author": "Mirna Q."
+  },
+  {
+    "quote": "I love these herbs! I don’t even need to add a sweetener and I feel better after drinking a cup each day!",
+    "author": "Wendy"
+  },
+  {
+    "quote": "This is the extra boost I needed for my healing because I’ve been dealing with digestive and hormonal issues. I eat clean…which is mostly high raw vegan but I wanted to include herbs. Within the first day I felt the acid in my stomach ease up which helped with the knot I had in my throat. I also felt more calm because I’ve been very...",
+    "author": "Samuel J."
+  },
+  {
+    "quote": "Don't die in silent there is natural herbs cure for all kinds of diseases. I used natural herbs medicine made by a powerful herbal Dr Enosetale to get rid of my mum diabetes type 2 permanently, he can also help you too. Remember that a problem shared is a problem solved. He is good in curing... Cancer Hsv182 Hpv.. HIV/ AIDS Fibroids...",
+    "author": "Ken"
+  },
+  {
+    "quote": "Just browsing love your products :)",
+    "author": "Erik C."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -3742,23 +3946,15 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have IBS and I have tried everything. Bowel Balance is the first thing that has actually made my daily digestion feel manageable. And it tastes incredible.",
-    "author": "Chioma A., London"
-   },
-   {
-    "quote": "I drink this after dinner every night and I wake up without that bloated feeling I have had for years. The natural sweetness from the Stevia makes it feel like a treat.",
-    "author": "Lena V., Massachusets"
-   },
-   {
-    "quote": "My stomach cramps after meals have basically disappeared. Three weeks in and I genuinely look forward to this tea every day.",
-    "author": "James O., Dublin"
-   },
-   {
-    "quote": "The taste alone keeps me coming back. The fact that it actually works for my bloating is a bonus.",
-    "author": "Sofia B., Boston"
-   }
-  ],
+  {
+    "quote": "I’ve been drinking this for about a month and I’d like to say that it has helped immensely with my digestive issues. I usually get bloated or feel very sensitive after eating any type of meal, this tea has been helping to reduce inflammation. Bonus points for tasting good 👍",
+    "author": "Cordell B."
+  },
+  {
+    "quote": "It smells and tastes delicious! I’m sure long term this will do wonders for my gut. I’ve only been taking it for a week and I’ve noticed less sensitivity and reduced inflammation.",
+    "author": "Alexis R."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -4071,23 +4267,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have had PCOS for seven years. Sacred Sacral is the first thing I have tried that has made my cycles more regular without medication. I cry every time I think about it.",
-    "author": "Aisha K., Virginia"
-   },
-   {
-    "quote": "My cramps used to have me in bed for two days. After six weeks of Sacred Sacral I went through my whole period without taking a single painkiller.",
-    "author": "Valentina C., Texas"
-   },
-   {
-    "quote": "The taste alone is amazing\\! Sweet, warming, and it genuinely makes me feel like I am doing something good for myself every single morning.",
-    "author": "Kezia M., Arizona"
-   },
-   {
-    "quote": "I had no idea a tea could make this much difference to how I feel in my body each month. My PMS has reduced, my mood is steadier, and my cycle is lighter.",
-    "author": "Clara D., Illinois"
-   }
-  ],
+  {
+    "quote": "I’ve been drinking this for two weeks now and I’ve gotta say it is the most delicious blend ever. But the best part is, I didn’t get any cramps leading up to my period which tend to be excruciating. I’m excited to see how this helps me long-term because my period has been pretty inconsistent for the past few months.",
+    "author": "Adeline R."
+  },
+  {
+    "quote": "really lovely blend. feels comforting as a womban. would love an unsweetened version too! thank you electriceats",
+    "author": "Cam G."
+  },
+  {
+    "quote": "This bundle is a staple in my house,-starting every morning with the Zapped In blend instead of coffee is non-negotiable. And using the Sacred Sacral (for that time of the month for my two daughters and myself) is guaranteed the ONLY way we can make it through without having to use “pHARMaceuticals”",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Cats claw has been a game changer for my menstrual cramps and back pain! And one of the best things about this particular cats claw is that it’s so fresh and pure that I can use the same pieces of bark multiple times so that nothing goes to waste! Don’t wait on this one because it sells out fast too! 🫶🏻",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Tastes amazing! I have PCOS and my periods are very painful. I've been drinking this EVERY DAY since January and have noticed a huge difference in my flow (it's not as heavy) and the pain is almost nonexistent. I have also been working out a lot and eating better. I know all of these changes have helped.",
+    "author": "Deliah Z."
+  },
+  {
+    "quote": "I'm pregnant!! I've been trying to conceive for over 2 years and finally got serious about my health. I had made various changes in my lifestyle from eating, physical, emotional and nervous system regulation but I felt like I needed to do more. I incorporated this tea in December and have been drinking it twice a day for over 2 months...",
+    "author": "Janelle T."
+  },
+  {
+    "quote": "Like others have said this tastes amazing! My periods have been pretty inconsistent but this month it came as expected. Thank god i won't have it around NYE lol I'm sure long term this is magic.",
+    "author": "Meghan S."
+  },
+  {
+    "quote": "My grandmother always used to say that guava leaf tea something that all women needed to drink if they were looking to conceive. Me and my husband have been trying for a few months now so I’m hoping this beautiful blend helps us become first time parents. I’m normally not a fan of sweetened tea, but absolutely love this one.",
+    "author": "Millie B."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -4431,23 +4643,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have done cleanses before and they always left me feeling worse. This was different. By week two I had more energy than I have had in years and by week four I felt completely rebuilt.",
-    "author": "Adaeze O., Houston"
-   },
-   {
-    "quote": "The combination of all four blends at different times of day is genius. I could feel each one doing something different. My sleep, my digestion, my hormones… everything changed.",
-    "author": "Ingrid S., Germany"
-   },
-   {
-    "quote": "I was bloated every single day and exhausted all the time. Thirty days later neither of those things is true. I don't know which blend did what but together they worked.",
-    "author": "Taiwo A., London"
-   },
-   {
-    "quote": "I used Final Flush to prep my colon like the instructions said and the difference was night and day compared to the detox I did two years ago without doing that first.",
-    "author": "Beatriz M., Puerto Rico"
-   }
-  ],
+  {
+    "quote": "Yup this sent me to the bathroom a few times. Good thing we have 2 bathrooms because I gave it to my wife and we were both in and out.",
+    "author": "Wilson O."
+  },
+  {
+    "quote": "My boyfriend is NOT happy! I did 3 rounds of Final Flush after all those holiday dinners and instantly dropped 5 lbs. My boyfriend has been in the gym trying to drop the weight. Now he's BIG mad because I look more \"disciplined\" than him. Would not recommend if you don't want to upset your partner. 🫠",
+    "author": "Janette R."
+  },
+  {
+    "quote": "I’ve tried cleanses before and usually end up hangry and over it by day 3. This was totally different. I followed the guidance from the bundle, kept my meals clean, and I felt lighter, clearer, and way more energetic by the end. My skin even cleared up in spots I thought were just permanent. If you’re thinking about it, do it. You’ll...",
+    "author": "Marcus J."
+  },
+  {
+    "quote": "This was worth the time and money! I noticed the difference within the second week. I saw things that I know were not meant to be inside me. I feel this detox was everything I needed. I finished the 3 weeks and I felt so much better. I could tell my body was able to retain nutrients that for some reason was having a hard time doing so...",
+    "author": "Mirna Q."
+  },
+  {
+    "quote": "I love these herbs! I don’t even need to add a sweetener and I feel better after drinking a cup each day!",
+    "author": "Wendy"
+  },
+  {
+    "quote": "This is the extra boost I needed for my healing because I’ve been dealing with digestive and hormonal issues. I eat clean…which is mostly high raw vegan but I wanted to include herbs. Within the first day I felt the acid in my stomach ease up which helped with the knot I had in my throat. I also felt more calm because I’ve been very...",
+    "author": "Samuel J."
+  },
+  {
+    "quote": "Don't die in silent there is natural herbs cure for all kinds of diseases. I used natural herbs medicine made by a powerful herbal Dr Enosetale to get rid of my mum diabetes type 2 permanently, he can also help you too. Remember that a problem shared is a problem solved. He is good in curing... Cancer Hsv182 Hpv.. HIV/ AIDS Fibroids...",
+    "author": "Ken"
+  },
+  {
+    "quote": "Just browsing love your products :)",
+    "author": "Erik C."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -4669,23 +4897,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I have had recurring yeast infections every month for three years. I just completed the 30-days and I cannot believe something this simple worked when prescription medication kept failing me.",
-    "author": "Priscilla A., Mississippi"
-   },
-   {
-    "quote": "I did the Eliminate and Regenerate kit first and then moved into Her Fertile Waters. The combination was transformative. My energy, my hormones, my libido are all aligned.",
-    "author": "Zanele M., Johannesburg"
-   },
-   {
-    "quote": "My PCOS has made my cycles unpredictable my whole adult life. After 30 days of Her Fertile Waters my cycle came on exactly when it should have for the first time in years.",
-    "author": "Divya R., Florida"
-   },
-   {
-    "quote": "I was diagnosed with fibroids two years ago. I started this kit alongside and my inflammation markers have improved significantly. My gynecologist was surprised.",
-    "author": "Hana T., Wisconsin"
-   }
-  ],
+  {
+    "quote": "I’ve been drinking this for two weeks now and I’ve gotta say it is the most delicious blend ever. But the best part is, I didn’t get any cramps leading up to my period which tend to be excruciating. I’m excited to see how this helps me long-term because my period has been pretty inconsistent for the past few months.",
+    "author": "Adeline R."
+  },
+  {
+    "quote": "really lovely blend. feels comforting as a womban. would love an unsweetened version too! thank you electriceats",
+    "author": "Cam G."
+  },
+  {
+    "quote": "This bundle is a staple in my house,-starting every morning with the Zapped In blend instead of coffee is non-negotiable. And using the Sacred Sacral (for that time of the month for my two daughters and myself) is guaranteed the ONLY way we can make it through without having to use “pHARMaceuticals”",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Cats claw has been a game changer for my menstrual cramps and back pain! And one of the best things about this particular cats claw is that it’s so fresh and pure that I can use the same pieces of bark multiple times so that nothing goes to waste! Don’t wait on this one because it sells out fast too! 🫶🏻",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "Tastes amazing! I have PCOS and my periods are very painful. I've been drinking this EVERY DAY since January and have noticed a huge difference in my flow (it's not as heavy) and the pain is almost nonexistent. I have also been working out a lot and eating better. I know all of these changes have helped.",
+    "author": "Deliah Z."
+  },
+  {
+    "quote": "I'm pregnant!! I've been trying to conceive for over 2 years and finally got serious about my health. I had made various changes in my lifestyle from eating, physical, emotional and nervous system regulation but I felt like I needed to do more. I incorporated this tea in December and have been drinking it twice a day for over 2 months...",
+    "author": "Janelle T."
+  },
+  {
+    "quote": "Like others have said this tastes amazing! My periods have been pretty inconsistent but this month it came as expected. Thank god i won't have it around NYE lol I'm sure long term this is magic.",
+    "author": "Meghan S."
+  },
+  {
+    "quote": "My grandmother always used to say that guava leaf tea something that all women needed to drink if they were looking to conceive. Me and my husband have been trying for a few months now so I’m hoping this beautiful blend helps us become first time parents. I’m normally not a fan of sweetened tea, but absolutely love this one.",
+    "author": "Millie B."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [
@@ -4912,19 +5156,39 @@ window.KAWSAYPAC_PRODUCTS = {
    }
   ],
   "reviews": [
-   {
-    "quote": "I am 47 and I thought low energy and low libido were just part of getting older. Thirty days of His Fertile Fires and I have more vitality than I did in my 30’s. My wife noticed before I said anything.",
-    "author": "Emmanuel K., New York"
-   },
-   {
-    "quote": "I did the Eliminate and Regenerate kit first like they recommended and the difference going into His Fertile Fires was immediate. My body was ready for it.",
-    "author": "Rodrigo M., California"
-   },
-   {
-    "quote": "Drinking River of Life in the evening has helped me wake up with better joint mobility and overall circulation. I also have been sleeping deeper than I have in years.",
-    "author": "Dmitri V., Norway"
-   }
-  ],
+  {
+    "quote": "I love this tea! I feel the movement in my bloodstream and it taking affect. I would highly recommend it to anyone feeling sluggish. It really helped me in more ways than one. My skin looks better, I feel more alive and I notice myself getting a little bit of what I was before. I love these teas and that's why I will continue on...",
+    "author": "Mirna Q."
+  },
+  {
+    "quote": "Life others have said, I wish the herb was cut down just a bit more. On the bright side I can make bigger batches that last around 4 days. Since taking this for the past month, I’ve noticed in improvement in circulation for example my pumps and recoveries at the gym have drastically improved. I have way more energy than I used to. I also...",
+    "author": "Nestor R."
+  },
+  {
+    "quote": "Been taking this tea for about 2 weeks now. I have felt less lethargic and more energetic. This is my first time trying their teas from natural herbs and have found it to be very beneficial to my overall health. Recently purchased their book and will be looking to have a more raw/natural diet. Can’t wait to see how my body feels after a...",
+    "author": "Alex F."
+  },
+  {
+    "quote": "River of Life is exactly what is sounds like! After being told a year ago by my naturopath that I had “dirty” or “sluggish” blood” I ordered the River of Life blend and have been drinking it regularly. Almost immediately I could see the positive effects on my circulatory system,-after drinking it each day my veins become much more...",
+    "author": "Kristin M."
+  },
+  {
+    "quote": "This is my second order because these herbs saved me! For months I suffered from low testosterone and ED. The doctors wanted to give me pills but I was scared of the side effects. So I got serious and started a fruit detox (I’m on day 27) and also used these herbs. I’m finally feeling like myself but even better. I plan to do 3 months of...",
+    "author": "Jerome J."
+  },
+  {
+    "quote": "I still wonder why people still believe that there is no cure for HERPES VIRUS, I was diagnosed of this virus and tried everything I could but was never cured. I heard so many people talking about DR Enosetale and testifying of how they got cured by his herbal medicine and I decided to give it a try. I took his medicine for two weeks and...",
+    "author": "Benedict"
+  },
+  {
+    "quote": "Nicely packaged, extremely fast delivery",
+    "author": "Solomon C."
+  },
+  {
+    "quote": "For the first time in a long I'm back in \"the mood.\" I've been going through some rough personal things which impacted everything down to my stamina at the gym. Slowly and surely I'm getting back up there. I'd say theses teas played a huge role. Thank you for all you guys do.",
+    "author": "Javier L."
+  }
+],
   "studies": {
    "heading": "Rooted In Research",
    "items": [

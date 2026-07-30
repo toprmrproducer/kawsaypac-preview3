@@ -760,22 +760,6 @@ body>*:last-child{margin-bottom:0}
 @media(max-width:1000px){.retreat-film-grid{grid-template-columns:1fr;text-align:left}}
 @media(max-width:720px){.retreat-band{min-height:0;margin:24px auto}.retreat-film-grid{padding:30px 22px;gap:22px}}
 
-/* 7: Feel-your-best film is a WINDOWED two-column section: text LEFT, video RIGHT. */
-.home-video-section{position:relative;isolation:isolate;display:block;min-height:0;background:linear-gradient(135deg,#12301e 0%,#1c4029 55%,#14331f 100%);padding-block:clamp(48px,6vw,92px);overflow:hidden}
-.home-video-section::after{content:none}
-.hv-window{position:relative;inset:auto;z-index:auto;width:100%;height:auto;aspect-ratio:16/10;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.26);box-shadow:0 30px 70px rgba(4,18,10,.42);background:#0d1a0c}
-.hv-window .home-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hv-shell{width:var(--shell);max-width:none;min-height:0;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;justify-items:stretch;gap:clamp(28px,4.5vw,72px);padding:0}
-.hv-head{grid-column:1;align-items:flex-start;text-align:left;max-width:560px}
-.hv-head .hv-sub{text-align:left;font-size:clamp(1rem,1.3vw,1.15rem)}
-.hv-head h2{font-size:clamp(2.9rem,5.2vw,5.4rem)}
-.hv-cta{min-width:0}
-@media(max-width:900px){
-  .hv-shell{grid-template-columns:1fr;gap:24px;padding:0}
-  .hv-head{grid-column:1;max-width:none;align-items:flex-start;text-align:left}
-  .hv-window{aspect-ratio:16/9;border-radius:20px}
-}
-
 /* 7b: UGC cards that found a real file behave as inline players. */
 .video-stories .video-card.ugc-live video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .video-stories .video-card.ugc-live{cursor:pointer}
@@ -845,3 +829,20 @@ body>*:last-child{margin-bottom:0}
 
 /* 9: shorter footer (homepage dark treatment keeps less trailing air) */
 .site-footer{padding-bottom:clamp(84px,9vw,128px)}
+
+/* ============ v119: post-review fixes (30 Jul, Shreyas + Brian) ============ */
+/* Brian: hero carries only the brand at the summit and the final statement.
+   Brand title smaller, reads "Kawsaypac Herbs". */
+.journey-brand strong{font-size:clamp(3.6rem,8vw,7.2rem)!important;letter-spacing:-.05em}
+/* Brian: final-scene buttons in yellow, the green got lost against the jungle. */
+.journey-final .btn-primary{background:#E9C95E;border-color:#E9C95E;color:#22301f}
+.journey-final .btn-primary:hover{background:#f2d879;border-color:#f2d879;color:#1c2a1a}
+.journey-final .btn-secondary{border-color:#E9C95E;color:#f4e2a1;background:rgba(34,48,31,.28)}
+.journey-final .btn-secondary:hover{background:#E9C95E;border-color:#E9C95E;color:#22301f}
+.journey-final .journey-final-plain{color:#fff}
+.journey-final .journey-final-plain span{color:#fff;font-style:normal}
+/* Collections orchid: a touch bigger and layered ABOVE the bowl cards again. */
+@media(min-width:721px){
+  .collections .eco-left-frame{height:min(96%,830px);z-index:6!important}
+}
+.collections{position:relative}

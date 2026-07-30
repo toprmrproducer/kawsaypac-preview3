@@ -604,3 +604,48 @@ body.pp-body .pp-flora,
 body.pp-body .eco-botanical,
 body.pp-body .drag-sprite,
 body.pp-body [data-page-ornament]{display:none!important}
+
+/* ============ v41: post-review round (30 Jul) ============ */
+/* Padding round 2: text stretches wider, side gutters tighter (Brian/Blume). */
+.pp-shell{width:min(1440px,calc(100% - 28px))}
+@media (max-width:1500px){.pp-shell{width:min(1440px,calc(100% - 28px))}}
+.pp-main{font-size:1.04rem}
+.pp-split{gap:clamp(22px,3vw,54px)}
+.pp-band .pp-sub,.pp-band p{max-width:72ch}
+
+/* Premium interactive comparison table. */
+.pp-vsx{max-width:1080px;border-radius:24px;border:1px solid rgba(20,59,40,.14);box-shadow:0 26px 60px rgba(20,59,40,.14)}
+.pp-vsx-row{transition:background .25s ease}
+.pp-vsx-row:not(.pp-vsx-head):hover{background:rgba(201,169,66,.07)}
+.pp-vsx-row:not(.pp-vsx-head):nth-child(even){background:rgba(20,59,40,.025)}
+.pp-vsx-row:not(.pp-vsx-head):nth-child(even):hover{background:rgba(201,169,66,.09)}
+.pp-vsx-col.pp-vsx-us{position:relative;font-size:.8rem;letter-spacing:.12em;box-shadow:inset 0 -3px 0 #C9A942}
+.pp-vsx-cell.pp-vsx-us{background:rgba(31,58,42,.08);box-shadow:inset 2px 0 0 rgba(31,58,42,.16),inset -2px 0 0 rgba(31,58,42,.16)}
+.pp-vsx-label{font-weight:600;color:#2c3129}
+.pp-anim .pp-vsx-row{opacity:0;transform:translateY(14px)}
+.pp-anim.pp-in .pp-vsx-row{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.22,.9,.28,1)}
+.pp-anim.pp-in .pp-vsx-row:nth-child(1){transition-delay:.03s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(2){transition-delay:.1s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(3){transition-delay:.17s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(4){transition-delay:.24s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(5){transition-delay:.31s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(6){transition-delay:.38s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(7){transition-delay:.45s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(8){transition-delay:.52s}
+.pp-anim.pp-in .pp-vsx-row:nth-child(9){transition-delay:.59s}
+@media (max-width:720px){
+  .pp-vsx{overflow-x:auto}
+  .pp-vsx-row{grid-template-columns:minmax(128px,1.4fr) repeat(var(--vs-cols,3),minmax(86px,1fr))}
+  .pp-vsx-col{font-size:.62rem;padding:11px 6px}
+  .pp-vsx-label{font-size:.82rem;padding:12px 12px}
+}
+
+/* Mobile sticky add-to-cart: clean full-width dock, no floating pill overhang. */
+@media (max-width:720px){
+  .pp-sticky-inner{width:100%;margin:0;border-radius:18px 18px 0 0;border-left:0;border-right:0;border-bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px)) 12px;gap:12px;box-shadow:0 -14px 36px rgba(20,59,40,.22)}
+  .pp-sticky-inner img{width:44px;height:44px}
+  .pp-sticky-meta strong{font-size:.9rem}
+  .pp-sticky-meta span{font-size:.8rem}
+  .pp-sticky .pp-add{padding:0 18px;min-height:46px;font-size:.7rem;white-space:nowrap}
+}
+@media (prefers-reduced-motion:reduce){.pp-anim .pp-vsx-row{opacity:1;transform:none;transition:none}}
