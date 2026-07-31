@@ -213,15 +213,24 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     setActive(targets[0].id);
   }
   function initThemeVariant(){
-    /* Two live versions of the site: default = clean textures, ?theme=gradient
-       adds the soft brand-mesh washes (persisted so navigation keeps it;
-       ?theme=default switches back). */
-    try{
-      const q=new URLSearchParams(location.search).get('theme');
-      if(q==='gradient')localStorage.setItem('kx-theme','gradient');
-      else if(q==='default'||q==='plain')localStorage.removeItem('kx-theme');
-      if(localStorage.getItem('kx-theme')==='gradient')document.documentElement.classList.add('theme-gradient');
-    }catch(e){}
+    /* Two live versions of the site. The theme lives ONLY in the URL: a plain
+       URL is ALWAYS the clean version (no sticky localStorage state, which
+       confused review). While ?theme=gradient is present, same-origin nav
+       links are decorated with the param so browsing keeps the variant. */
+    try{localStorage.removeItem('kx-theme')}catch(e){}
+    const q=new URLSearchParams(location.search).get('theme');
+    if(q!=='gradient')return;
+    document.documentElement.classList.add('theme-gradient');
+    const decorate=()=>{
+      document.querySelectorAll('a[href]').forEach(a=>{
+        const href=a.getAttribute('href')||'';
+        if(/^(https?:|mailto:|tel:|#)/.test(href))return;
+        if(href.indexOf('theme=gradient')!==-1)return;
+        a.setAttribute('href', href+(href.indexOf('?')===-1?'?':'&')+'theme=gradient');
+      });
+    };
+    decorate();
+    new MutationObserver(decorate).observe(document.body,{childList:true,subtree:true});
   }
   function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();

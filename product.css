@@ -704,3 +704,14 @@ body.pp-body [data-page-ornament]{display:none!important}
 @media(max-width:720px){.pp-compare::after{display:none}}
 /* the whole PDP body also earns the label-stock substrate */
 .pp-body{background:url("assets/img/tex/paper-card.webp") repeat 0 0/620px,var(--pp-cream,#FAF7EF);background-blend-mode:multiply}
+
+/* ============ v47: PDP joins the gradient variant (1 Aug) ============ */
+html.theme-gradient .pp-body{background:
+  radial-gradient(70% 50% at 12% 0%,rgba(201,169,66,.10),transparent 55%),
+  radial-gradient(74% 60% at 92% 6%,rgba(31,58,42,.07),transparent 56%),
+  url("assets/img/tex/paper-card.webp") repeat 0 0/620px,#faf6ec!important;background-blend-mode:normal,normal,multiply,normal}
+html.theme-gradient .pp-upsell{background:
+  radial-gradient(64% 84% at 8% 8%,rgba(201,169,66,.12),transparent 56%),
+  radial-gradient(66% 86% at 92% 88%,rgba(31,58,42,.08),transparent 58%),var(--pp-cream,#faf7ef)}
+html.theme-gradient .pp-compare{background:
+  radial-gradient(70% 90% at 88% 10%,rgba(149,142,89,.11),transparent 58%),var(--pp-cream,#faf7ef)}

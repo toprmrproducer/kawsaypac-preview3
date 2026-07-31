@@ -1020,3 +1020,26 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
   radial-gradient(70% 90% at 50% 0%,rgba(149,142,89,.12),transparent 58%),
   radial-gradient(60% 80% at 90% 92%,rgba(201,169,66,.11),transparent 56%),
   url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--kx-ivory,#FAF9F6);background-blend-mode:normal,normal,multiply,normal}
+
+/* ============ v130: CTA-footer continuity + distinct Philosophy wash (1 Aug) ============ */
+/* The CTA and footer each painted their OWN copy of the jungle photograph, so
+   the two dark bands met with repeating orchids and a visible restart. On
+   desktop both sections now paint the SAME viewport-fixed plate: whatever part
+   of the photo sits behind each section is, by construction, one continuous
+   image across the boundary. (Mobile keeps the scrolling <img> copies:
+   fixed-attachment is unreliable on iOS.) */
+@media(min-width:901px){
+  .home-cta .home-cta-scene{display:none}
+  .site-footer .footer-bg{display:none}
+  /* !important: line ~427 carries `.site-footer{background:#060d09!important}`
+     from the pre-plate footer treatment, and this later rule must beat it */
+  .home-cta{background:url("assets/img/gen6/footer-dark-river.webp?v=74") center/cover fixed,#0f2a1a!important}
+  .site-footer{background:url("assets/img/gen6/footer-dark-river.webp?v=74") center/cover fixed,#12351f!important}
+  /* the CTA's bottom fade-to-footer is no longer needed: there is no seam */
+  .home-cta::after{background:linear-gradient(100deg,rgba(9,26,16,.90) 0%,rgba(9,26,16,.80) 26%,rgba(9,26,16,.42) 44%,rgba(9,26,16,.10) 60%)}
+}
+/* 4th section (Philosophy): in the gradient variant it gets its OWN wash, a
+   vertical dawn-gold, distinct from the radial mesh the other sections use. */
+.theme-gradient .philosophy{background:
+  linear-gradient(180deg,rgba(201,169,66,.14) 0%,rgba(201,169,66,.05) 26%,rgba(243,240,233,0) 55%,rgba(149,142,89,.08) 100%),
+  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:normal,multiply,normal}
