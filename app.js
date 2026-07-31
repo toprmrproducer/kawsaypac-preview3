@@ -232,7 +232,50 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     decorate();
     new MutationObserver(decorate).observe(document.body,{childList:true,subtree:true});
   }
-  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
+  function initCtaPouches(){
+    /* The Difference packets follow the cursor: each pouch drifts toward the
+       pointer at its own depth (front moves most), with a whisper of rotation
+       and lift. Lerped so it glides rather than sticks to the mouse. */
+    const sec=$('.home-cta');if(!sec)return;
+    if(!matchMedia('(hover: hover) and (pointer: fine)').matches)return;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    const pouches=$$('.cta-pouch',sec);if(!pouches.length)return;
+    const depth=[18,12,9];             /* cta-pouch-1 front ... -3 back */
+    const state=pouches.map(()=>({x:0,y:0,tx:0,ty:0}));
+    let hoverIdx=-1,running=false;
+    sec.classList.add('pouch-live');
+    pouches.forEach((p,i)=>{
+      const cls=[...p.classList].find(c=>/^cta-pouch-\d$/.test(c));
+      p.dataset.di=cls?(+cls.slice(-1)-1):i;
+      p.addEventListener('pointerenter',()=>{hoverIdx=i;wake()});
+      p.addEventListener('pointerleave',()=>{hoverIdx=-1;wake()});
+    });
+    const tick=()=>{
+      let live=false;
+      pouches.forEach((p,i)=>{
+        const s=state[i];
+        s.x+=(s.tx-s.x)*.09;s.y+=(s.ty-s.y)*.09;
+        if(Math.abs(s.tx-s.x)>.15||Math.abs(s.ty-s.y)>.15)live=true;
+        p.style.setProperty('--px',s.x.toFixed(1)+'px');
+        p.style.setProperty('--py',s.y.toFixed(1)+'px');
+        p.style.setProperty('--pr',(s.x*.04).toFixed(2)+'deg');
+        p.style.setProperty('--ps',hoverIdx===i?'1.045':'1');
+      });
+      if(live)requestAnimationFrame(tick);else running=false;
+    };
+    const wake=()=>{if(!running){running=true;requestAnimationFrame(tick)}};
+    sec.addEventListener('pointermove',e=>{
+      const r=sec.getBoundingClientRect();
+      const nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
+      pouches.forEach((p,i)=>{
+        const d=depth[p.dataset.di]||10;
+        state[i].tx=nx*d*2;state[i].ty=ny*d;
+      });
+      wake();
+    },{passive:true});
+    sec.addEventListener('pointerleave',()=>{state.forEach(s=>{s.tx=0;s.ty=0});hoverIdx=-1;wake()},{passive:true});
+  }
+  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 

@@ -981,7 +981,8 @@ body>*:last-child{margin-bottom:0}
 }
 /* v128b: with fibre under them, the grey-green subheads needed darker ink to
    hold the contrast floor with margin. One shared style, one fix. */
-.section-head p,.concern-sub,.philo-lede,.hv-sub{color:#494c42}
+.section-head p,.concern-sub,.philo-lede{color:#494c42}
+.hv-sub{color:rgba(255,255,255,.94)!important}
 .bowl-copy p,.product-copy p{color:#53564c}
 
 /* ============ v129: content-page textures + gradient theme (1 Aug) ============ */
@@ -1031,9 +1032,7 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
 @media(min-width:901px){
   .home-cta .home-cta-scene{display:none}
   .site-footer .footer-bg{display:none}
-  /* !important: line ~427 carries `.site-footer{background:#060d09!important}`
-     from the pre-plate footer treatment, and this later rule must beat it */
-  .home-cta{background:url("assets/img/gen6/footer-dark-river.webp?v=74") center/cover fixed,#0f2a1a!important}
+  /* !important beats the legacy body/footer background !importants (427/476) */
   .site-footer{background:url("assets/img/gen6/footer-dark-river.webp?v=74") center/cover fixed,#12351f!important}
   /* the CTA's bottom fade-to-footer is no longer needed: there is no seam */
   .home-cta::after{background:linear-gradient(100deg,rgba(9,26,16,.90) 0%,rgba(9,26,16,.80) 26%,rgba(9,26,16,.42) 44%,rgba(9,26,16,.10) 60%)}
@@ -1042,4 +1041,25 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
    vertical dawn-gold, distinct from the radial mesh the other sections use. */
 .theme-gradient .philosophy{background:
   linear-gradient(180deg,rgba(201,169,66,.14) 0%,rgba(201,169,66,.05) 26%,rgba(243,240,233,0) 55%,rgba(149,142,89,.08) 100%),
+  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:normal,multiply,normal}
+
+/* ============ v132: CTA solid-gradient band + cursor pouches + fixes (1 Aug) ============ */
+/* Difference CTA: premium deep-forest gradient (Shreyas's call), no photo.
+   Gold breath top-right, warm base, riso-like depth via the mist layer. */
+.home-cta .home-cta-scene{display:none!important}
+.home-cta{background:
+  radial-gradient(72% 88% at 80% 22%,rgba(44,74,55,.9),transparent 62%),
+  radial-gradient(52% 64% at 10% 88%,rgba(201,169,66,.12),transparent 55%),
+  linear-gradient(160deg,#16351f 0%,#0d2518 72%)!important}
+.home-cta::before{opacity:.32}
+.home-cta::after{background:linear-gradient(180deg,rgba(9,26,16,0) 0%,rgba(9,26,16,0) 78%,rgba(9,26,16,.30) 100%)}
+/* pouches react to the cursor (JS drives --px/--py per-pouch; CSS just eases) */
+@media (hover:hover) and (pointer:fine){
+  .cta-pouch{transition:transform .18s ease-out;will-change:transform}
+  .home-cta.pouch-live .cta-pouch{transform:translate(var(--px,0px),var(--py,0px)) rotate(var(--pr,0deg)) scale(var(--ps,1))}
+}
+/* Philosophy in gradient mode: the dawn-gold band read as not fitting; reduce
+   to a barely-there warm crown at the top, texture carries the rest. */
+.theme-gradient .philosophy{background:
+  radial-gradient(90% 34% at 50% 0%,rgba(201,169,66,.09),transparent 70%),
   url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:normal,multiply,normal}

@@ -230,6 +230,6 @@
 @media(max-width:720px){
   .journey-landscape-master{object-position:53% 24%;transform:scale(1.16)!important}
   .journey-sticky{min-height:590px}
-  .journey-sticky::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:96px;z-index:6;pointer-events:none;background:linear-gradient(180deg,rgba(250,249,246,0),#FAF9F6 92%)}
+  /* v132: the 96px white fade at the hero bottom read as a "white overlay" on phones (Shreyas). Removed; the hero now meets the next section clean. */
   .journey-final{bottom:56px}
 }

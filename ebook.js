@@ -27,6 +27,29 @@
     return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>';
   }
 
+  /* Raisa (29 Jul call): every herb name on the ebook pages links to its
+     product page. Applied AFTER esc(), matching whole names case-insensitively. */
+  var HERB_LINKS = [
+    ["Cat's Claw", 'cats-claw'], ['Guayusa', 'guayusa-leaf'], ['Valerian', 'valerian'],
+    ['Soursop', 'soursop'], ['Graviola', 'soursop'], ['Matico', 'matico'], ['Cordoncillo', 'matico'],
+    ['Chuchuhuasi', 'chuchuhuasi'], ['Zapped In', 'zapped-in'], ['One Way Out', 'one-way-out'],
+    ['Bowel Banisher', 'bowel-banisher'], ['Bowel Balance', 'bowel-balance'],
+    ['River of Life', 'river-of-life'], ['Scales of Balance', 'scales-of-balance'],
+    ['Final Flush', 'final-flush'], ['Sacred Sacral', 'sacred-sacral'],
+    ['Eliminate & Regenerate', 'eliminate-regenerate'], ['Eliminate &amp; Regenerate', 'eliminate-regenerate']
+  ];
+  function linkHerbs(escapedText) {
+    var out = escapedText;
+    HERB_LINKS.forEach(function (pair) {
+      var name = pair[0].replace(/[&']/g, function (ch) { return ch === '&' ? '&' : '&#39;'; });
+      var re = new RegExp('(^|[^>\\w])(' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')(?![\\w<])', 'gi');
+      out = out.replace(re, function (m, pre, hit) {
+        return pre + '<a class="eb-herb-link" href="product.html?product=' + pair[1] + '">' + hit + '</a>';
+      });
+    });
+    return out;
+  }
+
   function crossLinks(record, all, order) {
     var sameKind = [];
     var others = [];
@@ -51,11 +74,11 @@
     }
 
     var inside = record.inside.map(function (item) {
-      return '<li>' + sprig() + '<span>' + esc(item) + '</span></li>';
+      return '<li>' + sprig() + '<span>' + linkHerbs(esc(item)) + '</span></li>';
     }).join('');
 
     var about = record.about.map(function (paragraph) {
-      return '<p>' + esc(paragraph) + '</p>';
+      return '<p>' + linkHerbs(esc(paragraph)) + '</p>';
     }).join('');
 
     var strip = '';
