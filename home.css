@@ -862,25 +862,35 @@ body>*:last-child{margin-bottom:0}
 .home-cta-copy .eyebrow{color:#e9c96a;margin:0}
 .home-cta-copy h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(2.9rem,5vw,5.2rem);line-height:1;letter-spacing:-.04em;color:#fdf9ef;text-wrap:balance}
 .home-cta-copy p{margin:0;max-width:46ch;font-size:clamp(1rem,1.3vw,1.16rem);line-height:1.6;color:rgba(253,249,239,.92)}
-/* Shreyas's own studio packshots (31 Jul), backgrounds removed: complete
-   pouch silhouettes, so the trio floats NOKT-style with gentle drift.
-   Cat's Claw fronts the stack; Zapped In and Bowel Balance flank behind. */
-.home-cta-products{position:relative;min-height:clamp(340px,30vw,500px)}
-.cta-pouch{position:absolute;filter:drop-shadow(0 28px 42px rgba(2,10,5,.55));will-change:transform}
-.cta-pouch-1{width:clamp(215px,17.5vw,310px);left:26%;top:12%;z-index:3;transform:rotate(-3deg);animation:ctaFloatA 9s ease-in-out infinite alternate}
-.cta-pouch-2{width:clamp(180px,15vw,265px);left:-2%;top:0;z-index:2;transform:rotate(-9deg);animation:ctaFloatB 11s ease-in-out 1.1s infinite alternate}
-.cta-pouch-3{width:clamp(185px,15.5vw,270px);right:0;top:6%;z-index:1;transform:rotate(8deg);opacity:.97;animation:ctaFloatC 10s ease-in-out .5s infinite alternate}
-@keyframes ctaFloatA{from{transform:rotate(-3deg) translateY(0)}to{transform:rotate(-2deg) translateY(-14px)}}
-@keyframes ctaFloatB{from{transform:rotate(-9deg) translateY(0)}to{transform:rotate(-7.5deg) translateY(-18px)}}
-@keyframes ctaFloatC{from{transform:rotate(8deg) translateY(0)}to{transform:rotate(6.5deg) translateY(-11px)}}
-@media (prefers-reduced-motion:reduce){.cta-pouch{animation:none!important}}
+/* v124: the section IS the photograph. The studio sweep from Shreyas's own
+   packshots is extended across the full band (polynomial-fit backdrop + real
+   grain lifted from his frame), the three pouches sit on it with contact
+   shadows, and the copy lives inside the same frame. No flat colour block. */
+.home-cta{background:#e7e3dc;color:var(--charcoal);padding:0;overflow:hidden}
+.home-cta::before{display:none}
+.home-cta-scene{position:absolute;inset:0;z-index:0;display:block}
+.home-cta-scene img{width:100%;height:100%;object-fit:cover;object-position:78% 50%}
+/* readability floor: a soft cream wash under the copy only, so the type never
+   fights the sweep at wide viewports where the plate lightens on the left */
+.home-cta::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(100deg,rgba(247,244,237,.92) 0%,rgba(247,244,237,.78) 26%,rgba(247,244,237,.28) 44%,rgba(247,244,237,0) 58%)}
+.home-cta-split{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.52fr) minmax(0,.48fr);align-items:center;
+  min-height:clamp(520px,42vw,720px);padding-block:clamp(56px,6vw,88px)}
+.home-cta-copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px;text-align:left}
+.home-cta-copy .eyebrow{margin:0;color:#756223}
+.home-cta-copy h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(2.7rem,4.6vw,4.9rem);line-height:1;letter-spacing:-.04em;color:var(--forest);text-wrap:balance}
+.home-cta .cta-accent{font-style:italic;color:#96762f}
+.home-cta-copy p{margin:0;max-width:44ch;font-size:clamp(1rem,1.25vw,1.14rem);line-height:1.6;color:#3f4239}
+.home-cta-btn{margin-top:10px;min-height:56px;padding:0 40px;background:var(--forest);border-color:var(--forest);color:#fdf9ef;font-size:.8rem;box-shadow:0 16px 34px rgba(31,58,42,.24)}
+.home-cta-btn:hover{background:var(--forest-2);border-color:var(--forest-2);color:#fff}
 @media(max-width:900px){
-  .home-cta-split{grid-template-columns:1fr;text-align:center}
+  /* portrait plate: empty sweep up top for the copy, pouches grounded below */
+  .home-cta-scene img{object-position:50% 100%}
+  .home-cta::after{background:linear-gradient(180deg,rgba(247,244,237,.94) 0%,rgba(247,244,237,.86) 34%,rgba(247,244,237,.26) 52%,rgba(247,244,237,0) 66%)}
+  .home-cta-split{grid-template-columns:1fr;align-items:start;min-height:clamp(700px,152vw,920px);padding-block:clamp(44px,9vw,64px) 0}
   .home-cta-copy{align-items:center;text-align:center}
-  .home-cta-products{min-height:clamp(280px,62vw,360px);width:min(520px,100%);margin-inline:auto}
-  .cta-pouch-1{left:28%}
-  .cta-pouch-2{left:-4%}
-  .cta-pouch-3{right:-4%}
+  .home-cta-copy p{max-width:34ch}
+  .home-cta-btn{width:100%;max-width:340px}
 }
 /* 3 · Short human reviews: the one-liners breathe bigger, plus a micro strip. */
 .review-body blockquote{font-size:clamp(1.3rem,1.8vw,1.7rem);line-height:1.3}
