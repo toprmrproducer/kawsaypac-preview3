@@ -691,8 +691,6 @@ body.pp-body [data-page-ornament]{display:none!important}
    scale) that shop.css gives shopify-media. */
 .pp-upsell .storefront-card__media > img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;transition:transform .85s var(--ease,ease)}
 .pp-upsell .storefront-card:hover .storefront-card__media > img{transform:scale(1.035)}
-.pp-upsell .storefront-card__hover{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s var(--ease,ease)}
-.pp-upsell .storefront-card:hover .storefront-card__hover{opacity:1}
 
 /* ============ v45: PDP texture layer (Aevy doctrine, 1 Aug) ============ */
 /* Compare section gets the cutting-mat ground (measured, engineered) and the

@@ -1180,3 +1180,15 @@ video.shop-hero-bg{position:absolute!important;inset:0;width:100%!important;heig
    white overlay (her explicit ask). Dark halo, because the type is white. */
 .shop-hero .shop-hero__content--statement::before{content:'';position:absolute;inset:-14% -12%;z-index:0;background:radial-gradient(58% 64% at 42% 52%,rgba(7,20,13,.58) 0%,rgba(7,20,13,.34) 52%,rgba(7,20,13,0) 78%);pointer-events:none}
 .shop-hero .shop-hero__content--statement h1{position:relative;z-index:1;text-shadow:0 2px 8px rgba(4,18,10,.85),0 6px 34px rgba(4,18,10,.7)!important}
+
+/* v99: apothecary page substrate (paper fibre under the whole shop body).
+   product.html also loads this file, but .pp-body's own substrate rule in
+   product.css outranks the bare body selector, so the PDP is unaffected. */
+/* !important because home.css carries `body{background:#faf6ec!important}`
+   (line ~476, a journey-hero support rule); shop.css loads after home.css on
+   every page that links it, so this later !important wins the tie. */
+body{background:url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,#faf6ec!important;background-blend-mode:multiply}
+html.theme-gradient body{background:
+  radial-gradient(70% 60% at 14% 4%,rgba(201,169,66,.11),transparent 55%),
+  radial-gradient(76% 70% at 90% 10%,rgba(31,58,42,.08),transparent 56%),
+  url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,#faf6ec!important;background-blend-mode:normal,normal,multiply,normal}

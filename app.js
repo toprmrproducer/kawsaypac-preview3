@@ -212,7 +212,18 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     links.forEach(link=>link.addEventListener('click',()=>setActive(link.hash.slice(1))));
     setActive(targets[0].id);
   }
-  function boot(){renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
+  function initThemeVariant(){
+    /* Two live versions of the site: default = clean textures, ?theme=gradient
+       adds the soft brand-mesh washes (persisted so navigation keeps it;
+       ?theme=default switches back). */
+    try{
+      const q=new URLSearchParams(location.search).get('theme');
+      if(q==='gradient')localStorage.setItem('kx-theme','gradient');
+      else if(q==='default'||q==='plain')localStorage.removeItem('kx-theme');
+      if(localStorage.getItem('kx-theme')==='gradient')document.documentElement.classList.add('theme-gradient');
+    }catch(e){}
+  }
+  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 

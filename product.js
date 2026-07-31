@@ -756,12 +756,10 @@
           ${entries.map((e) => {
             const q = CATALOG[e.slug];
             const href = `product.html?product=${esc(e.slug)}`;
-            const hover = galleryShot(q, '02-editorial', '');
             return `
           <article class="storefront-card">
             <a class="storefront-card__media" href="${href}" aria-label="View ${esc(q.name)}">
               <img src="${esc(upsellImage(e.slug))}" alt="${esc(q.name)}" loading="lazy" width="720" height="720">
-              ${hover ? `<img class="storefront-card__hover" src="${esc(hover)}?v=33" alt="" loading="lazy" decoding="async">` : ''}
             </a>
             <div class="storefront-card__body">
               <p class="storefront-card__stars" aria-label="Customer favorite">&#9733;&#9733;&#9733;&#9733;&#9733;</p>

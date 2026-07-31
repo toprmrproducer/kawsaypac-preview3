@@ -983,3 +983,40 @@ body>*:last-child{margin-bottom:0}
    hold the contrast floor with margin. One shared style, one fix. */
 .section-head p,.concern-sub,.philo-lede,.hv-sub{color:#494c42}
 .bowl-copy p,.product-copy p{color:#53564c}
+
+/* ============ v129: content-page textures + gradient theme (1 Aug) ============ */
+/* Philosophy page gets the softened inclusion paper across its ivory base
+   (body-scoped so it outranks the page's inline style block). Retreats is
+   untouched by request. */
+body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--kx-ivory,#FAF9F6);background-blend-mode:multiply}
+
+/* Homepage philosophy section: same softened tile, scaled calmer. */
+.philosophy{background:url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:multiply}
+
+/* --- gradient theme: html.theme-gradient (toggled via ?theme=gradient, persisted) ---
+   Soft radial mesh in the brand palette laid UNDER the paper fibre, so the
+   gradient version keeps the texture doctrine. Retreats has none of these
+   classes, so it stays untouched in both themes. */
+.theme-gradient .collections,.theme-gradient .journey-preview .collections{background:
+  radial-gradient(64% 84% at 10% 6%,rgba(201,169,66,.13),transparent 58%),
+  radial-gradient(72% 92% at 92% 16%,rgba(31,58,42,.10),transparent 56%),
+  url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,var(--cream);background-blend-mode:normal,normal,multiply,normal}
+.theme-gradient .products,.theme-gradient .video-stories{background:
+  radial-gradient(70% 90% at 88% 8%,rgba(149,142,89,.13),transparent 58%),
+  radial-gradient(60% 80% at 6% 90%,rgba(201,169,66,.10),transparent 55%),
+  url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,var(--cream);background-blend-mode:normal,normal,multiply,normal}
+.theme-gradient .kx-reviews{background:
+  radial-gradient(66% 88% at 12% 12%,rgba(201,169,66,.12),transparent 56%),
+  radial-gradient(70% 90% at 90% 88%,rgba(31,58,42,.09),transparent 58%),
+  url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,linear-gradient(180deg,var(--cream) 0%,#f4f0e5 100%);background-blend-mode:normal,normal,multiply,normal}
+.theme-gradient .philosophy{background:
+  radial-gradient(72% 92% at 50% 0%,rgba(149,142,89,.13),transparent 60%),
+  radial-gradient(58% 78% at 92% 90%,rgba(201,169,66,.11),transparent 55%),
+  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:normal,normal,multiply,normal}
+.theme-gradient .concern-section{background:
+  radial-gradient(64% 86% at 8% 10%,rgba(31,58,42,.08),transparent 55%),
+  radial-gradient(66% 88% at 94% 86%,rgba(201,169,66,.12),transparent 58%),#fff}
+.theme-gradient body .kx-philo,.theme-gradient .kx-philo{background:
+  radial-gradient(70% 90% at 50% 0%,rgba(149,142,89,.12),transparent 58%),
+  radial-gradient(60% 80% at 90% 92%,rgba(201,169,66,.11),transparent 56%),
+  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--kx-ivory,#FAF9F6);background-blend-mode:normal,normal,multiply,normal}
