@@ -693,3 +693,16 @@ body.pp-body [data-page-ornament]{display:none!important}
 .pp-upsell .storefront-card:hover .storefront-card__media > img{transform:scale(1.035)}
 .pp-upsell .storefront-card__hover{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s var(--ease,ease)}
 .pp-upsell .storefront-card:hover .storefront-card__hover{opacity:1}
+
+/* ============ v45: PDP texture layer (Aevy doctrine, 1 Aug) ============ */
+/* Compare section gets the cutting-mat ground (measured, engineered) and the
+   coarse halftone bark specimen as a Bhindi-style watermark in the head's
+   right margin. Both under the shell's z-index 1, both pointer-inert. */
+.pp-compare{position:relative;overflow:hidden}
+.pp-compare::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url("assets/img/tex/mat-grid.webp") repeat 0 0/520px;opacity:.05;mix-blend-mode:multiply}
+.pp-compare::after{content:'';position:absolute;right:-3%;top:4%;width:min(24vw,320px);height:min(36vw,480px);z-index:0;pointer-events:none;
+  background:url("assets/img/tex/bark-specimen.webp") right top/contain no-repeat;opacity:.10;mix-blend-mode:multiply}
+@media(max-width:720px){.pp-compare::after{display:none}}
+/* the whole PDP body also earns the label-stock substrate */
+.pp-body{background:url("assets/img/tex/paper-card.webp") repeat 0 0/620px,var(--pp-cream,#FAF7EF);background-blend-mode:multiply}
