@@ -752,19 +752,26 @@
       <div class="pp-shell">
         <p class="pp-eyebrow">Continue the ritual</p>
         <h2>${esc(r.header || 'Blends that pair with ' + p.name)}${/[.:!?]$/.test(r.header || '') ? '' : '.'}</h2>
-        <div class="pp-upsell-grid">
-          ${entries.map((e, i) => {
+        <div class="pp-upsell-grid shop-product-grid">
+          ${entries.map((e) => {
             const q = CATALOG[e.slug];
+            const href = `product.html?product=${esc(e.slug)}`;
+            const hover = galleryShot(q, '02-editorial', '');
             return `
-          <a class="pp-up-card" href="product.html?product=${esc(e.slug)}">
-            <figure class="pp-up-media"><img src="${esc(upsellImage(e.slug))}" alt="${esc(q.name)}" loading="lazy" width="480" height="480"></figure>
-            <div class="pp-up-copy">
-              <span class="pp-up-step">0${i + 1}${e.label ? ` · ${esc(e.label)}` : ''}</span>
-              <strong>${esc(q.name)}</strong>
-              ${e.context ? `<p>${esc(e.context)}</p>` : ''}
-              <em>${esc(q.price || '')} · Shop this blend</em>
+          <article class="storefront-card">
+            <a class="storefront-card__media" href="${href}" aria-label="View ${esc(q.name)}">
+              <img src="${esc(upsellImage(e.slug))}" alt="${esc(q.name)}" loading="lazy" width="720" height="720">
+              ${hover ? `<img class="storefront-card__hover" src="${esc(hover)}?v=33" alt="" loading="lazy" decoding="async">` : ''}
+            </a>
+            <div class="storefront-card__body">
+              <p class="storefront-card__stars" aria-label="Customer favorite">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+              <div class="storefront-card__heading">
+                <h2>${esc(q.name)}</h2>
+                <strong>${esc(q.price || '')}</strong>
+              </div>
+              <a class="storefront-text-link" href="${href}">View ritual <span aria-hidden="true">&#8599;</span></a>
             </div>
-          </a>`;
+          </article>`;
           }).join('')}
         </div>
         ${r.note ? `<p class="pp-routine-note">${esc(r.note)}</p>` : ''}
