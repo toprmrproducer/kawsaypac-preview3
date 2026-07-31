@@ -649,3 +649,30 @@ body.pp-body [data-page-ornament]{display:none!important}
   .pp-sticky .pp-add{padding:0 18px;min-height:46px;font-size:.7rem;white-space:nowrap}
 }
 @media (prefers-reduced-motion:reduce){.pp-anim .pp-vsx-row{opacity:1;transform:none;transition:none}}
+
+/* ============ v42: 31 Jul round (Shreyas voice notes) ============ */
+/* 1 · Compare table stretches to the full product shell and gets column glyphs. */
+.pp-vsx{max-width:none;width:100%}
+.pp-vsx-col{padding:20px 14px;gap:10px}
+.pp-vsx-icon{display:block;width:34px;height:34px;margin:0 auto 8px;color:#54584e;opacity:.85}
+.pp-vsx-us .pp-vsx-icon{color:#f2da8a;opacity:1}
+.pp-vsx-icon svg{width:100%;height:100%}
+.pp-vsx-cell{padding:16px 12px}
+.pp-vsx-label{padding:16px 18px;font-size:.98rem}
+.pp-compare .pp-center-head{max-width:900px}
+@media(max-width:720px){.pp-vsx-icon{width:24px;height:24px;margin-bottom:5px}}
+/* 2 · The compound wheel breathes: a slow, slight rotation, paused on hover so
+   segments stay easy to tap. The dotted halo turns continuously. */
+@media (prefers-reduced-motion:no-preference){
+  .pp-info-visual svg{animation:ppWheelSway 22s ease-in-out infinite alternate;transform-origin:50% 50%}
+  .pp-info-visual:hover svg,.pp-info-visual:focus-within svg{animation-play-state:paused}
+  @keyframes ppWheelSway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+  .pp-info-visual svg>circle:first-of-type{transform-box:fill-box;transform-origin:center;animation:ppHaloSpin 70s linear infinite}
+  @keyframes ppHaloSpin{to{transform:rotate(360deg)}}
+}
+/* 3 · Product-section content stretched wider left and right. */
+.pp-center-head{max-width:900px}
+.pp-band .pp-sub,.pp-band p{max-width:80ch}
+.pp-tab-pane p{max-width:80ch}
+.pp-howto-step p{max-width:64ch}
+.pp-info-grid{gap:clamp(34px,6vw,96px)}

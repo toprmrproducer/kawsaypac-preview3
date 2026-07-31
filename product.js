@@ -545,6 +545,25 @@
     return `<em>${esc(val)}</em>`;
   }
 
+  // Each comparison column carries a small illustrated glyph so the reader can
+  // see what they are comparing against (pill bottle for melatonin/supplements,
+  // capsules for prescription drugs, a cup for coffee/teas, our herb sprig).
+  function compareColIcon(label, isUs) {
+    const l = String(label || '').toLowerCase();
+    const wrap = (inner) => `<span class="pp-vsx-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${inner}</svg></span>`;
+    if (isUs) return wrap('<path d="M16 27V15"/><path d="M16 17c0-5.4 3.8-8.8 9.5-8.8 0 5.7-3.8 8.8-9.5 8.8z" fill="rgba(201,169,66,.18)"/><path d="M16 15c0-4.7-3.2-7.4-8.1-7.4 0 4.9 3.2 7.4 8.1 7.4z" fill="rgba(201,169,66,.18)"/>');
+    if (/melatonin|supplement|antacid|inhibitor|laxative|syrup|purifier|cbd|oil/.test(l)) return wrap('<rect x="10" y="11" width="12" height="16" rx="2.4"/><rect x="11.6" y="6.5" width="8.8" height="4.5" rx="1.2"/><circle cx="14" cy="21" r="1.15"/><circle cx="18.2" cy="18.6" r="1.15"/><circle cx="17.6" cy="23.4" r="1.15"/>');
+    if (/prescription|medication|benzodiazepine|pill|drug|control/.test(l)) return wrap('<rect x="5.5" y="13.5" width="13" height="6.5" rx="3.25" transform="rotate(-28 12 16.75)"/><path d="M9.4 14.9l5.8 3.1" /><rect x="15" y="17" width="12" height="6" rx="3" transform="rotate(14 21 20)"/>');
+    if (/coffee|tea|guayusa|ginseng|ashwagandha|elderberry|massage/.test(l)) return wrap('<path d="M8 12h14v8a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6z"/><path d="M22 14h2.6a3.2 3.2 0 0 1 0 6.4H22"/><path d="M12 8.6c0-1.2 1.4-1.4 1.4-2.6M17 8.6c0-1.2 1.4-1.4 1.4-2.6"/>');
+    return wrap('<circle cx="16" cy="16" r="9"/><circle cx="16" cy="16" r="2.2"/>');
+  }
+
+  // Render-level brand correction: the approved doc predates the Kawsaypac
+  // rename, so its comparison columns still read "The Electric Eats X".
+  function brandColumn(label) {
+    return String(label || '').replace(/the electric eats/gi, 'Kawsaypac');
+  }
+
   function comparisonSection(p) {
     const c = normalizeComparison(p.comparison);
     if (!c) return '';
@@ -553,7 +572,7 @@
         <div class="pp-vsx" role="table" aria-label="${esc(c.header || p.name + ' comparison')}" style="--vs-cols:${cols.length}">
           <div class="pp-vsx-row pp-vsx-head" role="row">
             <span class="pp-vsx-label" role="columnheader"><span class="pp-visually-hidden">Benefit</span></span>
-            ${cols.map((col, i) => `<span class="pp-vsx-col${i === 0 ? ' pp-vsx-us' : ''}" role="columnheader">${esc(col)}</span>`).join('')}
+            ${cols.map((col, i) => `<span class="pp-vsx-col${i === 0 ? ' pp-vsx-us' : ''}" role="columnheader">${compareColIcon(col, i === 0)}${esc(brandColumn(col))}</span>`).join('')}
           </div>
           ${c.rows.map((r) => `
           <div class="pp-vsx-row" role="row">
@@ -563,8 +582,8 @@
         </div>` : (cols.length ? `
         <div class="pp-vs-strip" aria-label="${esc(p.name)} versus the alternatives">
           ${cols.map((col, i) => i === 0
-            ? `<span class="pp-vs-name pp-vs-ours">${esc(col)}</span>`
-            : `<span class="pp-vs-sep" aria-hidden="true">vs</span><span class="pp-vs-name">${esc(col)}</span>`).join('')}
+            ? `<span class="pp-vs-name pp-vs-ours">${esc(brandColumn(col))}</span>`
+            : `<span class="pp-vs-sep" aria-hidden="true">vs</span><span class="pp-vs-name">${esc(brandColumn(col))}</span>`).join('')}
         </div>` : '');
     return `
     <section class="pp-band pp-compare" data-sec="compare">

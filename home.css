@@ -846,3 +846,50 @@ body>*:last-child{margin-bottom:0}
   .collections .eco-left-frame{height:min(96%,830px);z-index:6!important}
 }
 .collections{position:relative}
+
+/* ============ v120: 31 Jul round (Shreyas voice notes) ============ */
+/* 1 · Collections orchid: full-height frame. Tip nearly touches the section top,
+   stem nearly touches the bottom, and it layers ABOVE the bowl cards. */
+@media(min-width:721px){
+  .collections .eco-left-frame{height:97%!important;max-height:none!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important;z-index:9!important}
+  .collections .eco-left-frame img{height:100%;width:auto}
+  .collections .shell{position:relative;z-index:1}
+}
+/* 2 · Kawsaypac Difference: NOKT-style split. Copy left, real product packets
+   floating on the right with their backgrounds removed. */
+.home-cta-split{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:center}
+.home-cta-copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px;text-align:left}
+.home-cta-copy .eyebrow{color:#e9c96a;margin:0}
+.home-cta-copy h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(2.9rem,5vw,5.2rem);line-height:1;letter-spacing:-.04em;color:#fdf9ef;text-wrap:balance}
+.home-cta-copy p{margin:0;max-width:46ch;font-size:clamp(1rem,1.3vw,1.16rem);line-height:1.6;color:rgba(253,249,239,.92)}
+/* The packets are the REAL branded pouches cut from the client's Shopify
+   gallery. Their crops end flat at the bottom, so the trio rises out of the
+   section's bottom edge (NOKT-style product bleed); the section's
+   overflow:hidden swallows the cut edges. Valerian fronts the stack and
+   covers the guayusa pouch's leafy left shoulder. */
+.home-cta-products{position:relative;align-self:stretch;min-height:clamp(340px,32vw,520px);margin-bottom:calc(-1*clamp(64px,8.5vw,120px))}
+.cta-pouch{position:absolute;bottom:-14px;filter:drop-shadow(0 30px 44px rgba(2,10,5,.55))}
+.cta-pouch-1{width:clamp(250px,21vw,370px);left:33%;z-index:2}
+.cta-pouch-2{width:clamp(230px,19vw,335px);left:13.5%;z-index:1}
+@media(max-width:900px){
+  .home-cta-split{grid-template-columns:1fr;text-align:center}
+  .home-cta-copy{align-items:center;text-align:center}
+  .home-cta-products{min-height:clamp(260px,58vw,340px);width:min(520px,100%);margin-inline:auto;margin-bottom:calc(-1*clamp(56px,8.5vw,120px))}
+  .cta-pouch-1{left:32%}
+  .cta-pouch-2{left:8%}
+}
+/* 3 · Short human reviews: the one-liners breathe bigger, plus a micro strip. */
+.review-body blockquote{font-size:clamp(1.3rem,1.8vw,1.7rem);line-height:1.3}
+.review-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.5vw,20px);margin-top:clamp(18px,2.4vw,30px)}
+.review-mini{display:flex;flex-direction:column;gap:10px;padding:clamp(18px,2vw,26px);border-radius:20px;background:#fff;border:1px solid rgba(31,58,42,.14);box-shadow:0 1px 2px rgba(31,58,42,.05),0 10px 26px rgba(31,58,42,.07);transition:transform .4s var(--ease),box-shadow .4s}
+.review-mini:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(31,58,42,.06),0 18px 42px rgba(31,58,42,.13)}
+.review-mini blockquote{margin:0;font-family:var(--display);font-size:clamp(1.02rem,1.25vw,1.2rem);line-height:1.35;color:#22372a;flex:1}
+.review-mini-meta{display:flex;align-items:baseline;gap:8px}
+.review-mini-meta strong{font-size:.85rem;font-weight:800;color:var(--forest)}
+.review-mini-meta em{font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--olive)}
+@media(max-width:1000px){.review-strip{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){
+  .review-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .review-strip::-webkit-scrollbar{display:none}
+  .review-strip>*{flex:0 0 64vw;scroll-snap-align:center}
+}
