@@ -862,21 +862,25 @@ body>*:last-child{margin-bottom:0}
 .home-cta-copy .eyebrow{color:#e9c96a;margin:0}
 .home-cta-copy h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(2.9rem,5vw,5.2rem);line-height:1;letter-spacing:-.04em;color:#fdf9ef;text-wrap:balance}
 .home-cta-copy p{margin:0;max-width:46ch;font-size:clamp(1rem,1.3vw,1.16rem);line-height:1.6;color:rgba(253,249,239,.92)}
-/* The packets are the REAL branded pouches cut from the client's Shopify
-   gallery. Their crops end flat at the bottom, so the trio rises out of the
-   section's bottom edge (NOKT-style product bleed); the section's
-   overflow:hidden swallows the cut edges. Valerian fronts the stack and
-   covers the guayusa pouch's leafy left shoulder. */
-.home-cta-products{position:relative;align-self:stretch;min-height:clamp(340px,32vw,520px);margin-bottom:calc(-1*clamp(64px,8.5vw,120px))}
-.cta-pouch{position:absolute;bottom:-14px;filter:drop-shadow(0 30px 44px rgba(2,10,5,.55))}
-.cta-pouch-1{width:clamp(250px,21vw,370px);left:33%;z-index:2}
-.cta-pouch-2{width:clamp(230px,19vw,335px);left:13.5%;z-index:1}
+/* Shreyas's own studio packshots (31 Jul), backgrounds removed: complete
+   pouch silhouettes, so the trio floats NOKT-style with gentle drift.
+   Cat's Claw fronts the stack; Zapped In and Bowel Balance flank behind. */
+.home-cta-products{position:relative;min-height:clamp(340px,30vw,500px)}
+.cta-pouch{position:absolute;filter:drop-shadow(0 28px 42px rgba(2,10,5,.55));will-change:transform}
+.cta-pouch-1{width:clamp(215px,17.5vw,310px);left:26%;top:12%;z-index:3;transform:rotate(-3deg);animation:ctaFloatA 9s ease-in-out infinite alternate}
+.cta-pouch-2{width:clamp(180px,15vw,265px);left:-2%;top:0;z-index:2;transform:rotate(-9deg);animation:ctaFloatB 11s ease-in-out 1.1s infinite alternate}
+.cta-pouch-3{width:clamp(185px,15.5vw,270px);right:0;top:6%;z-index:1;transform:rotate(8deg);opacity:.97;animation:ctaFloatC 10s ease-in-out .5s infinite alternate}
+@keyframes ctaFloatA{from{transform:rotate(-3deg) translateY(0)}to{transform:rotate(-2deg) translateY(-14px)}}
+@keyframes ctaFloatB{from{transform:rotate(-9deg) translateY(0)}to{transform:rotate(-7.5deg) translateY(-18px)}}
+@keyframes ctaFloatC{from{transform:rotate(8deg) translateY(0)}to{transform:rotate(6.5deg) translateY(-11px)}}
+@media (prefers-reduced-motion:reduce){.cta-pouch{animation:none!important}}
 @media(max-width:900px){
   .home-cta-split{grid-template-columns:1fr;text-align:center}
   .home-cta-copy{align-items:center;text-align:center}
-  .home-cta-products{min-height:clamp(260px,58vw,340px);width:min(520px,100%);margin-inline:auto;margin-bottom:calc(-1*clamp(56px,8.5vw,120px))}
-  .cta-pouch-1{left:32%}
-  .cta-pouch-2{left:8%}
+  .home-cta-products{min-height:clamp(280px,62vw,360px);width:min(520px,100%);margin-inline:auto}
+  .cta-pouch-1{left:28%}
+  .cta-pouch-2{left:-4%}
+  .cta-pouch-3{right:-4%}
 }
 /* 3 · Short human reviews: the one-liners breathe bigger, plus a micro strip. */
 .review-body blockquote{font-size:clamp(1.3rem,1.8vw,1.7rem);line-height:1.3}
