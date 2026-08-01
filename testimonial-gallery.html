@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer Testimonial Gallery | Kawsaypac Ancestral Herbs</title>
+    <meta name="description" content="Real Kawsaypac customers with their pouches: a growing gallery of photos and video stories from the community.">
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=118">
+    <link rel="stylesheet" href="home.css?v=133">
+    <script defer src="app.js?v=123"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-site-header></div>
+
+    <main id="main">
+      <section class="section gallery-hero">
+        <div class="shell">
+          <p class="eyebrow">Real People, Real Rituals</p>
+          <h1>The Kawsaypac <span class="accent">community.</span></h1>
+          <p>Customers across the country sharing their pouches, their morning brews, and their daily rituals.</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:10px">
+        <div class="shell" data-gpic-scope>
+          <div class="ugc-wall" data-ugc-wall></div>
+          <div class="pp-ugc-more"><button class="btn btn-primary" type="button" data-ugc-more hidden>Load more photos</button></div>
+        </div>
+      </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-site-modal></div>
+
+    <script>
+    (function(){
+      'use strict';
+      /* The wall probes assets/img/gallery/ugc-NN.webp upward until files stop
+         existing, so new batches dropped by any session appear automatically. */
+      var BATCH=18, HARD_CAP=400;
+      var wall,moreBtn,next=1,exhausted=false;
+      function pad(n){return n<10?'0'+n:String(n)}
+      function cell(src){
+        var b=document.createElement('button');
+        b.type='button';b.setAttribute('data-gpic',src);b.setAttribute('aria-label','Open customer photo');
+        b.innerHTML='<img loading="lazy" decoding="async" src="'+src+'" alt="Kawsaypac customer photo" width="640" height="800">';
+        return b;
+      }
+      function loadBatch(){
+        if(exhausted)return;
+        var added=0,pending=0,stopAt=next+BATCH;
+        function done(){if(pending===0){moreBtn.hidden=exhausted||next>HARD_CAP;moreBtn.disabled=false}}
+        moreBtn.disabled=true;
+        for(;next<stopAt&&next<=HARD_CAP&&!exhausted;next++){
+          (function(n){
+            var src='assets/img/gallery/ugc-'+pad(n)+'.webp';
+            pending++;
+            var probe=new Image();
+            probe.onload=function(){wall.append(cell(src));added++;pending--;done()};
+            probe.onerror=function(){exhausted=true;pending--;done()};
+            probe.src=src;
+          })(next);
+        }
+        done();
+      }
+      function boot(){
+        wall=document.querySelector('[data-ugc-wall]');
+        moreBtn=document.querySelector('[data-ugc-more]');
+        if(!wall||!moreBtn)return;
+        moreBtn.addEventListener('click',loadBatch);
+        loadBatch();
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+    })();
+    </script>
+  </body>
+</html>

@@ -1080,6 +1080,32 @@
       .catch(() => { /* static reviews stay in place */ });
   }
 
+
+  /* ---------- section 15b: customer photo gallery (UGC wall teaser) ---------- */
+
+  var UGC_TOTAL = 60;
+  function customerGallerySection(p) {
+    // deterministic per-product pick so each PDP shows a stable, distinct set
+    var seed = 0; String(p.slug).split('').forEach(function (ch) { seed = (seed * 31 + ch.charCodeAt(0)) % 997; });
+    var picks = []; var step = 7 + (seed % 11);
+    for (var i = 0; picks.length < 8 && i < UGC_TOTAL; i++) {
+      var n = ((seed + i * step) % UGC_TOTAL) + 1;
+      if (picks.indexOf(n) === -1) picks.push(n);
+    }
+    var cells = picks.map(function (n) {
+      var src = 'assets/img/gallery/ugc-' + String(n < 10 ? '0' + n : n) + '.webp';
+      return '<button type="button" data-gpic="' + src + '" aria-label="Open customer photo"><img loading="lazy" decoding="async" src="' + src + '" alt="Kawsaypac customer photo" width="640" height="800"></button>';
+    }).join('');
+    return '' +
+    '<section class="pp-band pp-ugc" data-sec="gallery" data-gpic-scope>' +
+      '<div class="pp-shell">' +
+        '<header class="pp-band-head"><p class="pp-eyebrow">Customer Gallery</p><h2>Real customers, real pouches, real rituals.</h2></header>' +
+        '<div class="pp-ugc-strip">' + cells + '</div>' +
+        '<div class="pp-ugc-more"><a class="btn btn-primary" href="testimonial-gallery.html">View the full customer gallery</a></div>' +
+      '</div>' +
+    '</section>';
+  }
+
   /* ---------- boot ---------- */
 
   function boot() {
@@ -1120,6 +1146,7 @@
       faqSection(p),           // 12 · faq
       upsellSection(p),        // 13 · routine-context upsell cards (before reviews, Blume)
       reviewsAllSection(p),    // 14 · this product's reviews (Loox live, static fallback)
+      customerGallerySection(p), // 15 · customer photo gallery teaser (links to the full wall)
       disclaimerSection(),
       stickyBar(p)
     ].join('\n'));
