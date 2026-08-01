@@ -1131,3 +1131,12 @@ body .kx-philo{background:linear-gradient(180deg,#f2efe6 0%,var(--kx-ivory,#FAF9
 .ugc-cell strong{display:block;font-size:.8rem;letter-spacing:.04em;color:#1F3A2A}
 .ugc-cell small{color:#8a6d1d;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
 .ugc-wall{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+
+/* ===== 1 Aug mobile pass 2 ===== */
+@media (max-width:720px){
+  /* kx pages (story/philosophy/tea-prep/body/recipes): kill the empty upper band */
+  body .kx-hero{min-height:auto!important;padding:96px 0 48px!important}
+  /* video rail: edge-to-edge and centered, no right dead gap */
+  .video-stories .story-rail{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw)}
+  .story-916{width:min(46vw,220px)}
+}

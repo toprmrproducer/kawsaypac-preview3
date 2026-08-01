@@ -1130,7 +1130,6 @@
       infographicSection(p),   // 4 · interactive compound wheel (carries the compound long-copy)
       prepareSection(p),       // 5 · how to prepare
       bestTimeSection(p),      // 6 · best time to drink
-      reviewsSection(p),       // 7 · condition-specific quotes
       studiesSection(p),       // 8 · research rows (hover/tap to open)
       comparisonSection(p),    // 9 · per-product villain comparison (data-driven)
       resultsSection(p),       // 10 · what to expect

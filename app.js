@@ -156,6 +156,16 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
   }
   function toast(message){const t=$('.toast');if(!t)return;t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),3800)}
   function initForms(){$$('[data-newsletter],.contact-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();const email=$('input[type="email"]',form);if(email&&(!email.value||!email.validity.valid)){toast('Please enter a valid email address.');email.focus();return}toast(form.matches('[data-newsletter]')?'Thank you. The live email connection will be activated with Shopify.':'Thank you. Your email app will open with this message.');if(form.classList.contains('contact-form')){const data=new FormData(form);location.href=`mailto:hello@theelectriceats.com?subject=${encodeURIComponent(data.get('subject')||'Kawsaypac inquiry')}&body=${encodeURIComponent(data.get('message')||'')}`}}));$$('[data-add-cart]').forEach(btn=>btn.addEventListener('click',()=>toast('Added to the preview bag. Shopify checkout will be connected at launch.')))}
+  function initGalleryImgRetry(){
+    /* Insurance for transient CDN 404s mid-deploy: one cache-busted retry. */
+    document.addEventListener('error',e=>{
+      const im=e.target;
+      if(im&&im.tagName==='IMG'&&/assets\/img\/gallery\//.test(im.src)&&!im.dataset.retried){
+        im.dataset.retried='1';
+        setTimeout(()=>{im.src=im.src.split('?')[0]+'?r='+Math.floor(performance.now())},800);
+      }
+    },true);
+  }
   function initKawsayLightbox(){
     const V=window.KAWSAY_VIDEOS||[];
     const lb=document.createElement('div');lb.className='vlb';lb.hidden=true;lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Testimonial viewer');
@@ -324,7 +334,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     },{passive:true});
     sec.addEventListener('pointerleave',()=>{state.forEach(s=>{s.tx=0;s.ty=0});hoverIdx=-1;wake()},{passive:true});
   }
-  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initKawsayLightbox();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
+  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initKawsayLightbox();initGalleryImgRetry();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 
