@@ -178,12 +178,19 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     closeBtn.addEventListener('click',shut);
     lb.addEventListener('click',e=>{if(e.target===lb||e.target===stage)shut()});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))shut()});
+    /* CLIENT DIRECTION (Shreyas, 1 Aug, with NOKT screenshots): clicking a
+       testimonial card must open THIS fullscreen viewer with the left thumb
+       rail, exactly like trynokt.com's lightbox. Capture phase deliberately
+       intercepts the card's own inline-play toggle so the viewer always wins.
+       Do not remove: the rail card markup itself stays untouched. */
     document.addEventListener('click',e=>{
+      const card=e.target.closest('.story-916');
+      if(card&&!e.target.closest('.vlb')){e.stopPropagation();e.preventDefault();const all=$$('.story-916');const i=all.indexOf(card)%V.length;window.kawsayLightbox.openVideo(i);return}
       const vb=e.target.closest('[data-vlb]');
-      if(vb){window.kawsayLightbox.openVideo(+vb.dataset.vlb%V.length);return}
+      if(vb){e.stopPropagation();window.kawsayLightbox.openVideo(+vb.dataset.vlb%V.length);return}
       const gp=e.target.closest('[data-gpic]');
       if(gp){const scope=gp.closest('[data-gpic-scope]')||document;const all=$$('[data-gpic]',scope).map(el=>el.dataset.gpic);window.kawsayLightbox.openImages(all,all.indexOf(gp.dataset.gpic))}
-    });
+    },true);
   }
   function initModal(){const modal=$('.modal'),content=$('[data-modal-content]'),close=$('.modal-close');if(!modal)return;let last=null;function shut(){modal.classList.remove('open');document.body.classList.remove('modal-open');content.innerHTML='';if(last)last.focus()}function open(el){last=el;const src=el.dataset.video;const mp4=el.dataset.videoMp4;if(mp4)content.innerHTML=`<video src="${mp4}" loop autoplay playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="width:100%;height:100%;object-fit:contain;background:#000"></video>`;else if(src)content.innerHTML=`<iframe src="${src}" title="Kawsaypac film" allow="autoplay; fullscreen" allowfullscreen></iframe>`;else content.innerHTML='<div style="padding:50px;text-align:center"><p class="eyebrow" style="color:#f0d77c">Client footage pending</p><h2 style="font-family:var(--display);font-weight:400">Customer video placeholder</h2><p>This clearly labeled preview position will hold an approved customer story.</p></div>';modal.classList.add('open');document.body.classList.add('modal-open');close.focus()}$$('[data-video],[data-placeholder-video],[data-video-mp4]').forEach(el=>el.addEventListener('click',()=>open(el)));close&&close.addEventListener('click',shut);modal.addEventListener('click',e=>{if(e.target===modal)shut()});modal.addEventListener('touchmove',e=>{if(e.target===modal)shut()},{passive:true});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))shut()})}
   /* Blogs now lives directly in the footer Explore column (columns merged 30 Jul). */

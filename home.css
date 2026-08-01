@@ -1082,7 +1082,8 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
 .story-916.ugc-live .video-play{transition:opacity .3s ease,transform .3s ease}
 
 /* ===== Fullscreen NOKT lightbox: dark stage + left thumb rail ===== */
-.vlb{position:fixed;inset:0;z-index:1200;background:rgba(7,13,10,.94);display:grid;grid-template-columns:96px 1fr;align-items:center;opacity:0;transition:opacity .28s ease}
+.vlb[hidden]{display:none}
+.vlb{position:fixed;inset:0;z-index:30000;background:rgba(7,13,10,.94);display:grid;grid-template-columns:96px 1fr;align-items:center;opacity:0;transition:opacity .28s ease}
 .vlb.open{opacity:1}
 .vlb-stage{display:grid;place-items:center;height:100%;padding:4vh 4vw}
 .vlb-stage video,.vlb-stage img{height:min(88vh,100%);max-height:88vh;max-width:min(92vw,calc(88vh * 9 / 16 + 40px));aspect-ratio:9/16;object-fit:cover;border-radius:18px;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.55)}
@@ -1111,3 +1112,5 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
 .ugc-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:30px}
 .gallery-hero{padding:120px 0 20px;text-align:center}
 .gallery-hero .eyebrow{color:#8a6d1d}
+.pp-ugc .pp-band-head{text-align:center;margin-bottom:14px}
+.pp-ugc .pp-band-head h2{margin:6px 0 0}

@@ -1086,10 +1086,11 @@
   var UGC_TOTAL = 60;
   function customerGallerySection(p) {
     // deterministic per-product pick so each PDP shows a stable, distinct set
-    var seed = 0; String(p.slug).split('').forEach(function (ch) { seed = (seed * 31 + ch.charCodeAt(0)) % 997; });
-    var picks = []; var step = 7 + (seed % 11);
+    var seed = 5381; String(p.slug).split('').forEach(function (ch) { seed = ((seed * 33) ^ ch.charCodeAt(0)) >>> 0; });
+    var picks = []; var start = seed % UGC_TOTAL;
+    var step = [7,11,13,17,19,23,29,31,37,41,43,49][(seed >>> 6) % 12];
     for (var i = 0; picks.length < 8 && i < UGC_TOTAL; i++) {
-      var n = ((seed + i * step) % UGC_TOTAL) + 1;
+      var n = ((start + i * step) % UGC_TOTAL) + 1;
       if (picks.indexOf(n) === -1) picks.push(n);
     }
     var cells = picks.map(function (n) {
