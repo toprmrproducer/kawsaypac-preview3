@@ -8,8 +8,9 @@
     <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=118">
-    <link rel="stylesheet" href="home.css?v=134">
+    <link rel="stylesheet" href="home.css?v=135">
     <script defer src="app.js?v=123"></script>
+    <script defer src="product-data.js?v=43"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -39,19 +40,36 @@
     (function(){
       'use strict';
       /* The wall probes assets/img/gallery/ugc-NN.webp upward until files stop
-         existing, so new batches dropped by any session appear automatically. */
-      var BATCH=18, HARD_CAP=400;
-      var wall,moreBtn,next=1,exhausted=false;
+         existing, so new batches dropped by any session appear automatically.
+         Every photo is paired with a real text review pulled from the product
+         catalog (window.KAWSAYPAC_PRODUCTS), deterministically per index. */
+      var BATCH=18, HARD_CAP=400, STAR='\u2605';
+      var wall,moreBtn,next=1,exhausted=false,pool=[];
       function pad(n){return n<10?'0'+n:String(n)}
-      function cell(src){
-        var b=document.createElement('button');
-        b.type='button';b.setAttribute('data-gpic',src);b.setAttribute('aria-label','Open customer photo');
-        b.innerHTML='<img loading="lazy" decoding="async" src="'+src+'" alt="Kawsaypac customer photo" width="640" height="800">';
-        return b;
+      function esc(t){var d=document.createElement('i');d.textContent=String(t||'');return d.innerHTML}
+      function buildPool(){
+        var db=window.KAWSAYPAC_PRODUCTS||{};
+        Object.keys(db).forEach(function(k){
+          (db[k].reviews||[]).forEach(function(rv){
+            if(rv&&rv.quote)pool.push({q:rv.quote,a:rv.author||'Verified customer',p:db[k].name||''});
+          });
+        });
+      }
+      function reviewFor(n){
+        if(!pool.length)return null;
+        return pool[(n*13)%pool.length];
+      }
+      function cell(src,n){
+        var f=document.createElement('figure');
+        f.className='ugc-cell';
+        var rv=reviewFor(n);
+        var cap=rv?'<figcaption><span class="ugc-stars" aria-label="5 star review">'+STAR.repeat(5)+'</span><blockquote>&ldquo;'+esc(rv.q)+'&rdquo;</blockquote><strong>'+esc(rv.a)+'</strong><small>'+esc(rv.p)+'</small></figcaption>':'';
+        f.innerHTML='<button type="button" data-gpic="'+src+'" aria-label="Open customer photo"><img loading="lazy" decoding="async" src="'+src+'" alt="Kawsaypac customer photo" width="640" height="800"></button>'+cap;
+        return f;
       }
       function loadBatch(){
         if(exhausted)return;
-        var added=0,pending=0,stopAt=next+BATCH;
+        var pending=0,stopAt=next+BATCH;
         function done(){if(pending===0){moreBtn.hidden=exhausted||next>HARD_CAP;moreBtn.disabled=false}}
         moreBtn.disabled=true;
         for(;next<stopAt&&next<=HARD_CAP&&!exhausted;next++){
@@ -59,7 +77,7 @@
             var src='assets/img/gallery/ugc-'+pad(n)+'.webp';
             pending++;
             var probe=new Image();
-            probe.onload=function(){wall.append(cell(src));added++;pending--;done()};
+            probe.onload=function(){wall.append(cell(src,n));pending--;done()};
             probe.onerror=function(){exhausted=true;pending--;done()};
             probe.src=src;
           })(next);
@@ -70,6 +88,7 @@
         wall=document.querySelector('[data-ugc-wall]');
         moreBtn=document.querySelector('[data-ugc-more]');
         if(!wall||!moreBtn)return;
+        buildPool();
         moreBtn.addEventListener('click',loadBatch);
         loadBatch();
       }

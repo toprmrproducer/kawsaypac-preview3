@@ -784,15 +784,17 @@
     const handle = shopifyHandleFor(p);
     const writeUrl = `https://theelectriceats.com/products/${encodeURIComponent(handle)}#looxReviews`;
     const VISIBLE = 4; // two rows of the two-column grid
+    const shots = ugcPicks(p, Math.max(r.length, 1));
     const cards = r.map((rv, i) => `
-          <figure class="pp-wall-card"${i >= VISIBLE ? ' hidden data-review-extra' : ''}>
+          <figure class="pp-wall-card pp-wall-has-photo"${i >= VISIBLE ? ' hidden data-review-extra' : ''}>
+            <button type="button" class="pp-wall-shot" data-gpic="${shots[i % shots.length]}" aria-label="Open ${esc(rv.author)}'s customer photo"><img loading="lazy" decoding="async" src="${shots[i % shots.length]}" alt="${esc(rv.author)} with their Kawsaypac pouch" width="640" height="800"></button>
             <span class="pp-stars pp-stars-sm" aria-label="5 star review">${STAR.repeat(5)}</span>
             <blockquote>&ldquo;${esc(rv.quote)}&rdquo;</blockquote>
             <figcaption><strong>${esc(rv.author)}</strong><span>${esc(p.name)}</span></figcaption>
           </figure>`).join('');
     if (!r.length && !handle) return '';
     return `
-    <section class="pp-band pp-reviews-wall" data-sec="reviews-all">
+    <section class="pp-band pp-reviews-wall" data-sec="reviews-all" data-gpic-scope>
       <div class="pp-shell">
         <div class="pp-revhead">
           <div>
@@ -809,6 +811,7 @@
           ${cards}
           ${r.length > VISIBLE ? `<div class="pp-wall-more"><button type="button" class="btn" data-reviews-more>See all ${r.length} reviews</button></div>` : ''}
         </div>
+        <div class="pp-ugc-more"><a class="btn btn-primary" href="testimonial-gallery.html">View the full customer gallery</a></div>
       </div>
     </section>`;
   }
@@ -1081,30 +1084,18 @@
   }
 
 
-  /* ---------- section 15b: customer photo gallery (UGC wall teaser) ---------- */
+  /* ---------- customer photo picker (UGC pool, per-product deterministic) ---------- */
 
   var UGC_TOTAL = 60;
-  function customerGallerySection(p) {
-    // deterministic per-product pick so each PDP shows a stable, distinct set
+  function ugcPicks(p, count) {
     var seed = 5381; String(p.slug).split('').forEach(function (ch) { seed = ((seed * 33) ^ ch.charCodeAt(0)) >>> 0; });
     var picks = []; var start = seed % UGC_TOTAL;
     var step = [7,11,13,17,19,23,29,31,37,41,43,49][(seed >>> 6) % 12];
-    for (var i = 0; picks.length < 8 && i < UGC_TOTAL; i++) {
+    for (var i = 0; picks.length < count && i < UGC_TOTAL; i++) {
       var n = ((start + i * step) % UGC_TOTAL) + 1;
       if (picks.indexOf(n) === -1) picks.push(n);
     }
-    var cells = picks.map(function (n) {
-      var src = 'assets/img/gallery/ugc-' + String(n < 10 ? '0' + n : n) + '.webp';
-      return '<button type="button" data-gpic="' + src + '" aria-label="Open customer photo"><img loading="lazy" decoding="async" src="' + src + '" alt="Kawsaypac customer photo" width="640" height="800"></button>';
-    }).join('');
-    return '' +
-    '<section class="pp-band pp-ugc" data-sec="gallery" data-gpic-scope>' +
-      '<div class="pp-shell">' +
-        '<header class="pp-band-head"><p class="pp-eyebrow">Customer Gallery</p><h2>Real customers, real pouches, real rituals.</h2></header>' +
-        '<div class="pp-ugc-strip">' + cells + '</div>' +
-        '<div class="pp-ugc-more"><a class="btn btn-primary" href="testimonial-gallery.html">View the full customer gallery</a></div>' +
-      '</div>' +
-    '</section>';
+    return picks.map(function (n) { return 'assets/img/gallery/ugc-' + String(n < 10 ? '0' + n : n) + '.webp'; });
   }
 
   /* ---------- boot ---------- */
@@ -1147,7 +1138,6 @@
       faqSection(p),           // 12 · faq
       upsellSection(p),        // 13 · routine-context upsell cards (before reviews, Blume)
       reviewsAllSection(p),    // 14 · this product's reviews (Loox live, static fallback)
-      customerGallerySection(p), // 15 · customer photo gallery teaser (links to the full wall)
       disclaimerSection(),
       stickyBar(p)
     ].join('\n'));

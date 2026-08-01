@@ -939,7 +939,7 @@ body>*:last-child{margin-bottom:0}
 .collections{background:url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,linear-gradient(180deg,#edf0e7 0%,var(--cream) 18%);background-blend-mode:multiply}
 .products,.video-stories{background:url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,var(--cream);background-blend-mode:multiply}
 .kx-reviews{background:url("assets/img/tex/paper-card.webp?v=128") repeat 0 0/620px,linear-gradient(180deg,var(--cream) 0%,#f4f0e5 100%);background-blend-mode:multiply}
-.philosophy{background:url("assets/img/tex/paper-inclusion.webp?v=128") repeat 0 0/980px,var(--paper);background-blend-mode:multiply}
+.philosophy{background:linear-gradient(180deg,#f2efe6 0%,var(--paper) 30%,var(--paper) 70%,#eef0e6 100%)}
 
 /* 2 · Most Loved: Ben Day dot gradient breathing in from the top-right corner,
    masked so it decays before it reaches the product cards. */
@@ -989,10 +989,10 @@ body>*:last-child{margin-bottom:0}
 /* Philosophy page gets the softened inclusion paper across its ivory base
    (body-scoped so it outranks the page's inline style block). Retreats is
    untouched by request. */
-body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--kx-ivory,#FAF9F6);background-blend-mode:multiply}
+body .kx-philo{background:linear-gradient(180deg,#f2efe6 0%,var(--kx-ivory,#FAF9F6) 30%,var(--kx-ivory,#FAF9F6) 70%,#eef0e6 100%)}
 
 /* Homepage philosophy section: same softened tile, scaled calmer. */
-.philosophy{background:url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:multiply}
+.philosophy{background:linear-gradient(180deg,#f2efe6 0%,var(--paper) 30%,var(--paper) 70%,#eef0e6 100%)}
 
 /* --- gradient theme: html.theme-gradient (toggled via ?theme=gradient, persisted) ---
    Soft radial mesh in the brand palette laid UNDER the paper fibre, so the
@@ -1013,14 +1013,14 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
 .theme-gradient .philosophy{background:
   radial-gradient(72% 92% at 50% 0%,rgba(149,142,89,.13),transparent 60%),
   radial-gradient(58% 78% at 92% 90%,rgba(201,169,66,.11),transparent 55%),
-  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:normal,normal,multiply,normal}
+  var(--paper)}
 .theme-gradient .concern-section{background:
   radial-gradient(64% 86% at 8% 10%,rgba(31,58,42,.08),transparent 55%),
   radial-gradient(66% 88% at 94% 86%,rgba(201,169,66,.12),transparent 58%),#fff}
 .theme-gradient body .kx-philo,.theme-gradient .kx-philo{background:
   radial-gradient(70% 90% at 50% 0%,rgba(149,142,89,.12),transparent 58%),
   radial-gradient(60% 80% at 90% 92%,rgba(201,169,66,.11),transparent 56%),
-  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--kx-ivory,#FAF9F6);background-blend-mode:normal,normal,multiply,normal}
+  var(--kx-ivory,#FAF9F6)}
 
 /* ============ v130: CTA-footer continuity + distinct Philosophy wash (1 Aug) ============ */
 /* The CTA and footer each painted their OWN copy of the jungle photograph, so
@@ -1041,7 +1041,7 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
    vertical dawn-gold, distinct from the radial mesh the other sections use. */
 .theme-gradient .philosophy{background:
   linear-gradient(180deg,rgba(201,169,66,.14) 0%,rgba(201,169,66,.05) 26%,rgba(243,240,233,0) 55%,rgba(149,142,89,.08) 100%),
-  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:normal,multiply,normal}
+  var(--paper)}
 
 /* ============ v132: CTA solid-gradient band + cursor pouches + fixes (1 Aug) ============ */
 /* Difference CTA: premium deep-forest gradient (Shreyas's call), no photo.
@@ -1062,7 +1062,7 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
    to a barely-there warm crown at the top, texture carries the rest. */
 .theme-gradient .philosophy{background:
   radial-gradient(90% 34% at 50% 0%,rgba(201,169,66,.09),transparent 70%),
-  url("assets/img/tex/paper-inclusion.webp?v=129") repeat 0 0/1200px,var(--paper);background-blend-mode:normal,multiply,normal}
+  var(--paper)}
 
 /* ===== NOKT-style rolling 9:16 testimonial rail (1 Aug) ===== */
 .video-stories .story-grid{display:block}
@@ -1114,3 +1114,20 @@ body .kx-philo{background:url("assets/img/tex/paper-inclusion.webp?v=129") repea
 .gallery-hero .eyebrow{color:#8a6d1d}
 .pp-ugc .pp-band-head{text-align:center;margin-bottom:14px}
 .pp-ugc .pp-band-head h2{margin:6px 0 0}
+
+/* ===== Reviews wall photo cards + gallery review cells (1 Aug round 2) ===== */
+.pp-wall-has-photo{display:flex;flex-direction:column;gap:10px}
+.pp-wall-shot{border:0;padding:0;margin:0 0 4px;border-radius:14px;overflow:hidden;cursor:pointer;background:#efece4;width:100%;aspect-ratio:4/3;box-shadow:0 8px 20px rgba(31,58,42,.12);transition:transform .3s ease}
+.pp-wall-shot:hover{transform:translateY(-3px)}
+.pp-wall-shot img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block}
+.ugc-wall{align-items:start}
+.ugc-cell{margin:0;background:#fff;border:1px solid rgba(31,58,42,.1);border-radius:18px;overflow:hidden;box-shadow:0 10px 26px rgba(31,58,42,.09)}
+.ugc-cell>button{width:100%;aspect-ratio:4/5;border:0;padding:0;cursor:pointer;background:#efece4;display:block}
+.ugc-cell>button img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.ugc-cell:hover>button img{transform:scale(1.03)}
+.ugc-cell figcaption{padding:14px 16px 16px}
+.ugc-stars{color:#c9a942;font-size:.8rem;letter-spacing:2px}
+.ugc-cell blockquote{margin:8px 0 10px;font-size:.86rem;line-height:1.5;color:#3d4a3f;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ugc-cell strong{display:block;font-size:.8rem;letter-spacing:.04em;color:#1F3A2A}
+.ugc-cell small{color:#8a6d1d;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.ugc-wall{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
