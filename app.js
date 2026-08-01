@@ -270,6 +270,21 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     }
     links.forEach(link=>link.addEventListener('click',()=>setActive(link.hash.slice(1))));
     setActive(targets[0].id);
+    /* MOBILE (Shreyas, 1 Aug): the chip rail ate the top of every kx page on
+       phones. On small screens the rail is hidden entirely and replaced by a
+       floating "Sections" pill that opens a bottom sheet with the same links. */
+    if(matchMedia('(max-width:760px)').matches&&!document.querySelector('.psn-fab')){
+      const fab=document.createElement('button');fab.type='button';fab.className='psn-fab';fab.setAttribute('aria-label','Jump to a section');
+      fab.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Sections</span>';
+      const sheet=document.createElement('div');sheet.className='psn-sheet';sheet.setAttribute('role','dialog');sheet.setAttribute('aria-label','Page sections');
+      sheet.innerHTML='<div class="psn-sheet-card"><p class="psn-sheet-title">On this page</p><nav class="psn-sheet-links">'+links.map(l=>`<a href="${l.getAttribute('href')}">${l.textContent}</a>`).join('')+'</nav></div>';
+      document.body.append(fab,sheet);
+      const close=()=>{sheet.classList.remove('open');fab.classList.remove('open')};
+      fab.addEventListener('click',()=>{const open=!sheet.classList.contains('open');sheet.classList.toggle('open',open);fab.classList.toggle('open',open)});
+      sheet.addEventListener('click',e=>{if(e.target===sheet)close()});
+      sheet.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+    }
   }
   function initThemeVariant(){
     /* Two live versions of the site. The theme lives ONLY in the URL: a plain

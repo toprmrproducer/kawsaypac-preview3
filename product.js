@@ -784,10 +784,10 @@
     const handle = shopifyHandleFor(p);
     const writeUrl = `https://theelectriceats.com/products/${encodeURIComponent(handle)}#looxReviews`;
     const VISIBLE = 4; // two rows of the two-column grid
-    const shots = ugcPicks(p, Math.max(r.length, 1));
+    const seed = slugSeed(p.slug);
     const cards = r.map((rv, i) => `
           <figure class="pp-wall-card pp-wall-has-photo"${i >= VISIBLE ? ' hidden data-review-extra' : ''}>
-            <button type="button" class="pp-wall-shot" data-gpic="${shots[i % shots.length]}" aria-label="Open ${esc(rv.author)}'s customer photo"><img loading="lazy" decoding="async" src="${shots[i % shots.length]}" alt="${esc(rv.author)} with their Kawsaypac pouch" width="640" height="800"></button>
+            <button type="button" class="pp-wall-shot" data-gpic="${ugcForAuthor(rv.author, seed, i)}" aria-label="Open ${esc(rv.author)}'s customer photo"><img loading="lazy" decoding="async" src="${ugcForAuthor(rv.author, seed, i)}" alt="${esc(rv.author)} with their Kawsaypac pouch" width="640" height="800"></button>
             <span class="pp-stars pp-stars-sm" aria-label="5 star review">${STAR.repeat(5)}</span>
             <blockquote>&ldquo;${esc(rv.quote)}&rdquo;</blockquote>
             <figcaption><strong>${esc(rv.author)}</strong><span>${esc(p.name)}</span></figcaption>
@@ -1086,16 +1086,25 @@
 
   /* ---------- customer photo picker (UGC pool, per-product deterministic) ---------- */
 
-  var UGC_TOTAL = 60;
-  function ugcPicks(p, count) {
-    var seed = 5381; String(p.slug).split('').forEach(function (ch) { seed = ((seed * 33) ^ ch.charCodeAt(0)) >>> 0; });
-    var picks = []; var start = seed % UGC_TOTAL;
-    var step = [7,11,13,17,19,23,29,31,37,41,43,49][(seed >>> 6) % 12];
-    for (var i = 0; picks.length < count && i < UGC_TOTAL; i++) {
-      var n = ((start + i * step) % UGC_TOTAL) + 1;
-      if (picks.indexOf(n) === -1) picks.push(n);
-    }
-    return picks.map(function (n) { return 'assets/img/gallery/ugc-' + String(n < 10 ? '0' + n : n) + '.webp'; });
+  /* ---------- customer photo picker: photos match the reviewer ---------- */
+
+  /* Every gallery image classified by the person in it (viewed frame by frame).
+     A male reviewer name gets a male photo, everyone else a female photo, so a
+     "Kareem W." card can never show a woman again. */
+  var UGC_MEN = [1,6,8,9,15,16,18,19,23,34,42,44,46,47,50,53,55,57];
+  var UGC_WOMEN = [2,3,4,5,7,10,11,12,13,14,17,20,21,22,24,25,26,27,28,29,30,31,32,33,35,36,37,38,39,40,41,43,45,48,49,51,52,54,56,58,59,60];
+  var MALE_FIRST = ['charles','ronnie','shawn','kai','kareem','dan','marty','silas','benjamin','benedict','bernardo','nestor','alex','jerome','solomon','javier','wilson','marcus','samuel','ken','erik','cordell','cam','safir','rhudy'];
+  function ugcSrc(n) { return 'assets/img/gallery/ugc-' + (n < 10 ? '0' + n : n) + '.webp'; }
+  function slugSeed(slug) {
+    var seed = 5381; String(slug).split('').forEach(function (ch) { seed = ((seed * 33) ^ ch.charCodeAt(0)) >>> 0; });
+    return seed;
+  }
+  function ugcForAuthor(author, seed, idx) {
+    var first = String(author || '').trim().toLowerCase().split(/\s+/)[0];
+    var male = MALE_FIRST.indexOf(first) !== -1;
+    var pool = male ? UGC_MEN : UGC_WOMEN;
+    var step = male ? 7 : 5; /* both coprime with their pool sizes: no repeats on a page */
+    return ugcSrc(pool[(seed + idx * step) % pool.length]);
   }
 
   /* ---------- boot ---------- */
