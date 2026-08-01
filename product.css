@@ -295,7 +295,7 @@
 
 /* ---------- responsive ---------- */
 @media (max-width:960px){
-  .pp-hero-grid,.pp-claim-grid,.pp-info-grid{grid-template-columns:1fr}
+  .pp-hero-grid,.pp-claim-grid,.pp-info-grid{grid-template-columns:minmax(0,1fr)}
   .pp-hero-media{position:static}
   .pp-claim-media img{min-height:280px}
   .pp-claim-row{grid-template-columns:1fr;gap:6px;padding:14px 0}
@@ -646,7 +646,7 @@ body.pp-body [data-page-ornament]{display:none!important}
   .pp-sticky-inner img{width:44px;height:44px}
   .pp-sticky-meta strong{font-size:.9rem}
   .pp-sticky-meta span{font-size:.8rem}
-  .pp-sticky .pp-add{padding:0 18px;min-height:46px;font-size:.7rem;white-space:nowrap}
+  .pp-sticky .pp-add{width:auto;padding:0 18px;min-height:46px;font-size:.7rem;white-space:nowrap}
 }
 @media (prefers-reduced-motion:reduce){.pp-anim .pp-vsx-row{opacity:1;transform:none;transition:none}}
 
