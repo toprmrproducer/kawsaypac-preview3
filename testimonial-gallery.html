@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Customer Testimonial Gallery | Kawsaypac Ancestral Herbs</title>
-    <meta name="description" content="Real Kawsaypac customers with their pouches: a growing gallery of photos and video stories from the community.">
+    <meta name="description" content="Authentic Kawsaypac customer videos and verified reviews, shared in the community's own words.">
     <meta name="robots" content="noindex">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=118">
-    <link rel="stylesheet" href="home.css?v=138">
-    <script defer src="app.js?v=125"></script>
-    <script defer src="product-data.js?v=43"></script>
+    <link rel="stylesheet" href="home.css?v=140">
+    <script defer src="app.js?v=127"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -21,88 +22,37 @@
         <div class="shell">
           <p class="eyebrow">Real People, Real Rituals</p>
           <h1>The Kawsaypac <span class="accent">community.</span></h1>
-          <p>Customers across the country sharing their pouches, their morning brews, and their daily rituals.</p>
+          <p>Authentic customer experiences across herbs, detox kits, and digital programs, shared in their own words.</p>
         </div>
       </section>
 
-      <section class="section" style="padding-top:10px">
-        <div class="shell" data-gpic-scope>
-          <div class="ugc-wall" data-ugc-wall></div>
-          <div class="pp-ugc-more"><button class="btn btn-primary" type="button" data-ugc-more hidden>Load more photos</button></div>
+      <section class="section video-stories" aria-labelledby="customer-films-title" style="padding-top:20px">
+        <div class="shell">
+          <div class="section-head centered reveal">
+            <p class="eyebrow">Customer Films</p>
+            <h2 id="customer-films-title">Watch their <span class="accent">stories.</span></h2>
+            <p>Select any story to open the full review.</p>
+          </div>
+          <div class="story-grid" data-video-stories></div>
+        </div>
+      </section>
+
+      <section class="section kx-reviews loox-community" aria-labelledby="customer-gallery-title">
+        <div class="shell">
+          <div class="section-head centered reveal">
+            <p class="eyebrow">Verified Photo Reviews</p>
+            <h2 id="customer-gallery-title">From the <span class="accent">community.</span></h2>
+            <p>Approved customer photos and written reviews, synced directly from Loox.</p>
+          </div>
+          <div class="loox-home" data-loox-carousel hidden>
+            <div id="loox-default-carousel"><div class="loox-v2-carousel-container" id="LOOX-V2_CAROUSEL-card" data-slide-type="card"></div></div>
+          </div>
+          <p class="preview-note" data-loox-fallback>Verified photo reviews will appear here on the production domain. The video stories above remain available in this preview.</p>
         </div>
       </section>
     </main>
 
     <div data-site-footer></div>
     <div data-site-modal></div>
-
-    <script>
-    (function(){
-      'use strict';
-      /* The wall probes assets/img/gallery/ugc-NN.webp upward until files stop
-         existing, so new batches dropped by any session appear automatically.
-         Every photo is paired with a real text review pulled from the product
-         catalog (window.KAWSAYPAC_PRODUCTS), deterministically per index. */
-      var BATCH=18, HARD_CAP=400, STAR='\u2605';
-      var UGC_MEN=[1,6,8,9,15,16,18,19,23,34,42,44,46,47,50,53,55,57];
-      var MALE_FIRST=['charles','ronnie','shawn','kai','kareem','dan','marty','silas','benjamin','benedict','bernardo','nestor','alex','jerome','solomon','javier','wilson','marcus','samuel','ken','erik','cordell','cam','safir','rhudy'];
-      var wall,moreBtn,next=1,exhausted=false,poolM=[],poolF=[];
-      function pad(n){return n<10?'0'+n:String(n)}
-      function esc(t){var d=document.createElement('i');d.textContent=String(t||'');return d.innerHTML}
-      function buildPool(){
-        var db=window.KAWSAYPAC_PRODUCTS||{};
-        Object.keys(db).forEach(function(k){
-          (db[k].reviews||[]).forEach(function(rv){
-            if(!(rv&&rv.quote))return;
-            var item={q:rv.quote,a:rv.author||'Verified customer',p:db[k].name||''};
-            var first=String(item.a).trim().toLowerCase().split(/\s+/)[0];
-            (MALE_FIRST.indexOf(first)!==-1?poolM:poolF).push(item);
-          });
-        });
-      }
-      function reviewFor(n){
-        /* the review's author matches the person in photo n */
-        var male=UGC_MEN.indexOf(n)!==-1;
-        var pool=male?poolM:poolF;
-        if(!pool.length)pool=poolM.concat(poolF);
-        if(!pool.length)return null;
-        return pool[(n*13)%pool.length];
-      }
-      function cell(src,n){
-        var f=document.createElement('figure');
-        f.className='ugc-cell';
-        var rv=reviewFor(n);
-        var cap=rv?'<figcaption><span class="ugc-stars" aria-label="5 star review">'+STAR.repeat(5)+'</span><blockquote>&ldquo;'+esc(rv.q)+'&rdquo;</blockquote><strong>'+esc(rv.a)+'</strong><small>'+esc(rv.p)+'</small></figcaption>':'';
-        f.innerHTML='<button type="button" data-gpic="'+src+'" aria-label="Open customer photo"><img loading="lazy" decoding="async" src="'+src+'" alt="Kawsaypac customer photo" width="640" height="800"></button>'+cap;
-        return f;
-      }
-      function loadBatch(){
-        if(exhausted)return;
-        var pending=0,stopAt=next+BATCH;
-        function done(){if(pending===0){moreBtn.hidden=exhausted||next>HARD_CAP;moreBtn.disabled=false}}
-        moreBtn.disabled=true;
-        for(;next<stopAt&&next<=HARD_CAP&&!exhausted;next++){
-          (function(n){
-            var src='assets/img/gallery/ugc-'+pad(n)+'.webp';
-            pending++;
-            var probe=new Image();
-            probe.onload=function(){wall.append(cell(src,n));pending--;done()};
-            probe.onerror=function(){exhausted=true;pending--;done()};
-            probe.src=src;
-          })(next);
-        }
-        done();
-      }
-      function boot(){
-        wall=document.querySelector('[data-ugc-wall]');
-        moreBtn=document.querySelector('[data-ugc-more]');
-        if(!wall||!moreBtn)return;
-        buildPool();
-        moreBtn.addEventListener('click',loadBatch);
-        loadBatch();
-      }
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
-    })();
-    </script>
   </body>
 </html>
