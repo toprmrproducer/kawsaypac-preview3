@@ -13,8 +13,8 @@
      re-ran the pin math and made the hero jump. Freeze both. */
   ScrollTrigger.config({ignoreMobileResize:true});
   let baseVH=innerHeight, baseW=innerWidth;
-  addEventListener('resize',()=>{ if(innerWidth!==baseW){baseW=innerWidth;baseVH=innerHeight;ScrollTrigger.refresh();} },{passive:true});
-  addEventListener('orientationchange',()=>{ setTimeout(()=>{baseW=innerWidth;baseVH=innerHeight;ScrollTrigger.refresh();},260); },{passive:true});
+  addEventListener('resize',()=>{ if(innerWidth!==baseW){baseW=innerWidth;baseVH=innerHeight;syncJourneyHeight();ScrollTrigger.refresh();} },{passive:true});
+  addEventListener('orientationchange',()=>{ setTimeout(()=>{baseW=innerWidth;baseVH=innerHeight;syncJourneyHeight();ScrollTrigger.refresh();},260); },{passive:true});
   const q=s=>hero.querySelector(s);
   const stage=q('.j5-stage');
   const layers=[...hero.querySelectorAll('.j5l')];
@@ -24,8 +24,16 @@
   const hasProgress=!!progress;
   const finalPieces=finalCopy.querySelectorAll('.eyebrow,h2,p,.hero-actions,.journey-trust');
 
-  gsap.set([stage,...layers],{force3D:true,willChange:'transform'});
-  gsap.set([brand,summitBeat,waterBeat,finalCopy],{force3D:true,willChange:'transform,opacity'});
+  /* Native sticky owns the hold/release lifecycle. Keeping GSAP out of the
+     pinning path prevents its generated spacer from being exposed when a fast
+     upward scroll crosses the hero end point. The timeline remains scrubbed,
+     so every visual state still reverses directly with scroll position. */
+  const syncJourneyHeight=()=>{hero.style.height=`${Math.round(baseVH*3.6)}px`};
+  hero.classList.add('journey-enhanced');
+  syncJourneyHeight();
+
+  gsap.set([stage,...layers],{willChange:'transform'});
+  gsap.set([brand,summitBeat,waterBeat,finalCopy],{willChange:'transform,opacity'});
   layers.filter(el=>el.dataset.flip==='1').forEach(el=>gsap.set(el,{scaleX:-1}));
   gsap.set([summitBeat,waterBeat,finalCopy],{autoAlpha:0,y:32});
   gsap.set(finalPieces,{autoAlpha:0,y:16});
@@ -41,7 +49,14 @@
   /* stagger by depth: mountain band first, foreground last */
   const when={ 'cloud-b':0,'cotopaxi':2,'cloud-d':4,'cloud-e':6,'condor':0,'valley':6,'branch':8,'branch-2':10,'moss':10,'mossbranch':12,'monstera':14,'orchid-brom':16,'orchids-left':18 };
 
-  const tl=gsap.timeline({defaults:{ease:'none',force3D:true},scrollTrigger:{trigger:hero,start:'top top',end:()=>`+=${Math.round(baseVH*2.6)}`,pin:hero,scrub:.5,anticipatePin:1,fastScrollEnd:true,invalidateOnRefresh:true}});
+  const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{
+    trigger:hero,
+    start:'top top',
+    end:'bottom bottom',
+    scrub:.5,
+    invalidateOnRefresh:true,
+    onRefreshInit:syncJourneyHeight
+  }});
 
   tl.to({},{duration:100},0)
     .to(brand,{autoAlpha:0,y:-24,duration:8},6)
@@ -77,7 +92,7 @@
   if(matchMedia('(hover: hover) and (pointer: fine)').matches){
     sticky.addEventListener('pointermove',event=>{
       const x=(event.clientX/innerWidth-.5)*2,y=(event.clientY/innerHeight-.5)*2;
-      gsap.to(finalCopy,{x:x*5,y:y*3,duration:.8,force3D:true,overwrite:'auto'});
+      gsap.to(finalCopy,{x:x*5,y:y*3,duration:.8,overwrite:'auto'});
     },{passive:true});
   }
 })();

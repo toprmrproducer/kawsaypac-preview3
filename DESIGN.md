@@ -21,7 +21,7 @@ Kawsaypac is a luminous, landscape-led Ecuadorian herbal brand. The visual syste
 
 ## 3. Layout
 
-The homepage begins with a full-viewport pinned scene. Cotopaxi stays high and right. Product copy occupies the lower-left valley pocket and does not overlap the volcano. The body uses generous cream space, seamless transitions, image bands, and editorial grids. The homepage brand film is a second full-viewport moment: edge-to-edge motion, no inset card or cream gutter, with the approved message aligned over a restrained directional scrim. Secondary pages use a compact image-led hero and a readable 760px article measure.
+The homepage begins with a full-viewport native-sticky scene. Cotopaxi stays high and right. Product copy occupies the lower-left valley pocket and does not overlap the volcano. The body uses generous cream space, seamless transitions, image bands, and editorial grids. The homepage brand film is a second full-viewport moment: edge-to-edge motion, no inset card or cream gutter, with the approved message aligned over a restrained directional scrim. Secondary pages use a compact image-led hero and a readable 760px article measure.
 
 ## 4. Primitives and states
 
@@ -37,15 +37,15 @@ The homepage begins with a full-viewport pinned scene. Cotopaxi stays high and r
 
 ## 5. Motion
 
-The hero is the single large motion moment. Its six visual layers rise from below at depth-scaled speeds, driven directly by scroll progress. Product copy appears only after 78 percent progress. All other reveals move only upward by 16px while fading. No horizontal entrances are permitted. Motion uses transform, opacity, and filter only. Reduced-motion and mobile receive a complete static hero.
+The hero is the single large motion moment. Its visual layers rise from below at depth-scaled speeds, driven directly by scroll progress. Native sticky positioning owns the viewport hold; GSAP scrubs only the scene timeline so downward motion reverses exactly when scrolling upward. Product copy appears only after 78 percent progress. All other reveals move only upward by 16px while fading. No horizontal entrances are permitted. Motion uses transform, opacity, and filter only. Reduced-motion receives a complete static hero.
 
 ## 6. Responsive behavior
 
-- Desktop: pinned hero and full pill navigation.
+- Desktop: native-sticky hero and full pill navigation.
 - Tablet: two-column content grids and mobile navigation sheet.
-- Mobile at 390px: static composed hero, visible product copy, hidden brand statement, single-column cards, no horizontal overflow, and at least 44px targets.
+- Mobile at 390px: reversible native-sticky hero, single-column cards, no horizontal overflow, and at least 44px targets. Reduced-motion uses the complete static composition.
 - Horizontal rails use native scrolling, visible focus states, scroll snapping, and partial next-card affordance. They do not trap vertical scrolling.
-- Below-fold video is poster-first and receives its source only as it nears the viewport. Mobile uses a single optimized static hero composition; desktop alone loads the full cinematic layer set.
+- Below-fold video is poster-first and receives its source only as it nears the viewport. Mobile and desktop use the same reversible layered journey; reduced-motion uses the optimized static composition.
 
 ## 7. Accessibility and accepted integration debt
 

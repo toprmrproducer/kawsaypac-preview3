@@ -19,7 +19,7 @@
 
 @media(max-width:1000px){.retreat-film-grid{grid-template-columns:1fr}.image-story-grid{grid-template-columns:1fr 1fr}.image-story:first-child{grid-row:auto;grid-column:1/-1;min-height:620px}.drag-sprite{width:88px}}
 @media(max-width:720px){.hero-final-scene{opacity:1!important;visibility:visible!important}.layer-far,.layer-cotopaxi,.layer-valley,.layer-foreground{display:none}.layer-foliage{display:block;opacity:.55}.retreat-film-grid{padding:34px 24px}.retreat-film{border-radius:18px}.image-story-grid{grid-template-columns:1fr}.image-story:first-child{grid-column:auto;min-height:540px}.image-story{min-height:440px}.drag-sprite{width:68px;opacity:.9}}
-@media(max-width:720px){html,body{overflow-x:hidden}}
+@media(max-width:720px){html,body{overflow-x:clip}}
 .hero-static-range{position:absolute;inset:0;z-index:2;opacity:.24;will-change:opacity,transform}.hero-static-range img{width:100%;height:100%;object-fit:cover;object-position:center bottom;filter:saturate(.7) brightness(.78);-webkit-mask-image:linear-gradient(to bottom,transparent 15%,#000 56%,#000 100%);mask-image:linear-gradient(to bottom,transparent 15%,#000 56%,#000 100%)}
 .drag-sprite img{animation:ambient-sprite var(--ambient-duration,6.4s) var(--ambient-delay,0s) ease-in-out infinite alternate;transform-origin:center}.drag-sprite.is-dragging img{animation-play-state:paused}@keyframes ambient-sprite{0%{transform:translate3d(-3px,4px,0) rotate(-2.5deg)}50%{transform:translate3d(4px,-6px,0) rotate(2deg)}100%{transform:translate3d(-1px,-2px,0) rotate(4deg)}}
 @media(max-width:720px){.hero-static-range{display:none}}
