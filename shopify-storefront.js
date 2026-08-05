@@ -7,7 +7,7 @@
    * Admin API token, private app secret, or any other server-side credential.
    */
   const STOREFRONT_CONFIG = Object.freeze({
-    storeDomain: 'https://theelectriceats.com',
+    storeDomain: 'https://the-electric-eats.myshopify.com',
     country: 'US',
     language: 'en',
     publicAccessToken: '__PUBLIC_STOREFRONT_TOKEN__',

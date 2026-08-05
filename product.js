@@ -28,10 +28,19 @@
     'alkaline-vegan-dishes-top-10-favorites-from-our-kitchen-to-yours'
   ];
 
-  /* Loox (their live Shopify review app). */
-  const LOOX_KEY = 'Dno6nRon81';
-  const LOOX_SHOP = 'the-electric-eats.myshopify.com';
-  const LOOX_SCRIPT = `https://loox.io/widget/${LOOX_KEY}/loox.1678282618137.js?shop=${LOOX_SHOP}`;
+  /* Public Shopify product identifiers used by Loox. These are catalog IDs,
+     not credentials; no private Loox or Shopify key is browser-visible. */
+  const SHOPIFY_PRODUCT_IDS = Object.freeze({
+    'valerian': '7825797054700', 'guayusa': '7839306678508',
+    'sacred-sacral-sweetened': '9071279505644', 'final-flush': '9040185295084',
+    'bowel-balance': '9040179757292', 'soursop-leaves-graviola': '7825652973804',
+    'cordoncillo-matico-1': '8162629320940', 'her-fertile-waters': '8017341612268',
+    'his-fertile-fires': '8017298915564', 'eliminate-regenerate': '8017285611756',
+    'zapped-in': '8017281548524', 'scales-of-balance': '8017278206188',
+    'bowel-banisher': '8017273880812', 'one-way-out': '8017268080876',
+    'river-of-life': '8017236426988', 'chuchuhuasi': '7825869963500',
+    'cats-claw': '7825848107244'
+  });
 
   /* Cache-bust local assets only; Shopify CDN urls already carry their own ?v=.
      CDN urls also get a width param so the gallery never waits on a 2500px source PNG. */
@@ -782,12 +791,10 @@
   function reviewsAllSection(p) {
     const r = p.reviews || [];
     const handle = shopifyHandleFor(p);
-    const writeUrl = `https://theelectriceats.com/products/${encodeURIComponent(handle)}#looxReviews`;
+    const writeUrl = '#looxReviews';
     const VISIBLE = 4; // two rows of the two-column grid
-    const seed = slugSeed(p.slug);
     const cards = r.map((rv, i) => `
-          <figure class="pp-wall-card pp-wall-has-photo"${i >= VISIBLE ? ' hidden data-review-extra' : ''}>
-            <button type="button" class="pp-wall-shot" data-gpic="${ugcForAuthor(rv.author, seed, i)}" aria-label="Open ${esc(rv.author)}'s customer photo"><img loading="lazy" decoding="async" src="${ugcForAuthor(rv.author, seed, i)}" alt="${esc(rv.author)} with their Kawsaypac pouch" width="640" height="800"></button>
+          <figure class="pp-wall-card"${i >= VISIBLE ? ' hidden data-review-extra' : ''}>
             <span class="pp-stars pp-stars-sm" aria-label="5 star review">${STAR.repeat(5)}</span>
             <blockquote>&ldquo;${esc(rv.quote)}&rdquo;</blockquote>
             <figcaption><strong>${esc(rv.author)}</strong><span>${esc(p.name)}</span></figcaption>
@@ -802,7 +809,7 @@
             <h2>${esc(p.name)} reviews.</h2>
             <div class="pp-star-row">${starRow(r.length)}</div>
           </div>
-          <a class="btn pp-write-review" href="${esc(writeUrl)}" target="_blank" rel="noopener">Write a review</a>
+          <a class="btn pp-write-review" href="${esc(writeUrl)}">Write a review</a>
         </div>
         <div class="pp-loox" data-loox data-handle="${esc(handle)}" hidden>
           <div id="looxReviews" data-loox-container class="loox-reviews-default"></div>
@@ -839,8 +846,8 @@
   /* ---------- meta ---------- */
 
   function setMeta(p) {
-    // Canonical/OG point at the REAL store handle (differs from our slug on 6 products).
-    const url = `https://theelectriceats.com/products/${encodeURIComponent(shopifyHandleFor(p))}`;
+    // Canonical/OG stay on the headless site after the Shopify domain cutover.
+    const url = `https://theelectriceats.com/product.html?product=${encodeURIComponent(p.slug)}`;
     document.title = `${p.name} | Kawsaypac Ancestral Herbs`;
     const md = document.querySelector('meta[name="description"]');
     if (md && p.description) md.setAttribute('content', p.description.slice(0, 158));
@@ -1053,59 +1060,28 @@
      flowers/leaves on the PDP flanks). The suppression lives in product.css
      scoped to body.pp-body so shared ornament systems stay untouched. */
 
-  /* Loox live reviews: resolve the numeric Shopify product id from the store's
-     own /products/<handle>.js endpoint, mount the widget, and only reveal it
-     if it actually rendered within ~4s. The static grid is the safety net. */
+  /* Loox live reviews use public catalog IDs and Loox's current external-domain
+     loader. The static grid remains the safety net when Loox is blocked. */
   function initLoox(root) {
     const wrap = root.querySelector('[data-loox]');
-    if (!wrap || !window.fetch) return;
+    if (!wrap) return;
     const handle = wrap.dataset.handle;
     const mount = wrap.querySelector('[data-loox-container]');
     const staticBlock = root.querySelector('[data-static-reviews]');
     if (!handle || !mount) return;
-    fetch(`https://theelectriceats.com/products/${encodeURIComponent(handle)}.js`)
-      .then((res) => (res.ok ? res.json() : Promise.reject(new Error('product lookup failed'))))
-      .then((prod) => {
-        if (!prod || !prod.id) throw new Error('no product id');
-        mount.setAttribute('data-product-id', String(prod.id));
-        const s = document.createElement('script');
-        s.src = LOOX_SCRIPT;
-        s.async = true;
-        document.body.appendChild(s);
-        window.setTimeout(() => {
-          const rendered = mount.childElementCount > 0 && mount.textContent.trim().length > 0;
-          if (rendered) {
-            wrap.hidden = false;
-            if (staticBlock) staticBlock.hidden = true;
-          }
-        }, 4000);
-      })
-      .catch(() => { /* static reviews stay in place */ });
+    const productId = SHOPIFY_PRODUCT_IDS[handle];
+    if (!productId) return;
+    mount.setAttribute('data-product-id', productId);
+    if (window.KawsaypacLoox) window.KawsaypacLoox.load();
+    window.setTimeout(() => {
+      const rendered = mount.childElementCount > 0 && mount.textContent.trim().length > 0;
+      if (rendered) {
+        wrap.hidden = false;
+        if (staticBlock) staticBlock.hidden = true;
+      }
+    }, 4000);
   }
 
-
-  /* ---------- customer photo picker (UGC pool, per-product deterministic) ---------- */
-
-  /* ---------- customer photo picker: photos match the reviewer ---------- */
-
-  /* Every gallery image classified by the person in it (viewed frame by frame).
-     A male reviewer name gets a male photo, everyone else a female photo, so a
-     "Kareem W." card can never show a woman again. */
-  var UGC_MEN = [1,6,8,9,15,16,18,19,23,34,42,44,46,47,50,53,55,57];
-  var UGC_WOMEN = [2,3,4,5,7,10,11,12,13,14,17,20,21,22,24,25,26,27,28,29,30,31,32,33,35,36,37,38,39,40,41,43,45,48,49,51,52,54,56,58,59,60];
-  var MALE_FIRST = ['charles','ronnie','shawn','kai','kareem','dan','marty','silas','benjamin','benedict','bernardo','nestor','alex','jerome','solomon','javier','wilson','marcus','samuel','ken','erik','cordell','cam','safir','rhudy'];
-  function ugcSrc(n) { return 'assets/img/gallery/ugc-' + (n < 10 ? '0' + n : n) + '.webp'; }
-  function slugSeed(slug) {
-    var seed = 5381; String(slug).split('').forEach(function (ch) { seed = ((seed * 33) ^ ch.charCodeAt(0)) >>> 0; });
-    return seed;
-  }
-  function ugcForAuthor(author, seed, idx) {
-    var first = String(author || '').trim().toLowerCase().split(/\s+/)[0];
-    var male = MALE_FIRST.indexOf(first) !== -1;
-    var pool = male ? UGC_MEN : UGC_WOMEN;
-    var step = male ? 7 : 5; /* both coprime with their pool sizes: no repeats on a page */
-    return ugcSrc(pool[(seed + idx * step) % pool.length]);
-  }
 
   /* ---------- boot ---------- */
 

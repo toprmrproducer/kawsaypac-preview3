@@ -7,7 +7,8 @@
 (function () {
   'use strict';
 
-  var STORE_DOMAIN = 'https://theelectriceats.com';
+  var STORE_DOMAIN = 'https://the-electric-eats.myshopify.com';
+  var SITE_DOMAIN = 'https://theelectriceats.com';
 
   function esc(value) {
     return String(value == null ? '' : value).replace(/[&<>"']/g, function (character) {
@@ -212,7 +213,7 @@
   }
 
   function updateMeta(record) {
-    var shopifyUrl = STORE_DOMAIN + '/products/' + encodeURIComponent(record.handle);
+    var shopifyUrl = SITE_DOMAIN + '/ebook.html?product=' + encodeURIComponent(record.handle);
     document.title = record.title + ' | Kawsaypac Digital Library';
     var description = document.getElementById('ebook-meta-description');
     if (description) description.setAttribute('content', record.lead);

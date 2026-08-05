@@ -1,6 +1,19 @@
 (function(){
   'use strict';
   const $=(s,c=document)=>c.querySelector(s);const $$=(s,c=document)=>Array.from(c.querySelectorAll(s));
+  const LOOX_SHOP='the-electric-eats.myshopify.com';
+  function loadLoox(){
+    const existing=document.querySelector('script[data-kawsay-loox]');
+    if(existing)return existing;
+    const script=document.createElement('script');
+    script.async=true;
+    script.dataset.kawsayLoox='';
+    script.referrerPolicy='strict-origin-when-cross-origin';
+    script.src=`https://loox.io/widget/loox.js?shop=${encodeURIComponent(LOOX_SHOP)}`;
+    document.body.append(script);
+    return script;
+  }
+  window.KawsaypacLoox=Object.freeze({load:loadLoox,shop:LOOX_SHOP});
   const sprout='<img class="sprout" src="assets/sprites/herb-icons/guayusa-sprig.webp?v=32" alt="" aria-hidden="true">';
   const concerns=[['All Products','all'],["Women's Wellness",'womens-wellness'],["Men's Wellness",'mens-wellness'],['Digestive Health','digestive-health'],['Auto-Immune Support','auto-immune-support'],['Nervous System','nervous-system'],['Energy & Vitality','energy-vitality'],['Joint & Mobility','joint-mobility'],['Heart Health','heart-health'],['Liver Support','liver-support'],['Kidney Support','kidney-support'],['Lung Support','lung-support'],['Hormone Balance','hormone-balance'],['Sleep & Relaxation','sleep-relaxation'],['Full Body Detox','full-body-detox']];
   const products=[
@@ -19,11 +32,11 @@
   ];
   window.KAWSAYPAC={concerns,products};
   window.KAWSAY_VIDEOS=[
-    {poster:'assets/img/testimonials/ray-cats-claw.jpg',mp4:'assets/video/testimonials/ray-cats-claw.mp4',label:'Joint comfort \u00b7 Cat\u2019s Claw'},
-    {poster:'assets/img/testimonials/camila-zapped-in.jpg',mp4:'assets/video/testimonials/camila-zapped-in.mp4',label:'Gym energy \u00b7 Zapped In'},
-    {poster:'assets/img/testimonials/mei-sacred-sacral.jpg',mp4:'assets/video/testimonials/mei-sacred-sacral.mp4',label:'Cycle balance \u00b7 Sacred Sacral'},
-    {poster:'assets/img/testimonials/marcus-bowel-balance.jpg',mp4:'assets/video/testimonials/marcus-bowel-balance.mp4',label:'Daily digestion \u00b7 Bowel Balance'},
-    {poster:'assets/img/testimonials/street-interview.jpg',mp4:'assets/video/testimonials/street-interview.mp4',label:'Street stories \u00b7 Real reactions'}
+    {poster:'assets/img/testimonials/mens-detox-kit.webp',mp4:'assets/video/testimonials/mens-detox-kit.mp4',label:'Men\u2019s Detox Kit \u00b7 Nestor R.'},
+    {poster:'assets/img/testimonials/detox-kit.webp',mp4:'assets/video/testimonials/detox-kit.mp4',label:'Detox Kit \u00b7 Mirna Q.'},
+    {poster:'assets/img/testimonials/sacred-sacral.webp',mp4:'assets/video/testimonials/sacred-sacral.mp4',label:'Sacred Sacral \u00b7 Kristin M.'},
+    {poster:'assets/img/testimonials/zapped-in.webp',mp4:'assets/video/testimonials/zapped-in.mp4',label:'Zapped In \u00b7 Petrena T.'},
+    {poster:'assets/img/testimonials/30-day-raw-reset.webp',mp4:'assets/video/testimonials/30-day-raw-reset.mp4',label:'30 Day Raw Reset \u00b7 Arayah W.'}
   ];
   function navLink(label,href){return `<a class="nav-link" href="${href}">${sprout}<span>${label}</span></a>`}
   function renderHeader(){const host=$('[data-site-header]');if(!host)return;const ribbon='<span>Wildcrafted in Ecuador</span><i>✦</i><span>Whole botanicals</span><i>✦</i><span>Small-batch blends</span><i>✦</i><span>Direct partner sourcing</span><i>✦</i>';host.innerHTML=`<svg width="0" height="0" aria-hidden="true"><filter id="liquid-refraction" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="8" result="noise"/><feGaussianBlur in="noise" stdDeviation="1.2" result="softNoise"/><feDisplacementMap in="SourceGraphic" in2="softNoise" scale="12" xChannelSelector="R" yChannelSelector="G"/></filter></svg><header class="site-header"><div class="trust-ribbon" aria-label="Kawsaypac sourcing highlights"><div class="trust-track">${ribbon}${ribbon}</div></div><div class="nav-pill"><span class="nav-refraction"></span><span class="nav-tint"></span><a class="brand" href="index.html" data-psst="Psst: Kawsaypac means the living force in Kichwa."><img src="assets/brand/kawsaypac-mark.svg?v=17" alt=""><span><strong>KAWSAYPAC</strong><small>Ancestral Herbs</small></span></a><nav class="desktop-nav" aria-label="Primary"><div class="nav-item"><a class="nav-link drop-trigger" href="shop.html" aria-expanded="false">${sprout}<span>Shop by Concern</span></a><div class="dropdown mega"><div class="mega-links">${concerns.map(c=>`<a href="shop.html?concern=${c[1]}">${c[0]}</a>`).join('')}</div><a class="mega-feature" href="shop.html?concern=digestive-health"><img loading="lazy" decoding="async" src="assets/img/bowl-digestive.webp?v=17" alt="Digestive herbs prepared in a ceramic bowl"><span><small>Find your ritual</small><strong>Begin with what your body is asking for.</strong></span></a></div></div>${navLink('Philosophy','philosophy.html')}${navLink('Retreats','retreats.html')}${navLink('Apothecary','apothecary.html')}<div class="nav-item"><a class="nav-link drop-trigger" href="tea-preparation.html" aria-expanded="false">${sprout}<span>Learn</span></a><div class="dropdown"><a href="philosophy.html">About Kawsaypac</a><a href="tea-preparation.html">Tea Preparation Guide</a><a href="preparing-your-body.html">Preparing Your Body</a><a href="recipes.html">Recipes & Programs</a></div></div>${navLink('Our Story','story.html')}</nav><div class="nav-actions"><button class="nav-icon-btn" type="button" aria-label="Search" data-search-toggle><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.6-3.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="nav-icon-btn nav-cart" type="button" aria-label="Cart" data-cart-open><svg class="icon" viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="cart-count" data-cart-count aria-hidden="true">0</span></button><a class="btn btn-primary" href="shop.html">Shop Herbs</a><button class="menu-toggle icon-button" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div><form class="nav-search-panel" role="search" data-search-panel aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.6-3.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" name="q" placeholder="Search herbs, blends, concerns..." aria-label="Search products" autocomplete="off"><button type="submit" class="btn btn-primary">Search</button><button type="button" class="nav-search-close" aria-label="Close search" data-search-close>&times;</button></form></div><div class="mobile-sheet" aria-hidden="true"><nav><div class="msheet-group"><button type="button" class="msheet-toggle" aria-expanded="false"><span>Shop by Concern</span><svg class="icon msheet-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="msheet-panel">${concerns.map(c=>`<a class="mobile-sub" href="shop.html?concern=${c[1]}">${c[0]}</a>`).join('')}</div></div><a href="philosophy.html">Philosophy</a><a href="retreats.html">Retreats</a><a href="apothecary.html">Apothecary</a><a href="story.html">Our Story</a><div class="msheet-group"><button type="button" class="msheet-toggle" aria-expanded="false"><span>Learn</span><svg class="icon msheet-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="msheet-panel"><a class="mobile-sub" href="philosophy.html">About Kawsaypac</a><a class="mobile-sub" href="tea-preparation.html">Tea Preparation Guide</a><a class="mobile-sub" href="preparing-your-body.html">Preparing Your Body</a><a class="mobile-sub" href="recipes.html">Recipes & Programs</a><a class="mobile-sub" href="journal.html">Journal</a></div></div></nav></div></header>`;}
@@ -49,12 +62,9 @@
   function initNav(){const toggle=$('.menu-toggle'),sheet=$('.mobile-sheet');if(toggle&&sheet){toggle.addEventListener('click',()=>{const open=!sheet.classList.contains('open');sheet.classList.toggle('open',open);sheet.setAttribute('aria-hidden',String(!open));toggle.setAttribute('aria-expanded',String(open));document.body.classList.toggle('menu-open',open)});$$('a',sheet).forEach(a=>a.addEventListener('click',()=>{sheet.classList.remove('open');document.body.classList.remove('menu-open')}));$$('.msheet-toggle',sheet).forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const g=b.closest('.msheet-group');const open=!g.classList.contains('open');$$('.msheet-group.open',sheet).forEach(x=>{x.classList.remove('open');const t=x.querySelector('.msheet-toggle');if(t)t.setAttribute('aria-expanded','false')});g.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open))}));sheet.addEventListener('click',e=>{if(e.target===sheet){sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true');toggle.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}});}$$('.drop-trigger').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();const item=btn.closest('.nav-item');const open=!item.classList.contains('open');$$('.nav-item.open').forEach(i=>i.classList.remove('open'));item.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open))}));document.addEventListener('click',()=>$$('.nav-item.open').forEach(i=>i.classList.remove('open')));document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.nav-item.open').forEach(i=>i.classList.remove('open'));if(sheet){sheet.classList.remove('open');document.body.classList.remove('menu-open');}}});}
   function card(p){const note=p.slug==='zapped-in'?'<span class="hand-note" aria-hidden="true">Raisa’s morning pick</span>':'';return `<article class="product-card reveal" data-shop-product data-concern="${p.concerns}" data-type="${p.tag.toLowerCase()}"><a class="product-media" href="product.html?product=${p.slug}"><img src="${p.image.startsWith('http')?p.image:p.image+'?v=17'}" alt="${p.name} herbal product" loading="lazy"><span class="product-tag">${p.tag}</span>${note}</a><div class="product-copy"><h3>${p.name}</h3><strong>${p.price}</strong><p>${p.desc}</p><a class="card-link" href="product.html?product=${p.slug}">Shop this blend</a></div></article>`}
   function renderHomeData(){const pillars=$('[data-pillars]');if(pillars){const d=[['Ancestral Wisdom','mountain-herb-rosette.webp','Formulas guided by generations of Kichwa plant knowledge.'],['Wildcrafted & Ethical','guayusa-sprig.webp','Hand-harvested in the wild, never bulked with fillers.'],['Plant Medicine is Sacred','passionflower-vine.webp','Prepared with respect and shared with clear guidance.'],['Healing Together','herbal-teacup.webp','Direct partnerships that return value to the source.']];pillars.innerHTML=d.map(x=>`<article class="pillar reveal"><img loading="lazy" decoding="async" src="assets/sprites/herb-icons/${x[1]}?v=35" alt=""><h3>${x[0]}</h3><p>${x[2]}</p></article>`).join('')}const best=$('[data-best-sellers]');if(best){const picks=[['scales-of-balance','Nervous System'],['sacred-sacral','Womb Health'],['zapped-in','Energy'],['bowel-balance','Digestive'],['final-flush','Detox']];best.innerHTML=picks.map(([slug,tag])=>{const p=products.find(x=>x.slug===slug);return `<article class="product-card best-card reveal"><a class="product-media" href="product.html?product=${p.slug}"><img src="${p.image.startsWith('http')?p.image:p.image+'?v=17'}" alt="${p.name} herbal product" loading="lazy" decoding="async" width="640" height="640"><span class="product-tag">${tag}</span></a><div class="product-copy best-copy"><h3>${p.name}</h3><div class="best-buy"><strong>${p.price}</strong><a class="card-link" href="product.html?product=${p.slug}">Shop</a></div></div></article>`}).join('')}const grid=$('[data-concern-grid]');if(grid){const rows=[['Digestive Health','digestive-health','gen5/con-digestive'],["Women's Wellness",'womens-wellness','gen5/con-womens'],['Nervous System','nervous-system','gen5/con-nervous'],['Energy & Vitality','energy-vitality','gen5/con-energy'],['Immune Support','auto-immune-support','gen5/con-immune'],['Sleep & Relaxation','sleep-relaxation','gen5/con-sleep'],['Detox & Cleanse','full-body-detox','gen5/con-detox'],['Joint & Mobility','joint-mobility','gen5/con-joint'],['Hormone Balance','hormone-balance','gen5/con-hormone'],['All Concerns','all','gen5/con-all']];grid.innerHTML=rows.map(r=>`<a class="concern-circle" href="shop.html?concern=${r[1]}"><span class="concern-bowl"><img loading="lazy" decoding="async" width="340" height="340" src="assets/img/${r[2]}.webp?v=63" alt=""></span><strong>${r[0]}</strong></a>`).join('')};const videos=$('[data-video-stories]');if(videos){const V=window.KAWSAY_VIDEOS;
-      /* Client rule (client, 1 Aug): these AI testimonials must NEVER open the
-         near-fullscreen lightbox and must NEVER expose a native fullscreen
-         control. AI video has real artifacts (label text especially), so it
-         plays inline right here in the small 9:16 card, nowhere bigger.
-         Do not add data-vlb here and do not add the `controls` attribute. */
-      const card=x=>`<div class="story-916 ugc-live" role="button" tabindex="0" aria-label="Play testimonial: ${x.label}"><video preload="metadata" playsinline loop disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" poster="${x.poster}?v=2"><source src="${x.mp4}" type="video/mp4"></video><span class="video-play"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;fill:currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="story-916-copy"><strong>${x.label}</strong></span></div>`;const set=V.map(card).join('');videos.innerHTML=`<div class="story-rail" data-story-rail><div class="story-rail-track">${set}${set}</div></div>`;$$('.story-916',videos).forEach(el=>{const vid=el.querySelector('video');const toggle=()=>{if(vid.paused){$$('.story-916 video',videos).forEach(other=>{if(other!==vid)other.pause()});vid.play().catch(()=>{})}else vid.pause()};el.addEventListener('click',toggle);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});vid.addEventListener('play',()=>el.classList.add('is-playing'));vid.addEventListener('pause',()=>el.classList.remove('is-playing'))})}}
+      /* Real, client-approved reviews. Cards stay poster-only so the homepage
+         does not download the 2:56 film until a visitor asks to watch it. */
+      const card=(x,i)=>`<button class="story-916" type="button" data-vlb="${i}" aria-label="Watch customer review: ${x.label}"><img src="${x.poster}?v=1" alt="Customer review for ${x.label}" loading="lazy" decoding="async" width="720" height="1280"><span class="video-play"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;fill:currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="story-916-copy"><strong>${x.label}</strong></span></button>`;const set=V.map(card).join('');videos.innerHTML=`<div class="story-rail" data-story-rail><div class="story-rail-track">${set}${set}</div></div>`}}
   /* Rituals-photographed gallery removed per client 30 Jul; its renderer went with it. */
   function initUgcSwap(host){
     /* UGC slots: when a real testimonial file lands at assets/video/ugc/ugc-N.mp4
@@ -156,6 +166,23 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
   }
   function toast(message){const t=$('.toast');if(!t)return;t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),3800)}
   function initForms(){$$('[data-newsletter],.contact-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();const email=$('input[type="email"]',form);if(email&&(!email.value||!email.validity.valid)){toast('Please enter a valid email address.');email.focus();return}toast(form.matches('[data-newsletter]')?'Thank you. The live email connection will be activated with Shopify.':'Thank you. Your email app will open with this message.');if(form.classList.contains('contact-form')){const data=new FormData(form);location.href=`mailto:hello@theelectriceats.com?subject=${encodeURIComponent(data.get('subject')||'Kawsaypac inquiry')}&body=${encodeURIComponent(data.get('message')||'')}`}}));$$('[data-add-cart]').forEach(btn=>btn.addEventListener('click',()=>toast('Added to the preview bag. Shopify checkout will be connected at launch.')))}
+  function initLooxCarousels(){
+    const hosts=$$('[data-loox-carousel]');
+    if(!hosts.length)return;
+    const ready=host=>{
+      const mount=$('.loox-v2-carousel-container',host);
+      if(!mount||(!mount.childElementCount&&!mount.textContent.trim()))return false;
+      host.hidden=false;
+      const section=host.closest('.kx-reviews,.loox-community');
+      if(section)section.classList.add('loox-ready');
+      return true;
+    };
+    const observer=new MutationObserver(()=>hosts.forEach(ready));
+    hosts.forEach(host=>observer.observe(host,{childList:true,subtree:true}));
+    loadLoox();
+    let checks=0;
+    const timer=setInterval(()=>{checks++;const done=hosts.every(ready);if(done||checks>=20){clearInterval(timer);observer.disconnect()}},500);
+  }
   function initGalleryImgRetry(){
     /* Insurance for transient CDN 404s mid-deploy: one cache-busted retry. */
     document.addEventListener('error',e=>{
@@ -176,31 +203,27 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     function railThumb(src,i,label){return `<button class="vlb-thumb" type="button" data-vlb-jump="${i}" aria-label="${label}"><img loading="lazy" decoding="async" src="${src}" alt=""></button>`}
     function paintRail(items){rail.innerHTML=items.join('')}
     function setActive(i){$$('.vlb-thumb',rail).forEach((t,k)=>t.classList.toggle('is-active',k===i));const on=$$('.vlb-thumb',rail)[i];if(on&&on.scrollIntoView)on.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}
-    function showVideo(i){mode='video';const x=V[i];if(!x)return;stage.innerHTML=`<video src="${x.mp4}" loop playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" poster="${x.poster}?v=2"></video>`;setActive(i);const v=stage.querySelector('video');v&&v.play().catch(()=>{})}
+    function showVideo(i){mode='video';const x=V[i];if(!x)return;stage.innerHTML=`<video src="${x.mp4}" controls playsinline preload="metadata" poster="${x.poster}?v=1" aria-label="Customer review: ${x.label}"></video>`;setActive(i);const v=stage.querySelector('video');v&&v.play().catch(()=>{})}
     function showImage(i){mode='image';const src=imgList[i];if(!src)return;stage.innerHTML=`<img src="${src}" alt="Customer photo">`;setActive(i)}
     function openShell(){lb.hidden=false;void lb.offsetWidth;lb.classList.add('open');document.body.classList.add('modal-open');closeBtn.focus()}
     function shut(){lb.classList.remove('open');document.body.classList.remove('modal-open');const v=stage.querySelector('video');v&&v.pause();setTimeout(()=>{if(!lb.classList.contains('open')){lb.hidden=true;stage.innerHTML=''}},280);if(last&&last.focus)last.focus()}
-    window.kawsayLightbox={
-      openVideo(i,src){last=document.activeElement;paintRail(V.map((x,k)=>railThumb(x.poster+'?v=2',k,'Play '+x.label)));openShell();showVideo(i)},
-      openImages(list,i){last=document.activeElement;imgList=list;paintRail(list.map((s2,k)=>railThumb(s2,k,'View photo '+(k+1))));openShell();showImage(i)}
-    };
+    function openVideo(i){last=document.activeElement;paintRail(V.map((x,k)=>railThumb(x.poster+'?v=1',k,'Play '+x.label)));openShell();showVideo(i)}
+    function openImages(list,i){last=document.activeElement;imgList=list;paintRail(list.map((s2,k)=>railThumb(s2,k,'View photo '+(k+1))));openShell();showImage(i)}
+    window.kawsayLightbox={openVideo,openImages};
     rail.addEventListener('click',e=>{const b=e.target.closest('[data-vlb-jump]');if(!b)return;const i=+b.dataset.vlbJump;mode==='video'?showVideo(i):showImage(i)});
     closeBtn.addEventListener('click',shut);
     lb.addEventListener('click',e=>{if(e.target===lb||e.target===stage)shut()});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))shut()});
-    /* CLIENT DIRECTION (Shreyas, 1 Aug, with NOKT screenshots): clicking a
-       testimonial card must open THIS fullscreen viewer with the left thumb
-       rail, exactly like trynokt.com's lightbox. Capture phase deliberately
-       intercepts the card's own inline-play toggle so the viewer always wins.
-       Do not remove: the rail card markup itself stays untouched. */
+    /* Authentic testimonial cards open in the fullscreen viewer. Direct
+       listeners keep the control reliable across static and rendered rails. */
+    $$('.story-916[data-vlb]').forEach(card=>card.addEventListener('click',e=>{
+      e.preventDefault();
+      openVideo(+card.dataset.vlb%V.length);
+    }));
     document.addEventListener('click',e=>{
-      const card=e.target.closest('.story-916');
-      if(card&&!e.target.closest('.vlb')){e.stopPropagation();e.preventDefault();const all=$$('.story-916');const i=all.indexOf(card)%V.length;window.kawsayLightbox.openVideo(i);return}
-      const vb=e.target.closest('[data-vlb]');
-      if(vb){e.stopPropagation();window.kawsayLightbox.openVideo(+vb.dataset.vlb%V.length);return}
       const gp=e.target.closest('[data-gpic]');
-      if(gp){const scope=gp.closest('[data-gpic-scope]')||document;const all=$$('[data-gpic]',scope).map(el=>el.dataset.gpic);window.kawsayLightbox.openImages(all,all.indexOf(gp.dataset.gpic))}
-    },true);
+      if(gp){const scope=gp.closest('[data-gpic-scope]')||document;const all=$$('[data-gpic]',scope).map(el=>el.dataset.gpic);openImages(all,all.indexOf(gp.dataset.gpic))}
+    });
   }
   function initModal(){const modal=$('.modal'),content=$('[data-modal-content]'),close=$('.modal-close');if(!modal)return;let last=null;function shut(){modal.classList.remove('open');document.body.classList.remove('modal-open');content.innerHTML='';if(last)last.focus()}function open(el){last=el;const src=el.dataset.video;const mp4=el.dataset.videoMp4;if(mp4)content.innerHTML=`<video src="${mp4}" loop autoplay playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="width:100%;height:100%;object-fit:contain;background:#000"></video>`;else if(src)content.innerHTML=`<iframe src="${src}" title="Kawsaypac film" allow="autoplay; fullscreen" allowfullscreen></iframe>`;else content.innerHTML='<div style="padding:50px;text-align:center"><p class="eyebrow" style="color:#f0d77c">Client footage pending</p><h2 style="font-family:var(--display);font-weight:400">Customer video placeholder</h2><p>This clearly labeled preview position will hold an approved customer story.</p></div>';modal.classList.add('open');document.body.classList.add('modal-open');close.focus()}$$('[data-video],[data-placeholder-video],[data-video-mp4]').forEach(el=>el.addEventListener('click',()=>open(el)));close&&close.addEventListener('click',shut);modal.addEventListener('click',e=>{if(e.target===modal)shut()});modal.addEventListener('touchmove',e=>{if(e.target===modal)shut()},{passive:true});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))shut()})}
   /* Blogs now lives directly in the footer Explore column (columns merged 30 Jul). */
@@ -349,7 +372,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     },{passive:true});
     sec.addEventListener('pointerleave',()=>{state.forEach(s=>{s.tx=0;s.ty=0});hoverIdx=-1;wake()},{passive:true});
   }
-  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initModal();initKawsayLightbox();initGalleryImgRetry();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
+  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initLooxCarousels();initModal();initKawsayLightbox();initGalleryImgRetry();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 
