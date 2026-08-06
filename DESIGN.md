@@ -32,6 +32,10 @@ The homepage begins with a full-viewport native-sticky scene. Cotopaxi stays hig
 - Modal: focus-contained, Escape-close, labeled close button, and clear placeholder disclosure when footage is pending.
 - Page navigator: a quiet fixed left rail on wide screens and a horizontally scrollable pill strip on smaller screens. It may highlight the active section, but it must fade before the shared footer and must never sit over photography or footer copy.
 - Editorial ritual rail: an honest, horizontally scrollable sequence of human ritual photographs with an explicit item counter and previous/next controls in addition to drag, swipe, and keyboard navigation. Captions describe observable moments only; invented customer names, quotations, ratings, and outcomes are prohibited.
+- Concern rail: a native horizontal rail with a visible "Swipe to explore" cue on touch screens, 44px previous/next controls, a live segmented position indicator, and a persistent route to the full concern directory. It must remain usable by swipe, mouse, and keyboard without trapping vertical scroll.
+- Testimonial viewer: a focus-contained video stage with persistent 44px previous/next controls, an audible current-position label, keyboard Left/Right support, and horizontal swipe support. Thumbnail navigation remains supplementary rather than the only way to change stories.
+- Shop concern directory: a compact end-of-catalog directory that exposes every concern as a large labeled link. On phones it may use a two-column grid, never targets smaller than 44px.
+- Preparing Your Body promo: the former plant-archive promo on the Shop page is reassigned to the approved Preparing Your Body guide. Its copy and CTA destination must stay explicit and must not imply medical treatment.
 - Apothecary field note: a wide photographic study paired with numbered botanical metadata. Specimen cards may reveal additional preparation context on hover or focus, while retaining a legible static state.
 - Retreat chapter: photographic, asymmetrical editorial modules with thin rules and generous type hierarchy. Avoid repeated glass-card grids, ornamental clutter, and identical card proportions.
 

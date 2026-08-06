@@ -1165,3 +1165,50 @@ body.pp-body .psn-fab{bottom:96px}
 .psn-sheet-links{display:grid;gap:4px}
 .psn-sheet-links a{display:block;padding:13px 12px;border-radius:12px;color:#1F3A2A;font-size:1rem;border:1px solid rgba(31,58,42,.1);background:#fff}
 .psn-sheet-links a:active{background:#eef0e6}
+
+/* v142: Raisa and Brian mobile navigation corrections (6 Aug). */
+.concern-rail-nav{display:grid;grid-template-columns:auto 44px minmax(120px,230px) 44px;align-items:center;justify-content:center;gap:12px;margin:18px auto 0}
+.concern-swipe-cue{display:inline-flex;align-items:center;gap:8px;margin:0 10px 0 0;color:#5c6b60;font-size:.72rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+.concern-swipe-cue svg{width:20px;height:20px;color:var(--gold)}
+.concern-nav-btn{width:44px;height:44px;border:1px solid rgba(31,58,42,.22);border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--forest);cursor:pointer;transition:background .2s,color .2s,opacity .2s}
+.concern-nav-btn:hover:not(:disabled),.concern-nav-btn:focus-visible{background:var(--forest);color:#fff}
+.concern-nav-btn:disabled{opacity:.32;cursor:default}
+.concern-nav-btn svg{width:19px;height:19px}
+.concern-progress{display:flex;align-items:center;justify-content:center;gap:7px;min-height:12px}
+.concern-progress span{display:block;width:28px;height:3px;border-radius:99px;background:rgba(31,58,42,.18);transition:width .25s,background .25s}
+.concern-progress span.is-active{width:46px;background:var(--forest)}
+.concern-directory-cta{width:max-content;margin:20px auto 0;padding-inline:30px}
+
+.vlb{grid-template-areas:"rail stage" "rail controls";grid-template-rows:minmax(0,1fr) auto}
+.vlb-rail{grid-area:rail}
+.vlb-stage{grid-area:stage;min-height:0}
+.vlb-controls{grid-area:controls;z-index:3;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 18px max(16px,env(safe-area-inset-bottom))}
+.vlb-direction{width:48px;height:48px;border-radius:50%;border:1px solid rgba(250,249,246,.32);display:grid;place-items:center;background:rgba(250,249,246,.12);color:#FAF9F6;cursor:pointer;backdrop-filter:blur(12px);transition:background .2s,border-color .2s,transform .2s}
+.vlb-direction:hover,.vlb-direction:focus-visible{background:rgba(250,249,246,.26);border-color:#f0d77c}
+.vlb-direction:active{transform:scale(.95)}
+.vlb-direction svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vlb-position{min-width:74px;margin:0;color:#FAF9F6;text-align:center;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+
+@media(max-width:720px){
+  .concern-row{padding:8px 24vw 14px 2px;scroll-snap-type:x mandatory}
+  .concern-circle{width:30vw;min-width:108px;scroll-snap-align:start}
+  .concern-rail-nav{grid-template-columns:44px minmax(110px,1fr) 44px;width:100%;gap:10px;margin-top:14px}
+  .concern-swipe-cue{grid-column:1/-1;justify-self:center;margin:0 0 2px}
+  .concern-progress{overflow:hidden}
+  .concern-progress span{width:18px}
+  .concern-progress span.is-active{width:34px}
+  .concern-directory-cta{width:100%;min-height:52px;margin-top:16px}
+
+  .philo-credo{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(78vw,1fr);gap:14px;max-width:none;width:calc(100vw - 22px);margin-left:calc(50% - 50vw + 11px);margin-right:0;padding:28px 11px 14px 0;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;text-align:left}
+  .philo-credo::-webkit-scrollbar{display:none}
+  .credo-step{scroll-snap-align:start;min-height:210px;padding:22px;border:1px solid rgba(31,58,42,.13);border-radius:20px;background:rgba(255,255,255,.66)}
+  .credo-chip{display:flex;align-items:center;gap:12px}
+
+  .vlb{grid-template-areas:"stage" "controls" "rail";grid-template-rows:minmax(0,1fr) 66px 82px}
+  .vlb-stage{padding:58px 14px 8px}
+  .vlb-stage video,.vlb-stage img{max-height:calc(100vh - 230px);max-width:calc(100vw - 28px)}
+  .vlb-controls{padding:4px 14px 8px}
+  .vlb-direction{width:48px;height:48px;background:rgba(250,249,246,.18)}
+  .vlb-rail{padding:8px 14px calc(8px + env(safe-area-inset-bottom))}
+  .vlb-thumb{width:44px}
+}
