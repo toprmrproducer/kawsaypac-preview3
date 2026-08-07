@@ -40,6 +40,7 @@
       return queue('identify',Object.assign({$email:value},properties));
     };
     const setConsent=value=>{
+      const previous=getConsent();
       const next=value==='granted'?'granted':'denied';
       try{localStorage.setItem(KLAVIYO_CONSENT_KEY,next)}catch(e){}
       if(next==='granted'){
@@ -47,6 +48,9 @@
         track('Marketing Consent Updated',{Status:'Granted',Source:'Kawsaypac consent panel'});
       }
       document.dispatchEvent(new CustomEvent('kawsaypac:marketing-consent',{detail:{status:next}}));
+      /* Removing a loaded script does not reliably detach its listeners. Reload after
+         revocation so Klaviyo is absent from the new page lifecycle. */
+      if(next==='denied'&&previous==='granted'&&document.querySelector('script[data-kawsay-klaviyo]'))location.reload();
       return next;
     };
     const productProperties=detail=>{
@@ -181,7 +185,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     const sweep=()=>{$$('.reveal:not(.visible)').forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight+120&&r.bottom>-120)e.classList.add('visible')});$$('.collection-row:not(.visible),.product-grid:not(.visible),.concern-row:not(.visible),.philo-credo:not(.visible),.pillar-grid:not(.visible)').forEach(h=>{const r=h.getBoundingClientRect();if(r.top<innerHeight+120&&r.bottom>-120)h.classList.add('visible')})};
     let sweepRaf=0;addEventListener('scroll',()=>{if(!sweepRaf)sweepRaf=requestAnimationFrame(()=>{sweepRaf=0;sweep()})},{passive:true});setInterval(sweep,900);sweep()}
   function initHero(){const hero=$('.hero-scroll');if(!hero)return;const layers={far:$('.layer-far'),peak:$('.layer-cotopaxi'),valley:$('.layer-valley'),front:$('.layer-foreground'),foliage:$('.layer-foliage')},backdrop=$('.hero-static-range'),finalScene=$('.hero-final-scene'),brand=$('.brand-statement'),copy=$('.hero-copy');const mobile=matchMedia('(max-width: 720px)').matches,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;if(mobile||reduce||!window.gsap||!window.ScrollTrigger){Object.values(layers).forEach(e=>e&&(e.style.transform='none'));if(backdrop)backdrop.style.display='none';if(finalScene){finalScene.style.opacity='1';finalScene.style.visibility='visible';finalScene.style.clipPath='none'}if(brand)brand.style.display='none';if(copy){copy.style.opacity='1';copy.style.visibility='visible';copy.style.transform='none'}return}gsap.registerPlugin(ScrollTrigger);const starts={far:86,peak:62,valley:118,front:132,foliage:145},ends={far:0,peak:-7,valley:0,front:0,foliage:0};const timing={far:[.03,.31],peak:[.06,.40],valley:[.20,.38],front:[.30,.36],foliage:[.39,.31]};const progress=(p,start,duration)=>Math.max(0,Math.min(1,(p-start)/duration));Object.entries(layers).forEach(([k,e])=>e&&gsap.set(e,{yPercent:starts[k],autoAlpha:1}));if(backdrop)gsap.set(backdrop,{autoAlpha:.24,scale:1.04});gsap.set(finalScene,{autoAlpha:0});ScrollTrigger.create({trigger:hero,start:'top top',end:'+=205%',pin:$('.hero-sticky'),scrub:true,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{const p=self.progress;Object.entries(layers).forEach(([k,e])=>{if(!e)return;const [start,duration]=timing[k];const t=progress(p,start,duration);const eased=1-Math.pow(1-t,3);gsap.set(e,{yPercent:starts[k]+(ends[k]-starts[k])*eased,y:k==='peak'?-20*eased:0})});if(backdrop)gsap.set(backdrop,{autoAlpha:.24*(1-progress(p,.02,.28)),scale:1.04-progress(p,.02,.28)*.04});const bo=1-progress(p,.10,.13);gsap.set(brand,{autoAlpha:bo,y:(1-bo)*-10});const co=progress(p,.74,.13);gsap.set(copy,{autoAlpha:co,y:18*(1-co)});}})}
-  function initFilm(){const frame=$('[data-youtube-film]');if(!frame)return;let loaded=false;const command=func=>{if(frame.contentWindow)frame.contentWindow.postMessage(JSON.stringify({event:'command',func,args:[]}), '*')};const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){if(!loaded){frame.src=frame.dataset.src;loaded=true;setTimeout(()=>command('playVideo'),900)}else command('playVideo')}else if(loaded)command('pauseVideo')}),{threshold:.45});io.observe(frame)}
+  function initFilm(){const frame=$('[data-youtube-film]');if(!frame)return;let loaded=false;const command=func=>{if(frame.contentWindow)frame.contentWindow.postMessage(JSON.stringify({event:'command',func,args:[]}), 'https://www.youtube.com')};const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){if(!loaded){frame.src=frame.dataset.src;loaded=true;setTimeout(()=>command('playVideo'),900)}else command('playVideo')}else if(loaded)command('pauseVideo')}),{threshold:.45});io.observe(frame)}
   function initDraggableSprites(){
     /* Raisa's editorial botanicals: NOT draggable, NOT interactive. They frame
        the composition like a photoshoot, growing into the page. Curated to a
@@ -265,6 +269,9 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
       privacyLink.closest('ul')?.append(item);
       $('[data-marketing-preferences]',item)?.addEventListener('click',openPreferences);
     }
+    /* Global Privacy Control is a browser-level opt-out signal. Honor it before
+       displaying or loading any marketing integration. */
+    if(!api.getConsent()&&navigator.globalPrivacyControl===true)api.setConsent('denied');
     if(!api.getConsent())openPreferences();
     else api.load();
     let latestProduct=null;
