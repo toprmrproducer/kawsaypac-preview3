@@ -18,6 +18,7 @@ Highest-value assets are Shopify/Loox administrative credentials, checkout integ
 - No Shopify Admin token, private app secret, Loox Merchant API key, service-role key, password, private key, or customer access token is present in the working tree.
 - Targeted history scanning found no matching private credential pattern in Git history.
 - Loox receives only the public `.myshopify.com` store identity and public Shopify product IDs.
+- Klaviyo receives only its public company ID `SB34LP` and consented storefront events. Klaviyo.js is not loaded until the visitor allows marketing analytics, and no private Klaviyo API key is present or required.
 - Shopify Storefront Web Components use the required public `.myshopify.com` domain. The optional public storefront token remains an explicit placeholder because this implementation does not need inventory counts, metafields, metaobjects, or customer accounts.
 - Product-card and product-detail add-to-cart actions pass only Shopify's public variant GID and quantity to the official cart component; checkout remains on Shopify's hosted checkout.
 - All customer reviews are rendered by Loox or from escaped, trusted static product data. No untrusted review content is interpolated by local code.
@@ -31,5 +32,6 @@ Highest-value assets are Shopify/Loox administrative credentials, checkout integ
 - Live Shopify cart tests passed from both a filtered shop card and a product-detail page, including quantity changes and the unavailable/loading error state.
 - Static authentic reviews remain visible when Loox does not render.
 - Five customer MP4s were validated as H.264/AAC and return HTTP 200 from the local site.
+- Consent denial leaves Klaviyo unloaded. Consent approval loads the official company-specific script and enables Active on Site, Viewed Product, Added to Cart, and checkout-handoff events.
 
 Residual risk is concentrated in third-party script supply chain and the limited header controls of GitHub Pages, not in exposed credentials.

@@ -16,6 +16,8 @@ Multi-page HTML, CSS, vanilla JavaScript, GSAP 3.12, ScrollTrigger, and Shopify 
 
 The public storefront domain and product handles are configured in markup. No Shopify admin token, private API key, or headless credential is shipped to the browser or committed to this repository.
 
+Klaviyo uses the public company ID `SB34LP`. Its browser script is consent-gated and records product views, cart additions, and the handoff to hosted Shopify checkout. See `SHOPIFY-APP-INTEGRATION-AUDIT.md` for the complete launch matrix.
+
 ## Key routes
 
 - Home: `index.html`

@@ -165,3 +165,15 @@
 .electric{font-size:clamp(1.4rem,2.6vw,2.6rem)}
 @media(max-width:1120px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.site-footer{padding-top:74px;min-height:0}.footer-grid{grid-template-columns:1fr 1fr;gap:24px 18px}}
+
+/* v119: consent-gated Klaviyo loader and persistent preference control. */
+.marketing-consent{position:fixed;z-index:10050;right:22px;bottom:22px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:22px;width:min(720px,calc(100vw - 44px));padding:22px;border:1px solid rgba(31,58,42,.18);border-radius:22px;background:rgba(250,249,246,.98);box-shadow:0 22px 70px rgba(17,39,26,.24);color:var(--forest);backdrop-filter:blur(18px)}
+.marketing-consent[hidden]{display:none!important}
+.marketing-consent__copy strong{display:block;margin-bottom:7px;font-family:var(--display);font-size:1.16rem}
+.marketing-consent__copy p{max-width:52ch;margin:0 0 7px;color:#59645b;font-size:.9rem;line-height:1.5}
+.marketing-consent__copy a{color:var(--forest);font-size:.78rem;font-weight:700;text-underline-offset:3px}
+.marketing-consent__actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.marketing-consent__actions .btn{min-height:44px;padding:10px 16px;white-space:nowrap}
+.kx-privacy-choice{min-height:44px;margin:0;padding:10px 0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;opacity:.9}
+.kx-privacy-choice:hover,.kx-privacy-choice:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:720px){.marketing-consent{right:12px;bottom:12px;grid-template-columns:1fr;gap:16px;width:calc(100vw - 24px);padding:18px}.marketing-consent__actions{justify-content:stretch}.marketing-consent__actions .btn{flex:1 1 150px}}

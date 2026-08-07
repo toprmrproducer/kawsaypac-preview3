@@ -93,7 +93,7 @@
   function cartButton(p, label, className) {
     const handle = shopifyHandleFor(p);
     return `<shopify-context class="pp-cart-context" type="product" handle="${esc(handle)}">
-      <template><button class="${esc(className)}" type="button" onclick="window.KawsaypacStorefront.addVariantToCart(event)" shopify-attr--data-variant-id="product.selectedOrFirstAvailableVariant.id" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">${esc(label)}</button></template>
+      <template><button class="${esc(className)}" type="button" onclick="window.KawsaypacStorefront.addVariantToCart(event)" data-product-handle="${esc(handle)}" data-product-name="${esc(p.name)}" data-product-price="${esc(p.price||'')}" data-product-image="${esc(p.image||'')}" shopify-attr--data-variant-id="product.selectedOrFirstAvailableVariant.id" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">${esc(label)}</button></template>
       <button class="${esc(className)}" type="button" disabled shopify-loading-placeholder>Loading product…</button>
     </shopify-context>`;
   }
@@ -1127,6 +1127,15 @@
       stickyBar(p)
     ].join('\n'));
     initInteractions(root, p);
+    document.dispatchEvent(new CustomEvent('kawsaypac:product-viewed',{detail:{
+      name:p.name,
+      slug:p.slug,
+      handle:shopifyHandleFor(p),
+      price:p.price||'',
+      image:p.image||'',
+      categories:[p.tag||'Herbal Ritual'],
+      url:location.href
+    }}));
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });

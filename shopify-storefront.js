@@ -482,6 +482,17 @@
 
     try {
       cart.addLine(event).showModal();
+      const button = event.currentTarget || event.target;
+      const card = button && button.closest ? button.closest('.storefront-card') : null;
+      const handleNode = card && card.querySelector('[data-product-handle]');
+      window.KawsaypacKlaviyo?.trackAddedToCart({
+        name: card?.querySelector('h2')?.textContent?.trim() || '',
+        handle: handleNode?.dataset?.productHandle || '',
+        price: card?.querySelector('.storefront-card__heading strong')?.textContent?.trim() || '',
+        quantity: 1,
+        image: card?.querySelector('img')?.currentSrc || card?.querySelector('img')?.src || '',
+        url: handleNode?.href || window.location.href
+      });
     } catch (error) {
       showStorefrontNotice('This item could not be added just now. Please try again.');
     }
@@ -501,6 +512,15 @@
     }
     try {
       cart.addLine({ variantId, quantity }).showModal();
+      window.KawsaypacKlaviyo?.trackAddedToCart({
+        name: button.dataset.productName || '',
+        handle: button.dataset.productHandle || '',
+        productId: variantId,
+        price: button.dataset.productPrice || '',
+        quantity,
+        image: button.dataset.productImage || '',
+        url: window.location.href
+      });
     } catch (error) {
       showStorefrontNotice('This item could not be added just now. Please try again.');
     }
@@ -514,6 +534,7 @@
     }
 
     try {
+      window.KawsaypacKlaviyo?.trackCheckoutHandoff({Mode:'Buy Now'});
       store.buyNow(event, '_top');
     } catch (error) {
       showStorefrontNotice('Checkout could not open just now. Please try again.');

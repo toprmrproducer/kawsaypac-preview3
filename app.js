@@ -2,6 +2,80 @@
   'use strict';
   const $=(s,c=document)=>c.querySelector(s);const $$=(s,c=document)=>Array.from(c.querySelectorAll(s));
   const LOOX_SHOP='the-electric-eats.myshopify.com';
+  const KLAVIYO_COMPANY_ID='SB34LP';
+  const KLAVIYO_CONSENT_KEY='kawsaypac_marketing_consent_v1';
+  function createKlaviyoIntegration(){
+    let loading=null;
+    const getConsent=()=>{try{return localStorage.getItem(KLAVIYO_CONSENT_KEY)||''}catch(e){return''}};
+    const queue=(command,...args)=>{
+      if(getConsent()!=='granted')return false;
+      window._learnq=window._learnq||[];
+      window._learnq.push([command,...args]);
+      return true;
+    };
+    const load=()=>{
+      if(getConsent()!=='granted')return Promise.resolve(false);
+      const existing=document.querySelector('script[data-kawsay-klaviyo]');
+      if(existing)return Promise.resolve(true);
+      if(loading)return loading;
+      loading=new Promise(resolve=>{
+        window._learnq=window._learnq||[];
+        const script=document.createElement('script');
+        script.async=true;
+        script.dataset.kawsayKlaviyo='';
+        script.referrerPolicy='strict-origin-when-cross-origin';
+        script.src=`https://static.klaviyo.com/onsite/js/${KLAVIYO_COMPANY_ID}/klaviyo.js?company_id=${KLAVIYO_COMPANY_ID}`;
+        script.addEventListener('load',()=>resolve(true),{once:true});
+        script.addEventListener('error',()=>{loading=null;resolve(false)},{once:true});
+        document.head.append(script);
+      });
+      return loading;
+    };
+    const track=(name,properties={})=>{if(getConsent()!=='granted')return false;load();return queue('track',name,properties)};
+    const identify=(email,properties={})=>{
+      const value=String(email||'').trim().toLowerCase();
+      if(!value||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))return false;
+      if(getConsent()!=='granted')return false;
+      load();
+      return queue('identify',Object.assign({$email:value},properties));
+    };
+    const setConsent=value=>{
+      const next=value==='granted'?'granted':'denied';
+      try{localStorage.setItem(KLAVIYO_CONSENT_KEY,next)}catch(e){}
+      if(next==='granted'){
+        load();
+        track('Marketing Consent Updated',{Status:'Granted',Source:'Kawsaypac consent panel'});
+      }
+      document.dispatchEvent(new CustomEvent('kawsaypac:marketing-consent',{detail:{status:next}}));
+      return next;
+    };
+    const productProperties=detail=>{
+      const price=parseFloat(String(detail.price||detail.Price||'').replace(/[^0-9.]/g,''));
+      return {
+        ProductName:detail.name||detail.ProductName||'',
+        ProductID:detail.productId||detail.ProductID||detail.slug||detail.handle||'',
+        SKU:detail.sku||detail.SKU||detail.handle||detail.slug||'',
+        Categories:detail.categories||detail.Categories||[],
+        ImageURL:detail.image||detail.ImageURL||'',
+        URL:detail.url||detail.URL||location.href,
+        Brand:'Kawsaypac',
+        Price:Number.isFinite(price)?price:0,
+        Quantity:Math.max(1,parseInt(detail.quantity||detail.Quantity,10)||1)
+      };
+    };
+    return Object.freeze({
+      companyId:KLAVIYO_COMPANY_ID,
+      getConsent,
+      setConsent,
+      load,
+      track,
+      identify,
+      trackViewedProduct:detail=>track('Viewed Product',productProperties(detail||{})),
+      trackAddedToCart:detail=>track('Added to Cart',productProperties(detail||{})),
+      trackCheckoutHandoff:detail=>track('Headless Checkout Clicked',Object.assign({Source:'Kawsaypac headless storefront',URL:location.href},detail||{}))
+    });
+  }
+  window.KawsaypacKlaviyo=createKlaviyoIntegration();
   function loadLoox(){
     const existing=document.querySelector('script[data-kawsay-loox]');
     if(existing)return existing;
@@ -165,7 +239,66 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     $$('.section,.shop-hero,.page-hero,.pdp-hero').forEach(section=>{const react=e=>{const r=section.getBoundingClientRect(),x=((e.clientX-r.left)/r.width-.5)*2,y=((e.clientY-r.top)/r.height-.5)*2;section.style.setProperty('--react-x',`${(x*7).toFixed(2)}px`);section.style.setProperty('--react-y',`${(y*5).toFixed(2)}px`)};section.addEventListener('pointermove',react,{passive:true});section.addEventListener('pointerleave',()=>{section.style.setProperty('--react-x','0px');section.style.setProperty('--react-y','0px')});section.addEventListener('pointerdown',react,{passive:true})});
   }
   function toast(message){const t=$('.toast');if(!t)return;t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),3800)}
-  function initForms(){$$('[data-newsletter],.contact-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();const email=$('input[type="email"]',form);if(email&&(!email.value||!email.validity.valid)){toast('Please enter a valid email address.');email.focus();return}toast(form.matches('[data-newsletter]')?'Thank you. The live email connection will be activated with Shopify.':'Thank you. Your email app will open with this message.');if(form.classList.contains('contact-form')){const data=new FormData(form);location.href=`mailto:hello@theelectriceats.com?subject=${encodeURIComponent(data.get('subject')||'Kawsaypac inquiry')}&body=${encodeURIComponent(data.get('message')||'')}`}}));$$('[data-add-cart]').forEach(btn=>btn.addEventListener('click',()=>toast('Added to the preview bag. Shopify checkout will be connected at launch.')))}
+  function initKlaviyo(){
+    const api=window.KawsaypacKlaviyo;
+    if(!api)return;
+    const ensurePanel=()=>{
+      let panel=$('[data-marketing-consent]');
+      if(panel)return panel;
+      panel=document.createElement('section');
+      panel.className='marketing-consent';
+      panel.dataset.marketingConsent='';
+      panel.setAttribute('role','dialog');
+      panel.setAttribute('aria-label','Marketing and cookie preferences');
+      panel.hidden=true;
+      panel.innerHTML='<div class="marketing-consent__copy"><strong>Your privacy, your choice.</strong><p>Allow marketing analytics to enable Klaviyo forms and improve your shopping experience. Necessary site functions always remain available.</p><a href="privacy.html">Privacy Policy</a></div><div class="marketing-consent__actions"><button class="btn btn-outline" type="button" data-consent-deny>Necessary only</button><button class="btn btn-primary" type="button" data-consent-allow>Allow analytics</button></div>';
+      document.body.append(panel);
+      $('[data-consent-deny]',panel).addEventListener('click',()=>{api.setConsent('denied');panel.hidden=true});
+      $('[data-consent-allow]',panel).addEventListener('click',()=>{api.setConsent('granted');panel.hidden=true});
+      return panel;
+    };
+    const openPreferences=()=>{const panel=ensurePanel();panel.hidden=false;const selected=api.getConsent()==='granted'?'[data-consent-allow]':'[data-consent-deny]';setTimeout(()=>$(selected,panel)?.focus(),20)};
+    const privacyLink=$('.footer-col a[href="privacy.html"]');
+    if(privacyLink&&!$('[data-marketing-preferences]')){
+      const item=document.createElement('li');
+      item.innerHTML='<button class="kx-privacy-choice" type="button" data-marketing-preferences>Cookie preferences</button>';
+      privacyLink.closest('ul')?.append(item);
+      $('[data-marketing-preferences]',item)?.addEventListener('click',openPreferences);
+    }
+    if(!api.getConsent())openPreferences();
+    else api.load();
+    let latestProduct=null;
+    document.addEventListener('kawsaypac:product-viewed',event=>{latestProduct=event.detail||{};api.trackViewedProduct(latestProduct)});
+    document.addEventListener('kawsaypac:marketing-consent',event=>{if(event.detail?.status==='granted'&&latestProduct)api.trackViewedProduct(latestProduct)});
+    document.addEventListener('click',event=>{
+      const path=typeof event.composedPath==='function'?event.composedPath():[event.target];
+      const checkout=path.some(node=>{
+        if(!node||node===window||node===document)return false;
+        const slot=node.getAttribute&&node.getAttribute('slot');
+        const text=(node.textContent||'').trim();
+        return slot==='checkout-button'||/secure shopify checkout/i.test(text);
+      });
+      if(checkout&&path.some(node=>node&&node.id==='storefront-cart'))api.trackCheckoutHandoff();
+    },true);
+  }
+  function initForms(){
+    $$('[data-newsletter],.contact-form').forEach(form=>form.addEventListener('submit',e=>{
+      e.preventDefault();
+      const email=$('input[type="email"]',form);
+      if(email&&(!email.value||!email.validity.valid)){toast('Please enter a valid email address.');email.focus();return}
+      if(form.matches('[data-newsletter]')){
+        const api=window.KawsaypacKlaviyo;
+        if(api&&api.getConsent()==='granted'&&api.identify(email?.value,{Source:'Website newsletter'})){
+          api.track('Newsletter Signup Requested',{Source:'Kawsaypac website'});
+          toast('Thank you. Your email preferences were sent securely.');
+        }else toast('Please allow marketing analytics before joining the email list.');
+        return;
+      }
+      toast('Thank you. Your email app will open with this message.');
+      if(form.classList.contains('contact-form')){const data=new FormData(form);location.href=`mailto:hello@theelectriceats.com?subject=${encodeURIComponent(data.get('subject')||'Kawsaypac inquiry')}&body=${encodeURIComponent(data.get('message')||'')}`}
+    }));
+    $$('[data-add-cart]').forEach(btn=>btn.addEventListener('click',()=>toast('Added to the preview bag. Shopify checkout will be connected at launch.')));
+  }
   function initLooxCarousels(){
     const hosts=$$('[data-loox-carousel]');
     if(!hosts.length)return;
@@ -397,7 +530,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     },{passive:true});
     sec.addEventListener('pointerleave',()=>{state.forEach(s=>{s.tx=0;s.ty=0});hoverIdx=-1;wake()},{passive:true});
   }
-  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initLooxCarousels();initModal();initKawsayLightbox();initGalleryImgRetry();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initGuidedRails();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
+  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();initKlaviyo();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initLooxCarousels();initModal();initKawsayLightbox();initGalleryImgRetry();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initGuidedRails();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 
