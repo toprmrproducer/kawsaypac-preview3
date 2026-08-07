@@ -13,18 +13,21 @@
     <meta id="product-og-url" property="og:url" content="https://theelectriceats.com/product.html?product=zapped-in">
     <script id="product-json-ld" type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Kawsaypac Herbal Product","brand":{"@type":"Brand","name":"Kawsaypac"},"url":"https://theelectriceats.com/product.html?product=zapped-in"}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=118">
-    <link rel="stylesheet" href="home.css?v=140">
+    <link rel="stylesheet" href="home.css?v=143">
     <link rel="stylesheet" href="shopify-storefront.css?v=19">
-    <link rel="stylesheet" href="shop.css?v=100">
-    <link rel="stylesheet" href="product.css?v=50">
-    <script defer src="app.js?v=127"></script>
+    <link rel="stylesheet" href="shop.css?v=102">
+    <link rel="stylesheet" href="product.css?v=51">
+    <script type="module" data-storefront-components src="https://cdn.shopify.com/storefront/web-components.js"></script>
+    <script defer src="app.js?v=129"></script>
+    <script defer src="shopify-storefront.js?v=29"></script>
     <script defer src="pdp-manifest.js?v=40"></script>
     <script defer src="product-data.js?v=43"></script>
-    <script defer src="product.js?v=53"></script>
+    <script defer src="product.js?v=54"></script>
   </head>
   <body class="pp-body">
     <a class="skip-link" href="#main">Skip to content</a>
     <div data-site-header></div>
+    <shopify-store data-storefront-config store-domain="https://the-electric-eats.myshopify.com" country="US" language="en"></shopify-store>
 
     <main class="product-main pp-main" id="main" data-product-root>
       <noscript>
@@ -34,6 +37,12 @@
         </div>
       </noscript>
     </main>
+
+    <shopify-cart id="storefront-cart" target="_top">
+      <div class="storefront-cart-empty" slot="empty"><strong>Your ritual bag is empty.</strong><p>Choose a live product to begin.</p></div>
+      <span slot="checkout-button">Secure Shopify checkout</span>
+    </shopify-cart>
+    <p class="storefront-notice" data-storefront-notice role="status" aria-live="polite" hidden></p>
 
     <div data-site-footer></div>
     <div data-site-modal></div>

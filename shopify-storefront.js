@@ -195,31 +195,31 @@
     const mediaAspect = options.cardClass && options.cardClass.includes('editorial') ? '0.75' : '1';
     return `
       <article class="storefront-card${cardClass}">
-        <a
-          class="storefront-card__media"
-          href="product.html"
-          data-storefront-product-link
-          shopify-attr--data-product-handle="product.handle"
-          aria-label="View product details"
-        >
-          <shopify-media
-            query="product.selectedOrFirstAvailableVariant.image"
-            width="720"
-            aspect-ratio="${mediaAspect}"
-            layout="constrained"
-            sizes="(max-width: 680px) 92vw, (max-width: 980px) 45vw, 30vw"${mediaPriority}
-          ></shopify-media>
-          ${options.hoverImage ? `<img class="storefront-card__hover" src="${escapeAttribute(options.hoverImage)}" alt="" loading="lazy" decoding="async">` : ''}
-          ${word}
+        <div class="storefront-card__media">
+          <a
+            class="storefront-card__media-link"
+            href="product.html"
+            data-storefront-product-link
+            shopify-attr--data-product-handle="product.handle"
+            aria-label="View product details"
+          >
+            <shopify-media
+              query="product.selectedOrFirstAvailableVariant.image"
+              width="720"
+              aspect-ratio="${mediaAspect}"
+              layout="constrained"
+              sizes="(max-width: 680px) 92vw, (max-width: 980px) 45vw, 30vw"${mediaPriority}
+            ></shopify-media>
+            ${options.hoverImage ? `<img class="storefront-card__hover" src="${escapeAttribute(options.hoverImage)}" alt="" loading="lazy" decoding="async">` : ''}
+            ${word}
+          </a>
           <button
             class="storefront-quick-add storefront-quick-add--tile${options.hoverImage ? ' storefront-quick-add--buy' : ''}"
             type="button"
             onclick="window.KawsaypacStorefront.addToCart(event)"
             shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
-          >${options.hoverImage
-            ? 'Buy · <shopify-money format="money_without_trailing_zeros" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>'
-            : 'Add to bag'}</button>
-        </a>
+          >Add to Cart</button>
+        </div>
         <div class="storefront-card__body">
           <p class="storefront-card__stars" aria-label="Customer favorite">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
           <div class="storefront-card__heading">
@@ -328,12 +328,45 @@
     const filters = document.querySelector('[data-shop-filters]');
     const status = document.querySelector('[data-shop-status]');
     const empty = document.querySelector('[data-shop-empty]');
+    const heading = document.querySelector('[data-shop-heading]');
     if (!grid || !filters || !status || !empty) return;
 
     filters.innerHTML = CONCERN_FILTERS.map((filter) => `
       <button class="filter" type="button" data-concern="${filter.slug}" aria-pressed="false">
         ${filter.label}
       </button>`).join('');
+
+    const filterPrev = document.querySelector('[data-filter-prev]');
+    const filterNext = document.querySelector('[data-filter-next]');
+    const filterProgress = document.querySelector('[data-filter-progress]');
+    let filterPages = 1;
+    let filterFrame = 0;
+    const paintFilterRail = () => {
+      filterFrame = 0;
+      if (!filterPrev || !filterNext || !filterProgress) return;
+      const max = Math.max(0, filters.scrollWidth - filters.clientWidth);
+      const ratio = max ? filters.scrollLeft / max : 0;
+      const index = Math.min(filterPages - 1, Math.round(ratio * (filterPages - 1)));
+      filterProgress.querySelectorAll('[data-filter-dot]').forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+      filterPrev.disabled = filters.scrollLeft < 4;
+      filterNext.disabled = filters.scrollLeft > max - 4;
+    };
+    const measureFilterRail = () => {
+      if (!filterProgress) return;
+      const max = Math.max(0, filters.scrollWidth - filters.clientWidth);
+      filterPages = Math.max(1, Math.ceil(max / Math.max(1, filters.clientWidth * .72)) + 1);
+      filterProgress.innerHTML = Array.from({ length: filterPages }, (_, i) => `<span data-filter-dot="${i}"${i === 0 ? ' class="is-active"' : ''}></span>`).join('');
+      paintFilterRail();
+    };
+    const moveFilterRail = (delta) => filters.scrollBy({ left: delta * Math.min(filters.clientWidth * .74, 420), behavior: 'smooth' });
+    if (filterPrev && filterNext) {
+      filterPrev.addEventListener('click', () => moveFilterRail(-1));
+      filterNext.addEventListener('click', () => moveFilterRail(1));
+      filters.addEventListener('scroll', () => { if (!filterFrame) filterFrame = requestAnimationFrame(paintFilterRail); }, { passive: true });
+      window.addEventListener('resize', measureFilterRail, { passive: true });
+      measureFilterRail();
+      window.setTimeout(measureFilterRail, 500);
+    }
 
     const params = new URLSearchParams(window.location.search);
     const requestedType = params.get('type') || '';
@@ -354,12 +387,18 @@
       const handles = filter.products || PHYSICAL_PRODUCT_HANDLES;
       const label = filter.slug === 'all' ? '' : filter.label;
       grid.dataset.activeLabel = label;
+      if (heading) heading.textContent = filter.slug === 'all' ? 'Shop all herbs.' : `Shop ${filter.label}.`;
 
       grid.querySelectorAll('[data-storefront-source][type="product"]').forEach((context) => {
         context.hidden = !handles.includes(context.getAttribute('handle'));
       });
       filters.querySelectorAll('[data-concern]').forEach((button) => {
         button.setAttribute('aria-pressed', String(button.dataset.concern === filter.slug));
+      });
+      window.requestAnimationFrame(() => {
+        const active = filters.querySelector(`[data-concern="${filter.slug}"]`);
+        if (active) filters.scrollTo({ left: Math.max(0, active.offsetLeft - (filters.clientWidth - active.offsetWidth) / 2), behavior: 'smooth' });
+        measureFilterRail();
       });
 
       if (grid.dataset.state === 'ready') {
@@ -383,6 +422,7 @@
       renderProductHandles(grid, PHYSICAL_PRODUCT_HANDLES);
       applyConcernFilter(requestedConcern, false);
       setShopState(grid, status, empty, grid.dataset.activeLabel, renderId);
+      if (requestedConcern !== 'all') window.requestAnimationFrame(() => document.getElementById('live-apothecary')?.scrollIntoView({ block: 'start' }));
     }
 
     filters.addEventListener('click', (event) => {
@@ -432,6 +472,8 @@
   }
 
   function addToCart(event) {
+    event.preventDefault();
+    event.stopPropagation();
     const cart = document.getElementById('storefront-cart');
     if (!cart || typeof cart.addLine !== 'function') {
       showStorefrontNotice('The live bag is temporarily unavailable. Please try the Shopify store directly.');
@@ -440,6 +482,25 @@
 
     try {
       cart.addLine(event).showModal();
+    } catch (error) {
+      showStorefrontNotice('This item could not be added just now. Please try again.');
+    }
+  }
+
+  function addVariantToCart(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const button = event.currentTarget || event.target;
+    const variantId = button && button.dataset ? button.dataset.variantId : '';
+    const cart = document.getElementById('storefront-cart');
+    const quantityNode = document.querySelector('[data-qty-value]');
+    const quantity = Math.max(1, Math.min(9, parseInt(quantityNode && quantityNode.textContent, 10) || 1));
+    if (!cart || typeof cart.addLine !== 'function' || !variantId) {
+      showStorefrontNotice('This live product is still loading. Please try again in a moment.');
+      return;
+    }
+    try {
+      cart.addLine({ variantId, quantity }).showModal();
     } catch (error) {
       showStorefrontNotice('This item could not be added just now. Please try again.');
     }
@@ -646,6 +707,7 @@
 
   window.KawsaypacStorefront = Object.freeze({
     addToCart,
+    addVariantToCart,
     buyNow,
     initShop,
     openCart,

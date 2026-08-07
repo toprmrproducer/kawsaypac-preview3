@@ -1,4 +1,4 @@
-# Security Findings — Kawsaypac headless storefront — 2026-08-05
+# Security Findings — Kawsaypac headless storefront — 2026-08-07
 
 ## Scope and threat model
 
@@ -19,6 +19,7 @@ Highest-value assets are Shopify/Loox administrative credentials, checkout integ
 - Targeted history scanning found no matching private credential pattern in Git history.
 - Loox receives only the public `.myshopify.com` store identity and public Shopify product IDs.
 - Shopify Storefront Web Components use the required public `.myshopify.com` domain. The optional public storefront token remains an explicit placeholder because this implementation does not need inventory counts, metafields, metaobjects, or customer accounts.
+- Product-card and product-detail add-to-cart actions pass only Shopify's public variant GID and quantity to the official cart component; checkout remains on Shopify's hosted checkout.
 - All customer reviews are rendered by Loox or from escaped, trusted static product data. No untrusted review content is interpolated by local code.
 - There is no backend, database, authentication layer, dependency manifest, or server-side secret store in this repository.
 
@@ -27,6 +28,7 @@ Highest-value assets are Shopify/Loox administrative credentials, checkout integ
 - JavaScript syntax checks passed for `app.js`, `product.js`, `shopify-storefront.js`, and `ebook.js`.
 - HTML parser checks passed for the home, testimonial gallery, product, ebook, and shop pages.
 - Loox Cards Carousel rendered approved photo/video reviews in local browser testing.
+- Live Shopify cart tests passed from both a filtered shop card and a product-detail page, including quantity changes and the unavailable/loading error state.
 - Static authentic reviews remain visible when Loox does not render.
 - Five customer MP4s were validated as H.264/AAC and return HTTP 200 from the local site.
 

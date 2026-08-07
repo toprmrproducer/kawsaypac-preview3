@@ -90,6 +90,13 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
+  function cartButton(p, label, className) {
+    const handle = shopifyHandleFor(p);
+    return `<shopify-context class="pp-cart-context" type="product" handle="${esc(handle)}">
+      <template><button class="${esc(className)}" type="button" onclick="window.KawsaypacStorefront.addVariantToCart(event)" shopify-attr--data-variant-id="product.selectedOrFirstAvailableVariant.id" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">${esc(label)}</button></template>
+      <button class="${esc(className)}" type="button" disabled shopify-loading-placeholder>Loading product…</button>
+    </shopify-context>`;
+  }
   function dots(s) { return String(s || '').split('·').map((x) => x.trim()).filter(Boolean); }
   /* Pull a specific custom pdp shot (02-editorial / 03-macro / 04-ritual) with a graceful fallback. */
   function galleryShot(p, marker, fallback) {
@@ -218,7 +225,7 @@
               <output data-qty-value aria-live="polite">1</output>
               <button type="button" data-qty-plus aria-label="Increase quantity">+</button>
             </div>
-            <button class="pp-add btn btn-primary" type="button" data-add-ritual>Add to Cart${priceLabel}</button>
+            ${cartButton(p, `Add to Cart${priceLabel}`, 'pp-add btn btn-primary')}
           </div>
           ${heroAccordion(p)}
           <div class="pp-assure"><span>Small-batch care</span><span>Direct trade</span><span>No fillers, no capsules</span></div>
@@ -838,7 +845,7 @@
       <div class="pp-sticky-inner">
         <img src="${esc(vsrc(p.image))}" alt="" width="56" height="56">
         <div class="pp-sticky-meta"><strong>${esc(p.name)}</strong><span>${esc(p.price || '')}</span></div>
-        <button class="btn btn-primary pp-add" type="button" data-add-ritual>Add to Cart</button>
+        ${cartButton(p, 'Add to Cart', 'btn btn-primary pp-add')}
       </div>
     </div>`;
   }
@@ -921,12 +928,6 @@
     const setQty = (v) => { qty = Math.min(9, Math.max(1, v)); if (qtyOut) qtyOut.textContent = String(qty); };
     root.querySelectorAll('[data-qty-minus]').forEach((b) => b.addEventListener('click', () => setQty(qty - 1)));
     root.querySelectorAll('[data-qty-plus]').forEach((b) => b.addEventListener('click', () => setQty(qty + 1)));
-
-    // add to cart -> toast
-    root.querySelectorAll('[data-add-ritual]').forEach((b) => b.addEventListener('click', () => {
-      const label = qty > 1 ? `${qty} x ${p.name}` : p.name;
-      toast(`${label} added to your ritual bag. Shopify checkout connects at launch.`);
-    }));
 
     // accordions (hero, faq)
     root.querySelectorAll('[data-accordion]').forEach((acc) => {

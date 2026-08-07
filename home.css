@@ -1212,3 +1212,13 @@ body.pp-body .psn-fab{bottom:96px}
   .vlb-rail{padding:8px 14px calc(8px + env(safe-area-inset-bottom))}
   .vlb-thumb{width:44px}
 }
+
+/* v143: one reinforced mobile rail language across Collections, Most Loved,
+   Shop by Concern, and the Shop filter strip. */
+.home-guided-rail{min-width:0}
+.home-rail-controls,.home-rail-cta{display:none}
+@media(max-width:720px){
+  .home-rail-controls{display:grid}
+  .home-rail-cta{display:flex}
+  .home-guided-rail .collection-row,.home-guided-rail .best-grid{padding-right:24vw}
+}

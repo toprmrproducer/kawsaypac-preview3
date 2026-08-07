@@ -12,7 +12,9 @@ Open `http://127.0.0.1:4173/`.
 
 ## Stack
 
-Multi-page HTML, CSS, vanilla JavaScript, GSAP 3.12, and ScrollTrigger. Commerce buttons are presentation-ready but Shopify checkout is intentionally not connected in this preview.
+Multi-page HTML, CSS, vanilla JavaScript, GSAP 3.12, ScrollTrigger, and Shopify Storefront Web Components. Product cards and product-detail pages add the selected live Shopify variant to the cart, while checkout remains hosted by Shopify.
+
+The public storefront domain and product handles are configured in markup. No Shopify admin token, private API key, or headless credential is shipped to the browser or committed to this repository.
 
 ## Key routes
 

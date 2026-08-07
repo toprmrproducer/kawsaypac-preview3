@@ -283,17 +283,26 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     paint();
   }
   function initStatCounters(){const fmt=(v,dec,suf)=>v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;const animate=el=>{const target=parseFloat(el.dataset.count),dec=+(el.dataset.decimals||0),suf=el.dataset.suffix||'';if(el.__counted)return;el.__counted=true;if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=fmt(target,dec,suf);return}const t0=performance.now(),dur=1400;const tick=now=>{const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(target*e,dec,suf);if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)};window.__animateCounters=els=>els.forEach(animate);const els=$$('[data-count]').filter(el=>!el.closest('.journey-final'));if(!els.length)return;const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;io.unobserve(en.target);animate(en.target)}),{threshold:.4});els.forEach(e=>io.observe(e))}
-  function initConcernScroll(){
-    const row=$('.concern-row'),prev=$('[data-concern-prev]'),next=$('[data-concern-next]'),progress=$('[data-concern-progress]');
-    if(!row||!prev||!next||!progress)return;
-    let pages=1,frame=0;
-    const measure=()=>{const max=Math.max(0,row.scrollWidth-row.clientWidth);pages=Math.max(1,Math.ceil(max/Math.max(1,row.clientWidth*.72))+1);progress.innerHTML=Array.from({length:pages},(_,i)=>`<span data-concern-dot="${i}"${i===0?' class="is-active"':''}></span>`).join('');paint()};
-    const paint=()=>{frame=0;const max=Math.max(0,row.scrollWidth-row.clientWidth),ratio=max?row.scrollLeft/max:0,index=Math.min(pages-1,Math.round(ratio*(pages-1)));$$('[data-concern-dot]',progress).forEach((dot,i)=>dot.classList.toggle('is-active',i===index));prev.disabled=row.scrollLeft<4;next.disabled=row.scrollLeft>max-4};
-    const move=delta=>row.scrollBy({left:delta*Math.min(row.clientWidth*.74,420),behavior:'smooth'});
-    prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
-    row.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(paint)},{passive:true});
-    row.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();move(-1)}else if(e.key==='ArrowRight'){e.preventDefault();move(1)}});
-    addEventListener('resize',measure,{passive:true});measure();
+  function initGuidedRails(){
+    const icon=(dir)=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${dir<0?'M15 5l-7 7 7 7':'M9 5l7 7-7 7'}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    $$('[data-guided-track]').forEach(row=>{
+      let shell=row.closest('[data-guided-rail]');
+      if(!shell){shell=document.createElement('div');shell.className='home-guided-rail';shell.setAttribute('data-guided-rail','');row.before(shell);shell.append(row)}
+      let prev=$('[data-guided-prev]',shell),next=$('[data-guided-next]',shell),progress=$('[data-guided-progress]',shell);
+      if(!prev||!next||!progress){
+        const label=row.dataset.guidedLabel||'items',nav=document.createElement('div');nav.className='concern-rail-nav home-rail-controls';nav.setAttribute('aria-label',`${label} carousel controls`);nav.innerHTML=`<p class="concern-swipe-cue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8M12 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Swipe to browse</span></p><button class="concern-nav-btn" type="button" data-guided-prev aria-label="Previous ${label}">${icon(-1)}</button><div class="concern-progress" data-guided-progress aria-label="${label} carousel position"></div><button class="concern-nav-btn" type="button" data-guided-next aria-label="Next ${label}">${icon(1)}</button>`;shell.append(nav);
+        const cta=document.createElement('a');cta.className='btn btn-outline concern-directory-cta home-rail-cta';cta.href=row.dataset.guidedCta||'shop.html';cta.innerHTML='Discover more <span aria-hidden="true">&rarr;</span>';shell.append(cta);
+        prev=$('[data-guided-prev]',shell);next=$('[data-guided-next]',shell);progress=$('[data-guided-progress]',shell);
+      }
+      let pages=1,frame=0;
+      const paint=()=>{frame=0;const max=Math.max(0,row.scrollWidth-row.clientWidth),ratio=max?row.scrollLeft/max:0,index=Math.min(pages-1,Math.round(ratio*(pages-1)));$$('[data-guided-dot]',progress).forEach((dot,i)=>dot.classList.toggle('is-active',i===index));prev.disabled=row.scrollLeft<4;next.disabled=row.scrollLeft>max-4};
+      const measure=()=>{const max=Math.max(0,row.scrollWidth-row.clientWidth);pages=Math.max(1,Math.ceil(max/Math.max(1,row.clientWidth*.72))+1);progress.innerHTML=Array.from({length:pages},(_,i)=>`<span data-guided-dot="${i}"${i===0?' class="is-active"':''}></span>`).join('');paint()};
+      const move=delta=>row.scrollBy({left:delta*Math.min(row.clientWidth*.74,420),behavior:'smooth'});
+      prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+      row.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(paint)},{passive:true});
+      row.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();move(-1)}else if(e.key==='ArrowRight'){e.preventDefault();move(1)}});
+      addEventListener('resize',measure,{passive:true});measure();
+    });
   }
   function initPageNavigator(){
     const nav=$('[data-page-nav]');if(!nav)return;
@@ -388,7 +397,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
     },{passive:true});
     sec.addEventListener('pointerleave',()=>{state.forEach(s=>{s.tx=0;s.ty=0});hoverIdx=-1;wake()},{passive:true});
   }
-  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initLooxCarousels();initModal();initKawsayLightbox();initGalleryImgRetry();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initConcernScroll();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
+  function boot(){initThemeVariant();renderHeader();normalizeRibbon();renderFooter();renderModal();renderHomeData();initDraggableSprites();initCtaPouches();initNav();initNavSearchCart();initHomeVideo();initHero();initFilm();initReveal();initForms();initLooxCarousels();initModal();initKawsayLightbox();initGalleryImgRetry();initLivingInterface();initPhilosophySpotlight();initPopovers();initFooterHummingbird();initStatCounters();initGuidedRails();initSectionDrift();initPageNavigator();try{console.log('%cBrewed by hand in Ecuador. Curious minds welcome.','color:#1F3A2A;font-size:13px;font-family:Georgia,serif')}catch(e){}document.documentElement.classList.add('ready')}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 

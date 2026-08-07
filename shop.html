@@ -12,12 +12,12 @@
     <meta property="og:description" content="Explore the live Kawsaypac apothecary and check out securely through Shopify.">
     <meta property="og:url" content="https://theelectriceats.com/shop.html">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=118">
-    <link rel="stylesheet" href="home.css?v=142">
+    <link rel="stylesheet" href="home.css?v=143">
     <link rel="stylesheet" href="shopify-storefront.css?v=19">
-    <link rel="stylesheet" href="shop.css?v=101">
+    <link rel="stylesheet" href="shop.css?v=102">
     <script type="module" data-storefront-components src="https://cdn.shopify.com/storefront/web-components.js"></script>
-    <script defer src="app.js?v=128"></script>
-    <script defer src="shopify-storefront.js?v=28"></script>
+    <script defer src="app.js?v=129"></script>
+    <script defer src="shopify-storefront.js?v=29"></script>
     <script defer src="shop.js?v=18"></script>
   <style>/* QA fix: prevent KAWSAYPAC wordmark overlapping the search icon on narrow phones (shared header grid gives the brand ~121px at <=480px) */
 @media(max-width:480px){.nav-pill .brand{min-width:0;overflow:hidden;gap:6px}.nav-pill .brand img{width:26px;height:26px}.nav-pill .brand strong{font-size:.72rem;letter-spacing:.04em}.nav-pill .nav-actions{gap:5px}.nav-pill .nav-actions>.btn{padding:0 8px}}
@@ -42,12 +42,19 @@
         <div class="shop-heading shop-heading--tight">
           <div>
             <p class="eyebrow">The Apothecary</p>
-            <h2 id="apothecary-title">Shop all herbs.</h2>
+            <h2 id="apothecary-title" data-shop-heading>Shop all herbs.</h2>
           </div>
         </div>
 
         <div class="shop-controls">
           <div class="filter-list" data-shop-filters aria-label="Filter products by concern"></div>
+          <div class="concern-rail-nav shop-filter-rail-nav" data-shop-filter-nav aria-label="Shop concern navigation">
+            <p class="concern-swipe-cue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8M12 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Swipe to browse</span></p>
+            <button class="concern-nav-btn" type="button" data-filter-prev aria-label="Previous concerns"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="concern-progress" data-filter-progress aria-label="Shop concern carousel position"></div>
+            <button class="concern-nav-btn" type="button" data-filter-next aria-label="Next concerns"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <a class="btn btn-outline shop-filter-discover" href="#shop-concern-title">Discover all concerns <span aria-hidden="true">&rarr;</span></a>
           <p class="shop-status" data-shop-status aria-live="polite">Connecting to the live apothecary…</p>
         </div>
 

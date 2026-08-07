@@ -300,6 +300,11 @@
   .pp-claim-media img{min-height:280px}
   .pp-claim-row{grid-template-columns:1fr;gap:6px;padding:14px 0}
 }
+
+/* v51: mobile product media is edge-to-edge, while the live Shopify cart
+   actions retain the existing rounded, senior-friendly control language. */
+.pp-cart-context{display:contents!important}
+.pp-add[disabled]{opacity:.55;cursor:wait;transform:none}
 @media (max-width:560px){
   .pp-shell{width:calc(100% - 24px)}
   .pp-buy-row{flex-direction:column}
@@ -724,4 +729,13 @@ html.theme-gradient .pp-compare{background:
   .pp-vsx{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
   .pp-vsx-row{min-width:540px}
   .pp-vsx-label{font-size:.82rem}
+}
+
+/* v51 final-cascade mobile gallery override. */
+@media(max-width:720px){
+  .pp-hero-media{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+  .pp-hero-frame{border-radius:0}
+  .pp-thumbs{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none}
+  .pp-thumbs::-webkit-scrollbar{display:none}
+  .pp-thumb{flex:0 0 54px;min-width:54px;min-height:54px}
 }
