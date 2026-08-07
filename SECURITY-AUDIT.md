@@ -58,10 +58,12 @@ There is no application server, database, login system, private API, dependency 
 - A headless mobile browser confirmed Global Privacy Control persists denial and loads zero Klaviyo scripts.
 - A headless mobile browser confirmed Klaviyo is absent before consent, loads after explicit consent, and is absent after the withdrawal-triggered reload.
 - DOM XSS probes in `?concern=` and `?product=` did not execute, did not create injected nodes, and resolved to safe storefront states.
+- A live mobile storefront test loaded the Joint & Mobility filter, invoked the official Shopify cart component, and received HTTP 200 from Shopify's Storefront GraphQL endpoint with no storefront notice or page error.
 - The private handoff repository was queried through GitHub and remains `PRIVATE`.
 - Production currently redirects HTTP to HTTPS, sends HSTS, and exposes no `.env`, `.git/config`, package lock, or JavaScript source map.
+- The first post-hardening GitHub Actions security run completed successfully, including the full-history Gitleaks scan and all local security assertions.
 
-The committed GitHub Actions workflow must complete once after this security commit is pushed. Recheck production headers after every hosting or DNS change, and rerun a real Shopify cart and checkout smoke test after any storefront integration update.
+Recheck production headers after every hosting or DNS change, and rerun a real Shopify cart and checkout smoke test after any storefront integration update.
 
 ## Residual risk and launch gate
 
