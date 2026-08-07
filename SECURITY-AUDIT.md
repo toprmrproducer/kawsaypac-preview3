@@ -38,6 +38,7 @@ There is no application server, database, login system, private API, dependency 
 | F-003 | Low | A05:2025 / CWE-346 | YouTube player commands used a wildcard `postMessage` target origin. | `app.js` previously sent player commands to `*`. | Fixed. Commands are now restricted to `https://www.youtube.com`. |
 | F-004 | Medium | A02:2025 / CWE-359 | Consent withdrawal could leave an already-loaded Klaviyo runtime active until the browser tab ended, and Global Privacy Control was not honored. | Local event queuing stopped after denial, but removing a loaded third-party script cannot reliably remove its listeners. | Fixed. Global Privacy Control defaults to denial before loading Klaviyo. Revoking previously granted consent reloads the page with denial persisted, so Klaviyo is absent from the new page lifecycle. |
 | F-005 | Low | A03:2025 / CWE-798 | The repository had no automated history secret scan or security regression gate. | No security workflow existed. | Fixed. Weekly and push/PR checks now run a full-history Gitleaks scan, JavaScript syntax checks, and local security assertions. Workflow permissions are read-only and actions are pinned by full SHA. |
+| F-006 | Low | A05:2025 / CWE-20 | Product research links were HTML-escaped but the renderer did not restrict their URI scheme, and four stored links used plain HTTP. | The data is repository-controlled, so there was no direct attacker input path, but a future unsafe value could have become a clickable `javascript:` or plaintext URL. | Fixed. The renderer now permits only valid HTTPS URLs, adds `noopener noreferrer`, all stored study links use HTTPS, and the regression audit checks both controls. |
 
 ## Credential and data-flow evidence
 
@@ -55,12 +56,19 @@ There is no application server, database, login system, private API, dependency 
 - The security assertion suite checked 69 text assets and returned zero issues.
 - JavaScript syntax checks passed for `app.js`, `product.js`, `shopify-storefront.js`, `ebook.js`, and the security audit script.
 - All 44 HTML files passed parser checks and contain the strict referrer policy.
+- Gitleaks 8.30.1 scanned all 9 reachable commits after a fingerprint-specific ignore for the public Klaviyo consent-storage label and found no secret.
+- Trivy 0.73.0 found no vulnerability, secret, or repository misconfiguration result. Retire.js 5.4.3 found no vulnerable vendored browser library. OSV-Scanner found no package source because this static repository has no dependency manifest or lockfile.
+- Semgrep 1.172.0 ran 282 rules over 91 tracked files. Its five warnings were all HTML-template data flows in `product.js`; each value at those sinks is passed through `esc()`, and the production DOM payload probes remained inert.
+- A bounded low-rate Nuclei 3.11.0 pass sent 409 non-destructive exposure and misconfiguration template requests with no match. The broad template run was intentionally stopped rather than continue thousands of requests against GitHub's shared Pages edge.
+- The testssl protocol and cipher pass confirmed SSLv2, SSLv3, TLS 1.0, and TLS 1.1 are not offered; TLS 1.2 and TLS 1.3 are offered; NULL, anonymous, export, RC4, DES, and 3DES classes are not offered; and forward secrecy is available. These controls belong to GitHub's shared edge.
+- OWASP ZAP 2.17.0 was installed, but its macOS command-line automation did not terminate reliably and its incomplete run is not used as evidence. The completed passive HTTP, browser, and Nuclei results above are the evidence for this report.
 - A headless mobile browser confirmed Global Privacy Control persists denial and loads zero Klaviyo scripts.
 - A headless mobile browser confirmed Klaviyo is absent before consent, loads after explicit consent, and is absent after the withdrawal-triggered reload.
-- DOM XSS probes in `?concern=` and `?product=` did not execute, did not create injected nodes, and resolved to safe storefront states.
+- DOM XSS probes across `?concern=`, `?q=`, product, ebook, and testimonial routes did not execute, did not create injected nodes, and resolved to safe storefront states.
 - A live mobile storefront test loaded the Joint & Mobility filter, invoked the official Shopify cart component, and received HTTP 200 from Shopify's Storefront GraphQL endpoint with no storefront notice or page error.
 - The private handoff repository was queried through GitHub and remains `PRIVATE`.
-- Production currently redirects HTTP to HTTPS, sends HSTS, and exposes no `.env`, `.git/config`, package lock, or JavaScript source map.
+- All 44 production HTML routes returned HTTP 200. Production redirects HTTP to HTTPS, sends HSTS, and the sensitive-file probe found no `.env`, Git metadata, dependency lockfile, credentials file, or source map.
+- Production references no plaintext external resource. The only preview-specific console rejection was Loox refusing its product-review frame on the GitHub Pages hostname; the product page now keeps its static verified-review wall on that preview and loads the live widget only on Loox's already-permitted final domain.
 - The first post-hardening GitHub Actions security run completed successfully, including the full-history Gitleaks scan and all local security assertions.
 
 Recheck production headers after every hosting or DNS change, and rerun a real Shopify cart and checkout smoke test after any storefront integration update.

@@ -30,6 +30,7 @@ const allowedExternalOrigins = new Set([
   'https://researchgate.net',
   'https://schema.org',
   'https://sciencemeetsfood.org',
+  'https://selfhacked.com',
   'https://senchateabar.com',
   'https://static.klaviyo.com',
   'https://theelectriceats.com',
@@ -83,6 +84,7 @@ for (const file of textFiles) {
     if (pattern.test(text)) issues.push(`${rel}: ${label} shape found`);
   }
   if (/\b(?:src|href|data-src)=["']http:\/\//i.test(text)) issues.push(`${rel}: insecure HTTP resource`);
+  if (rel === 'product-data.js' && /"link"\s*:\s*"http:\/\//i.test(text)) issues.push(`${rel}: insecure HTTP study link`);
   if (/javascript\s*:/i.test(text)) issues.push(`${rel}: javascript URL`);
   if (/\.postMessage\([^;]+,[\s]*["']\*["']\)/s.test(text)) issues.push(`${rel}: wildcard postMessage target origin`);
 
@@ -113,6 +115,8 @@ for (const file of textFiles) {
 const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
 if (!app.includes('navigator.globalPrivacyControl===true')) issues.push('app.js: Global Privacy Control is not honored');
 if (!app.includes("'https://www.youtube.com'")) issues.push('app.js: YouTube postMessage origin is not pinned');
+const product = fs.readFileSync(path.join(root, 'product.js'), 'utf8');
+if (!product.includes("url.protocol === 'https:'")) issues.push('product.js: external study URLs are not restricted to HTTPS');
 
 console.log(JSON.stringify({ filesChecked: textFiles.length, issues }, null, 2));
 if (issues.length) process.exitCode = 1;

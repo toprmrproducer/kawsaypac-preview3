@@ -150,17 +150,17 @@ window.KAWSAYPAC_PRODUCTS = {
     {
      "label": "Study 1",
      "body": "A 2024 systematic review and meta-analysis in Frontiers in Pharmacology confirmed that Cat's Claw has been used by Amazonian indigenous groups to treat inflammatory diseases, with studies validating its anti-inflammatory and immunomodulatory effects across multiple disease models.",
-     "link": "http://frontiersin.org/fphar.2024.1378408"
+     "link": "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2024.1378408/full"
     },
     {
      "label": "Study 2",
      "body": "Cat's Claw extract was superior to placebo in 50 patients with rheumatoid arthritis, reducing the number of painful joints and morning stiffness.",
-     "link": "http://pmc.ncbi.nlm.nih.gov/articles/PMC11176511"
+     "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11176511"
     },
     {
      "label": "Study 3",
      "body": "In a study of 40 breast cancer patients undergoing chemotherapy, 300mg Cat's Claw extract prevented a decrease in white blood cells and repaired DNA damage.",
-     "link": "http://selfhacked.com/blog/health-benefits-cats-claw"
+     "link": "https://selfhacked.com/blog/health-benefits-cats-claw"
     },
     {
      "label": "Study 4",
@@ -2665,7 +2665,7 @@ window.KAWSAYPAC_PRODUCTS = {
     {
      "label": "Study 3",
      "body": "A 2024 systematic review and meta-analysis in Frontiers in Pharmacology confirmed that Cat's Claw has been used by Amazonian indigenous groups to treat inflammatory diseases, with studies validating its anti-inflammatory and immunomodulatory effects across multiple disease models.",
-     "link": "http://frontiersin.org/fphar.2024.1378408"
+     "link": "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2024.1378408/full"
     }
    ]
   },

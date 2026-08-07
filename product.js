@@ -90,6 +90,14 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
+  function safeHttpsUrl(value) {
+    try {
+      const url = new URL(String(value || ''));
+      return url.protocol === 'https:' ? url.href : '';
+    } catch (error) {
+      return '';
+    }
+  }
   function cartButton(p, label, className) {
     const handle = shopifyHandleFor(p);
     return `<shopify-context class="pp-cart-context" type="product" handle="${esc(handle)}">
@@ -503,7 +511,9 @@
           <h2>${esc(s.heading || 'The research speaks')}${/[.:!?]$/.test(s.heading || '') ? '' : ':'}</h2>
           <div class="pp-study" data-study>
             <div class="pp-study-rows">
-              ${s.items.map((it, i) => `
+              ${s.items.map((it, i) => {
+                const studyUrl = safeHttpsUrl(it.link);
+                return `
               <article class="pp-study-row${i === 0 ? ' on' : ''}" data-study-row="${i}">
                 <button type="button" class="pp-study-row-head" data-study-btn="${i}" aria-expanded="${i === 0 ? 'true' : 'false'}" aria-controls="pp-study-pane-${i}">
                   <span class="pp-study-row-num">0${i + 1}</span>
@@ -512,9 +522,10 @@
                 </button>
                 <div class="pp-study-row-body" id="pp-study-pane-${i}">
                   <p class="pp-study-body">${esc(it.body)}</p>
-                  ${it.link ? `<a class="pp-study-link" href="${esc(it.link)}" target="_blank" rel="noopener">Read the study <span aria-hidden="true">↗</span></a>` : ''}
+                  ${studyUrl ? `<a class="pp-study-link" href="${esc(studyUrl)}" target="_blank" rel="noopener noreferrer">Read the study <span aria-hidden="true">↗</span></a>` : ''}
                 </div>
-              </article>`).join('')}
+              </article>`;
+              }).join('')}
             </div>
           </div>
         </div>
@@ -1073,6 +1084,11 @@
     const productId = SHOPIFY_PRODUCT_IDS[handle];
     if (!productId) return;
     mount.setAttribute('data-product-id', productId);
+    // Loox permits the final theelectriceats.com domain but blocks its product
+    // iframe on the GitHub Pages preview. Keep the static verified-review wall
+    // there and load the live widget automatically after the domain cutover.
+    const host = window.location.hostname.toLowerCase();
+    if (host !== 'theelectriceats.com' && !host.endsWith('.theelectriceats.com')) return;
     if (window.KawsaypacLoox) window.KawsaypacLoox.load();
     window.setTimeout(() => {
       const rendered = mount.childElementCount > 0 && mount.textContent.trim().length > 0;

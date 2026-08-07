@@ -1,0 +1,3 @@
+# Public localStorage label, not a credential. Narrowly suppress the single
+# historical false positive without weakening any Gitleaks rule.
+3c663bea3ba29f64578112265b2f40b61a0b22ac:app.js:generic-api-key:6
