@@ -431,7 +431,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
       let prev=$('[data-guided-prev]',shell),next=$('[data-guided-next]',shell),progress=$('[data-guided-progress]',shell);
       if(!prev||!next||!progress){
         const label=row.dataset.guidedLabel||'items',nav=document.createElement('div');nav.className='concern-rail-nav home-rail-controls';nav.setAttribute('aria-label',`${label} carousel controls`);nav.innerHTML=`<p class="concern-swipe-cue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8M12 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Swipe to browse</span></p><button class="concern-nav-btn" type="button" data-guided-prev aria-label="Previous ${label}">${icon(-1)}</button><div class="concern-progress" data-guided-progress aria-label="${label} carousel position"></div><button class="concern-nav-btn" type="button" data-guided-next aria-label="Next ${label}">${icon(1)}</button>`;shell.append(nav);
-        const cta=document.createElement('a');cta.className='btn btn-outline concern-directory-cta home-rail-cta';cta.href=row.dataset.guidedCta||'shop.html';cta.innerHTML='Discover more <span aria-hidden="true">&rarr;</span>';shell.append(cta);
+        const cta=document.createElement('a');cta.className='btn btn-primary concern-directory-cta home-rail-cta';cta.href=row.dataset.guidedCta||'shop.html';cta.innerHTML='Discover more <span aria-hidden="true">&rarr;</span>';shell.append(cta);
         prev=$('[data-guided-prev]',shell);next=$('[data-guided-next]',shell);progress=$('[data-guided-progress]',shell);
       }
       let pages=1,frame=0;

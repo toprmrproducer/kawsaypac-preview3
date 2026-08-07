@@ -1219,7 +1219,10 @@ body.pp-body .psn-fab{bottom:96px}
 @media(max-width:720px){
   .home-rail-controls{display:grid}
   .home-rail-cta{display:flex}
-  .home-guided-rail .collection-row,.home-guided-rail .best-grid{padding-right:24vw}
+  .home-guided-rail .collection-row,.home-guided-rail .best-grid{padding-right:24vw;padding-bottom:4px}
+  .home-guided-rail .concern-rail-nav,.concern-row-wrap>.concern-rail-nav{margin-top:4px;row-gap:2px}
+  .home-guided-rail .concern-directory-cta,.concern-row-wrap>.concern-directory-cta{margin-top:8px}
+  .concern-row-wrap>.concern-row{padding-bottom:4px}
   .loox-swipe-cue{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 14px;color:#6d674f;font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
   .loox-swipe-cue svg{width:24px;height:24px;flex:0 0 24px;color:#c9a942;animation:looxSwipePrompt 1.8s ease-in-out infinite}
 }
