@@ -24,8 +24,6 @@
 .drag-sprite img{animation:ambient-sprite var(--ambient-duration,6.4s) var(--ambient-delay,0s) ease-in-out infinite alternate;transform-origin:center}.drag-sprite.is-dragging img{animation-play-state:paused}@keyframes ambient-sprite{0%{transform:translate3d(-3px,4px,0) rotate(-2.5deg)}50%{transform:translate3d(4px,-6px,0) rotate(2deg)}100%{transform:translate3d(-1px,-2px,0) rotate(4deg)}}
 @media(max-width:720px){.hero-static-range{display:none}}
 .shop-accent{filter:saturate(.8)}
-@media(max-width:600px){.shop-controls{top:108px!important}}
-
 /* Final living-interface pass: art stays in the margins, copy stays off faces. */
 .section{overflow:hidden}.section>.shell{position:relative;z-index:2}.drag-sprite{transform:translate3d(calc(var(--drag-x,0px) + var(--pointer-x,0px)),calc(var(--drag-y,0px) + var(--pointer-y,0px)),0) rotate(var(--sprite-rotate,0deg));will-change:transform}.drag-sprite.sprite-behind{z-index:-1}.drag-sprite.sprite-edge{z-index:8}.drag-sprite.is-dragging{z-index:40}.brand-statement strong{font-weight:400;letter-spacing:-.07em;text-wrap:balance;transform:translate3d(var(--scene-x,0),var(--scene-y,0),0);transition:transform .32s var(--ease)}.brand-statement .small-script{letter-spacing:.015em;transform:translate3d(var(--scene-x-back,0),var(--scene-y-back,0),0);transition:transform .38s var(--ease)}.hero-copy h1{font-weight:400;letter-spacing:-.06em;text-wrap:balance;transform:translate3d(var(--scene-x-back,0),var(--scene-y-back,0),0);transition:transform .36s var(--ease)}.section-head h2,.shop-hero h1,.page-hero h1,.pdp-hero h1{transform:translate3d(var(--react-x,0),var(--react-y,0),0);transition:transform .38s var(--ease)}
 

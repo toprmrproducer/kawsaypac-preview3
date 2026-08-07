@@ -194,9 +194,8 @@
 }
 
 .shop-controls {
-  position: sticky;
-  top: 112px;
-  z-index: 50;
+  position: relative;
+  z-index: 1;
   max-width: 100%;
   margin-bottom: 24px;
   overflow: hidden;
@@ -599,10 +598,6 @@
 
   .commerce-editorial {
     padding: 76px 0 84px;
-  }
-
-  .shop-controls {
-    top: 88px;
   }
 
   .shop-product-grid,
