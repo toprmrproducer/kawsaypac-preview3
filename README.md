@@ -23,7 +23,10 @@ Klaviyo uses the public company ID `SB34LP`. Its browser script is consent-gated
 - Home: `index.html`
 - Shop and concern filters: `shop.html`
 - Product detail: `product.html?product=zapped-in`
+- Digital product detail: `ebook.html?product=30-day-raw-reset`
 - Apothecary, story, philosophy, retreats, learning guides, support, and policy routes are all static HTML pages.
+
+Digital fulfillment is not implemented in the public frontend. Uplinkly and Shopify retain the secure order-to-file mapping. The Netlify cutover configuration in `_redirects` preserves `/apps/downloads/*` by sending those requests to Shopify at `shop.theelectriceats.com`.
 
 ## Deployment
 

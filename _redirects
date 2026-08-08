@@ -1,0 +1,3 @@
+# Keep Uplinkly's order-scoped download pages reachable after the apex domain
+# moves from Shopify to Netlify. Shopify remains the entitlement boundary.
+/apps/downloads/*  https://shop.theelectriceats.com/apps/downloads/:splat  302!

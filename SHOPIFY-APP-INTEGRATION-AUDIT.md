@@ -1,6 +1,6 @@
 # Shopify App Integration Audit
 
-Audit date: 7 August 2026
+Audit updated: 8 August 2026
 
 ## Launch status
 
@@ -10,7 +10,7 @@ Audit date: 7 August 2026
 | Loox Reviews | Implemented in the storefront | Official external-domain loader, live review carousel, product widgets, and authentic static fallbacks. Final production domains must remain allowed by the Loox plan. |
 | Notify Me | Not implemented by design | No confirmed headless use case. The Shopify theme extension cannot inject itself into this static storefront. Add only if a sold-out subscription journey is approved and the vendor supplies a supported headless API. |
 | Cowlendar Booking | Existing routes retained | Retreat calls keep their existing Cowlendar booking destination. No private credential is stored in this repository. |
-| Uplinkly Downloads | Shopify backend | Digital delivery starts from paid Shopify orders. No storefront script or private key belongs in the headless site. Verify delivery mappings inside Shopify before launch. |
+| Uplinkly Downloads | Shopify backend, cutover route prepared | Digital delivery starts from paid Shopify orders. The Shopify Thank You or Order Status block and Uplinkly email remain the customer entry points. Netlify redirects historic and future apex requests under `/apps/downloads/*` to the identical app-proxy path on `shop.theelectriceats.com`. No storefront script, paid PDF, unrestricted file URL, or private key belongs in the headless site. |
 | I Agree To Terms | Shopify checkout boundary | The current headless site does not fake a theme-cart checkbox. Terms enforcement should stay in a supported Shopify checkout extension or Shopify Function so it cannot be bypassed in the browser. |
 
 ## Klaviyo event map
@@ -36,3 +36,17 @@ The Klaviyo forms `REGULAR USE: Quiz Pop-Up Desktop` (`SDYjkv`) and `REGULAR USE
 - The public company ID is intentionally browser-visible.
 - Any future server-side Klaviyo API work requires a dedicated restricted key stored only in the hosting provider's encrypted environment variables.
 - Do not send duplicate `Checkout Started` events from the headless browser and Shopify backend.
+
+## Uplinkly download flow
+
+The repository's `ebook.html` and `ebook.js` files are product-detail and checkout-handoff pages only. They do not contain order entitlement logic and must not be represented as a customer download portal.
+
+At launch, Uplinkly remains responsible for associating a paid Shopify order with its digital files, applying any download limits or PDF protection, sending the delivery email, and rendering the order-scoped download page. Shopify must first be available at `shop.theelectriceats.com`; the committed `_redirects` rule then preserves legacy links such as `theelectriceats.com/apps/downloads/orders/...` after the apex moves to Netlify.
+
+Before launch, validate one fulfilled digital order through each route:
+
+1. Shopify Thank You or Order Status → Access Downloads.
+2. Uplinkly delivery email → View Your Downloads.
+3. Historic apex-domain `/apps/downloads/` link → `shop.theelectriceats.com/apps/downloads/` with the path and query string preserved.
+
+The destination must show only the purchased files for that order. A custom Kawsaypac-styled portal is a separate server-side integration and is compatible only if Uplinkly provides a supported entitlement API or signed-download mechanism. Do not reproduce this with client-side order IDs or public PDF URLs.
