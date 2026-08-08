@@ -100,8 +100,9 @@
   }
   function cartButton(p, label, className) {
     const handle = shopifyHandleFor(p);
+    const productId = SHOPIFY_PRODUCT_IDS[handle] || '';
     return `<shopify-context class="pp-cart-context" type="product" handle="${esc(handle)}">
-      <template><button class="${esc(className)}" type="button" onclick="window.KawsaypacStorefront.addVariantToCart(event)" data-product-handle="${esc(handle)}" data-product-name="${esc(p.name)}" data-product-price="${esc(p.price||'')}" data-product-image="${esc(p.image||'')}" shopify-attr--data-variant-id="product.selectedOrFirstAvailableVariant.id" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">${esc(label)}</button></template>
+      <template><button class="${esc(className)}" type="button" onclick="window.KawsaypacStorefront.addVariantToCart(event)" data-product-handle="${esc(handle)}" data-product-name="${esc(p.name)}" data-product-price="${esc(p.price||'')}" data-product-image="${esc(p.image||'')}" shopify-attr--data-variant-id="product.selectedOrFirstAvailableVariant.id" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">${esc(label)}</button><div class="pp-notify-slot product-form__buttons" data-notify-slot data-product-handle="${esc(handle)}" data-product-name="${esc(p.name)}" data-product-price="${esc(p.price||'')}" data-product-image="${esc(p.image||'')}" data-product-id="${esc(productId)}" shopify-attr--data-variant-id="product.selectedOrFirstAvailableVariant.id" shopify-attr--data-available="product.selectedOrFirstAvailableVariant.availableForSale" hidden><button class="pp-notify-anchor product-form__submit button button--secondary button--full-width" type="submit" disabled>Sold out</button></div></template>
       <button class="${esc(className)}" type="button" disabled shopify-loading-placeholder>Loading product…</button>
     </shopify-context>`;
   }
@@ -1099,6 +1100,91 @@
     }, 4000);
   }
 
+  /* Notify Me's Shopify theme embed cannot cross into a headless document.
+     On a genuinely unavailable live variant, supply the same public product
+     context to Notify Me's official storefront SDK. The SDK owns collection
+     of the shopper's email and the restock notification. No private API key
+     is present in this page or repository. */
+  function initNotifyMe(root) {
+    const slot = root.querySelector('[data-notify-slot]');
+    if (!slot) {
+      const attempts = Number(root.dataset.notifyAttempts || 0);
+      if (attempts < 24) {
+        root.dataset.notifyAttempts = String(attempts + 1);
+        window.setTimeout(() => initNotifyMe(root), 500);
+      }
+      return;
+    }
+    if (slot.dataset.notifyInitialized === 'true') return;
+    slot.dataset.notifyInitialized = 'true';
+    let loaded = false;
+
+    const numericId = (value) => {
+      const match = String(value || '').match(/(\d+)(?!.*\d)/);
+      return match ? Number(match[1]) : 0;
+    };
+
+    const load = () => {
+      const addButton = slot.previousElementSibling;
+      const unavailable = slot.dataset.available === 'false' || Boolean(addButton?.disabled);
+      if (loaded || !unavailable) return;
+      const variantId = numericId(slot.dataset.variantId);
+      const productId = numericId(slot.dataset.productId);
+      if (!variantId || !productId) return;
+      loaded = true;
+      slot.hidden = false;
+      if (addButton?.matches('button')) addButton.hidden = true;
+
+      window.Shopify = window.Shopify || {};
+      window.Shopify.shop = 'the-electric-eats.myshopify.com';
+      window._ReStockConfig = {
+        templateName: 'product',
+        isB2BCustomer: null,
+        currentLocationId: null,
+        marketHandle: 'us',
+        product: {
+          selected_or_first_available_variant_id: variantId,
+          id: productId,
+          title: slot.dataset.productName || '',
+          handle: slot.dataset.productHandle || '',
+          available: false,
+          featured_image: slot.dataset.productImage || '',
+          images: slot.dataset.productImage ? [slot.dataset.productImage] : [],
+          price: Math.round(Number(String(slot.dataset.productPrice || '').replace(/[^0-9.]/g, '')) * 100) || 0,
+          compare_at_price: null,
+          vendor: 'The Electric Eats',
+          selling_plan_groups: [],
+          variants: [{
+            id: variantId,
+            title: 'Default',
+            available: false,
+            featured_image: null,
+            name: slot.dataset.productName || '',
+            price: Math.round(Number(String(slot.dataset.productPrice || '').replace(/[^0-9.]/g, '')) * 100) || 0,
+            compare_at_price: null,
+            inventory_management: 'shopify',
+            sku: '',
+            quantity: 0
+          }]
+        }
+      };
+
+      const script = document.createElement('script');
+      script.src = 'https://cdn.shopify.com/extensions/019f9eee-a412-7f41-8031-7058588376c9/bestpush-101/assets/restock-sdk-loader.js';
+      script.defer = true;
+      script.dataset.kawsaypacNotifyMe = '';
+      script.onerror = () => {
+        slot.innerHTML = '<p class="pp-availability-error">Back-in-stock alerts are temporarily unavailable. Please try again later.</p>';
+      };
+      document.head.append(script);
+    };
+
+    const observer = new MutationObserver(load);
+    observer.observe(slot, { attributes: true, attributeFilter: ['data-available', 'data-variant-id'] });
+    load();
+    window.setTimeout(() => { load(); observer.disconnect(); }, 10000);
+  }
+
 
   /* ---------- boot ---------- */
 
@@ -1143,6 +1229,7 @@
       stickyBar(p)
     ].join('\n'));
     initInteractions(root, p);
+    initNotifyMe(root);
     document.dispatchEvent(new CustomEvent('kawsaypac:product-viewed',{detail:{
       name:p.name,
       slug:p.slug,

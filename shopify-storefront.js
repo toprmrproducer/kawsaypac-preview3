@@ -14,6 +14,64 @@
     blogHandle: 'foods-herbs-facts'
   });
 
+  /* The Shopify cart web component stores its public cart identifier in the
+     browser. Reuse that same cart so terms consent is carried into the order. */
+  const cartTransport = {
+    cartId: window.localStorage.getItem('__shopify:cartId') || '',
+    endpoint: `${STOREFRONT_CONFIG.storeDomain}/api/2026-01/graphql.json`,
+    headers: new Headers({
+      accept: 'application/json',
+      'content-type': 'application/json'
+    })
+  };
+  const nativeFetch = window.fetch.bind(window);
+
+  function waitForCartTransport(timeout = 5000) {
+    cartTransport.cartId = window.localStorage.getItem('__shopify:cartId') || '';
+    if (cartTransport.cartId) return Promise.resolve(true);
+    return new Promise((resolve) => {
+      const started = Date.now();
+      const timer = window.setInterval(() => {
+        cartTransport.cartId = window.localStorage.getItem('__shopify:cartId') || '';
+        if (cartTransport.cartId || Date.now() - started >= timeout) {
+          window.clearInterval(timer);
+          resolve(Boolean(cartTransport.cartId));
+        }
+      }, 100);
+    });
+  }
+
+  async function recordCartTerms() {
+    if (!await waitForCartTransport()) throw new Error('Shopify cart is not ready');
+    const headers = new Headers(cartTransport.headers);
+    headers.set('content-type', 'application/json');
+    const response = await nativeFetch(cartTransport.endpoint, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        query: `mutation KawsaypacCartTerms($cartId: ID!, $attributes: [AttributeInput!]!) {
+          cartAttributesUpdate(cartId: $cartId, attributes: $attributes) {
+            cart { id }
+            userErrors { field message }
+          }
+        }`,
+        variables: {
+          cartId: cartTransport.cartId,
+          attributes: [
+            { key: 'I-Agree-To-Terms', value: 'Yes' },
+            { key: 'Accepted-Terms-At', value: new Date().toISOString() }
+          ]
+        }
+      })
+    });
+    const payload = await response.json();
+    const result = payload?.data?.cartAttributesUpdate;
+    if (!response.ok || !result?.cart?.id || result.userErrors?.length) {
+      throw new Error(result?.userErrors?.[0]?.message || 'Terms acceptance was not saved');
+    }
+    return true;
+  }
+
   const PHYSICAL_PRODUCT_HANDLES = Object.freeze([
     'valerian',
     'guayusa',
@@ -547,6 +605,71 @@
     else showStorefrontNotice('The live bag is temporarily unavailable.');
   }
 
+  function installTermsGuard() {
+    const cart = document.getElementById('storefront-cart');
+    if (!cart || cart.querySelector('[data-terms-accept]')) return;
+    const guard = document.createElement('div');
+    guard.className = 'storefront-terms';
+    guard.slot = 'extension';
+    guard.innerHTML = `
+      <label class="storefront-terms__label">
+        <input type="checkbox" data-terms-accept>
+        <span>I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>.</span>
+      </label>
+      <p class="storefront-terms__status" data-terms-status role="status" aria-live="polite">Required before checkout.</p>`;
+    cart.append(guard);
+    const checkbox = guard.querySelector('[data-terms-accept]');
+    const status = guard.querySelector('[data-terms-status]');
+
+    checkbox.addEventListener('change', async () => {
+      cart.dataset.termsRecorded = 'false';
+      cart.classList.remove('terms-accepted');
+      if (!checkbox.checked) {
+        status.textContent = 'Required before checkout.';
+        return;
+      }
+      checkbox.disabled = true;
+      status.textContent = 'Saving your acceptance with this order...';
+      try {
+        await recordCartTerms();
+        cart.dataset.termsRecorded = 'true';
+        cart.classList.add('terms-accepted');
+        status.textContent = 'Acceptance saved with this order.';
+      } catch (error) {
+        checkbox.checked = false;
+        status.textContent = 'Could not save your acceptance. Please try again.';
+        showStorefrontNotice('Your terms acceptance could not be saved. Please try again.');
+      } finally {
+        checkbox.disabled = false;
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      const path = typeof event.composedPath === 'function' ? event.composedPath() : [event.target];
+      const isThisCart = path.some((node) => node === cart);
+      const isCheckout = path.some((node) => {
+        if (!node || node === window || node === document || node === cart) return false;
+        const slot = node.getAttribute?.('slot');
+        const href = node.getAttribute?.('href') || '';
+        const text = (node.textContent || '').trim();
+        const interactive = /^(A|BUTTON|SPAN)$/.test(node.tagName || '');
+        return slot === 'checkout-button'
+          || /\/(?:cart\/c|checkouts?)\//i.test(href)
+          || (interactive && /^secure shopify checkout$/i.test(text));
+      });
+      if (!isThisCart || !isCheckout) return;
+      if (checkbox.checked && cart.dataset.termsRecorded === 'true') return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      status.textContent = checkbox.checked
+        ? 'Wait until your acceptance is saved.'
+        : 'Accept the Terms of Service before checkout.';
+      showStorefrontNotice(status.textContent);
+      if (!checkbox.checked) checkbox.focus();
+    }, true);
+  }
+
   function showStorefrontNotice(message) {
     const notice = document.querySelector('[data-storefront-notice]');
     if (!notice) return;
@@ -717,6 +840,7 @@
 
   function boot() {
     configureStores();
+    installTermsGuard();
     ensureJournalLinks();
     initProductLinks();
     initJournal();

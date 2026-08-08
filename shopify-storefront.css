@@ -26,6 +26,56 @@ shopify-list-context {
   text-align: center;
 }
 
+.storefront-terms {
+  display: grid;
+  gap: 7px;
+  margin: 8px 0 2px;
+  padding: 14px 16px;
+  border: 1px solid rgba(31, 58, 42, .2);
+  border-radius: 14px;
+  background: #f8f5ed;
+  color: #1f3a2a;
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.storefront-terms__label {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  cursor: pointer;
+}
+
+.storefront-terms__label input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: #1f3a2a;
+}
+
+.storefront-terms__label input:focus-visible {
+  outline: 3px solid rgba(201, 169, 66, .72);
+  outline-offset: 3px;
+}
+
+.storefront-terms__label a {
+  color: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.storefront-terms__status {
+  margin: 0 0 0 32px;
+  color: rgba(31, 58, 42, .72);
+  font-size: .74rem;
+}
+
+shopify-cart:not(.terms-accepted)::part(primary-button) {
+  opacity: .58;
+}
+
 .storefront-card {
   min-width: 0;
   align-self: start;

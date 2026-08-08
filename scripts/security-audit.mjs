@@ -7,8 +7,10 @@ const textFiles = [];
 const allowedExternalOrigins = new Set([
   'https://advertise.bingads.microsoft.com',
   'https://app.cowlendar.com',
+  'https://api.notify-me.app',
   'https://caringsunshine.com',
   'https://cdn.shopify.com',
+  'https://cdn.notify-me.io',
   'https://fonts.googleapis.com',
   'https://fonts.gstatic.com',
   'https://frontiersin.org',

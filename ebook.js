@@ -130,7 +130,7 @@
                     '<button class="btn btn-primary" type="button" onclick="window.KawsaypacStorefront.addToCart(event)" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">' +
                       'Add to bag &middot; <shopify-money format="money_without_trailing_zeros" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>' +
                     '</button>' +
-                    '<button class="btn btn-outline" type="button" onclick="window.KawsaypacStorefront.buyNow(event)">Buy it now</button>' +
+                    '<button class="btn btn-outline" type="button" onclick="window.KawsaypacStorefront.openCart()">View bag</button>' +
                   '</div>' +
                 '</template>' +
                 '<div class="eb-buy-fallback" shopify-loading-placeholder>' +

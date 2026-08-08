@@ -61,6 +61,11 @@
 .pp-qty output{min-width:34px;text-align:center;font-weight:750}
 .pp-add{flex:1;min-width:210px;background:var(--pp-green);border-color:var(--pp-green);color:#fff;border-radius:999px}
 .pp-add:hover{background:var(--pp-green-2);border-color:var(--pp-green-2);transform:translateY(-1px)}
+.pp-add:disabled{cursor:not-allowed;opacity:.52;transform:none}
+.pp-notify-slot{flex:1;min-width:210px}
+.pp-notify-slot[hidden]{display:none!important}
+.pp-notify-slot .notify-button,.pp-notify-slot button{min-height:50px!important;width:100%!important;border-radius:999px!important;background:var(--pp-green)!important;border:1px solid var(--pp-green)!important;color:#fff!important;font:700 .78rem/1.2 inherit!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+.pp-availability-error{margin:0;padding:13px 16px;border:1px solid #a83d31;border-radius:14px;background:#fff;color:#7b2c24;font-size:.85rem;line-height:1.45}
 /* hero short accordion: BENEFITS / USE / ACTIVE COMPONENTS */
 .pp-hero-acc{margin-top:22px;border:0;border-radius:0;background:transparent;overflow:visible}
 .pp-hero-acc .pp-acc-item{border-top:1px solid var(--pp-line)}

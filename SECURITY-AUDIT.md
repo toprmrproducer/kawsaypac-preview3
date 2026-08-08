@@ -4,7 +4,7 @@ Audit date: 2026-08-07
 
 ## Scope
 
-This audit covers the static HTML, CSS, and JavaScript storefront deployed on GitHub Pages, its public Shopify Storefront Web Components integration, its Loox review widget, its consent-gated Klaviyo browser integration, and its GitHub delivery pipeline. Shopify Admin, Shopify hosted checkout, Loox merchant APIs, Klaviyo account configuration, DNS control, and customer authentication are outside this repository.
+This audit covers the static HTML, CSS, and JavaScript storefront deployed on GitHub Pages, its public Shopify Storefront Web Components integration, its Loox review widget, its consent-gated Klaviyo browser integration, its Notify Me back-in-stock control, its terms acceptance cart attributes, and its GitHub delivery pipeline. Shopify Admin, Shopify hosted checkout, Loox merchant APIs, Klaviyo account configuration, Notify Me subscriber delivery, DNS control, and customer authentication are outside this repository.
 
 There is no application server, database, login system, private API, dependency manifest, or server-side secret store in this repository. The browser sends catalog and cart operations to Shopify, approved review requests to Loox, and consented marketing events to Klaviyo.
 
@@ -15,6 +15,8 @@ There is no application server, database, login system, private API, dependency 
 | Shopify catalog, cart, price, and checkout integrity | Browser to Shopify | Client price or product tampering | Official Shopify components send variant IDs and quantities; Shopify recalculates price and validates availability at checkout. |
 | Klaviyo profile and behavioral events | Browser to Klaviyo | Tracking without consent or private key leakage | Public company ID only, consent gate, Global Privacy Control support, and a full page lifecycle reset after consent revocation. |
 | Approved Loox reviews | Browser to Loox | Script compromise or untrusted review rendering | Official HTTPS widget endpoint; local fallback data is escaped before insertion. |
+| Back-in-stock subscriber data | Browser to Notify Me | Contact data leakage or exposed vendor credential | Official Notify Me storefront SDK loads only for an unavailable variant. The modal sends contact data directly to Notify Me and the repository contains no private vendor key. |
+| Terms acceptance evidence | Browser to Shopify cart | Checkout bypass or acceptance not retained with the order | Direct Buy Now is removed, checkout is blocked until Shopify confirms the cart-attribute mutation, and Shopify remains authoritative for the resulting order. |
 | Visitor navigation and DOM | URL and form input to browser DOM | DOM XSS, open redirects, or unsafe cross-origin messaging | Product handles are allowlisted, query values are encoded or normalized, external message origin is pinned, and all external tabs use `noopener`. |
 | Source and delivery pipeline | Git and GitHub Actions | Credential leakage or mutable workflow compromise | History scan, CI secret scan, read-only workflow permissions, and actions pinned to full commit SHAs. |
 
@@ -66,6 +68,8 @@ There is no application server, database, login system, private API, dependency 
 - A headless mobile browser confirmed Klaviyo is absent before consent, loads after explicit consent, and is absent after the withdrawal-triggered reload.
 - DOM XSS probes across `?concern=`, `?q=`, product, ebook, and testimonial routes did not execute, did not create injected nodes, and resolved to safe storefront states.
 - A live mobile storefront test loaded the Joint & Mobility filter, invoked the official Shopify cart component, and received HTTP 200 from Shopify's Storefront GraphQL endpoint with no storefront notice or page error.
+- A live unavailable variant loaded Notify Me's official SDK, replaced the disabled purchase action, and opened the name and email signup modal without a private key or test submission.
+- A headless cart test confirmed the terms control blocks the Shopify checkout request before acceptance, saves `I-Agree-To-Terms` and `Accepted-Terms-At` through Shopify's cart API, and permits checkout only after the mutation returns HTTP 200.
 - The private handoff repository was queried through GitHub and remains `PRIVATE`.
 - All 44 production HTML routes returned HTTP 200. Production redirects HTTP to HTTPS, sends HSTS, and the sensitive-file probe found no `.env`, Git metadata, dependency lockfile, credentials file, or source map.
 - Production references no plaintext external resource. The only preview-specific console rejection was Loox refusing its product-review frame on the GitHub Pages hostname; the product page now keeps its static verified-review wall on that preview and loads the live widget only on Loox's already-permitted final domain.

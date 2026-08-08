@@ -298,7 +298,8 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
         const text=(node.textContent||'').trim();
         return slot==='checkout-button'||/secure shopify checkout/i.test(text);
       });
-      if(checkout&&path.some(node=>node&&node.id==='storefront-cart'))api.trackCheckoutHandoff();
+      const cart=path.find(node=>node&&node.id==='storefront-cart');
+      if(checkout&&cart&&cart.dataset.termsRecorded==='true')api.trackCheckoutHandoff();
     },true);
   }
   function initForms(){
