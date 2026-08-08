@@ -232,3 +232,24 @@
   /* v132: the 96px white fade at the hero bottom read as a "white overlay" on phones (Shreyas). Removed; the hero now meets the next section clean. */
   .journey-final{bottom:56px}
 }
+
+/* v134: phone browser chrome and DevTools viewport resizing can briefly make
+   the lower terrain handoff taller than the composed foreground. Overscan both
+   existing foreground sprites upward and past the side/bottom edges so the
+   warm s-sky plate can never appear as a rectangular band. Desktop geometry
+   and GSAP's transform channel remain untouched. */
+@media(max-width:720px){
+  .j5l[data-n="moss"]{
+    left:-4%!important;
+    bottom:-2%!important;
+    width:108%!important;
+    height:64%!important;
+  }
+  .j5l[data-n="mossbranch"]{
+    left:-3%!important;
+    top:auto!important;
+    bottom:-2%!important;
+    width:106%!important;
+    height:61%!important;
+  }
+}
