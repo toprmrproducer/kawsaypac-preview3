@@ -246,6 +246,19 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$$('.reveal').forEach
   function initKlaviyo(){
     const api=window.KawsaypacKlaviyo;
     if(!api)return;
+    /* The published desktop and mobile Klaviyo quiz forms still carry the
+       legacy Shopify collection URL on their Success-step best-sellers CTA.
+       Keep visitors inside whichever host serves this headless storefront,
+       including the preview today and the custom domain after cutover. */
+    document.addEventListener('click',event=>{
+      const path=typeof event.composedPath==='function'?event.composedPath():[event.target];
+      const button=path.find(node=>node?.matches?.('form.klaviyo-form button, form.klaviyo-form a')&&/shop\s+our\s+best\s+sellers/i.test(node.textContent||''));
+      if(!button)return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      location.assign(new URL('shop.html#live-apothecary',document.baseURI).href);
+    },true);
     const ensurePanel=()=>{
       let panel=$('[data-marketing-consent]');
       if(panel)return panel;

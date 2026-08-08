@@ -26,6 +26,10 @@ Audit date: 7 August 2026
 | Checkout Started | Native Klaviyo and Shopify integration after the customer enters hosted checkout |
 | Order and fulfillment events | Native Shopify backend integration |
 
+### Published form destination correction
+
+The Klaviyo forms `REGULAR USE: Quiz Pop-Up Desktop` (`SDYjkv`) and `REGULAR USE: Quiz Pop-Up Mobile` (`XzWcvk`) currently publish their Success-step “Shop Our Best Sellers” button with `Action: Go to URL` pointing to the legacy Shopify collection at `https://theelectriceats.com/collections/best-sellers`. Change both button destinations in Klaviyo to the final headless catalog URL, `https://theelectriceats.com/shop.html#live-apothecary`, when the custom-domain cutover is complete. The storefront also captures that exact CTA and routes it to the host-relative `shop.html#live-apothecary`, so preview and production visitors remain in the headless experience without exposing any credential.
+
 ## Security rules
 
 - Never place a Klaviyo private API key in HTML, JavaScript, GitHub Pages, query strings, or screenshots.
